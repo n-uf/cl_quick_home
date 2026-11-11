@@ -47,6 +47,18 @@ test("links to other hosts are ignored, including look-alike hosts", () => {
   assert.equal(r.status, 0, r.stderr);
 });
 
+test("the share images named by og:image and twitter:image must be built files", () => {
+  const meta = (name, url) => `<meta property="${name}" content="${url}">`;
+  const d = dist(meta("og:image", "https://cl-quick.n-uf.com/og/x.png") + meta("twitter:image", "https://cl-quick.n-uf.com/og/x.png"));
+  const r = check(d);
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /\/links\/ -> image \/og\/x\.png/);
+  writeFileSync(join(d, "x.png"), "");
+  mkdirSync(join(d, "og"), { recursive: true });
+  writeFileSync(join(d, "og", "x.png"), "");
+  assert.equal(check(d).status, 0);
+});
+
 test("relative-to-root links still work: a built one passes, a missing one fails", () => {
   assert.equal(check(dist(a("/a/") + a("/a"))).status, 0);
   const r = check(dist(a("/missing/")));

@@ -54,12 +54,18 @@ for (const file of htmlFiles(dist)) {
   pages++;
   const page = "/" + relative(dist, file).replace(/index\.html$/, "").replace(/\\/g, "/");
   const seen = new Set();
-  for (const m of readFileSync(file, "utf8").matchAll(/<a\b[^>]*?\shref\s*=\s*(?:"([^"]*)"|'([^']*)')/gi)) {
-    const href = internalPath((m[1] ?? m[2]).replace(/&amp;/g, "&").trim());
-    if (href === null || seen.has(href)) continue;
-    seen.add(href);
+  const html = readFileSync(file, "utf8");
+  // the links in the page, and the share images its meta tags name (og:image, twitter:image): each must be a built file
+  const targets = [
+    ...[...html.matchAll(/<a\b[^>]*?\shref\s*=\s*(?:"([^"]*)"|'([^']*)')/gi)].map((m) => ["", m[1] ?? m[2]]),
+    ...[...html.matchAll(/<meta\b[^>]*?(?:property|name)\s*=\s*["'](?:og|twitter):image["'][^>]*?\scontent\s*=\s*(?:"([^"]*)"|'([^']*)')/gi)].map((m) => ["image ", m[1] ?? m[2]]),
+  ];
+  for (const [kind, raw] of targets) {
+    const href = internalPath(raw.replace(/&amp;/g, "&").trim());
+    if (href === null || seen.has(kind + href)) continue;
+    seen.add(kind + href);
     checked++;
-    if (!exists(href)) missing.push(`${page} -> ${href}`);
+    if (!exists(href)) missing.push(`${page} -> ${kind}${href}`);
   }
 }
 
