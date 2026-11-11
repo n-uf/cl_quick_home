@@ -207,6 +207,12 @@
 .getslot.stuck .bkey { min-height: 32px; padding: 6px 8px; gap: 0; }
 .getslot.stuck .bkey .bk-l { font-size: 11px; letter-spacing: .08em; white-space: normal; text-align: center; line-height: 1.15; }
 .getslot.stuck .bkey .bk-s { display: none; }
+/* wide desktop (1260px up, where the sheet's text and pictures end well before the right edge): the keys stand in a slim rail
+   at the right, top-aligned under the menu bar, instead of a strip across the page. Narrower, the strip above stays. */
+@keyframes get-in-right { from { opacity: 0; transform: translateX(8px); } }
+@media (min-width: 1260px) {
+  .getslot.stuck .getrow { left: auto; right: 24px; width: 188px; grid-template-columns: minmax(0, 1fr); animation-name: get-in-right; }
+}
 .bkey {
   height: auto; min-height: 64px; padding: 10px 10px; flex-direction: column; gap: 6px; min-width: 0; text-align: center;
   /* a little darker than the step keys' face, so the white legend and the sublabel keep 4.5:1 or more */
@@ -230,7 +236,8 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
 .sheet-head h2 { font-size: 26px; letter-spacing: -.02em; line-height: 1.2; }
 .row { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 12px 56px; padding: 30px 0; border-top: 1px solid rgba(0,0,0,.55); box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
 .beat { scroll-margin-top: 44px; }
-.row { scroll-margin-top: 100px; }   /* below the menu bar and the stuck row of keys */
+.row { scroll-margin-top: 100px; }   /* below the menu bar and the stuck strip of keys */
+@media (min-width: 1260px) { .row { scroll-margin-top: 16px; } }   /* the keys stand in a rail then: only the menu bar is above */
 .row .lbl { display: block; margin-bottom: 8px; }
 .row h3 { font-size: 19px; line-height: 1.3; font-weight: 650; letter-spacing: -.012em; }
 .row .body { display: grid; gap: 14px; min-width: 0; align-content: start; }
@@ -302,5 +309,5 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .layer, .caps, .keybtn .kcap, .live-send, .home[data-js] .beat { transition: none; }
-  .getslot.stuck .getrow { animation: none; }
+  .getslot.stuck .getrow { animation: none !important; }
 }

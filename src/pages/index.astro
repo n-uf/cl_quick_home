@@ -349,6 +349,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
   const sentinel = slot?.querySelector<HTMLElement>(".get-sentinel");
   if (slot && sentinel && "IntersectionObserver" in window) {
     const narrow = matchMedia("(max-width: 860px)");
+    const rail = matchMedia("(min-width: 1260px)");   // wide enough for the keys to stand at the right of the sheet's text (home.css)
     const root = document.documentElement;
     let observer: IntersectionObserver | undefined;
     const setStuck = (on: boolean) => {
@@ -360,17 +361,25 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
         slot.style.setProperty("--get-w", `${r.width}px`);
       } else slot.style.height = "";
       slot.classList.toggle("stuck", on);
-      root.style.scrollPaddingTop = on && !narrow.matches ? "100px" : "";
+      // wide desktop: the keys stand in a rail at the right, so only the menu bar needs room above; otherwise a strip under it
+      root.style.scrollPaddingTop = on && !narrow.matches ? (rail.matches ? "44px" : "100px") : "";
       root.style.scrollPaddingBottom = on && narrow.matches ? "84px" : "";
     };
+    let top = 36;
+    // an IntersectionObserver tells nothing when a jump (a step key, an anchor, End) skips past the sentinel without it ever
+    // being in view, so the scroll position is also checked directly
+    const check = () => setStuck(sentinel.getBoundingClientRect().top < top);
     const watch = () => {
       observer?.disconnect();
       setStuck(false);
-      const top = narrow.matches ? 0 : 36;   // under the 28 px menu bar with an 8 px gap, or the top of the screen
+      top = narrow.matches ? 0 : 36;   // under the 28 px menu bar with an 8 px gap, or the top of the screen
       observer = new IntersectionObserver(([e]) => setStuck(!e.isIntersecting && e.boundingClientRect.top < top), { rootMargin: `-${top}px 0px 0px 0px`, threshold: 0 });
       observer.observe(sentinel);
+      check();
     };
     watch();
+    let checking = false;
+    addEventListener("scroll", () => { if (!checking) { checking = true; requestAnimationFrame(() => { checking = false; check(); }); } }, { passive: true });
     let resizing = 0;
     addEventListener("resize", () => { clearTimeout(resizing); resizing = window.setTimeout(watch, 150); });
   }
