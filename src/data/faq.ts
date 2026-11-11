@@ -10,6 +10,8 @@ export const groups: Group[] = [
       a: ["A floating Claude chat for the Mac, on a shortcut. It is a menu bar app with no Dock icon. Press ⌥Space over any app and a chat bar opens; the first message turns it into a chat window that stays floating on every Space until Esc hides it. It never brings another app forward."] },
     { q: "Does cl_quick use my own Claude Code sign-in?",
       a: ["Yes. Your own Claude Code answers, on the profile's account in use, and the chat counts against that account's limits. cl_quick runs one <code>claude</code> at a time: it is kept while a chat is open and ended after 15 minutes idle."] },
+    { q: "Is cl_quick free?",
+      a: ["Yes, the app is free. It uses your own Claude Code sign-in, so every chat counts against that account's Claude plan limits."] },
     { q: "Is cl_quick made by Anthropic?",
       a: ["No. cl_quick is an independent tool from n-uf. It is not affiliated with Anthropic. Claude is a trademark of Anthropic."] },
     { q: "What does it need?",
