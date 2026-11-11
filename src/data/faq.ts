@@ -7,7 +7,7 @@ export interface Group { title: string; items: QA[] }
 export const groups: Group[] = [
   { title: "The basics", items: [
     { q: "What is cl_quick?",
-      a: ["A floating Claude chat for the Mac, on a shortcut. It is one menu bar app with no Dock icon. Press ⌥Space over any app and a chat bar opens; the first message turns it into a chat window that stays floating on every Space until Esc hides it. It never brings another app forward."] },
+      a: ["A floating Claude chat for the Mac, on a shortcut. It is a menu bar app with no Dock icon. Press ⌥Space over any app and a chat bar opens; the first message turns it into a chat window that stays floating on every Space until Esc hides it. It never brings another app forward."] },
     { q: "Does cl_quick use my own Claude Code sign-in?",
       a: ["Yes. Your own Claude Code answers, on the profile's account in use, and the chat counts against that account's limits. cl_quick runs one <code>claude</code> at a time: it is kept while a chat is open and ended after 15 minutes idle."] },
     { q: "Is cl_quick made by Anthropic?",
@@ -29,7 +29,7 @@ export const groups: Group[] = [
     { q: "What does cl_quick send, and to whom?",
       a: ["Nothing but your messages, through Claude Code, to Anthropic under the profile's account. Claude Code runs with no tools, no MCP servers, no settings files and its non-essential traffic (telemetry, error reports, update checks) off. It gets only an allowlisted part of the Mac's environment (who you are, the language, proxies and certificates); the rest of your shell's environment is left out."] },
     { q: "How do I remove everything cl_quick keeps?",
-      a: ["Settings ▸ General has a strip at the bottom with <b>Remove…</b>. It asks \"Move cl_quick's data to the Trash?\", then moves cl_quick's folder and any old quick chats to the Trash, turns the login item off and quits. Your Claude Code folders, their sign-ins and their other sessions stay."] },
+      a: ["The strip at the bottom of Settings ▸ General has <b>Remove…</b>, which asks \"Move cl_quick's data to the Trash?\" and then moves cl_quick's folder and any old quick chats to the Trash, turns the login item off and quits. Your Claude Code folders, their sign-ins and their other sessions stay."] },
   ] },
   { title: "Profiles and accounts", items: [
     { q: "What is a profile?",
@@ -37,7 +37,7 @@ export const groups: Group[] = [
     { q: "Can one profile have more than one account?",
       a: ["Yes. A Claude Code folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to its folder: the one signed in now is in use, the others are on standby. There are no helper folders: one profile, one folder."] },
     { id: "switching", q: "How do I switch to another account?",
-      a: ["Open the profile's page in Settings (its tile along the top). The account in use comes first, in a box with its address, its plan, an \"In use\" tag and its limits. Under it, each standby account is a row with two buttons, <b>Switch…</b> and <b>Forget…</b>. <b>Switch…</b> signs in again in the same folder as that account.",
+      a: ["Open the profile's page in Settings (its tile along the top). The account in use comes first, in a box with its address, its plan, an \"In use\" tag and its limits. Under it, each standby account is a row with two buttons, <b>Switch…</b> and <b>Forget…</b>; pressing <b>Switch…</b> signs in again in the same folder as that account.",
           "cl_quick asks first (\"Switch Main to p•••@example.com?\"). The question says that Claude Code in Terminal and editors on that folder (for a folder other than <code>~/.claude</code>, Claude Code pointed at it with <code>CLAUDE_CONFIG_DIR</code>) moves to the new account, sessions running now included, and that the Claude app keeps its own sign-in. It is not just the quick chat.",
           "Then Claude Code's own sign-in (<code>claude auth login --email …</code>) opens in Terminal and finishes in your browser. The browser's claude.ai session decides which account actually signs in, so cl_quick checks the result: it looks at the folder's <code>.claude.json</code> every 2 seconds, for at most 10 minutes, until the account changes."] },
     { q: "What do Forget…, Sign in again… and Add an account… do?",
@@ -55,7 +55,7 @@ export const groups: Group[] = [
     { q: "Where do the 5-hour and weekly numbers come from?",
       a: ["From the chat's own Claude Code, using its own sign-in and never the Keychain: it starts as the bar opens, and is asked for the account's limits then, after each answer, and when the bar opens again (at most once a minute). That request (<code>get_usage</code>) sends no message to a model. After each answer Claude Code also reports them on its own, which stays as the fallback. The colours are green, amber from 50%, red from 80% and crimson from 95%.",
           "Limits belong to the account. After a switch, the chat's new <code>claude</code> is asked for the new account's limits at once, and the new account's own numbers show, never the old account's. They are kept per account (its id in Claude Code's file), not per organization. A standby account shows no usage."] },
-    { q: "What does the top line of the chat window show?",
+    { q: "What does the header of the chat window show?",
       a: ["Once the bar has become a chat window, its header shows only the usage meters, \"5h\" and \"wk\", each with its bar, its share and, when there's room, when it resets. At the right is a darker capsule with <b>+</b> (new chat) and <b>✕</b> (hide). There is no profile name and no address in the header: the profile is in the row under the field."] },
     { q: "What happens when a limit is full?",
       a: ["When a profile's 5-hour limit or week is full, the chat's notice names the window that is full (\"Main's 5-hour limit is full, resets 23:20.\") and offers the profile with the most room: <b>Ask on Work</b> sends your question there. If the profile has a standby account with room, it also offers <b>Switch to p•••@example.com…</b>: after the sign-in the chat starts a new chat on the same profile (a chat may not carry across accounts) and sends what you had typed, with a line saying \"Main is on p•••@example.com now.\""] },

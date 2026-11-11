@@ -45,7 +45,7 @@ const jsonLd = [orgNode, {
   featureList: [
     "A floating Claude chat on a shortcut (⌥Space by default) that never brings another app forward",
     "Answered by your own Claude Code sign-in, on the profile's account in use",
-    "The live 5-hour and weekly limits of the account in use, in the chat's top line",
+    "The live 5-hour and weekly limits of the account in use, in the bar and in the chat's header",
     "Profiles with several accounts each, with Switch… through Claude Code's own sign-in",
     "Model and thinking pickers, and a mic button that starts macOS Dictation",
     "Incognito chats: nothing is saved on the Mac",
@@ -108,7 +108,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
       <ol class="beats">
         <li class="beat" id="step-1">
           <h2>Press ⌥Space over any app</h2>
-          <p>A chat bar opens over whatever you're doing. cl_quick is one menu bar app with no Dock icon, and it never brings another app forward: the editor in the picture stays the frontmost app. ⌥Space is the default; Settings offers four other Space shortcuts, any key with ⌘, ⌃ or ⌥, or none.</p>
+          <p>A chat bar opens over whatever you're doing. cl_quick is a menu bar app with no Dock icon, and it never brings another app forward: the editor in the picture stays the frontmost app. ⌥Space is the default; Settings offers four other Space shortcuts, any key with ⌘, ⌃ or ⌥, or none.</p>
         </li>
         <li class="beat" id="step-2">
           <h2>A bar opens, ready to type</h2>
@@ -124,7 +124,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
         </li>
         <li class="beat" id="step-5">
           <h2>Your limits stay in view</h2>
-          <p>The header shows only the usage meters, 5h and wk, with a bar for each: green, amber from 50%, red from 80% and crimson from 95%. When the 5-hour limit or the week is full, the chat's notice names the window that is full and when it resets, and offers the profile with the most room (<b>Ask on Work</b>). If the profile has a standby account with room, it also offers <b>Switch to …</b>.</p>
+          <p>When the 5-hour limit or the week is full, the chat's notice names the window that is full and when it resets, and offers the profile with the most room (<b>Ask on Work</b>). If the profile has a standby account with room, it also offers to switch to it (<b>Switch to …</b>). The bar has a usage indicator, and once it is a chat window the header shows only the 5h and wk meters, in green, amber from 50%, red from 80% and crimson from 95%.</p>
         </li>
         <li class="beat" id="step-6">
           <h2>Incognito, then gone</h2>
@@ -152,7 +152,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
       <div><span class="lbl">Profiles</span><h3>Profiles, with several accounts each</h3></div>
       <div class="body">
         <p>A profile is a Claude Code folder cl_quick chats on: <code>~/.claude</code>, a <code>~/.claude-*</code> folder, or any folder set with <code>CLAUDE_CONFIG_DIR</code>. On its first run cl_quick takes every signed-in one it finds, named after the folder.</p>
-        <p>A Claude Code folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to its folder: the one signed in now is <b>in use</b>, the others are <b>standby</b>. Each standby account is a row in the profile's page in Settings, with <b>Switch…</b> and <b>Forget…</b>. <b>Switch…</b> asks first, then opens Claude Code's own sign-in in Terminal. cl_quick never sees a password or a token and never touches the Keychain.</p>
+        <p>A Claude Code folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to its folder: the one signed in now is <b>in use</b>, the others are <b>standby</b>. In the profile's page in Settings each standby account is a row with two buttons, <b>Switch…</b> and <b>Forget…</b>; pressing <b>Switch…</b> asks first, then opens Claude Code's own sign-in in Terminal. cl_quick never sees a password or a token and never touches the Keychain.</p>
         <figure class="shot">
           <img src="/img/settings-accounts.webp" width="1210" height="687" alt="Settings: an account in use and two on standby" loading="lazy" decoding="async" />
           <figcaption>A profile's page in Settings, with sample accounts: one in use, two on standby.</figcaption>
@@ -195,7 +195,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     <div class="row" id="cl-audit">
       <div><span class="lbl">With cl_audit</span><h3>The quick chat of cl_audit, as an app of its own</h3></div>
       <div class="body">
-        <p>cl_quick is the successor of <ExtLink href="https://cl-audit.n-uf.com">cl_audit</ExtLink>'s quick chat, in cl_audit's look: the settings window wears it, while the chat itself uses Claude's colours. It runs with or without cl_audit and shares nothing with it while running. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any.</p>
+        <p>cl_quick is the successor of the quick chat in <ExtLink href="https://cl-audit.n-uf.com">cl_audit</ExtLink>. Its settings window wears cl_audit's look, while the chat itself uses Claude's colours. It runs with or without cl_audit and shares nothing with it while running. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any.</p>
       </div>
     </div>
 

@@ -21,7 +21,7 @@ const jsonLd = [
         <ul class="list">
           <li><b>An Apple silicon Mac.</b></li>
           <li><b>macOS 13 or later.</b></li>
-          <li><b>Claude Code, signed in.</b> cl_quick answers with your own Claude Code sign-in, so a profile needs a Claude Code folder that is signed in. <ExtLink href="https://code.claude.com/docs/en/setup">Claude Code's setup guide</ExtLink></li>
+          <li><b>Claude Code, signed in.</b> cl_quick answers with your own Claude Code sign-in, so a profile needs a Claude Code folder that is signed in. Install and sign in to it first, with <ExtLink href="https://code.claude.com/docs/en/setup">Claude Code's setup guide</ExtLink>.</li>
         </ul>
       </div>
 
@@ -31,7 +31,7 @@ const jsonLd = [
           <li><b>A profile is a Claude Code folder.</b><span><code>~/.claude</code>, a <code>~/.claude-*</code> folder, or any folder set with <code>CLAUDE_CONFIG_DIR</code>. On its first run cl_quick takes every signed-in one it finds, named after the folder.</span></li>
           <li><b>The bar opens, and a <code>claude</code> starts.</b><span>One <code>claude</code> at a time, on the profile's account in use. It is kept while a chat is open and ended after 15 minutes idle.</span></li>
           <li><b>Your Claude Code answers.</b><span>Each chat counts against that account's limits. Claude Code runs with no tools, no MCP servers and no settings files, and with its non-essential traffic (telemetry, error reports, update checks) off.</span></li>
-          <li><b>The limits come from the same <code>claude</code>.</b><span>It is asked for the account's 5-hour and weekly limits, which sends no message to a model, and the chat shows them in its top line.</span></li>
+          <li><b>The limits come from the same <code>claude</code>.</b><span>It is asked for the account's 5-hour and weekly limits, which sends no message to a model, and the chat shows them in its bar and its header.</span></li>
         </ol>
       </div>
     </div>
@@ -45,12 +45,12 @@ const jsonLd = [
 
       <div class="card">
         <h2 class="cap">Already use cl_audit?</h2>
-        <p class="t">cl_quick is the successor of <ExtLink href="https://cl-audit.n-uf.com">cl_audit</ExtLink>'s quick chat. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any, and it shares nothing with cl_audit while running.</p>
+        <p class="t">cl_quick is the successor of the quick chat in <ExtLink href="https://cl-audit.n-uf.com">cl_audit</ExtLink>. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any, and it shares nothing with cl_audit while running.</p>
       </div>
 
       <div class="card">
         <h2 class="cap">Removing it</h2>
-        <p class="t">Settings ▸ General has a strip at the bottom with <b>Remove…</b>. It asks "Move cl_quick's data to the Trash?", then moves cl_quick's folder and any old quick chats to the Trash, turns the login item off and quits. Your Claude Code folders, their sign-ins and their other sessions stay.</p>
+        <p class="t">The strip at the bottom of Settings ▸ General has <b>Remove…</b>, which asks "Move cl_quick's data to the Trash?" and then moves cl_quick's folder and any old quick chats to the Trash, turns the login item off and quits. Your Claude Code folders, their sign-ins and their other sessions stay.</p>
       </div>
 
       <div class="card">
