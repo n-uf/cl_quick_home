@@ -1,4 +1,4 @@
-/* The home page: one keystroke's journey on a Mac desktop. The stage (a small desktop with another app open) stays in
+/* The home page: one keystroke's journey on a Mac desktop. The stage (a bare Mac desktop) stays in
    view while the steps scroll past; which picture of cl_quick shows is set by data-beat on .home (src/pages/index.astro
    sets it from the scroll position). With no script the stage shows the chat window and every step reads as plain text. */
 .home-main { width: 100%; max-width: 1240px; margin: 0 auto; padding: 30px 24px 10px; flex: 1; }
@@ -43,7 +43,7 @@
   color: #fff; box-shadow: var(--well), 0 0 0 1.5px rgba(var(--led), .85), 0 0 10px rgba(var(--led), .35);
 }
 
-/* ── The stage: a small Mac desktop with another app open ───────────── */
+/* ── The stage: a bare Mac desktop, with cl_quick floating on it ───────── */
 .stage {
   container-type: inline-size; position: relative; width: 100%; aspect-ratio: 16 / 11; overflow: hidden; border-radius: 14px; isolation: isolate;
   background:
@@ -54,34 +54,10 @@
 }
 /* everything inside is sized in cqw, so the whole desktop scales as one picture */
 .mini-menu {
-  position: absolute; left: 0; right: 0; top: 0; height: 4.8cqw; display: flex; align-items: center; gap: 2.4cqw; padding: 0 2.2cqw;
+  position: absolute; left: 0; right: 0; top: 0; height: 4.8cqw; display: flex; align-items: center; justify-content: flex-end; gap: 2.4cqw; padding: 0 2.2cqw;
   background: rgba(20,20,24,.55); font: 500 1.5cqw/1 var(--font); color: #e9e9ee;
 }
-.mini-menu b { font-weight: 700; }
-.mini-menu .sp { flex: 1; }
 .mini-menu svg { width: 2.1cqw; height: 2.1cqw; }
-.app {
-  position: absolute; left: 5cqw; right: 5cqw; top: 8.4cqw; bottom: 5cqw; border-radius: 1.1cqw; overflow: hidden; display: grid; grid-template-rows: 4.4cqw minmax(0, 1fr);
-  background: #1e1f24; box-shadow: 0 0 0 1px rgba(0,0,0,.6), 0 2.4cqw 5cqw rgba(0,0,0,.45);
-}
-.app-bar { position: relative; display: flex; align-items: center; padding: 0 1.6cqw; background: #2b2c32; border-bottom: 1px solid rgba(0,0,0,.5); font: 500 1.45cqw/1 var(--font); color: #a9abb4; }
-.app-bar .tl { display: flex; gap: .7cqw; }
-.app-bar .tl i { width: 1.15cqw; height: 1.15cqw; border-radius: 50%; background: #ff5f57; }
-.app-bar .tl i:nth-child(2) { background: #febc2e; }
-.app-bar .tl i:nth-child(3) { background: #28c840; }
-.app-bar .ttl { position: absolute; left: 0; right: 0; text-align: center; pointer-events: none; }
-.app-body { display: grid; grid-template-columns: 14cqw minmax(0, 1fr); min-height: 0; }
-.app-side { padding: 1.6cqw 1.4cqw; background: #25262b; font: 500 1.4cqw/2.3 var(--font); color: #8d8f99; border-right: 1px solid rgba(0,0,0,.4); overflow: hidden; }
-.app-side .on { color: #e4e5ea; }
-.code { padding: 1.4cqw 0; font: 1.45cqw/1.75 var(--mono); color: #c7c9d1; white-space: pre; overflow: hidden; }
-.code span { display: block; min-height: 1.75em; padding: 0 1.6cqw 0 5cqw; position: relative; }
-.code span::before { content: attr(data-n); position: absolute; left: 1.4cqw; width: 2.2cqw; text-align: right; color: #5b5d68; }
-.code .k { color: #c59cf2; } .code .s { color: #8fd18d; } .code .c { color: #747784; }
-.tag {
-  position: absolute; z-index: 1; left: 50%; bottom: 1.1cqw; transform: translateX(-50%); padding: .7cqw 1.3cqw; border-radius: .6cqw; white-space: nowrap;
-  background: linear-gradient(180deg, #030607, #0a1113); box-shadow: inset 0 1px 3px rgba(0,0,0,.9), 0 0 0 1px rgba(0,0,0,.6);
-  font: 600 1.1cqw/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--glow)); text-shadow: 0 0 4px rgba(var(--glow), .6);
-}
 
 /* the pictures of cl_quick: the bar, the typed bar, the chat window, the full-week notice, the ended chat */
 .layer {
@@ -99,9 +75,6 @@
 }
 /* no script: nothing moves the stage, so it shows the chat window */
 .home:not([data-js]) .l-answer { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
-/* the tag: the other app stays in front once cl_quick is open */
-.tag { opacity: 0; transition: opacity .3s; }
-.home:is([data-beat="1"], [data-beat="2"], [data-beat="3"], [data-beat="4"], [data-beat="5"]) .tag { opacity: 1; }
 
 /* step 1: the keys */
 .caps {
@@ -166,15 +139,6 @@
   .stage { aspect-ratio: 1 / 0.94; border-radius: 12px; }
   .mini-menu { height: 6.4cqw; font-size: 3.1cqw; gap: 4cqw; padding: 0 3.2cqw; }
   .mini-menu svg { width: 4cqw; height: 4cqw; }
-  .app { left: 4cqw; right: 4cqw; top: 9.6cqw; bottom: 8cqw; grid-template-rows: 7cqw minmax(0, 1fr); border-radius: 2cqw; }
-  .app-bar { font-size: 2.8cqw; padding: 0 3cqw; }
-  .app-bar .tl i { width: 2cqw; height: 2cqw; }
-  .app-body { grid-template-columns: 22cqw minmax(0, 1fr); }
-  .app-side { font-size: 2.6cqw; padding: 3cqw 2.4cqw; }
-  .code { font-size: 2.7cqw; padding: 2.6cqw 0; }
-  .code span { padding-left: 8cqw; }
-  .code span::before { left: 2.4cqw; width: 4cqw; }
-  .tag { font-size: 2.2cqw; padding: 1.2cqw 2.4cqw; bottom: 1.6cqw; }
   .l-bar, .l-typing { left: 4cqw; width: 92cqw; top: 22cqw; }
   .l-full { left: 4cqw; width: 92cqw; top: 14cqw; }
   .l-answer, .l-ended { left: 11cqw; width: 78cqw; top: 8.5cqw; }
@@ -193,5 +157,5 @@
   .row { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 24px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .layer, .caps, .tag, .home[data-js] .beat { transition: none; }
+  .layer, .caps, .home[data-js] .beat { transition: none; }
 }
