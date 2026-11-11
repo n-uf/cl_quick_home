@@ -52,9 +52,11 @@ const jsonLd = [orgNode, {
   featureList: [
     "A floating Claude chat on a shortcut (⌥Space by default) that never brings another app forward",
     "Answered by your own Claude Code sign-in, on the profile's account in use",
-    "The live 5-hour and weekly limits of the account in use, in the bar and in the chat's header",
+    "The live 5-hour and weekly limits of the account in use, in the bar, in the chat's header and in the menu bar menu",
     "Profiles with several accounts each, with Switch… through Claude Code's own sign-in",
-    "Model and thinking pickers, and a mic button that starts macOS Dictation",
+    "Model and thinking pickers, and a mic button that starts macOS Dictation (⌘D turns it on and off)",
+    "Images pasted or dropped into the chat, handled in memory only",
+    "Ask cl_quick in the macOS Services menu, for selected text",
     "Incognito chats: nothing is saved on the Mac",
   ],
   author: orgRef,
@@ -142,7 +144,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
         </li>
         <li class="beat" id="step-3">
           <h2>Type, and press Return</h2>
-          <p>Return sends and Shift-Return adds a line. The mic button, left of Send, starts macOS Dictation into the field, and the keys button lists the shortcuts.</p>
+          <p>Return sends and Shift-Return adds a line. The mic button, left of Send, starts macOS Dictation into the field, and ⌘D turns it on and off. Paste or drop an image and it shows as a thumbnail over the field. The keys button lists the shortcuts.</p>
         </li>
         <li class="beat" id="step-4">
           <h2>The first message makes it a chat window</h2>
@@ -154,7 +156,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
         </li>
         <li class="beat" id="step-6">
           <h2>Your limits stay in view</h2>
-          <p>When the 5-hour limit or the week is full, the chat's notice names the window that is full and when it resets, and offers the profile with the most room (<b>Ask on Work</b>). If the profile has a standby account with room, it also offers to switch to it (<b>Switch to …</b>). The bar has a usage indicator, and in the chat window the header shows only the 5h and wk meters, in green, amber from 50%, red from 80% and crimson from 95%.</p>
+          <p>When the 5-hour limit or the week is full, the chat's notice names the window that is full and when it resets, and offers the profile with the most room (<b>Ask on Work</b>). If the profile has a standby account with room, it also offers to switch to it (<b>Switch to …</b>). The bar has a usage indicator, and in the chat window the header shows only the 5h and wk meters, in green, amber from 50%, red from 80% and crimson from 95%. The menu bar menu shows the same bars for each profile.</p>
         </li>
       </ol>
     </div>
@@ -196,6 +198,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
       <div class="body">
         <p>A profile is a Claude Code folder cl_quick chats on: <code>~/.claude</code>, a <code>~/.claude-*</code> folder, or any folder set with <code>CLAUDE_CONFIG_DIR</code>. On its first run cl_quick takes every signed-in one it finds, named after the folder.</p>
         <p>A Claude Code folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to its folder: the one signed in now is <b>in use</b>, the others are <b>standby</b>. In the profile's page in Settings each standby account is a row with two buttons, <b>Switch…</b> and <b>Forget…</b>; pressing <b>Switch…</b> asks first, then opens Claude Code's own sign-in in Terminal. cl_quick never sees a password or a token and never touches the Keychain.</p>
+        <p>The menu bar icon's menu has a block for each profile: its name with a dot in the colour of its fuller limit, the account in use with a green lamp (its address blurred until the pointer is on it), the <b>5-hour</b> and <b>Week</b> bars with their share and the time to reset, and how old the numbers are. Only the account in use shows usage, and a profile with no numbers yet says "No usage yet". A profile with standby accounts also has <b>Switch account ›</b>. When the numbers are over 5 minutes old, opening the menu asks Claude Code for them again in the background (<code>get_usage</code> only, no message to a model).</p>
         <figure class="shot">
           <img src="/img/settings-accounts.webp" width="1210" height="687" alt="Settings: an account in use and two on standby" loading="lazy" decoding="async" />
           <figcaption>A profile's page in Settings, with sample accounts: one in use, two on standby.</figcaption>
@@ -212,16 +215,18 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
           <img src="/img/settings-shortcut.webp" width="1210" height="108" alt="Settings, General: the Shortcut row" loading="lazy" decoding="async" />
           <figcaption>Settings ▸ General ▸ Shortcut, with ⌥Space picked.</figcaption>
         </figure>
+        <p>There is a second way in. Select text in any app, then right-click ▸ Services ▸ <b>Ask cl_quick</b>. The bar opens with the selection in the field as a quote, ready to edit and not sent, and your question goes under it. macOS hands the selection over, so it needs no Accessibility permission either, and nothing about it is kept. A keyboard shortcut for it can be set in System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Services.</p>
         <p>The model is one of four families, Haiku, Sonnet, Opus and Fable, each the newest the account has; a family the account lacks isn't offered. Thinking is off or one of the efforts the chosen model takes (Low, Medium, High, Extra, Max). The pickers change the running <code>claude</code>, so a chat keeps its conversation.</p>
         <figure class="shot">
           <img src="/img/settings-general.webp" width="1210" height="282" alt="Settings, General: Model, Thinking, Open at login" loading="lazy" decoding="async" />
           <figcaption>Settings ▸ General: the model and thinking a new chat starts with, and Open at login.</figcaption>
         </figure>
-        <p>The mic button starts macOS Dictation into the field; cl_quick stays in the background, so Dictation types into the field and not into the app behind it.</p>
+        <p>The mic button starts macOS Dictation into the field; cl_quick stays in the background, so Dictation types into the field and not into the app behind it. <b>⌘D</b> turns Dictation on and off from the keyboard.</p>
         <figure class="shot narrow">
           <img src="/img/qc-dictating.webp" width="880" height="154" alt="The bar with the mic button on" loading="lazy" decoding="async" />
           <figcaption>Dictation on: the mic button is lit while macOS types into the field.</figcaption>
         </figure>
+        <p>Images go in with ⌘V (a screenshot or picture on the clipboard, or image files copied in Finder) or by dropping them on the bar or the chat window. Each shows as a thumbnail over the field with a ✕, up to 5 to a message, and an image alone is a message too. It is scaled down in memory and no file is made for it, so the chat stays incognito.</p>
       </div>
     </div>
 
@@ -232,6 +237,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
           <p><b>Nothing is saved on this Mac.</b> Your messages still go to Anthropic under the profile's account. It is not Anthropic's own incognito mode.</p>
         </div>
         <p>A chat lives only in the running Claude Code, which writes no transcript, so it ends with it: after 15 minutes idle, on New chat (⌘N), on another profile or account, if Claude Code crashes, or when cl_quick quits. The window then says "This chat ended after 15 minutes idle. Nothing was saved." and the next message starts a new chat. <a href="/faq/#keeps">What cl_quick keeps and sends</a></p>
+        <p>Apart from your messages, the one thing cl_quick sends is an update check: about once a day it asks GitHub Releases for its latest release, anonymously, and a newer one shows as "Update available" in the menu bar menu. Nothing is downloaded or installed by the app. <b>Settings ▸ General ▸ Updates</b> turns it off, and then no request is made. <a href="/faq/#sends">What it sends, exactly</a></p>
       </div>
     </div>
 
