@@ -1,7 +1,7 @@
 // Links into a future page: in a markdown body, {{live:/path/}}…{{/live}} wraps a sentence that should show only
 // once /path/ is built. So a link line can merge together with a draft page and appear on the day the draft goes
-// live (drafts are flipped by hand until a publish workflow is added), with no second commit. In production a draft is not built, so its block is removed;
-// in dev and Vercel previews drafts are built, so the block stays.
+// live (drafts are flipped by hand until a publish workflow is added), with no second commit. In production a draft
+// is not built, so its block is removed; in dev and Vercel previews drafts are built, so the block stays.
 //
 // This file is plain JS with no Astro imports so that scripts/live-blocks.test.mjs can run it; src/data/live.ts
 // adds the real "is this path built" lookup and is what the pages call.

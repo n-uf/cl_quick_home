@@ -4,8 +4,8 @@
 // ExtLink component gives the hand-written links (src/components/ExtLink.astro).
 // Inside a heading (h1-h6) the link still opens in a new tab, but gets neither the arrow nor the note: Astro makes the
 // heading's id from its text after this step, and the contents list reads the same text, so they would end up in both.
-// Plain JS with no imports, so that scripts/rehype-external-links.test.mjs can run it; astro.config.mjs passes in
-// `isExternal` and the note from links.ts, the one definition of "external" for the site.
+// Plain JS with no imports, so that scripts/links.test.mjs can run it; astro.config.mjs passes in
+// `isExternal` and the note from src/data/links.mjs, the one definition of "external" for the site.
 
 /**
  * @param {{ isExternal: (href: string) => boolean, note: string }} options
