@@ -34,8 +34,8 @@
 .beat a { color: var(--link); text-underline-offset: 2px; }
 .beat .kbd { font-size: .8em; }
 /* with the script on, the step the stage shows is lit and the others rest */
-.home[data-js] .beat { opacity: .42; transition: opacity .35s; }
-.home[data-js] .beat:is(:hover, :focus-within) { opacity: .8; }
+.home[data-js] .beat { opacity: .75; transition: opacity .35s; }   /* resting text still has contrast above 4.5:1 on the desktop */
+.home[data-js] .beat:is(:hover, :focus-within) { opacity: .92; }
 .home[data-beat="0"] .beat:nth-child(1), .home[data-beat="1"] .beat:nth-child(2), .home[data-beat="2"] .beat:nth-child(3),
 .home[data-beat="3"] .beat:nth-child(4), .home[data-beat="4"] .beat:nth-child(5), .home[data-beat="5"] .beat:nth-child(6) { opacity: 1; }
 .home[data-beat="0"] .beat:nth-child(1)::before, .home[data-beat="1"] .beat:nth-child(2)::before, .home[data-beat="2"] .beat:nth-child(3)::before,
@@ -76,8 +76,7 @@
 .code { padding: 1.4cqw 0; font: 1.45cqw/1.75 var(--mono); color: #c7c9d1; white-space: pre; overflow: hidden; }
 .code span { display: block; min-height: 1.75em; padding: 0 1.6cqw 0 5cqw; position: relative; }
 .code span::before { content: attr(data-n); position: absolute; left: 1.4cqw; width: 2.2cqw; text-align: right; color: #5b5d68; }
-.code .k { color: #c59cf2; } .code .s { color: #8fd18d; } .code .c { color: #747784; } .code .e { color: #ff8a80; background: rgba(255,80,70,.1); }
-.tag {
+.code .k { color: #c59cf2; } .code .s { color: #8fd18d; } .code .c { color: #747784; }.tag {
   position: absolute; z-index: 1; left: 50%; bottom: 1.1cqw; transform: translateX(-50%); padding: .7cqw 1.3cqw; border-radius: .6cqw; white-space: nowrap;
   background: linear-gradient(180deg, #030607, #0a1113); box-shadow: inset 0 1px 3px rgba(0,0,0,.9), 0 0 0 1px rgba(0,0,0,.6);
   font: 600 1.1cqw/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--glow)); text-shadow: 0 0 4px rgba(var(--glow), .6);
@@ -97,6 +96,8 @@
 .home[data-beat="4"] .l-full, .home[data-beat="5"] .l-ended {
   opacity: 1; visibility: visible; transform: none; transition-delay: 0s;
 }
+/* no script: nothing moves the stage, so it shows the chat window */
+.home:not([data-js]) .l-answer { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 /* the tag: the other app stays in front once cl_quick is open */
 .tag { opacity: 0; transition: opacity .3s; }
 .home:is([data-beat="1"], [data-beat="2"], [data-beat="3"], [data-beat="4"], [data-beat="5"]) .tag { opacity: 1; }
@@ -108,13 +109,13 @@
 }
 .home[data-beat="0"] .caps { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 .caps .keyrow { display: flex; gap: 1.2cqw; }
-.cap {
+.kcap {
   display: grid; place-items: center; height: 7.4cqw; min-width: 7.4cqw; padding: 0 2.4cqw; border-radius: 1cqw;
   font: 600 3cqw/1 var(--font); letter-spacing: .01em; color: var(--legend); text-shadow: 0 -1px 0 rgba(0,0,0,.35);
   background: var(--alu); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -.3cqw 0 rgba(0,0,0,.25), 0 0 0 1px #2e2e2c, 0 .7cqw 0 #121211, 0 1.4cqw 2.4cqw rgba(0,0,0,.5);
   transform: translateY(.4cqw);
 }
-.cap.space { min-width: 22cqw; font-size: 2.2cqw; letter-spacing: .12em; text-transform: uppercase; }
+.kcap.space { min-width: 22cqw; font-size: 2.2cqw; letter-spacing: .12em; text-transform: uppercase; }
 .caps .say { font: 600 1.3cqw/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: rgb(var(--glow)); text-shadow: 0 0 4px rgba(var(--glow), .6); padding: .9cqw 1.5cqw; border-radius: .6cqw; background: linear-gradient(180deg, #030607, #0a1113); box-shadow: inset 0 1px 3px rgba(0,0,0,.9), 0 0 0 1px rgba(0,0,0,.6); }
 
 /* the step keys under the stage: they scroll to a step, and the lit one is the one shown */
@@ -143,8 +144,6 @@
 .row .body p b { color: var(--text); font-weight: 650; }
 .row .body a { color: var(--link); text-underline-offset: 2px; }
 .row .body code { padding: 1px 5px; border-radius: 4px; background: var(--chip); font-size: .88em; overflow-wrap: anywhere; }
-.row .pics { display: grid; gap: 14px; align-items: start; }
-.row .pics.two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .row figure.shot { max-width: 640px; }
 .row figure.shot.narrow { max-width: 440px; }
 .row .exact { padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,.26); box-shadow: var(--well); max-width: 66ch; }
@@ -180,18 +179,17 @@
   .l-answer, .l-ended { left: 11cqw; width: 78cqw; top: 8.5cqw; }
   .caps { bottom: 13cqw; gap: 3cqw; }
   .caps .keyrow { gap: 2cqw; }
-  .cap { height: 14cqw; min-width: 14cqw; border-radius: 2cqw; font-size: 6cqw; padding: 0 4cqw; }
-  .cap.space { min-width: 40cqw; font-size: 4.4cqw; }
+  .kcap { height: 14cqw; min-width: 14cqw; border-radius: 2cqw; font-size: 6cqw; padding: 0 4cqw; }
+  .kcap.space { min-width: 40cqw; font-size: 4.4cqw; }
   .caps .say { font-size: 2.6cqw; padding: 1.6cqw 3cqw; border-radius: 1.2cqw; }
   .keys { gap: 5px; }
   .keys .key { padding: 0 9px; }
   .keys .key .w { display: none; }
-  .beat { min-height: 44vh; align-content: start; padding: 22px 0 22px 48px; }
+  .beat { min-height: 44vh; align-content: start; padding: 22px 0 22px 48px; scroll-margin-top: calc(var(--rig-h, 430px) + 36px); }   /* clears the pinned stage and the menu bar */
   .beat::before { width: 32px; height: 32px; top: 22px; }
   .beat h2 { font-size: 20px; }
   .sheet { margin-top: 36px; }
   .row { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 24px 0; }
-  .row .pics.two { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .layer, .caps, .tag, .home[data-js] .beat { transition: none; }

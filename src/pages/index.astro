@@ -37,7 +37,7 @@ const jsonLd = [orgNode, {
   "@id": `${site}/#app`,
   name: "cl_quick",
   alternateName,
-  description: "cl_quick is a Claude quick chat for the Mac: a small menu bar app. Press ⌥Space over any app and a floating chat bar opens; the first message turns it into a small chat window that floats on every Space and never brings another app forward. Your own Claude Code sign-in answers, on the profile's account in use, so it counts against that account's limits.",
+  description: "cl_quick is a Claude quick chat for the Mac: a menu bar app with no Dock icon. Press ⌥Space over any app and a chat bar opens; the first message turns it into a chat window that floats on every Space and never brings another app forward. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.",
   applicationCategory: "UtilitiesApplication",
   operatingSystem: "macOS 13 or later",
   url: `${site}/`,
@@ -46,7 +46,7 @@ const jsonLd = [orgNode, {
     "A floating Claude chat on a shortcut (⌥Space by default) that never brings another app forward",
     "Answered by your own Claude Code sign-in, on the profile's account in use",
     "The live 5-hour and weekly limits of the account in use, in the chat's top line",
-    "Profiles with several accounts each, with Switch to … through Claude Code's own sign-in",
+    "Profiles with several accounts each, with Switch… through Claude Code's own sign-in",
     "Model and thinking pickers, and a mic button that starts macOS Dictation",
     "Incognito chats: nothing is saved on the Mac",
   ],
@@ -66,7 +66,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     <section class="intro">
       <p class="lbl">Menu bar app for Mac</p>
       <h1>A Claude quick chat for your Mac, on <span class="nb">⌥Space</span></h1>
-      <p class="lede">cl_quick is a Claude quick chat that lives in the Mac's menu bar. Press <span class="kbd">⌥Space</span> over any app and a floating bar opens; your first message turns it into a small chat window that stays on every Space until you press Esc. Your own Claude Code sign-in answers, so it counts against your plan's limits.</p>
+      <p class="lede">cl_quick is a Claude quick chat that lives in the Mac's menu bar. Press <span class="kbd">⌥Space</span> over any app and a floating bar opens; your first message turns it into a chat window that stays on every Space until you press Esc. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.</p>
       <p class="lede">cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
       <p class="readout"><span class="led lit" aria-hidden="true"></span><b>The first release isn't out yet.</b> There is nothing to download so far. <a href="/install/">What it needs</a></p>
     </section>
@@ -90,41 +90,41 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
           <span class="tag" aria-hidden="true">Editor stays in front</span>
 
           <div class="caps" aria-hidden="true">
-            <div class="keyrow"><span class="cap">⌥</span><span class="cap space">Space</span></div>
+            <div class="keyrow"><span class="kcap">⌥</span><span class="kcap space">Space</span></div>
             <span class="say">Option + Space</span>
           </div>
 
-          <figure class="layer l-bar"><img src="/img/qc-bar.webp" width="880" height="154" alt="cl_quick's chat bar over the editor: an empty field that reads Ask anything, with the profile, model and thinking controls under it" decoding="async" /></figure>
-          <figure class="layer l-typing"><img src="/img/qc-typing.webp" width="880" height="154" alt="The bar with a question typed in it: How do I find which process is using port 3000 on macOS?" loading="lazy" decoding="async" /></figure>
-          <figure class="layer l-answer"><img src="/img/qc-answer.webp" width="880" height="880" alt="The chat window: the question, an answer with an lsof command that has a Copy button, and a line saying Haiku 5.5 answered in 2.4 seconds" loading="lazy" decoding="async" /></figure>
-          <figure class="layer l-full"><img src="/img/qc-full.webp" width="880" height="384" alt="A notice that Main's week is full and when it resets, with Ask on Work and Switch to buttons above the question" loading="lazy" decoding="async" /></figure>
-          <figure class="layer l-ended"><img src="/img/qc-ended.webp" width="880" height="880" alt="The chat window with a line under the answer: This chat ended after 15 minutes idle. Nothing was saved." loading="lazy" decoding="async" /></figure>
+          <figure class="layer l-bar"><img src="/img/qc-bar.webp" width="880" height="154" alt="cl_quick's chat bar over the editor" loading="eager" decoding="async" /></figure>
+          <figure class="layer l-typing"><img src="/img/qc-typing.webp" width="880" height="154" alt="The bar with a question typed in it" loading="lazy" decoding="async" /></figure>
+          <figure class="layer l-answer"><img src="/img/qc-answer.webp" width="880" height="880" alt="The chat window with an answer and a code block" loading="eager" decoding="async" /></figure>
+          <figure class="layer l-full"><img src="/img/qc-full.webp" width="880" height="384" alt="A notice that the week is full, with Ask on Work" loading="lazy" decoding="async" /></figure>
+          <figure class="layer l-ended"><img src="/img/qc-ended.webp" width="880" height="880" alt="The chat window after it ended, idle for 15 minutes" loading="lazy" decoding="async" /></figure>
         </div>
         <nav class="plate keys" aria-label="Steps">
-          {keys.map((k, i) => <a class="key" href={`#step-${i + 1}`}><span class="n">{i + 1}</span><span class="w">{k}</span></a>)}
+          {keys.map((k, i) => <a class="key" href={`#step-${i + 1}`} aria-label={`Step ${i + 1}: ${k}`}><span class="n">{i + 1}</span><span class="w">{k}</span></a>)}
         </nav>
       </div>
 
       <ol class="beats">
         <li class="beat" id="step-1">
           <h2>Press ⌥Space over any app</h2>
-          <p>A chat bar opens over whatever you're doing. cl_quick is a menu bar app with no Dock icon, and it never brings another app forward: the editor in the picture stays the frontmost app. ⌥Space is the default; Settings offers four other Space shortcuts, any key with ⌘, ⌃ or ⌥, or none.</p>
+          <p>A chat bar opens over whatever you're doing. cl_quick is one menu bar app with no Dock icon, and it never brings another app forward: the editor in the picture stays the frontmost app. ⌥Space is the default; Settings offers four other Space shortcuts, any key with ⌘, ⌃ or ⌥, or none.</p>
         </li>
         <li class="beat" id="step-2">
           <h2>A bar opens, ready to type</h2>
-          <p>Under the field sit the profile (its dot shows the week's colour), the model and thinking. Haiku is the default model and thinking is off. A pick holds for that chat, and a new chat goes back to the defaults.</p>
+          <p>Under the field, in one row, sit the profile (a dot in the colour of its fuller limit, and its name), the model and thinking in one outlined group, a keys button, and at the end the mic and Send. Haiku is the default model and thinking is off. A pick holds for that chat, and a new chat goes back to the defaults.</p>
         </li>
         <li class="beat" id="step-3">
           <h2>Type, and press Return</h2>
-          <p>Return sends and Shift-Return adds a line. The mic button left of Send starts macOS Dictation into the field, and the keyboard button lists every key.</p>
+          <p>Return sends and Shift-Return adds a line. The mic button, left of Send, starts macOS Dictation into the field, and the keys button lists the shortcuts.</p>
         </li>
         <li class="beat" id="step-4">
           <h2>The first message makes it a chat window</h2>
-          <p>The bar turns into a small window that floats on every Space. Answers stream in as Markdown, code blocks have Copy, and each answer says which model gave it and how long it took. Esc or ⌘W hides the window, and ⌘N starts a new chat.</p>
+          <p>The bar turns into a chat window that floats on every Space. Answers stream in as Markdown, code blocks have Copy, and each answer says which model gave it and how long it took. Esc or ⌘W hides the window, and ⌘N starts a new chat.</p>
         </li>
         <li class="beat" id="step-5">
           <h2>Your limits stay in view</h2>
-          <p>The top line shows the 5-hour and weekly limits of the account in use: green, amber from 50%, red from 80% and crimson from 95%. When a limit is full, the chat says when it resets and offers the profile with the most room (<b>Ask on Work</b>), or a standby account of the same profile (<b>Switch to …</b>).</p>
+          <p>The header shows only the usage meters, 5h and wk, with a bar for each: green, amber from 50%, red from 80% and crimson from 95%. When the 5-hour limit or the week is full, the chat's notice names the window that is full and when it resets, and offers the profile with the most room (<b>Ask on Work</b>). If the profile has a standby account with room, it also offers <b>Switch to …</b>.</p>
         </li>
         <li class="beat" id="step-6">
           <h2>Incognito, then gone</h2>
@@ -152,10 +152,10 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
       <div><span class="lbl">Profiles</span><h3>Profiles, with several accounts each</h3></div>
       <div class="body">
         <p>A profile is a Claude Code folder cl_quick chats on: <code>~/.claude</code>, a <code>~/.claude-*</code> folder, or any folder set with <code>CLAUDE_CONFIG_DIR</code>. On its first run cl_quick takes every signed-in one it finds, named after the folder.</p>
-        <p>A Claude Code folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to its folder: the one signed in now is <b>in use</b>, the others are <b>standby</b>. <b>Switch to this account…</b> asks first, then opens Claude Code's own sign-in in Terminal. cl_quick never sees a password or a token and never touches the Keychain.</p>
+        <p>A Claude Code folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to its folder: the one signed in now is <b>in use</b>, the others are <b>standby</b>. Each standby account is a row in the profile's page in Settings, with <b>Switch…</b> and <b>Forget…</b>. <b>Switch…</b> asks first, then opens Claude Code's own sign-in in Terminal. cl_quick never sees a password or a token and never touches the Keychain.</p>
         <figure class="shot">
-          <img src="/img/settings-accounts.webp" width="1210" height="687" alt="Settings for the profile Main: one account in use with its 5-hour and week meters, two on standby with Switch and Forget buttons" loading="lazy" decoding="async" />
-          <figcaption>A profile's card in Settings, with sample accounts: one in use, two on standby.</figcaption>
+          <img src="/img/settings-accounts.webp" width="1210" height="687" alt="Settings: an account in use and two on standby" loading="lazy" decoding="async" />
+          <figcaption>A profile's page in Settings, with sample accounts: one in use, two on standby.</figcaption>
         </figure>
         <p><a href="/faq/#switching">How switching accounts works</a></p>
       </div>
@@ -164,19 +164,19 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     <div class="row" id="controls">
       <div><span class="lbl">Controls</span><h3>Model, thinking, voice and shortcut</h3></div>
       <div class="body">
-        <p>The shortcut is ⌥Space by default. Settings ▸ General offers four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, or Off. It is checked against macOS's own Space shortcuts, and needs no Accessibility permission.</p>
+        <p>The shortcut is ⌥Space by default. Settings ▸ General offers four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, or Off. It warns only about real clashes: a macOS shortcut that uses the key, or a key another app holds when macOS refuses to register it. It needs no Accessibility permission.</p>
         <figure class="shot">
-          <img src="/img/settings-shortcut.webp" width="1210" height="108" alt="Settings, General: the Shortcut row with ⌥Space picked, and ⌃⌥Space, ⌥⇧Space, ⌃Space, ⌘Space, Other and Off beside it" loading="lazy" decoding="async" />
+          <img src="/img/settings-shortcut.webp" width="1210" height="108" alt="Settings, General: the Shortcut row" loading="lazy" decoding="async" />
           <figcaption>Settings ▸ General ▸ Shortcut, with ⌥Space picked.</figcaption>
         </figure>
         <p>The model is one of four families, Haiku, Sonnet, Opus and Fable, each the newest the account has; a family the account lacks isn't offered. Thinking is off or one of the efforts the chosen model takes (Low, Medium, High, Extra, Max). The pickers change the running <code>claude</code>, so a chat keeps its conversation.</p>
         <figure class="shot">
-          <img src="/img/settings-general.webp" width="1210" height="400" alt="Settings, General: the Model row with Haiku, Sonnet, Opus and Fable, the Thinking row, and the Open at login switch" loading="lazy" decoding="async" />
+          <img src="/img/settings-general.webp" width="1210" height="282" alt="Settings, General: Model, Thinking, Open at login" loading="lazy" decoding="async" />
           <figcaption>Settings ▸ General: the model and thinking a new chat starts with, and Open at login.</figcaption>
         </figure>
         <p>The mic button starts macOS Dictation into the field; cl_quick stays in the background, so Dictation types into the field and not into the app behind it.</p>
         <figure class="shot narrow">
-          <img src="/img/qc-dictating.webp" width="880" height="154" alt="The bar with the mic button lit and a question being dictated" loading="lazy" decoding="async" />
+          <img src="/img/qc-dictating.webp" width="880" height="154" alt="The bar with the mic button on" loading="lazy" decoding="async" />
           <figcaption>Dictation on: the mic button is lit while macOS types into the field.</figcaption>
         </figure>
       </div>
@@ -231,6 +231,18 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
     addEventListener("scroll", queue, { passive: true });
     addEventListener("resize", queue);
+    // the pinned stage's height, for the steps' scroll margin on a phone (home.css)
+    const measure = () => home.style.setProperty("--rig-h", `${rig.offsetHeight}px`);
+    if ("ResizeObserver" in window) new ResizeObserver(measure).observe(rig); else measure();
+    // a step key lights its step at once, without waiting for the scroll to arrive
+    home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", () => { cur = i; home.dataset.beat = String(i); }));
+    // a link reached with the keyboard in a step must not hide under the pinned stage
+    home.addEventListener("focusin", (e) => {
+      const t = e.target as HTMLElement;
+      if (!phone.matches || !t.closest(".beats")) return;
+      const room = rig.getBoundingClientRect().bottom + 12 - t.getBoundingClientRect().top;
+      if (room > 0) scrollBy(0, -room);
+    });
     update();
   }
 </script>
