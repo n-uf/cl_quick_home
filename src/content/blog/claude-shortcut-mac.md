@@ -158,7 +158,7 @@ There's a way in that needs no key at all: the macOS Services menu. Select text 
 
 The right Claude desktop shortcut on a Mac depends on what you ask and where.
 
-- To show Claude a screenshot or a window, or to dictate with Caps Lock, use quick entry and its double-tap of Option.
+- To capture a screenshot or a window on the spot, or to dictate with Caps Lock, use quick entry and its double-tap of Option.
 - In the Code tab of Claude Desktop, Cmd+/ and the table above speed up session handling.
 - For a Claude Code question over whatever app you're in, with nothing saved on the Mac, there's cl_quick on ⌥Space, or **Ask cl_quick** in the Services menu for text you've selected.
 - To open a new chat from a script or another tool, use the `claude://claude.ai/new` link.

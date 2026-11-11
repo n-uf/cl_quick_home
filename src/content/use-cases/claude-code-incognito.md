@@ -107,7 +107,7 @@ The window then says "This chat ended after 15 minutes idle. Nothing was saved."
 
 While a chat is open, Claude remembers the earlier turns, as in any chat. **Stop** ends an answer where it is and the chat goes on. Changing Model or Thinking changes the running `claude`, so the conversation stays. If Claude Code stops mid-answer, the window keeps what arrived and says the chat ended. **Retry** asks the last question in a new chat.
 
-Images follow the same rule. Paste a screenshot or drop image files and each is scaled down in memory and sent in the same connection as the text. No file is made for it, a file you drop is read and never copied, and the chat shows it only as a thumbnail until it ends. Text you send with **Ask cl_quick** from the Services menu isn't kept either.
+Images follow the same rule. Paste a screenshot or drop image files and each is scaled down in memory and sent in the same connection as the text. No file is made for it, a file you drop is read and never copied, and the chat shows it only as a thumbnail until it ends. Text you bring in with **Ask cl_quick** from the Services menu isn't kept either.
 
 cl_quick also turns off two things that would leave a trace. It turns off Claude Code's auto memory, so no memory folder appears. And it stops Claude Code's built-in AGENTS.md plugin from noting the session's id in `plugins/store/`.
 
