@@ -18,7 +18,7 @@ let n = 0;
   <div class="faq-list">
     {groups.map((g) => (
       <>
-        <p class="lbl group">{g.title}</p>
+        <h2 class="lbl group">{g.title}</h2>
         {g.items.map((x) => (
           <details class="card" id={x.id} open={n++ < 3}>
             <summary>{x.q}</summary>

@@ -17,7 +17,7 @@ const jsonLd = [
   <div class="cols">
     <div class="col-stack">
       <div class="card">
-        <h4>Requirements</h4>
+        <h2 class="cap">Requirements</h2>
         <ul class="list">
           <li><b>An Apple silicon Mac.</b></li>
           <li><b>macOS 13 or later.</b></li>
@@ -26,35 +26,35 @@ const jsonLd = [
       </div>
 
       <div class="card">
-        <h4>How it works with Claude Code</h4>
+        <h2 class="cap">How it works with Claude Code</h2>
         <ol class="steps">
           <li><b>A profile is a Claude Code folder.</b><span><code>~/.claude</code>, a <code>~/.claude-*</code> folder, or any folder set with <code>CLAUDE_CONFIG_DIR</code>. On its first run cl_quick takes every signed-in one it finds, named after the folder.</span></li>
           <li><b>The bar opens, and a <code>claude</code> starts.</b><span>One <code>claude</code> at a time, on the profile's account in use. It is kept while a chat is open and ended after 15 minutes idle.</span></li>
           <li><b>Your Claude Code answers.</b><span>Each chat counts against that account's limits. Claude Code runs with no tools, no MCP servers and no settings files, and with its non-essential traffic (telemetry, error reports, update checks) off.</span></li>
-          <li><b>The limits come from the same <code>claude</code>.</b><span>It is asked for the account's 5-hour and weekly limits, which sends nothing to a model, and the chat shows them in its top line.</span></li>
+          <li><b>The limits come from the same <code>claude</code>.</b><span>It is asked for the account's 5-hour and weekly limits, which sends no message to a model, and the chat shows them in its top line.</span></li>
         </ol>
       </div>
     </div>
 
     <div class="col-stack">
       <div class="card">
-        <h4>When the first release is out</h4>
+        <h2 class="cap">When the first release is out</h2>
         <p class="t">cl_quick isn't signed with an Apple Developer ID yet, so the first time it opens, macOS says it can't verify the app. Open System Settings ▸ Privacy &amp; Security and click <b>Open Anyway</b>, once.</p>
         <p class="t">The shortcut is <span class="kbd">⌥Space</span> by default, and <b>Open at login</b> in Settings ▸ General keeps cl_quick in the menu bar, ready for it.</p>
       </div>
 
       <div class="card">
-        <h4>Already use cl_audit?</h4>
+        <h2 class="cap">Already use cl_audit?</h2>
         <p class="t">cl_quick is the successor of <ExtLink href="https://cl-audit.n-uf.com">cl_audit</ExtLink>'s quick chat. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any, and it shares nothing with cl_audit while running.</p>
       </div>
 
       <div class="card">
-        <h4>Removing it</h4>
-        <p class="t">Settings ▸ General ▸ Files ▸ <b>Remove cl_quick data…</b> moves cl_quick's folder and any old chats to the Trash, turns the login item off and quits. Your Claude Code folders, their sign-ins and their other sessions stay.</p>
+        <h2 class="cap">Removing it</h2>
+        <p class="t">Settings ▸ General has a strip at the bottom with <b>Remove…</b>. It asks "Move cl_quick's data to the Trash?", then moves cl_quick's folder and any old quick chats to the Trash, turns the login item off and quits. Your Claude Code folders, their sign-ins and their other sessions stay.</p>
       </div>
 
       <div class="card">
-        <h4>Questions</h4>
+        <h2 class="cap">Questions</h2>
         <p class="t">What cl_quick keeps and sends, what incognito means and how accounts switch are in the <a href="/faq/">FAQ</a>. The <a href="/">home page</a> shows it working, step by step.</p>
         <p class="t">cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
       </div>
