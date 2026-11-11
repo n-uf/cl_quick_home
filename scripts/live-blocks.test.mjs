@@ -48,6 +48,37 @@ test("a block may span lines inside one paragraph", () => {
   assert.equal(run("<p>{{live:/blog/live-page/}}one\ntwo{{/live}}</p>"), "<p>one\ntwo</p>");
 });
 
+test("a removed block with no space before it and text after keeps one space between the sentences", () => {
+  assert.equal(run(`<p>One.{{live:/blog/draft-page/}} See ${link}.{{/live}} Two.</p>`), "<p>One. Two.</p>");
+  assert.equal(run(`<li>Split it by you.{{live:/blog/draft-page/}} ${link} tells you how.{{/live}} Count the pages.</li>`),
+    "<li>Split it by you. Count the pages.</li>");
+  // and not at the start of a block, where there is nothing to separate
+  assert.equal(run(`<p>{{live:/blog/draft-page/}}See ${link}.{{/live}} Two.</p>`), "<p>Two.</p>");
+});
+
+test("a block that cuts through formatting fails the build: a tag opened or closed outside it", () => {
+  // "**Intro {{live:/x/}}see** more.{{/live}}"
+  fails("<p><strong>Intro <a href=\"/faq/\">{{live:/blog/live-page/}}see</a></strong> more.{{/live}}</p>", /cuts through formatting/);
+  fails("<p><strong>Intro {{live:/blog/live-page/}}see</strong> more.{{/live}}</p>", /<\/strong> closes a tag that was opened outside the block/);
+  fails("<p>Intro {{live:/blog/live-page/}}see <em>more.{{/live}}</em></p>", /<em> is opened inside the block and closed outside it/);
+  fails("<p>{{live:/blog/draft-page/}}a <code>b{{/live}} c</code></p>", /cuts through formatting/);
+});
+
+test("formatting that opens and closes inside the block, and void tags, are fine", () => {
+  assert.equal(run('<p>One. {{live:/blog/draft-page/}}See <strong>this <em>page</em></strong>, <a href="/blog/draft-page/">it</a>, <code>x</code><br>or an <img src="a.png">.{{/live}} Two.</p>'), "<p>One. Two.</p>");
+  assert.equal(run("<p>{{live:/blog/live-page/}}<strong>All bold</strong>{{/live}}</p>"), "<p><strong>All bold</strong></p>");
+});
+
+test("a removed block right after an opening inline tag leaves no visible space there", () => {
+  assert.equal(run("<p>(<em>{{live:/blog/draft-page/}}A.{{/live}} two</em>)</p>"), "<p>(<em>two</em>)</p>");
+  assert.equal(run("<p>“<strong>{{live:/blog/draft-page/}}A.{{/live}} two</strong>”</p>"), "<p>“<strong>two</strong>”</p>");
+  // after a sentence the space is kept, whatever inline tag the block sits in
+  assert.equal(run("<p>One.<em>{{live:/blog/draft-page/}}A.{{/live}} two</em></p>"), "<p>One.<em> two</em></p>");
+  assert.equal(run("<p><strong>One.</strong>{{live:/blog/draft-page/}} A.{{/live}} Two.</p>"), "<p><strong>One.</strong> Two.</p>");
+  // and none at the start of a paragraph or list item
+  assert.equal(run("<ul>\n<li><em>{{live:/blog/draft-page/}}A.{{/live}} Two.</em></li>\n</ul>"), "<ul>\n<li><em>Two.</em></li>\n</ul>");
+});
+
 test("html with no block comes back unchanged, empty paragraphs included", () => {
   const html = "<p>Plain.</p>\n<p></p>\n";
   assert.equal(run(html), html);

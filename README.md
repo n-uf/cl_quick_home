@@ -16,6 +16,7 @@ rule (production hides drafts, dev and Vercel previews show them), `{{live:/path
 JSON-LD with the shared n-uf Organization node, per-page share images, `llms.txt`, a sitemap whose `lastmod` is a real change
 date (`src/data/dates.mjs` for the fixed pages, `updated` in front matter for the collections), and `scripts/check-links.mjs`.
 Left out: cl_audit's own pages and data, its scheduled-publishing workflow (`publish-due.mjs`, `.github`) and its demo pages.
+Until a publish workflow is added, a draft's `draft: true` is flipped by hand on its day.
 
 The look is cl_audit's (a dark hi-fi front panel on a Mac desktop); the chat itself, in the pictures, is in Claude's colours.
 
