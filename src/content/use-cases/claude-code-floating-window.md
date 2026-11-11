@@ -20,7 +20,7 @@ faq:
   - q: "Does the floating window take over my current app?"
     a: "No. It never brings another app forward, and it stays floating on every Space until you hide it with Esc, ⌘W or ✕. The panel takes the keyboard when it opens, so you can type into it straight away. cl_quick is a menu bar app with no Dock icon."
   - q: "Can the chat read my files or run commands?"
-    a: "No. cl_quick runs Claude Code with no tools, no MCP servers and no settings files, so it answers only from what you give it: your text, images you paste or drop, and text you select and send with Ask cl_quick. For work on a project, use Claude Code in a terminal."
+    a: "No. cl_quick runs Claude Code with no tools, no MCP servers and no settings files, so it answers only from what you give it: your text, images you paste or drop, and text you select and bring in with Ask cl_quick. For work on a project, use Claude Code in a terminal."
   - q: "Is cl_quick free?"
     a: "Yes, the app is free. It uses your own Claude Code sign-in, so every chat counts against that account's Claude plan limits."
   - q: "Is the floating chat saved?"
@@ -68,6 +68,7 @@ cl_quick has no Dock icon. Turn on **Open at login** in Settings and it waits in
 The bar is the small first step. Type a question and press Return, and the bar turns into the chat window. It floats on every Space, so it follows you when you switch. Esc, ⌘W or the **✕** in its header hides it. You can resize it from its edges and corners, and move it from any empty area.
 
 It never brings another app forward. The app you were in stays where it was, behind the chat.
+
 ![cl_quick chat bar with a question typed in](/img/qc-typing.webp "cl_quick's chat bar, drawn from sample data: a question typed, the profile Main, Haiku, Thinking off and the usage indicator.")
 
 | Key | What it does |
@@ -109,6 +110,7 @@ Model and Thinking sit together in one outlined group, always visible. A warm ti
 A profile is a Claude Code folder: `~/.claude`, a `~/.claude-*` folder, or any folder set with `CLAUDE_CONFIG_DIR`. On its first run cl_quick takes every signed-in one it finds and names it after the folder. A folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to it. The one signed in now is **in use**. The others are **standby**.
 
 In Settings, each profile is a tile along the top, with a lamp for its sign-in. A profile's page shows the account in use in its own box, with its address, its plan and two bars, the 5-hour limit and the week. Each standby account is a row with **Switch…** and **Forget…**. Standby accounts show no usage, since one folder holds one sign-in.
+
 ![cl_quick accounts card with one in use, two on standby](/img/settings-accounts.webp "A profile's accounts in cl_quick's Settings, drawn from sample data: one account in use with its 5 hours and week, two on standby.")
 
 A switch is bigger than the quick chat, and cl_quick asks first. The question says that Claude Code in Terminal and editors on that folder moves to the new account, sessions running now included, and that the Claude app keeps its own sign-in. Then Claude Code's own sign-in opens in Terminal and finishes in your browser. cl_quick never sees a password or a token and never touches the Keychain.
@@ -117,13 +119,14 @@ A switch is bigger than the quick chat, and cl_quick asks first. The question sa
 
 Before the first message, the bar shows a usage indicator: a label, "5h" or "wk", whichever is fuller, two thin stacked bars and the fuller window's share. Once the bar becomes a chat window, its header shows only the "5h" and "wk" meters, plus **+** for a new chat and **✕** to hide. There's no profile name and no address in the header.
 
-The colours are cl_audit's: green, amber from 50%, red from 80% and crimson from 95%. The numbers come from the chat's own Claude Code, through `get_usage`, which sends no message to a model and reads nothing from the Keychain. cl_quick asks as the bar opens, after each answer, and when the bar opens again, at most once a minute. The menu bar icon's menu shows the same bars, a block for each profile.
+The colours are cl_audit's: green, amber from 50%, red from 80% and crimson from 95%. The numbers come from the chat's own Claude Code, through `get_usage`, which sends no message to a model and reads nothing from the Keychain. cl_quick asks as the bar opens, after each answer, and when the bar opens again, at most once a minute. The menu bar menu has a 5-hour and a Week bar for each profile's account in use.
 
 The chat is your own Claude Code, on the profile's account in use, so each question counts against that account's limits. Anthropic's help page says limits are shared across Claude and Claude Code: all activity in both counts against the same limits.
 
 When a profile's 5-hour limit or week is full, the chat's notice names the window that's full and offers the profile with the most room. **Ask on Work** sends your question there. If the profile has a standby account with room, the notice also offers to switch to it. After the sign-in, a new chat starts on the same profile and sends what you had typed. For Claude usage, limits and accounts in general, n-uf's sibling app [cl_audit](https://cl-audit.n-uf.com) goes further.
 
 ![cl_quick notice that a profile's week is full](/img/qc-full.webp "cl_quick's notice when a profile's week is full, drawn from sample data, with Ask on Work and a switch to a standby account.")
+
 ## What a Claude Code floating window can't do
 
 cl_quick runs Claude Code with no tools, no MCP servers and no settings files. It can't read your files, run a command or look at your screen by itself; it sees only what you give it. It's a chat, not an agent. When a question needs Claude to see your project, use Claude Code in a terminal.

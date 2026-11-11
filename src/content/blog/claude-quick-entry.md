@@ -155,7 +155,7 @@ Quick Entry is a chat with Claude in Claude Desktop. If most of your questions a
 | | Quick Entry | cl_quick |
 |---|---|---|
 | Opens with | Double-tap Option, Option + Space or a custom shortcut | ⌥Space, four other Space shortcuts, Other… (any key with ⌘, ⌃ or ⌥), or Off |
-| What you can attach | A screenshot you drag, or an application window | Typed text, images you paste or drop (up to 5 to a message), and text you select and send with Ask cl_quick from the Services menu |
+| What you can attach | A screenshot you drag, or an application window | Typed text, images you paste or drop (up to 5 to a message), and selected text, quoted into the field with Ask cl_quick from the Services menu |
 | Voice | Caps Lock dictation, off by default, macOS 14 or later | A mic button that starts macOS Dictation into the field; ⌘D turns it on and off |
 | What it starts | A new chat with Claude | A chat window answered by your own Claude Code |
 | Plans | Every Claude plan | Whatever account the profile's Claude Code is signed in to |
