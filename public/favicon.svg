@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>cl_quick</title>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2a2e"/>
+      <stop offset="1" stop-color="#18181a"/>
+    </linearGradient>
+  </defs>
+  <!-- the tile: the dark panel of cl_audit's look -->
+  <rect width="512" height="512" rx="116" fill="url(#tile)"/>
+  <!-- the floating chat bar, in Claude's orange: a text caret on the left, the send button on the right -->
+  <rect x="56" y="172" width="400" height="168" rx="84" fill="#d97757"/>
+  <rect x="116" y="214" width="24" height="84" rx="12" fill="#1c1c1e"/>
+  <circle cx="372" cy="256" r="48" fill="#1c1c1e"/>
+  <path d="M372 280V234M353 251l19-19 19 19" fill="none" stroke="#d97757" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
