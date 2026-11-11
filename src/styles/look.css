@@ -1,0 +1,197 @@
+/* cl_quick home: cl_audit's look (a dark hi-fi front panel: brushed plates and keys, printed uppercase labels, tiny orange
+   LEDs, recessed display windows with glowing monospace text) on a Mac desktop, with the chat itself in Claude's colours
+   (those are in the app pictures). The tokens and parts below are cl_audit_home's own, trimmed to what this site uses. */
+:root {
+  --bg: #101012;
+  --window: #1c1c1e;
+  --text: #ececee;
+  --soft: rgba(236, 236, 238, 0.82);
+  --muted: #9a9aa0;
+  --faint: #6e6e74;
+  --green: #22c55e;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --orange: #d97757;
+  --radius: 10px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* front-panel parts */
+  --led: 255, 122, 61;                 /* the orange LED */
+  --glow: 127, 249, 234;               /* the display windows' cyan */
+  --grain: repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 1px, rgba(0,0,0,.035) 1px 2px);
+  --alu: repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, rgba(0,0,0,.06) 1px 2px), linear-gradient(180deg, #74746f, #52524e);      /* gunmetal keys */
+  --alu-down: repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, rgba(0,0,0,.06) 1px 2px), linear-gradient(180deg, #6a6a65, #4a4a46);
+  --key-up: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -1px 0 rgba(0,0,0,.35), 0 0 0 1px #2e2e2c, 0 2px 0 #121211, 0 3px 7px rgba(0,0,0,.45);
+  --key-down: inset 0 1px 0 rgba(255,255,255,.2), inset 0 -1px 0 rgba(0,0,0,.3), 0 0 0 1px #2e2e2c, 0 1px 0 #121211, 0 2px 4px rgba(0,0,0,.45);
+  --legend: #f1f1f0;
+  --well: inset 0 1px 3px rgba(0,0,0,.75), 0 1px 0 rgba(255,255,255,.05);   /* a recess in the plate */
+  --win-bg: rgba(0,0,0,.27);
+  --win-shadow: var(--well);
+  --code-bg: rgba(0,0,0,.32); --code-text: #d4d4d8; --code-shadow: var(--well);
+  --prose: #b4b4ba;
+  --chip: rgba(255,255,255,.07);
+  --link: #e8a07f;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; min-height: 100vh; min-height: 100dvh;
+  background: var(--bg); color: var(--text);
+  font: 15px/1.55 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+code, kbd { font-family: var(--mono); }
+:focus-visible { outline: 2px solid rgba(var(--led), .8); outline-offset: 3px; border-radius: 3px; }
+
+/* the desktop: the page is the wallpaper */
+.desk {
+  min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column;
+  background:
+    radial-gradient(1100px 650px at 72% 0, #2c2c33 0%, transparent 62%),
+    radial-gradient(900px 600px at 6% 100%, #1f2426 0%, transparent 58%),
+    var(--bg);
+}
+
+/* ── The Mac menu bar: the site's navigation ───────────────────────── */
+.menubar {
+  position: sticky; top: 0; z-index: 20; flex: none; height: 28px;
+  display: flex; align-items: center; gap: 18px; padding: 0 16px;
+  background: rgba(24,24,26,.78); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font: 500 13.5px/1 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif; letter-spacing: -.005em;   /* as macOS draws menu-bar text */
+}
+.menubar a { color: #f5f5f7; text-decoration: none; }
+.menubar a:hover { color: #fff; }
+.mb-brand { display: flex; align-items: center; gap: 7px; font-weight: 700; letter-spacing: -.01em; }
+.mb-brand img { width: 16px; height: 16px; border-radius: 4px; }
+.mb-links { display: flex; gap: 18px; }
+.mb-links a[aria-current] { box-shadow: 0 2px 0 -0px rgba(var(--led), .95); padding-bottom: 3px; margin-bottom: -3px; }
+.mb-icon { display: block; width: 17px; height: 17px; opacity: .92; }
+.mb-clock { color: #f5f5f7; font-variant-numeric: tabular-nums; white-space: pre; min-width: 12.5ch; text-align: right; }
+.spacer { flex: 1; }
+
+/* ── Front-panel parts ─────────────────────────────────────────────── */
+/* printed label on a plate */
+.lbl, .card h4 {
+  font: 600 9.5px/1.2 var(--font); letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.5); white-space: nowrap;
+}
+/* a key strip: keys set into a brushed plate */
+.plate {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px; max-width: 100%;
+  background: var(--grain), linear-gradient(180deg, #48484b, #333336);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -1px 0 rgba(0,0,0,.4), 0 0 0 1px #0b0b0c, 0 6px 16px rgba(0,0,0,.4);
+}
+/* the key: brushed gunmetal, a pale legend, a crisp bevel; it goes down a pixel when pressed */
+.key {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 28px; padding: 0 13px; border: 0; border-radius: 3px; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;
+  font: 600 10.5px/1 var(--font); letter-spacing: .1em; text-transform: uppercase; color: var(--legend); text-shadow: 0 -1px 0 rgba(0,0,0,.35); text-decoration: none; white-space: nowrap;
+  background: var(--alu); box-shadow: var(--key-up);
+  transition: transform .06s, box-shadow .06s, filter .15s;
+}
+.key:hover { filter: brightness(1.05); }
+.key:active { transform: translateY(1px); box-shadow: var(--key-down); }
+/* latched: the current one, held down with an orange strip lit along its top edge */
+.key.on { transform: translateY(1px); padding-top: 3px; background: var(--alu-down); box-shadow: var(--key-down); }
+.key.on::before {
+  content: ""; position: absolute; left: 5px; right: 5px; top: 3px; height: 2px; border-radius: 2px;
+  background: linear-gradient(180deg, #ffb08a, #ff7a3d 60%, #f0612a); box-shadow: 0 0 3px rgba(255,122,61,.8), 0 0 8px rgba(255,122,61,.45);
+}
+.key .n { font-family: var(--mono); letter-spacing: 0; opacity: .75; }
+
+/* the display window: recessed glass with glowing monospace text (VFD); <em> is the dim part */
+.disp {
+  position: relative; display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 6px; overflow: hidden;
+  background: linear-gradient(180deg, #030607, #0a1113 70%, #0c1517);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.035), 0 0 0 1px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.07);
+  font: 600 14px/1.5 var(--mono); letter-spacing: .04em;
+  color: rgb(var(--glow)); text-shadow: 0 0 3px rgba(var(--glow), .75), 0 0 9px rgba(var(--glow), .35);
+}
+.disp::after { content: ""; position: absolute; inset: 0 0 55% 0; pointer-events: none; background: linear-gradient(180deg, rgba(255,255,255,.07), transparent); }
+.disp em { flex: none; font: 600 10.5px/1.5 var(--mono); letter-spacing: .16em; text-transform: uppercase; font-style: normal; color: rgba(var(--glow), .42); text-shadow: none; }
+.disp h1 { font: inherit; letter-spacing: inherit; min-width: 0; overflow-wrap: anywhere; }
+
+.kbd, .prose kbd {
+  display: inline-block; padding: 1px 6px; border-radius: 3px; white-space: nowrap;
+  background: rgba(0,0,0,.3); box-shadow: var(--well); color: var(--text); font: 600 .86em var(--mono);
+}
+
+/* ── Modules: raised sub-panels with a printed label and an engraved rule ─ */
+.card {
+  position: relative; padding: 14px 16px 16px; border-radius: var(--radius);
+  background: var(--grain), linear-gradient(180deg, #29292b, #222224);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), inset 0 -1px 0 rgba(0,0,0,.35), 0 0 0 1px #0c0c0d, 0 4px 12px rgba(0,0,0,.25);
+}
+.card h4 { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; }
+.card h4::after { content: ""; flex: 1; min-width: 12px; height: 1px; background: rgba(0,0,0,.5); box-shadow: 0 1px 0 rgba(255,255,255,.05); }
+.card a:not(.key) { color: var(--link); text-underline-offset: 2px; }
+
+/* ── Inner pages: the display with the page's title, then the content ─── */
+.page { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 22px 18px 40px; display: grid; gap: 14px; align-content: start; }
+.page > * { min-width: 0; }
+.content-inner { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.lede { color: var(--soft); max-width: 74ch; font-size: 16px; line-height: 1.6; }
+.t { color: var(--prose); font-size: 14.5px; line-height: 1.65; }
+.t + .t, .card h4 + .t { margin-top: 0; }
+.t b, .t strong { color: var(--text); font-weight: 650; }
+.t code, .answer code, .prose code { padding: 1px 5px; border-radius: 4px; background: var(--chip); font-size: .88em; overflow-wrap: anywhere; }
+.card .t + .t { margin-top: 10px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; color: var(--soft); font-size: 14.5px; }
+.list li { position: relative; padding-left: 20px; }
+.list li::before { content: ""; position: absolute; left: 2px; top: .56em; width: 6px; height: 6px; border-radius: 50%; background: rgb(var(--led)); box-shadow: 0 0 6px rgba(var(--led), .8); }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.col-stack { display: grid; gap: 14px; min-width: 0; align-content: start; }
+@media (max-width: 860px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+
+/* the status line on Install: a recessed readout */
+.readout { padding: 10px 14px; border-radius: 7px; font-size: 14.5px; line-height: 1.5; color: var(--muted); background: rgba(0,0,0,.26); box-shadow: var(--well); }
+.readout b { color: var(--text); }
+.readout .led { margin-right: 8px; vertical-align: 1px; }
+.led { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #6b5a52; box-shadow: inset 0 1px 1px rgba(0,0,0,.45); }
+.led.lit { background: rgb(var(--led)); box-shadow: 0 0 6px rgba(var(--led), .9), 0 0 0 1px rgba(120,40,0,.25); }
+
+/* numbered steps */
+.steps { display: grid; gap: 0; counter-reset: s; margin: 0; padding: 0; list-style: none; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 4px 10px; padding: 11px 0; border-top: 1px solid rgba(0,0,0,.45); box-shadow: inset 0 1px 0 rgba(255,255,255,.035); }
+.steps li:first-child { border-top: 0; box-shadow: none; padding-top: 2px; }
+.steps li::before { content: counter(s, decimal-leading-zero); font: 600 11px/1.7 var(--mono); letter-spacing: .06em; color: var(--faint); grid-row: 1 / span 2; }
+.steps b { color: var(--text); font-weight: 600; font-size: 14.5px; }
+.steps span { color: var(--prose); font-size: 14px; line-height: 1.6; grid-column: 2; }
+
+/* FAQ */
+.faq-list { display: grid; gap: 10px; }
+.faq-list details summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.faq-list details summary::-webkit-details-marker { display: none; }
+.faq-list details summary::after {
+  content: "+"; flex: none; width: 26px; height: 22px; border-radius: 3px; display: grid; place-items: center;
+  font: 600 14px/1 var(--font); color: var(--legend); background: var(--alu); box-shadow: var(--key-up);
+}
+.faq-list details[open] summary::after { content: "\2212"; transform: translateY(1px); background: var(--alu-down); box-shadow: var(--key-down); }
+.faq-list details .answer { margin-top: 10px; color: var(--soft); font-size: 14.5px; line-height: 1.65; max-width: 88ch; }
+.faq-list details .answer + .answer { margin-top: 8px; }
+.faq-list .group { margin: 10px 0 -2px; }
+
+/* a picture of the app, as a figure with a caption */
+figure.shot { margin: 0; }
+figure.shot img { border-radius: 10px; box-shadow: 0 0 0 1px rgba(0,0,0,.5), 0 8px 22px rgba(0,0,0,.35); }
+figure.shot figcaption { margin-top: 9px; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+
+/* the colophon: one quiet line at the foot of the desktop */
+.colophon { flex: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; padding: 18px 16px 26px; color: var(--faint); font-size: 12.5px; }
+.colophon a { color: var(--muted); text-underline-offset: 2px; }
+.colophon a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .menubar { gap: 14px; padding: 0 12px; }
+  .mb-links { gap: 14px; }
+  .mb-clock, .mb-icon { display: none; }
+  .page { padding: 16px 16px 32px; }
+  .disp { padding: 11px 14px; font-size: 13px; flex-wrap: wrap; gap: 2px 10px; }
+}
