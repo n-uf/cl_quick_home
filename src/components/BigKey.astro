@@ -5,19 +5,19 @@
 import { externalCheck } from "../data/links.mjs";
 import { site } from "../data/site";
 
-interface Props { label: string; sub: string; href?: string | null; /** the small ↗ after an external label */ arrow?: boolean }
-const { label, sub, href = null, arrow = false } = Astro.props;
+interface Props { label: string; /** the rest of the label, hidden by the compact phone bar (still read by screen readers) */ more?: string; sub: string; href?: string | null; /** the small ↗ after an external label */ arrow?: boolean }
+const { label, more = "", sub, href = null, arrow = false } = Astro.props;
 const external = href ? externalCheck(site)(href) : false;
 ---
 {href ? (
   <a class="key bkey" href={href} target={external ? "_blank" : undefined} rel={external ? "noopener" : undefined}>
-    <span class="bk-l">{label}{external && arrow && <span class="ext-arrow" aria-hidden="true">↗</span>}</span>
+    <span class="bk-l">{label}{more && <span class="bk-more">{more}</span>}{external && arrow && <span class="ext-arrow" aria-hidden="true">↗</span>}</span>
     <span class="bk-s">{sub}</span>
     {external && <span class="sr-only"> (opens in a new tab)</span>}
   </a>
 ) : (
   <button type="button" class="key bkey off" aria-disabled="true">
-    <span class="bk-l">{label}</span>
+    <span class="bk-l">{label}{more && <span class="bk-more">{more}</span>}</span>
     <span class="bk-s">{sub}</span>
   </button>
 )}

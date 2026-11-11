@@ -263,6 +263,8 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
   }
   .getslot.stuck .bkey { min-height: 40px; padding: 6px 4px; }
   .getslot.stuck .bkey .bk-l { font-size: 10px; letter-spacing: .05em; white-space: normal; }
+  /* the compact bar says DOWNLOAD only; " for Mac" stays for screen readers */
+  .getslot.stuck .bk-more { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .desk[data-page="home"] .colophon { padding-bottom: calc(26px + 76px + env(safe-area-inset-bottom)); }   /* the bar never hides the footer */
   .row { scroll-margin-top: 44px; }
   .intro { padding-bottom: 18px; }
