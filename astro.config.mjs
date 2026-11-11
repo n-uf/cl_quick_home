@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { updated } from "./src/data/dates.mjs";
+import { unified } from "@astrojs/markdown-remark";
 import rehypeExternalLinks from "./src/data/rehype-external-links.mjs";
 import { externalCheck, newTabNote } from "./src/data/links.mjs";
 
@@ -26,7 +27,7 @@ for (const [dir, section] of [["src/content/use-cases", "use-cases"], ["src/cont
 export default defineConfig({
   site,
   // a link to another host in a use case or an article opens in a new tab (links.mjs)
-  markdown: { rehypePlugins: [rehypeExternalLinks({ isExternal: externalCheck(site), note: newTabNote })] },
+  markdown: { processor: unified({ rehypePlugins: [rehypeExternalLinks({ isExternal: externalCheck(site), note: newTabNote })] }) },
   integrations: [sitemap({
     serialize(item) {
       const d = lastmod.get(item.url);
