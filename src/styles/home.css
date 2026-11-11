@@ -102,6 +102,20 @@
   transform: translateY(.4cqw);
 }
 .kcap.space { min-width: 22cqw; font-size: 2.2cqw; letter-spacing: .12em; text-transform: uppercase; }
+/* with the script on, the keys are one button: it lifts on hover, goes down when pressed, and shows a focus ring */
+.keybtn { display: none; padding: 1.2cqw; margin: -1.2cqw; border: 0; border-radius: 1.8cqw; background: none; color: inherit; font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.home[data-js] .keybtn { display: block; }
+.home[data-js] .keyrow.still { display: none; }
+.keybtn .kcap { transition: transform .08s, box-shadow .08s, filter .15s; }
+.keybtn:hover .kcap { transform: translateY(-.3cqw); filter: brightness(1.1); }
+.keybtn:active .kcap, .keybtn.down .kcap {
+  transform: translateY(1cqw); filter: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), inset 0 -.2cqw 0 rgba(0,0,0,.25), 0 0 0 1px #2e2e2c, 0 0 0 #121211, 0 .4cqw 1cqw rgba(0,0,0,.45);
+}
+.keybtn:focus-visible { outline: 2px solid rgba(var(--led), .9); outline-offset: .4cqw; }
+.say-js { display: none; }
+.home[data-js] .say-js { display: inline; }
+.home[data-js] .say-still { display: none; }
 .caps .say { font: 600 1.3cqw/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: rgb(var(--glow)); text-shadow: 0 0 4px rgba(var(--glow), .6); padding: .9cqw 1.5cqw; border-radius: .6cqw; background: linear-gradient(180deg, #030607, #0a1113); box-shadow: inset 0 1px 3px rgba(0,0,0,.9), 0 0 0 1px rgba(0,0,0,.6); }
 
 /* the step keys under the stage: they scroll to a step, and the lit one is the one shown */
@@ -156,6 +170,7 @@
   .l-answer, .l-ended { left: 11cqw; width: 78cqw; top: 8.5cqw; }
   .caps { bottom: 13cqw; gap: 3cqw; }
   .caps .keyrow { gap: 2cqw; }
+  .keybtn { padding: 2.4cqw; margin: -2.4cqw; border-radius: 3cqw; }
   .kcap { height: 14cqw; min-width: 14cqw; border-radius: 2cqw; font-size: 6cqw; padding: 0 4cqw; }
   .kcap.space { min-width: 40cqw; font-size: 4.4cqw; }
   .caps .say { font-size: 2.6cqw; padding: 1.6cqw 3cqw; border-radius: 1.2cqw; }
@@ -169,5 +184,5 @@
   .row { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 24px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .layer, .caps, .home[data-js] .beat { transition: none; }
+  .layer, .caps, .keybtn .kcap, .home[data-js] .beat { transition: none; }
 }

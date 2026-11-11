@@ -79,9 +79,12 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
             <span>Wed 9:41</span>
           </div>
 
-          <div class="caps" aria-hidden="true">
-            <div class="keyrow"><span class="kcap">⌥</span><span class="kcap space">Space</span></div>
-            <span class="say">Option + Space</span>
+          <!-- step 1: the keys. With the script on they are one button that plays the key press and goes to step 2;
+               without it they stay a picture (home.css shows one or the other) -->
+          <div class="caps">
+            <div class="keyrow still" aria-hidden="true"><span class="kcap">⌥</span><span class="kcap space">Space</span></div>
+            <button type="button" class="keybtn" aria-label="Press ⌥Space to open the chat bar"><span class="keyrow"><span class="kcap">⌥</span><span class="kcap space">Space</span></span></button>
+            <span class="say" aria-hidden="true"><span class="say-still">Option + Space</span><span class="say-js">Click or press ⌥Space</span></span>
           </div>
 
           <figure class="layer l-bar"><img src="/img/qc-bar.webp" width="880" height="154" alt="cl_quick's chat bar on the desktop" loading="eager" decoding="async" /></figure>
@@ -226,6 +229,26 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     if ("ResizeObserver" in window) new ResizeObserver(measure).observe(rig); else measure();
     // a step key lights its step at once, without waiting for the scroll to arrive
     home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", () => { cur = i; home.dataset.beat = String(i); }));
+    // step 1's keys: a click (or Enter or Space on the button), or a real ⌥Space on the page, plays a key press of about
+    // 150 ms and then goes to step 2 exactly as the step keys do (no press animation with reduced motion)
+    const keybtn = home.querySelector<HTMLButtonElement>(".keybtn");
+    const toStep2 = () => home.querySelector<HTMLAnchorElement>(".keys a:nth-child(2)")?.click();
+    let pressing = false;
+    const press = () => {
+      if (pressing) return;
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches || !keybtn) { toStep2(); return; }
+      pressing = true;
+      keybtn.classList.add("down");
+      setTimeout(() => { keybtn.classList.remove("down"); pressing = false; toStep2(); }, 150);
+    };
+    keybtn?.addEventListener("click", press);
+    addEventListener("keydown", (e) => {
+      if (!(e.altKey && e.code === "Space") || e.metaKey || e.ctrlKey || e.shiftKey || e.repeat) return;
+      const t = e.target as HTMLElement | null;
+      if (t && (t.isContentEditable || /^(input|textarea|select)$/i.test(t.tagName))) return;
+      e.preventDefault();
+      press();
+    });
     // a link reached with the keyboard in a step must not hide under the pinned stage
     home.addEventListener("focusin", (e) => {
       const t = e.target as HTMLElement;
