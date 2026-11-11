@@ -96,7 +96,7 @@
 .l-full { left: 22cqw; width: 56cqw; bottom: 7cqw; }
 .l-answer, .l-ended { left: 23cqw; width: 54cqw; bottom: 7cqw; }
 .home[data-beat="1"] .l-bar, .home[data-beat="2"] .l-typing, .home[data-beat="3"] .l-answer,
-.home[data-beat="4"] .l-full, .home[data-beat="5"] .l-ended {
+.home[data-beat="4"] .l-ended, .home[data-beat="5"] .l-full {
   opacity: 1; visibility: visible; transform: none; transition-delay: 0s;
 }
 /* no script: nothing moves the stage, so it shows the chat window */
