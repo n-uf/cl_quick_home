@@ -7,7 +7,7 @@ export interface PageInfo { path: string; title: string; description: string; up
 
 export const pages: PageInfo[] = [
   { path: "/", updated: updated["/"], title: "Claude quick chat for Mac | cl_quick",
-    description: "cl_quick is a Mac menu bar app: press ⌥Space over any app for a floating Claude chat, answered by your own Claude Code sign-in." },
+    description: "cl_quick is a Claude quick chat for your Mac menu bar: press ⌥Space over any app for a floating chat, answered by your own Claude Code sign-in." },
   { path: "/install/", updated: updated["/install/"], title: "Install cl_quick: what it needs on a Mac",
     description: "cl_quick's first release isn't out yet. It needs an Apple silicon Mac, macOS 13 or later and a signed-in Claude Code. Here is how it works." },
   { path: "/faq/", updated: updated["/faq/"], title: "cl_quick FAQ: incognito, accounts, what it sends",
