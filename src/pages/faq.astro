@@ -1,0 +1,31 @@
+---
+import Desktop from "../layouts/Desktop.astro";
+import { groups, allQA, plain } from "../data/faq";
+import { pageOf } from "../data/pages";
+import { orgNode, webPage, breadcrumbs, faqPage } from "../data/schema";
+
+const page = pageOf("/faq/");
+const jsonLd = [
+  webPage({ path: "/faq/", name: page.title, description: page.description, updated: new Date(page.updated) }),
+  breadcrumbs([{ name: "Home", path: "/" }, { name: "FAQ", path: "/faq/" }]),
+  faqPage(allQA.map((x) => ({ q: x.q, a: x.a.map(plain).join(" ") }))),
+  orgNode,
+];
+let n = 0;
+---
+<Desktop title={page.title} description={page.description} page="faq" headline="Questions about cl_quick" jsonLd={jsonLd} ogImage="/og/faq.png">
+  <p class="lede">Short answers on what the Claude quick chat keeps and sends, what incognito means, how accounts and switching work, and the model, thinking, shortcut and voice controls. They come from cl_quick's own README and release notes. The first release isn't out yet; <a href="/install/">what it needs</a>.</p>
+  <div class="faq-list">
+    {groups.map((g) => (
+      <>
+        <p class="lbl group">{g.title}</p>
+        {g.items.map((x) => (
+          <details class="card" id={x.id} open={n++ < 3}>
+            <summary>{x.q}</summary>
+            {x.a.map((p) => <p class="answer" set:html={p} />)}
+          </details>
+        ))}
+      </>
+    ))}
+  </div>
+</Desktop>
