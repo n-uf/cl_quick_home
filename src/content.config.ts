@@ -1,4 +1,5 @@
 // Content collections: the use-case pages and the blog. A file that breaks this schema fails the build.
+import { existsSync, readdirSync } from "node:fs";
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
@@ -31,7 +32,11 @@ const article = z.object({
   .refine((d) => !/\{\{\s*\/?\s*live/i.test(JSON.stringify(d)),
     { message: "{{live:…}} blocks work only in the markdown body, not in front matter (title, description, takeaways, FAQ, related)" });
 
+// A collection exists only once its folder has a page: while both are empty, Astro has nothing to warn about
+// (content.ts never asks for an empty collection either).
+const hasPages = (dir: string) => existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(".md"));
+
 export const collections = {
-  useCases: defineCollection({ loader: glob({ pattern: "*.md", base: "./src/content/use-cases" }), schema: article }),
-  blog: defineCollection({ loader: glob({ pattern: "*.md", base: "./src/content/blog" }), schema: article }),
+  ...(hasPages("./src/content/use-cases") && { useCases: defineCollection({ loader: glob({ pattern: "*.md", base: "./src/content/use-cases" }), schema: article }) }),
+  ...(hasPages("./src/content/blog") && { blog: defineCollection({ loader: glob({ pattern: "*.md", base: "./src/content/blog" }), schema: article }) }),
 };
