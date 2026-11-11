@@ -1,0 +1,23 @@
+---
+// One of the big keycaps under the story (home page): a label with a small mono sublabel. With an href it is a link
+// (opening in a new tab, with the screen-reader note, when it goes to another host); with none it is a disabled key:
+// a button that is aria-disabled, dimmed, with no hover lift. Contrast of its texts stays above 4.5:1 either way.
+import { externalCheck } from "../data/links.mjs";
+import { site } from "../data/site";
+
+interface Props { label: string; sub: string; href?: string | null; /** the small ↗ after an external label */ arrow?: boolean }
+const { label, sub, href = null, arrow = false } = Astro.props;
+const external = href ? externalCheck(site)(href) : false;
+---
+{href ? (
+  <a class="key bkey" href={href} target={external ? "_blank" : undefined} rel={external ? "noopener" : undefined}>
+    <span class="bk-l">{label}{external && arrow && <span class="ext-arrow" aria-hidden="true">↗</span>}</span>
+    <span class="bk-s">{sub}</span>
+    {external && <span class="sr-only"> (opens in a new tab)</span>}
+  </a>
+) : (
+  <button type="button" class="key bkey off" aria-disabled="true">
+    <span class="bk-l">{label}</span>
+    <span class="bk-s">{sub}</span>
+  </button>
+)}
