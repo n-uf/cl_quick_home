@@ -63,7 +63,7 @@ sources:
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
     checked: 2026-11-11
-    supports: "Intro (quick chats are incognito, the exact sentence, how a chat ends, the floating chat on a shortcut answered by your own Claude Code); What it keeps, and what it sends (--no-session-persistence, no transcript, nothing sent but your messages, through Claude Code)."
+    supports: "Intro (quick chats are incognito, the exact sentence, how a chat ends, the floating chat on a shortcut answered by your own Claude Code); What it keeps, and what it sends (--no-session-persistence, no transcript, your messages through Claude Code, and the one other thing it sends: an anonymous update check against GitHub Releases about once a day, which Settings ▸ General ▸ Updates turns off)."
 related:
   - /use-cases/claude-code-incognito/
   - /use-cases/claude-code-floating-window/
@@ -156,7 +156,7 @@ cl_quick is a free macOS menu bar app by n-uf, independent and not affiliated wi
 
 Anthropic's Claude Code data usage page sets those rules by account type. For Free, Pro, Max and Ultra, data is kept 5 years if you allow model improvement and 30 days if you don't. For Team, Enterprise and the API, it's 30 days as standard. The page also says Anthropic trains on Free, Pro, Max and Ultra data when that setting is on, including Claude Code use.
 
-The [Claude Code in incognito](/use-cases/claude-code-incognito/) page explains cl_quick's side in full, with a quick way to look for yourself that nothing lands on your Mac. The [floating Claude Code chat](/use-cases/claude-code-floating-window/) page shows the chat, and the home page sums up the [Claude quick chat](/).
+cl_quick's own update check, about once a day and anonymous, goes to GitHub, not Anthropic, and Settings ▸ General ▸ Updates turns it off. The [Claude Code in incognito](/use-cases/claude-code-incognito/) page explains cl_quick's side in full, with a quick way to look for yourself that nothing lands on your Mac. The [floating Claude Code chat](/use-cases/claude-code-floating-window/) page shows the chat, and the home page sums up the [Claude quick chat](/).
 
 ## Which one to use
 
