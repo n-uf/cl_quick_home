@@ -18,9 +18,9 @@ faq:
   - q: "Is there an incognito mode in Claude Code?"
     a: "Not by that name. Claude Code's docs, as of November 2026, don't use the word incognito. They describe two ways to turn session saving off: the --no-session-persistence flag and the CLAUDE_CODE_SKIP_PROMPT_HISTORY environment variable. cl_quick runs every quick chat with --no-session-persistence and calls those chats incognito."
   - q: "Does a cl_quick incognito chat still go to Anthropic?"
-    a: "Yes. Quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account, as any Claude Code use does, and Anthropic's retention and training rules for that account apply."
+    a: "Yes. Quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account, as any Claude Code use does, and Anthropic's retention and training rules for that account apply. cl_quick's own update check goes to GitHub, not Anthropic: about once a day, anonymous, and Settings ▸ General ▸ Updates turns it off."
   - q: "Is a cl_quick chat saved anywhere on my Mac?"
-    a: "No. A chat lives only in the running claude and ends with it, and Claude Code writes no transcript for it. Any claude start, chat or not, may refresh a feature-flag timestamp in the profile's .claude.json and take a backup copy of that file. That is Claude Code's housekeeping, not the chat."
+    a: "No. A chat lives only in the running claude and ends with it, and Claude Code writes no transcript for it. An image you paste or drop is scaled down in memory, and no file is made for it. Any claude start, chat or not, may refresh a feature-flag timestamp in the profile's .claude.json and take a backup copy of that file. That is Claude Code's housekeeping, not the chat."
   - q: "Is cl_quick free?"
     a: "Yes, the app is free. It uses your own Claude Code sign-in, so every chat counts against that account's Claude plan limits."
   - q: "How is this different from Claude's incognito chats?"
@@ -29,12 +29,12 @@ sources:
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
     checked: 2026-11-11
-    supports: "Intro (quick chats are incognito, the exact sentence, how a chat ends, the idle message); Profiles (a profile is a Claude Code folder, Work is ~/.claude-work); The chat (Copy, Stop, Retry, the pickers change the running claude); What it keeps, and what it sends (--no-session-persistence, the check on a signed-in folder with Claude Code 2.1.318, AGENTS.md plugin and auto memory turned off, the .claude.json timestamp and backup, no tools, no MCP servers, no settings files, Remove… in Settings ▸ General)."
+    supports: "Intro (quick chats are incognito, the exact sentence, how a chat ends, the idle message); Profiles (a profile is a Claude Code folder, Work is ~/.claude-work); The chat (Copy, Stop, Retry, the pickers change the running claude; Images: scaled down in memory, no file is made, a dropped file is read and never copied, a thumbnail until the chat ends); Settings ▸ General (Updates: about once a day, GitHub Releases, anonymous, off means no request); What it keeps, and what it sends (--no-session-persistence, the update check: api.github.com, User-Agent cl_quick, updates.json, the check on a signed-in folder with Claude Code 2.1.318, AGENTS.md plugin and auto memory turned off, the .claude.json timestamp and backup, no tools, no MCP servers, no settings files, Remove… in Settings ▸ General)."
     quote: "nothing is saved on this Mac"
   - title: "cl_quick CHANGELOG"
     url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
     checked: 2026-11-11
-    supports: "The 'Incognito chats' entry: no transcript, nothing resumed, the ways a chat ends (15 minutes idle with the window open or hidden, New chat, another profile or account, a crash or a needed sign-in, quit)."
+    supports: "The 'Incognito chats' entry: no transcript, nothing resumed, the ways a chat ends (15 minutes idle with the window open or hidden, New chat, another profile or account, a crash or a needed sign-in, quit); 'Images in the chat' (nothing is saved); 'Ask about the selected text' (nothing about it is kept); 'An update notice' (about once a day, anonymous, Settings ▸ General ▸ Updates turns it off)."
   - title: "Claude Code docs: CLI reference"
     url: "https://code.claude.com/docs/en/cli-reference"
     checked: 2026-11-11
@@ -107,6 +107,8 @@ The window then says "This chat ended after 15 minutes idle. Nothing was saved."
 
 While a chat is open, Claude remembers the earlier turns, as in any chat. **Stop** ends an answer where it is and the chat goes on. Changing Model or Thinking changes the running `claude`, so the conversation stays. If Claude Code stops mid-answer, the window keeps what arrived and says the chat ended. **Retry** asks the last question in a new chat.
 
+Images follow the same rule. Paste a screenshot or drop image files and each is scaled down in memory and sent in the same connection as the text. No file is made for it, a file you drop is read and never copied, and the chat shows it only as a thumbnail until it ends. Text you send with **Ask cl_quick** from the Services menu isn't kept either.
+
 cl_quick also turns off two things that would leave a trace. It turns off Claude Code's auto memory, so no memory folder appears. And it stops Claude Code's built-in AGENTS.md plugin from noting the session's id in `plugins/store/`.
 
 ![cl_quick chat ended after 15 minutes idle](/img/qc-ended.webp "cl_quick's chat window after 15 minutes idle, drawn from sample data. The window says the chat ended and nothing was saved.")
@@ -124,6 +126,8 @@ cl_quick also turns off two things that would leave a trace. It turns off Claude
 **Anthropic still gets your messages.** A quick chat is Claude Code, so Anthropic's rules for Claude Code apply. Anthropic's data usage page, read on 11 November 2026, says retention depends on your account type. For Free, Pro, Max and Ultra it's 5 years if you allow model improvement and 30 days if you don't. For Team, Enterprise and the API it's 30 days as standard. The page also says Anthropic trains on Free, Pro, Max and Ultra data when that setting is on, including Claude Code use. Session saving isn't part of those rules, so cl_quick's incognito doesn't change them. The setting itself is at claude.ai/settings/data-privacy-controls.
 
 **The chat counts against the account's limits.** Anthropic's help page says limits are shared across Claude and Claude Code. A quick chat draws on the same limits as everything else on that account. For usage, limits and accounts, see [cl_audit](https://cl-audit.n-uf.com), n-uf's sibling app.
+
+**cl_quick checks for updates.** Apart from your messages, this is the one thing cl_quick sends. About once a day it asks GitHub Releases for its latest release, anonymously, with the User-Agent "cl_quick", and keeps the time of the check and the newest version seen in `updates.json`. Nothing is downloaded or installed by the app. **Settings ▸ General ▸ Updates** turns it off, and then no request is made.
 
 **Claude Code does its own housekeeping.** Any `claude` start, chat or not, may refresh a feature-flag timestamp in the profile's `.claude.json` and take a backup copy of that file. Anthropic's docs say `.claude.json` holds app state and account details, and that `backups/` keeps copies made when Claude Code rewrites it. None of that is your chat.
 
