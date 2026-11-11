@@ -1,0 +1,17 @@
+{
+  "name": "cl_quick_home",
+  "private": true,
+  "type": "module",
+  "description": "Home site of cl_quick: a floating Claude chat for the Mac, on a shortcut.",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "dev": "astro dev --port 5191",
+    "build": "astro build && node scripts/check-links.mjs",
+    "preview": "astro preview --port 5191",
+    "test": "node --test scripts/*.test.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.2"
+  }
+}
