@@ -65,22 +65,36 @@
 }
 /* everything inside is sized in cqw, so the whole desktop scales as one picture */
 .mini-menu {
-  position: absolute; left: 0; right: 0; top: 0; height: 4.8cqw; display: flex; align-items: center; justify-content: flex-end; gap: 2.4cqw; padding: 0 2.2cqw;
+  position: absolute; left: 0; right: 0; top: 0; z-index: 1; height: 5.7cqw; display: flex; align-items: center; justify-content: flex-end; gap: 1.5cqw; padding: .9cqw 2.4cqw 0;
   background: rgba(18,16,30,.5); backdrop-filter: blur(1.2cqw) saturate(150%); -webkit-backdrop-filter: blur(1.2cqw) saturate(150%);
   font: 500 1.5cqw/1 var(--font); color: #f2f2f6;
 }
-.mini-menu svg { width: 2.1cqw; height: 2.1cqw; }
+.mini-menu svg { width: 2cqw; height: 2cqw; flex: none; }
+.mini-menu .me { display: grid; place-items: center; width: 3.1cqw; height: 2.7cqw; border-radius: .7cqw; background: rgba(255,255,255,.22); }   /* cl_quick's icon: the app in the story, a little highlighted */
+.mini-menu .me svg { width: 2.1cqw; height: 2.1cqw; }
+.mini-menu .clock { margin-left: .5cqw; }
+
+/* the screen's frame: a thin dark bezel with a camera notch at the top centre (the menu bar's items stay to the right of it) */
+.bezel { position: absolute; inset: 0; z-index: 6; pointer-events: none; border: .9cqw solid #08080a; border-radius: inherit; }
+.bezel .notch { position: absolute; left: 50%; top: -.1cqw; width: 8.4cqw; height: 2.7cqw; transform: translateX(-50%); border-radius: 0 0 1.3cqw 1.3cqw; background: #08080a; }
+.bezel .notch::after { content: ""; position: absolute; right: 2cqw; top: .9cqw; width: .8cqw; height: .8cqw; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #34415c, #0d1018 70%); }
+
+/* two quiet items on the desktop, top right: a folder and a screenshot file, with generic names */
+.desk-items { position: absolute; z-index: 1; right: 2.6cqw; top: 7.4cqw; display: grid; gap: 2cqw; justify-items: center; font: 500 1.2cqw/1.2 var(--font); color: #f6f6fa; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.desk-items span { display: grid; justify-items: center; gap: .5cqw; opacity: .92; }
+.desk-items svg { width: 4.6cqw; height: 4.6cqw; filter: drop-shadow(0 .3cqw .5cqw rgba(0,0,0,.35)); }
 
 /* the pictures of cl_quick: the bar, the typed bar, the chat window, the full-week notice, the ended chat */
 .layer {
-  position: absolute; z-index: 3; margin: 0; opacity: 0; visibility: hidden; transform: translateY(1.4cqw) scale(.985); transform-origin: 50% 0;
+  position: absolute; z-index: 3; margin: 0; opacity: 0; visibility: hidden; transform: translateY(1.4cqw) scale(.985); transform-origin: 50% 100%;
   transition: opacity .38s ease, transform .38s ease, visibility 0s linear .38s;
   filter: drop-shadow(0 1.6cqw 3cqw rgba(0,0,0,.5));
 }
 .layer img { width: 100%; height: auto; border-radius: 0; }
-.l-bar, .l-typing { left: 22cqw; width: 56cqw; top: 17cqw; }
-.l-full { left: 22cqw; width: 56cqw; top: 12cqw; }
-.l-answer, .l-ended { left: 23cqw; width: 54cqw; top: 6.5cqw; }
+/* the bar sits low on the desktop, and every window state shares its bottom edge, so the bar visibly grows upward into the window */
+.l-bar, .l-typing { left: 22cqw; width: 56cqw; bottom: 7cqw; }
+.l-full { left: 22cqw; width: 56cqw; bottom: 7cqw; }
+.l-answer, .l-ended { left: 23cqw; width: 54cqw; bottom: 7cqw; }
 .home[data-beat="1"] .l-bar, .home[data-beat="2"] .l-typing, .home[data-beat="3"] .l-answer,
 .home[data-beat="4"] .l-full, .home[data-beat="5"] .l-ended {
   opacity: 1; visibility: visible; transform: none; transition-delay: 0s;
@@ -91,7 +105,7 @@
 /* ── The bar's field: a real input over the picture (script on), and the window with the visitor's own words ────
    Everything is placed in % of the picture and sized from --bw (the layer's width), so it tracks the picture at any size. */
 .l-bar { --bw: 56cqw; }
-.l-sent { --bw: 54cqw; left: 23cqw; width: 54cqw; top: 6.5cqw; }
+.l-sent { --bw: 54cqw; left: 23cqw; width: 54cqw; bottom: 7cqw; }
 .home:not([data-js]) .live, .home:not([data-js]) .l-sent { display: none; }
 .live { position: absolute; inset: 0; }
 .live-field {
@@ -136,7 +150,7 @@
 
 /* step 1: the keys */
 .caps {
-  position: absolute; z-index: 3; left: 0; right: 0; bottom: 9cqw; display: flex; flex-direction: column; align-items: center; gap: 1.6cqw;
+  position: absolute; z-index: 3; left: 0; right: 0; bottom: 24cqw; display: flex; flex-direction: column; align-items: center; gap: 1.6cqw;
   opacity: 0; visibility: hidden; transform: translateY(1.4cqw); transition: opacity .38s ease, transform .38s ease, visibility 0s linear .38s;
 }
 .home[data-beat="0"] .caps { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
@@ -231,14 +245,21 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
   .rig { position: sticky; top: 28px; z-index: 6; margin: 0 -16px; padding: 8px 16px 24px;
     background: linear-gradient(180deg, var(--bg) calc(100% - 22px), rgba(16,16,18,0)); }
   .stage { aspect-ratio: 1 / 0.94; border-radius: 12px; }
-  .mini-menu { height: 6.4cqw; font-size: 3.1cqw; gap: 4cqw; padding: 0 3.2cqw; }
+  .mini-menu { height: 8.6cqw; font-size: 3cqw; gap: 3cqw; padding: 1.2cqw 3.4cqw 0; }
   .mini-menu svg { width: 4cqw; height: 4cqw; }
-  .l-bar, .l-typing { left: 4cqw; width: 92cqw; top: 22cqw; }
-  .l-full { left: 4cqw; width: 92cqw; top: 14cqw; }
-  .l-answer, .l-ended, .l-sent { left: 11cqw; width: 78cqw; top: 8.5cqw; }
+  .mini-menu .mm-wifi { display: none; }   /* the items stay clear of the notch */
+  .mini-menu .me { width: 6cqw; height: 5.2cqw; border-radius: 1.4cqw; }
+  .mini-menu .me svg { width: 4.2cqw; height: 4.2cqw; }
+  .bezel { border-width: 1.6cqw; }
+  .bezel .notch { width: 16cqw; height: 4.6cqw; border-radius: 0 0 2.4cqw 2.4cqw; }
+  .bezel .notch::after { right: 3.6cqw; top: 1.6cqw; width: 1.4cqw; height: 1.4cqw; }
+  .desk-items { display: none; }
+  .l-bar, .l-typing { left: 4cqw; width: 92cqw; bottom: 6cqw; }
+  .l-full { left: 4cqw; width: 92cqw; bottom: 6cqw; }
+  .l-answer, .l-ended, .l-sent { left: 11cqw; width: 78cqw; bottom: 6cqw; }
   .l-bar { --bw: 92cqw; }
   .l-sent { --bw: 78cqw; }
-  .caps { bottom: 13cqw; gap: 3cqw; }
+  .caps { bottom: 27cqw; gap: 3cqw; }
   .caps .keyrow { gap: 2cqw; }
   .keybtn { padding: 2.4cqw; margin: -2.4cqw; border-radius: 3cqw; }
   .kcap { height: 14cqw; min-width: 14cqw; border-radius: 2cqw; font-size: 6cqw; padding: 0 4cqw; }
