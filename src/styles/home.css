@@ -208,7 +208,9 @@
 .getslot.stuck .bkey .bk-l { white-space: nowrap; }
 .getslot.stuck .bkey { min-height: 32px; padding: 6px 8px; gap: 0; }
 .getslot.stuck .bkey .bk-l { font-size: 11px; letter-spacing: .08em; white-space: normal; text-align: center; line-height: 1.15; }
-.getslot.stuck .bkey .bk-s { display: none; }
+/* compact keys hide the sublabel only visually: a screen reader still hears "Not released yet" (and, on the wide rail
+   below, the Download key shows it too, so the most prominent key never reads as a download that isn't there) */
+.getslot.stuck .bkey .bk-s { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .getslot.stuck .bkey.primary { min-height: 40px; }   /* a touch taller than GitHub and Blog (about 1.25 times) */
 .getslot.stuck .bkey.primary .bk-l { letter-spacing: .06em; gap: 6px; }
 .getslot.stuck .bkey.primary .bk-ic { width: 13px; height: 13px; }
@@ -217,6 +219,8 @@
 @keyframes get-in-right { from { opacity: 0; transform: translateX(8px); } }
 @media (min-width: 1260px) {
   .getslot.stuck .getrow, .getslot.stuck .getrow[data-keys="2"] { left: auto; right: 24px; width: 188px; grid-template-columns: minmax(0, 1fr); animation-name: get-in-right; }
+  .getslot.stuck .bkey.primary { gap: 2px; }
+  .getslot.stuck .bkey.primary .bk-s { position: static; width: auto; height: auto; overflow: visible; clip-path: none; font-size: 9px; }
 }
 .bkey {
   height: auto; min-height: 64px; padding: 10px 10px; flex-direction: column; gap: 6px; min-width: 0; text-align: center;
