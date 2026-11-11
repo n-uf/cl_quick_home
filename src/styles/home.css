@@ -131,6 +131,26 @@
   background: linear-gradient(180deg, #ffb08a, #ff7a3d 60%, #f0612a); box-shadow: 0 0 3px rgba(255,122,61,.8), 0 0 8px rgba(255,122,61,.45);
 }
 
+/* ── The big keys at the story's end: the step keys' tray and keycaps, about 1.6 times as large ────── */
+.gethost { display: grid; grid-template-columns: minmax(340px, 450px) minmax(0, 1fr); column-gap: 56px; margin-top: 28px; }   /* the home grid's columns, so the keys sit under the stage */
+.getrow { grid-column: 2; padding: 14px; gap: 14px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.bkey {
+  height: auto; min-height: 64px; padding: 10px 10px; flex-direction: column; gap: 6px; min-width: 0; text-align: center;
+  /* a little darker than the step keys' face, so the white legend and the sublabel keep 4.5:1 or more */
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, rgba(0,0,0,.06) 1px 2px), linear-gradient(180deg, #66665f, #484842);
+  font-family: var(--font);
+}
+.bkey .bk-l { font: 700 15px/1 var(--font); letter-spacing: .1em; text-transform: uppercase; color: #f6f6f4; white-space: nowrap; }
+.bkey .bk-s { font: 500 10px/1.25 var(--mono); letter-spacing: .02em; text-transform: none; color: #ecece9; max-width: 100%; }
+a.bkey:hover, .bkey:not(.off):hover { transform: translateY(-2px); filter: brightness(1.08); }
+a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
+/* disabled: a darker, flat key with no lift, and a default cursor; its texts still read at 4.5:1 or more */
+.bkey.off { cursor: default; background: repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, rgba(0,0,0,.05) 1px 2px), linear-gradient(180deg, #3a3a36, #2c2c29);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 0 -1px 0 rgba(0,0,0,.4), 0 0 0 1px #151514, 0 1px 0 #0a0a0a; }
+.bkey.off:hover, .bkey.off:active { transform: none; filter: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 0 -1px 0 rgba(0,0,0,.4), 0 0 0 1px #151514, 0 1px 0 #0a0a0a; }
+.bkey.off .bk-l { color: #dcdcd8; }
+.bkey.off .bk-s { color: #bdbdb8; }
+
 /* ── The sheet: what it is, one row at a time ───────────────────────── */
 .sheet { margin: 54px 0 0; display: grid; gap: 0; }
 .sheet-head { display: grid; gap: 6px; margin-bottom: 10px; }
@@ -153,12 +173,14 @@
 .next .key { height: 32px; padding: 0 16px; }
 
 @media (max-width: 1060px) {
-  .home { column-gap: 36px; grid-template-columns: minmax(300px, 400px) minmax(0, 1fr); }
+  .home, .gethost { column-gap: 36px; grid-template-columns: minmax(300px, 400px) minmax(0, 1fr); }
 }
 @media (max-width: 860px) {
   .home-main { padding: 20px 16px 6px; }
   .home { display: block; }
   .show { display: block; }
+  .gethost { display: block; margin-top: 20px; }
+  .getrow { grid-template-columns: minmax(0, 1fr); }
   .intro { padding-bottom: 18px; }
   .rig { position: sticky; top: 28px; z-index: 6; margin: 0 -16px; padding: 8px 16px 24px;
     background: linear-gradient(180deg, var(--bg) calc(100% - 22px), rgba(16,16,18,0)); }

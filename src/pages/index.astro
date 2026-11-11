@@ -3,8 +3,13 @@ import Desktop from "../layouts/Desktop.astro";
 import ExtLink from "../components/ExtLink.astro";
 import "../styles/home.css";
 import { pageOf } from "../data/pages";
-import { site } from "../data/site";
+import BigKey from "../components/BigKey.astro";
+import { site, release } from "../data/site";
+import { hasBlog } from "../data/content";
 import { orgNode, orgRef, appRef } from "../data/schema";
+
+// the three big keys: release-tied, so they stay as links to /install/ or as disabled keys until site.ts has the targets
+const blogLive = await hasBlog();
 
 // Main search: "claude quick chat". The title, description, h1 and first paragraph all lead with it.
 const page = pageOf("/");
@@ -125,6 +130,17 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
         </li>
       </ol>
     </div>
+  </div>
+
+  <!-- the story's end: three big keys, in the stage's column. Download goes to /install/ until there is a release; GitHub
+       and Blog are disabled keys until site.ts has the repository and there is a live article. (Outside .home, so the
+       pinned stage ends with the story and never slides over them.) -->
+  <div class="gethost">
+    <nav class="getrow plate" aria-label="Download, GitHub and blog">
+      <BigKey label="Download for Mac" href={release.downloadUrl ?? "/install/"} sub={release.downloadUrl ? "Apple silicon · macOS 13+" : "Not released yet"} />
+      <BigKey label="GitHub" href={release.repoUrl} arrow sub={release.repoUrl ? "n-uf/cl_quick" : "With the first release"} />
+      <BigKey label="Blog" href={blogLive ? "/blog/" : null} sub={blogLive ? "Guides and how-tos" : "First posts with the release"} />
+    </nav>
   </div>
 
   <section class="sheet" aria-labelledby="sheet-h">
