@@ -88,6 +88,52 @@
 /* no script: nothing moves the stage, so it shows the chat window */
 .home:not([data-js]) .l-answer { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 
+/* ── The bar's field: a real input over the picture (script on), and the window with the visitor's own words ────
+   Everything is placed in % of the picture and sized from --bw (the layer's width), so it tracks the picture at any size. */
+.l-bar { --bw: 56cqw; }
+.l-sent { --bw: 54cqw; left: 23cqw; width: 54cqw; top: 6.5cqw; }
+.home:not([data-js]) .live, .home:not([data-js]) .l-sent { display: none; }
+.live { position: absolute; inset: 0; }
+.live-field {
+  position: absolute; left: 2%; top: 15.4%; width: 96%; height: 26.4%; margin: 0; padding: 0 1.2% 0 .85%; border: 0; border-radius: 0; resize: none; overflow-y: auto; scrollbar-width: none;
+  background: #30302e;   /* the bar's own fill, so it covers the picture's "Ask anything" and its own placeholder is the only one */
+  color: #f4f4f2; caret-color: #d97757; font: 400 calc(var(--bw) * .032)/calc(var(--bw) * .0455) -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+  outline: none; white-space: pre-wrap;
+}
+.live-field::-webkit-scrollbar { display: none; }
+.live-field::placeholder { color: #a0a09c; opacity: 1; }
+/* the bar shows focus by itself: a faint orange ring round it (no browser outline on the field) */
+.l-bar::after { content: ""; position: absolute; inset: 0; border-radius: calc(var(--bw) * .042); pointer-events: none; box-shadow: 0 0 0 0 rgba(217,119,87,0); }
+.l-bar:focus-within::after { box-shadow: 0 0 0 .22cqw rgba(217,119,87,.75); }
+.live-send {
+  position: absolute; left: 91.8%; top: 50.6%; width: 6.2%; height: 35.7%; padding: 0; border: 0; border-radius: calc(var(--bw) * .02); background: transparent; color: #fff; cursor: pointer; display: grid; place-items: center;
+}
+.live-send svg { width: 62%; height: 62%; opacity: 0; }
+.live-send:not(:disabled) { background: #c55f40; }
+.live-send:not(:disabled) svg { opacity: 1; }
+.live-send:not(:disabled):hover { filter: brightness(1.1); }
+.live-send:disabled { cursor: default; }
+.live-send:focus-visible { outline: 2px solid rgba(var(--led), .9); outline-offset: 2px; }
+/* the window with the visitor's words: the picture's message area (between the header and the composer) is covered and redrawn */
+.l-sent .sent-panel {
+  position: absolute; left: .9%; top: 8.9%; width: 98.2%; height: 71.4%; box-sizing: border-box; padding: 3.2% 3.4%; background: #252623; overflow: hidden;
+  display: flex; flex-direction: column; gap: 4%; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+}
+.sent-bubble {
+  align-self: flex-end; max-width: 82%; margin: 0; padding: .9cqw 1.6cqw; border-radius: calc(var(--bw) * .045); background: #141414; color: #f4f4f2;
+  font-size: calc(var(--bw) * .032); line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.sent-notice {
+  display: flex; gap: 1.2cqw; align-items: flex-start; margin: 0; padding: 1.3cqw 1.6cqw; border-radius: calc(var(--bw) * .02); border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05);
+  color: #d6d6d2; font-size: calc(var(--bw) * .029); line-height: 1.45;
+}
+.sent-notice .dot { flex: none; width: calc(var(--bw) * .016); height: calc(var(--bw) * .016); margin-top: calc(var(--bw) * .014); border-radius: 50%; background: #d97757; }
+/* the live bar stands in for the typing picture once the visitor has touched it; a send shows their window instead of the canned one */
+.home.touched[data-beat="2"] .l-bar { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.home.touched[data-beat="2"] .l-typing { opacity: 0; visibility: hidden; }
+.home.sent[data-beat="3"] .l-answer { opacity: 0; visibility: hidden; }
+.home.sent[data-beat="3"] .l-sent { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+
 /* step 1: the keys */
 .caps {
   position: absolute; z-index: 3; left: 0; right: 0; bottom: 9cqw; display: flex; flex-direction: column; align-items: center; gap: 1.6cqw;
@@ -189,7 +235,9 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
   .mini-menu svg { width: 4cqw; height: 4cqw; }
   .l-bar, .l-typing { left: 4cqw; width: 92cqw; top: 22cqw; }
   .l-full { left: 4cqw; width: 92cqw; top: 14cqw; }
-  .l-answer, .l-ended { left: 11cqw; width: 78cqw; top: 8.5cqw; }
+  .l-answer, .l-ended, .l-sent { left: 11cqw; width: 78cqw; top: 8.5cqw; }
+  .l-bar { --bw: 92cqw; }
+  .l-sent { --bw: 78cqw; }
   .caps { bottom: 13cqw; gap: 3cqw; }
   .caps .keyrow { gap: 2cqw; }
   .keybtn { padding: 2.4cqw; margin: -2.4cqw; border-radius: 3cqw; }
@@ -206,5 +254,5 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
   .row { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 24px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .layer, .caps, .keybtn .kcap, .home[data-js] .beat { transition: none; }
+  .layer, .caps, .keybtn .kcap, .live-send, .home[data-js] .beat { transition: none; }
 }

@@ -92,11 +92,28 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
             <span class="say" aria-hidden="true"><span class="say-still">Option + Space</span><span class="say-js">Click or press ⌥Space</span></span>
           </div>
 
-          <figure class="layer l-bar"><img src="/img/qc-bar.webp" width="880" height="154" alt="cl_quick's chat bar on the desktop" loading="eager" decoding="async" /></figure>
+          <figure class="layer l-bar"><img src="/img/qc-bar.webp" width="880" height="154" alt="cl_quick's chat bar on the desktop" loading="eager" decoding="async" />
+            <!-- with the script on, the field is a real text input over the picture (home.css puts it in % of the picture);
+                 without it there is nothing here, only the picture. What is typed goes nowhere: see the script below. -->
+            <div class="live">
+              <textarea class="live-field" rows="1" maxlength="200" placeholder="Ask anything" aria-label="Try the chat bar: type a question" spellcheck="false" autocomplete="off"></textarea>
+              <button type="button" class="live-send" aria-label="Send" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </figure>
           <figure class="layer l-typing"><img src="/img/qc-typing.webp" width="880" height="154" alt="The bar with a question typed in it" loading="lazy" decoding="async" /></figure>
           <figure class="layer l-answer"><img src="/img/qc-answer.webp" width="880" height="880" alt="The chat window with an answer and a code block" loading="eager" decoding="async" /></figure>
           <figure class="layer l-full"><img src="/img/qc-full.webp" width="880" height="384" alt="A notice that the week is full, with Ask on Work" loading="lazy" decoding="async" /></figure>
           <figure class="layer l-ended"><img src="/img/qc-ended.webp" width="880" height="880" alt="The chat window after it ended, idle for 15 minutes" loading="lazy" decoding="async" /></figure>
+          <!-- the visitor's own words in the window: the picture of the window with its message area redrawn in HTML.
+               The text is put in with textContent (never as HTML), and a notice stands where an answer would be -->
+          <div class="layer l-sent">
+            <img src="/img/qc-answer.webp" width="880" height="880" alt="" loading="lazy" decoding="async" />
+            <div class="sent-panel" aria-hidden="true">
+              <p class="sent-bubble"></p>
+              <p class="sent-notice"><span class="dot"></span>This is a picture of cl_quick. On your Mac, your own Claude Code answers here.</p>
+            </div>
+          </div>
+          <p class="sr-only" role="status" aria-live="polite" data-sent-say></p>
         </div>
         <nav class="plate keys" aria-label="Steps">
           {keys.map((k, i) => <a class="key" href={`#step-${i + 1}`} aria-label={`Step ${i + 1}: ${k}`}><span class="n">{i + 1}</span><span class="w">{k}</span></a>)}
@@ -235,7 +252,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
       const line = phone.matches ? rig.getBoundingClientRect().bottom + 60 : window.innerHeight * 0.55;
       let n = 0;
       beats.forEach((b, i) => { if (b.getBoundingClientRect().top <= line) n = i; });
-      if (n !== cur) { cur = n; home.dataset.beat = String(n); }
+      if (n !== cur) { cur = n; home.dataset.beat = String(n); if (n < 3) home.classList.remove("sent"); }   // back at steps 1 to 3: the pictures reset, the typed text stays
     };
     const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
     addEventListener("scroll", queue, { passive: true });
@@ -244,11 +261,45 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     const measure = () => home.style.setProperty("--rig-h", `${rig.offsetHeight}px`);
     if ("ResizeObserver" in window) new ResizeObserver(measure).observe(rig); else measure();
     // a step key lights its step at once, without waiting for the scroll to arrive
-    home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", () => { cur = i; home.dataset.beat = String(i); }));
+    home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", () => { cur = i; home.dataset.beat = String(i); if (i < 3) home.classList.remove("sent"); }));
+    // The bar's field (steps 2 and 3). What the visitor types goes nowhere: no request, no storage, no analytics. It is
+    // only put on the page (as text, never as HTML, at most 200 characters) in the window's bubble when they send it, and it
+    // is gone when the page is closed. A picture of cl_quick says so in the place of an answer.
+    const field = home.querySelector<HTMLTextAreaElement>(".live-field");
+    const sendBtn = home.querySelector<HTMLButtonElement>(".live-send");
+    const bubble = home.querySelector<HTMLElement>(".sent-bubble");
+    const say = home.querySelector<HTMLElement>("[data-sent-say]");
+    const notice = home.querySelector<HTMLElement>(".sent-notice");
+    if (field && sendBtn && bubble && say && notice) {
+      const touch = () => home.classList.add("touched");
+      const sync = () => { sendBtn.disabled = field.value.trim() === ""; };
+      const submit = () => {
+        const text = field.value.trim().slice(0, 200);
+        if (!text) return;   // an empty field: Return does nothing
+        bubble.textContent = text;
+        say.textContent = `You asked: “${text}”. ${notice.textContent}`;
+        home.classList.add("sent");
+        home.querySelector<HTMLAnchorElement>(".keys a:nth-child(4)")?.click();   // the window step, as the step key goes there
+      };
+      field.addEventListener("focus", touch);
+      field.addEventListener("input", () => { touch(); sync(); });
+      field.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); submit(); }   // Shift-Return adds a line
+      });
+      sendBtn.addEventListener("click", submit);
+      // a click on the bar (outside the field) focuses it; on step 3's typed picture it brings the live bar in first
+      home.querySelector(".l-bar")?.addEventListener("pointerdown", (e) => { if (e.target !== field && e.target !== sendBtn && !sendBtn.contains(e.target as Node)) { e.preventDefault(); field.focus(); } });
+      home.querySelector(".l-typing")?.addEventListener("pointerdown", (e) => { e.preventDefault(); touch(); field.focus(); });
+      sync();
+    }
     // step 1's keys: a click (or Enter or Space on the button), or a real ⌥Space on the page, plays a key press of about
     // 150 ms and then goes to step 2 exactly as the step keys do (no press animation with reduced motion)
     const keybtn = home.querySelector<HTMLButtonElement>(".keybtn");
-    const toStep2 = () => home.querySelector<HTMLAnchorElement>(".keys a:nth-child(2)")?.click();
+    const toStep2 = () => {
+      home.querySelector<HTMLAnchorElement>(".keys a:nth-child(2)")?.click();
+      // like the real bar, the field is ready to type in (not on a touch screen, where it would raise the keyboard)
+      if (matchMedia("(hover: hover)").matches) field?.focus({ preventScroll: true });
+    };
     let pressing = false;
     const press = () => {
       if (pressing) return;
