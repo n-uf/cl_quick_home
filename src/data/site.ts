@@ -3,10 +3,13 @@
 export const site = "https://cl-quick.n-uf.com";
 export const name = "cl_quick";
 
-/** The release-tied targets of the three big keys on the home page. Both stay null until the first release is out and the
- *  hub says so: then set them (the download address, e.g. a GitHub release file, and the repository address) and the keys
- *  become links. The Blog key follows the content layer: it links /blog/ once there is a live article. */
-export const release: { downloadUrl: string | null; repoUrl: string | null } = { downloadUrl: null, repoUrl: null };
+/** The targets of the three big keys on the home page. The repository is public (2026-11-11), so its key is a link.
+ *  The download stays null until the first release is out and the hub says so: then set it (e.g. the GitHub release
+ *  file) and the key links there. The Blog key follows the content layer: it links /blog/ once there is a live article. */
+export const release: { downloadUrl: string | null; repoUrl: string | null } = {
+  downloadUrl: null,
+  repoUrl: "https://github.com/n-uf/cl_quick",
+};
 
 /** What cl_quick needs (README ▸ Install). */
 export const requires = "Apple silicon · macOS 13 or later · Claude Code signed in";
