@@ -5,13 +5,13 @@
 import { externalCheck } from "../data/links.mjs";
 import { site } from "../data/site";
 
-interface Props { label: string; /** the rest of the label, hidden by the compact phone bar (still read by screen readers) */ more?: string; sub: string; href?: string | null; /** the small ↗ after an external label */ arrow?: boolean }
-const { label, more = "", sub, href = null, arrow = false } = Astro.props;
+interface Props { label: string; /** the rest of the label, hidden by the compact phone bar (still read by screen readers) */ more?: string; sub: string; href?: string | null; /** the small ↗ after an external label */ arrow?: boolean; /** the one primary action: an orange keycap with a download glyph */ primary?: boolean }
+const { label, more = "", sub, href = null, arrow = false, primary = false } = Astro.props;
 const external = href ? externalCheck(site)(href) : false;
 ---
 {href ? (
-  <a class="key bkey" href={href} target={external ? "_blank" : undefined} rel={external ? "noopener" : undefined}>
-    <span class="bk-l">{label}{more && <span class="bk-more">{more}</span>}{external && arrow && <span class="ext-arrow" aria-hidden="true">↗</span>}</span>
+  <a class:list={["key", "bkey", { primary }]} href={href} target={external ? "_blank" : undefined} rel={external ? "noopener" : undefined}>
+    <span class="bk-l">{primary && <svg class="bk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v10m0 0-4-4m4 4 4-4M5 16.5v2.5h14v-2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>}<span class="bk-t">{label}{more && <span class="bk-more">{more}</span>}</span>{external && arrow && <span class="ext-arrow" aria-hidden="true">↗</span>}</span>
     <span class="bk-s">{sub}</span>
     {external && <span class="sr-only"> (opens in a new tab)</span>}
   </a>

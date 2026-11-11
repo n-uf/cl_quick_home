@@ -207,6 +207,9 @@
 .getslot.stuck .bkey { min-height: 32px; padding: 6px 8px; gap: 0; }
 .getslot.stuck .bkey .bk-l { font-size: 11px; letter-spacing: .08em; white-space: normal; text-align: center; line-height: 1.15; }
 .getslot.stuck .bkey .bk-s { display: none; }
+.getslot.stuck .bkey.primary { min-height: 40px; }   /* a touch taller than GitHub and Blog (about 1.25 times) */
+.getslot.stuck .bkey.primary .bk-l { letter-spacing: .06em; gap: 6px; }
+.getslot.stuck .bkey.primary .bk-ic { width: 13px; height: 13px; }
 /* wide desktop (1260px up, where the sheet's text and pictures end well before the right edge): the keys stand in a slim rail
    at the right, top-aligned under the menu bar, instead of a strip across the page. Narrower, the strip above stays. */
 @keyframes get-in-right { from { opacity: 0; transform: translateX(8px); } }
@@ -223,6 +226,19 @@
 .bkey .bk-s { font: 500 10px/1.25 var(--mono); letter-spacing: .02em; text-transform: none; color: #ecece9; max-width: 100%; }
 a.bkey:hover, .bkey:not(.off):hover { transform: translateY(-2px); filter: brightness(1.08); }
 a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
+/* the primary key (Download for Mac): the site's warm orange keycap, with the ridges and the bevel, and dark text. The orange
+   says "this is the action", not "it is available now": before the release the sublabel still says so. */
+.bkey.primary {
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, rgba(0,0,0,.05) 1px 2px), linear-gradient(180deg, #f4a075, #e47b4c);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(110,40,10,.35), 0 0 0 1px #5e240d, 0 2px 0 #3d1707, 0 3px 7px rgba(0,0,0,.45);
+  text-shadow: none;
+}
+.bkey.primary .bk-l { color: #1d0b04; display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-size: 14px; letter-spacing: .08em; }
+.bkey.primary .bk-s { color: #2b1106; }
+.bkey.primary .bk-ic { width: 15px; height: 15px; flex: none; }
+a.bkey.primary:hover, a.bkey.primary:focus-visible { filter: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(110,40,10,.35), 0 0 0 1px #5e240d, 0 2px 0 #3d1707, 0 0 16px rgba(255,122,61,.6), 0 3px 7px rgba(0,0,0,.45); }
+a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1px #5e240d, 0 1px 0 #3d1707, 0 0 10px rgba(255,122,61,.45); }
+.bkey.primary:focus-visible { outline: 2px solid #fff4ea; outline-offset: 3px; }   /* a light ring, visible against the orange and the dark tray */
 /* disabled: a darker, flat key with no lift, and a default cursor; its texts still read at 4.5:1 or more */
 .bkey.off { cursor: default; background: repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, rgba(0,0,0,.05) 1px 2px), linear-gradient(180deg, #3a3a36, #2c2c29);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 0 -1px 0 rgba(0,0,0,.4), 0 0 0 1px #151514, 0 1px 0 #0a0a0a; }
