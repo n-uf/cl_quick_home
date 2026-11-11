@@ -330,6 +330,9 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
       if (!(e.altKey && e.code === "Space") || e.metaKey || e.ctrlKey || e.shiftKey || e.repeat) return;
       const t = e.target as HTMLElement | null;
       if (t && (t.isContentEditable || /^(input|textarea|select)$/i.test(t.tagName))) return;
+      // only while the stage is on screen: a ⌥Space further down the page must not jump the reader back to step 2
+      const box = rig.getBoundingClientRect();
+      if (box.bottom <= 0 || box.top >= innerHeight) return;
       e.preventDefault();
       press();
     });
