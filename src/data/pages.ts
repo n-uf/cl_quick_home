@@ -6,8 +6,8 @@ import { updated } from "./dates.mjs";
 export interface PageInfo { path: string; title: string; description: string; updated: string }
 
 export const pages: PageInfo[] = [
-  { path: "/", updated: updated["/"], title: "Claude quick chat for Mac | cl_quick",
-    description: "cl_quick is a Claude quick chat for your Mac menu bar: press ⌥Space over any app for a floating chat, answered by your own Claude Code sign-in." },
+  { path: "/", updated: updated["/"], title: "Claude quick chat for Mac: cl_quick, a free app",
+    description: "A free Mac menu bar app for a Claude quick chat: press ⌥Space over any app, and your own Claude Code sign-in answers in a floating chat." },
   { path: "/install/", updated: updated["/install/"], title: "Install cl_quick: what it needs on a Mac",
     description: "cl_quick's first release isn't out yet. It needs an Apple silicon Mac, macOS 13 or later and a signed-in Claude Code. Here is how it works." },
   { path: "/faq/", updated: updated["/faq/"], title: "cl_quick FAQ: incognito, accounts, what it sends",
