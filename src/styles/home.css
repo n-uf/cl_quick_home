@@ -46,16 +46,28 @@
 /* ── The stage: a bare Mac desktop, with cl_quick floating on it ───────── */
 .stage {
   container-type: inline-size; position: relative; width: 100%; aspect-ratio: 16 / 11; overflow: hidden; border-radius: 14px; isolation: isolate;
+  /* an abstract wallpaper in CSS only: big soft colour fields (indigo and violet on the left, Claude's rust and orange on
+     the right, a blue deep down), a faint magenta glow in the middle and a pale sweep across, on a deep plum base */
   background:
-    radial-gradient(90% 80% at 12% 0, #3d3b54 0%, transparent 62%),
-    radial-gradient(80% 70% at 96% 100%, #5b3b33 0%, transparent 60%),
-    #26262d;
+    radial-gradient(58% 72% at 12% 8%, rgba(110, 86, 255, .95), transparent 64%),
+    radial-gradient(52% 66% at 94% 10%, rgba(255, 132, 88, .8), transparent 62%),
+    radial-gradient(70% 62% at 88% 104%, rgba(226, 104, 66, .95), transparent 64%),
+    radial-gradient(62% 58% at 6% 100%, rgba(40, 92, 214, .9), transparent 62%),
+    radial-gradient(38% 34% at 52% 58%, rgba(196, 74, 164, .45), transparent 72%),
+    linear-gradient(140deg, #1d1747 0%, #3a1c46 48%, #5b2733 100%);
   box-shadow: 0 0 0 1px #000, 0 0 0 2px rgba(255,255,255,.07), 0 24px 70px rgba(0,0,0,.55);
+}
+.stage::before {   /* the pale sweep and a soft vignette, so the wallpaper has depth and the chat's edges stay calm */
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    conic-gradient(from 200deg at 76% 118%, transparent 0 20%, rgba(255, 255, 255, .13) 30%, transparent 44%),
+    radial-gradient(120% 100% at 50% 40%, transparent 55%, rgba(8, 6, 24, .45) 100%);
 }
 /* everything inside is sized in cqw, so the whole desktop scales as one picture */
 .mini-menu {
   position: absolute; left: 0; right: 0; top: 0; height: 4.8cqw; display: flex; align-items: center; justify-content: flex-end; gap: 2.4cqw; padding: 0 2.2cqw;
-  background: rgba(20,20,24,.55); font: 500 1.5cqw/1 var(--font); color: #e9e9ee;
+  background: rgba(18,16,30,.5); backdrop-filter: blur(1.2cqw) saturate(150%); -webkit-backdrop-filter: blur(1.2cqw) saturate(150%);
+  font: 500 1.5cqw/1 var(--font); color: #f2f2f6;
 }
 .mini-menu svg { width: 2.1cqw; height: 2.1cqw; }
 
