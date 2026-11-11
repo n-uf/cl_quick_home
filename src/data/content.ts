@@ -6,9 +6,18 @@ import { releasedText } from "./site";
 export type Entry = CollectionEntry<"useCases"> | CollectionEntry<"blog">;
 export type Section = "usecases" | "blog";
 
+// title and description at most 60 / 120 to 155 characters (n-uf-seo); the index pages and the Related cards read them
 export const sections = {
-  usecases: { label: "Use cases", path: "/use-cases/", collection: "useCases" as const },
-  blog: { label: "Blog", path: "/blog/", collection: "blog" as const },
+  usecases: {
+    label: "Use cases", path: "/use-cases/", collection: "useCases" as const,
+    title: "Claude quick chat use cases | cl_quick",
+    description: "What you can do with cl_quick on a Mac: ask Claude a quick question over any app, keep chats incognito, and pick the profile and model for each one.",
+  },
+  blog: {
+    label: "Blog", path: "/blog/", collection: "blog" as const,
+    title: "Claude quick chat blog | cl_quick",
+    description: "Short guides for cl_quick, the floating Claude chat for the Mac: how it works with Claude Code, what it keeps and sends, and how accounts and limits show.",
+  },
 };
 
 export const kindLabel: Record<string, string> = {
@@ -66,6 +75,10 @@ export async function pageStatus(path: string): Promise<"built" | "unbuilt" | "n
 export async function pageInfo(path: string): Promise<{ title: string; description: string }> {
   const fixed = pages.find((p) => p.path === path);
   if (fixed) return fixed;
+  // the section index pages, once they exist in this build (a section with no live entry has no index page)
+  for (const section of ["usecases", "blog"] as const) {
+    if (path === sections[section].path && (await pageStatus(path)) === "built") return { title: sections[section].title, description: sections[section].description };
+  }
   for (const section of ["usecases", "blog"] as const) {
     if (!path.startsWith(sections[section].path)) continue;
     const entries = section === "usecases" ? await getUseCases() : await getPosts();

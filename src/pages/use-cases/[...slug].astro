@@ -3,9 +3,10 @@
 import { render } from "astro:content";
 import Desktop from "../../layouts/Desktop.astro";
 import Reader from "../../layouts/Reader.astro";
+import ExtLink from "../../components/ExtLink.astro";
 import "../../styles/reader.css";
 import ScheduledBadge from "../../components/ScheduledBadge.astro";
-import { getUseCases, pathOf, dateText, kindLabel, isLive, showDrafts } from "../../data/content";
+import { getUseCases, sections, pathOf, dateText, isLive, showDrafts } from "../../data/content";
 import { orgNode, webPage, breadcrumbs } from "../../data/schema";
 import { withImages } from "../../data/images";
 import { withLiveBlocks } from "../../data/live";
@@ -23,8 +24,7 @@ const rendered = entry ? await render(entry) : undefined;
 // the body with its {{live:}} blocks resolved (src/data/live.ts) and its images as sized figures (src/data/images.ts)
 const html = entry?.rendered?.html ? withImages(await withLiveBlocks(entry.rendered.html, entry.filePath ?? `src/content/use-cases/${entry.id}.md`)) : undefined;
 
-const title = "Claude quick chat use cases | cl_quick";
-const description = "What you can do with cl_quick on a Mac: ask Claude a quick question over any app, keep chats incognito, and pick the profile and model for each one.";
+const { title, description } = sections.usecases;
 const jsonLd = [
   webPage({ path: "/use-cases/", name: title, description, type: "CollectionPage" }),
   breadcrumbs([{ name: "Home", path: "/" }, { name: "Use cases", path: "/use-cases/" }]),
@@ -37,11 +37,11 @@ const jsonLd = [
   <Desktop title={title} description={description} page="usecases" headline="What you can do with it" jsonLd={jsonLd}>
     <div class="content-inner reader">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Use cases</li></ol></nav>
-      <p class="ix-lede">cl_quick is a floating Claude chat for the Mac, answered by your own Claude Code. These pages show what that is good for, one job at a time.</p>
+      <p class="ix-lede">cl_quick is a floating Claude chat for the Mac, answered by your own Claude Code. These pages show what that is good for, one job at a time. cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
       <div class="ix-list">
         {items.map((e) => (
           <div class="card">
-            <h4>Use case</h4>
+            <p class="cap">Use case</p>
             <h2><a href={pathOf("usecases", e.id)}>{e.data.h1}</a></h2>
             <p>{e.data.description}</p>
             <span class="when">Updated {dateText(e.data.updated)}</span>

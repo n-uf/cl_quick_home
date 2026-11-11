@@ -46,14 +46,14 @@ const jsonLd = [
     <p class="byline"><span class="kind">{kindLabel[d.kind]}</span> <span class="divider" aria-hidden="true"></span> Updated <time datetime={d.updated.toISOString().slice(0, 10)}>{dateText(d.updated)}</time> · by <ExtLink href="https://n-uf.com">n-uf</ExtLink>{scheduled && <><span class="divider" aria-hidden="true"></span><ScheduledBadge date={d.published} /></>}</p>
 
     <div class="card takeaways">
-      <h4>Key takeaways</h4>
+      <h2 class="cap">Key takeaways</h2>
       <ul>{d.takeaways.map((t) => <li>{t}</li>)}</ul>
     </div>
 
     <div class="reader-grid" data-toc={showToc ? "on" : "off"}>
       {showToc && (
         <nav class="card toc" aria-label="On this page">
-          <h4>On this page</h4>
+          <h2 class="cap">On this page</h2>
           <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
         </nav>
       )}
@@ -63,12 +63,12 @@ const jsonLd = [
         </article>
 
         <div class="card faq-card">
-          <h4>Questions people ask</h4>
+          <h2 class="cap">Questions people ask</h2>
           {d.faq.map(({ q, a }, i) => <details open={i === 0}><summary>{q}</summary><p>{a}</p></details>)}
         </div>
 
         <div class="card related">
-          <h4>Related</h4>
+          <h2 class="cap">Related</h2>
           <ul>
             {related.map((r) => <li><a href={r.path}><b>{r.title}</b><span>{r.description}</span></a></li>)}
           </ul>
@@ -76,7 +76,7 @@ const jsonLd = [
 
         {d.sources.length > 0 && (
           <div class="card sources">
-            <h4>Sources</h4>
+            <h2 class="cap">Sources</h2>
             <ul>
               {d.sources.map((s) => <li><ExtLink href={s.url}>{s.title}</ExtLink> <span class="chk">checked {dateText(s.checked)}</span></li>)}
             </ul>
@@ -84,9 +84,10 @@ const jsonLd = [
         )}
 
         <div class="card install-card">
-          <h4>Install</h4>
+          <h2 class="cap">Install</h2>
           <!-- there is no release yet, so no download: the Install page says what cl_quick needs -->
           <p class="t">cl_quick's first release isn't out yet. It needs an Apple silicon Mac, macOS 13 or later and Claude Code, signed in. <a href="/install/">What it needs and how it works</a></p>
+          <p class="t">cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
         </div>
       </div>
     </div>

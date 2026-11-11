@@ -82,7 +82,7 @@
 
 /* FAQ, Related, Sources, Download */
 .faq-card details { border-top: 1px solid rgba(0,0,0,.45); box-shadow: inset 0 1px 0 rgba(255,255,255,.035); padding: 11px 0; }
-.faq-card h4 + details { border-top: 0; box-shadow: none; padding-top: 2px; }
+.faq-card .cap + details { border-top: 0; box-shadow: none; padding-top: 2px; }
 .faq-card summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .faq-card summary::-webkit-details-marker { display: none; }
 .faq-card summary::after { content: "+"; flex: none; width: 26px; height: 22px; border-radius: 3px; display: grid; place-items: center;
@@ -93,7 +93,7 @@
 
 .related ul, .sources ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
 .related li { border-top: 1px solid rgba(0,0,0,.45); box-shadow: inset 0 1px 0 rgba(255,255,255,.035); }
-.related h4 + ul li:first-child, .sources h4 + ul li:first-child { border-top: 0; box-shadow: none; }
+.related .cap + ul li:first-child, .sources .cap + ul li:first-child { border-top: 0; box-shadow: none; }
 .related a { display: grid; gap: 2px; padding: 10px 0; text-decoration: none; color: var(--link); }
 .related a b { font-size: 14.5px; font-weight: 600; }
 .related a span { color: var(--muted); font-size: 13px; }
@@ -106,7 +106,7 @@
 .ix-lede { margin: 0; color: var(--soft); max-width: 78ch; }
 .ix-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; align-items: stretch; }
 .ix-list .card { display: grid; align-content: start; gap: 8px; }
-.ix-list .card h4 { margin-bottom: 2px; }
+.ix-list .card .cap { margin-bottom: 2px; }
 .ix-list h2 { font-size: 18px; line-height: 1.3; }
 .ix-list h2 a { text-decoration: none; color: var(--text); }
 .ix-list h2 a::after { content: ""; position: absolute; inset: 0; }   /* the whole card is the link */
