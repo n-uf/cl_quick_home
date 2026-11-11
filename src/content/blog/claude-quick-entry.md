@@ -47,8 +47,12 @@ sources:
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
     checked: 2026-11-11
-    supports: "Intro (a floating chat on a shortcut: the bar, then the chat window floating on every Space until Esc hides it; never brings another app forward; your own Claude Code on the profile's account in use; counts against that account's limits; quick chats are incognito, the exact sentence); Settings ▸ General (⌥Space by default, four other Space shortcuts, Other…, Off; no Accessibility permission to give; other apps' shortcuts can't be read and macOS lets two apps register the same key); The chat (the mic button starts macOS Dictation into the field; the profile key and its menu with each profile's week); What it keeps, and what it sends (no tools, no MCP servers); Install (Apple silicon, macOS 13 or later, Claude Code signed in)."
+    supports: "Intro (a floating chat on a shortcut: the bar, then the chat window floating on every Space until Esc hides it; never brings another app forward; your own Claude Code on the profile's account in use; counts against that account's limits; quick chats are incognito, the exact sentence); Settings ▸ General (⌥Space by default, four other Space shortcuts, Other…, Off; no Accessibility permission to give; other apps' shortcuts can't be read and macOS lets two apps register the same key); The chat (the mic button starts macOS Dictation into the field, ⌘D turns it on and off; Images: ⌘V or dropping image files on the bar or the chat window, thumbnails over the field, up to 5 to a message, scaled down in memory, no file made; the profile key and its menu with each profile's week); What it keeps, and what it sends (no tools, no MCP servers); Install (Apple silicon, macOS 13 or later, Claude Code signed in)."
     quote: "It never brings another app forward."
+  - title: "cl_quick CHANGELOG"
+    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
+    checked: 2026-11-11
+    supports: "The 'Ask about the selected text in the app you're in' entry (right-click ▸ Services ▸ Ask cl_quick: the selection quoted in the field, ready to edit and not sent, no Accessibility permission) and the 'Images in the chat' entry (⌘V or dropping image files, up to 5, scaled down in memory, nothing saved)."
 related:
   - /blog/claude-shortcut-mac/
   - /use-cases/claude-code-floating-window/
@@ -151,8 +155,8 @@ Quick Entry is a chat with Claude in Claude Desktop. If most of your questions a
 | | Quick Entry | cl_quick |
 |---|---|---|
 | Opens with | Double-tap Option, Option + Space or a custom shortcut | ⌥Space, four other Space shortcuts, Other… (any key with ⌘, ⌃ or ⌥), or Off |
-| What you can attach | A screenshot you drag, or an application window | Typed text only |
-| Voice | Caps Lock dictation, off by default, macOS 14 or later | A mic button that starts macOS Dictation into the field |
+| What you can attach | A screenshot you drag, or an application window | Typed text, images you paste or drop (up to 5 to a message), and text you select and send with Ask cl_quick from the Services menu |
+| Voice | Caps Lock dictation, off by default, macOS 14 or later | A mic button that starts macOS Dictation into the field; ⌘D turns it on and off |
 | What it starts | A new chat with Claude | A chat window answered by your own Claude Code |
 | Plans | Every Claude plan | Whatever account the profile's Claude Code is signed in to |
 | What it needs | Claude Desktop running; Accessibility, Screen recording and Speech recognition permissions as needed | Apple silicon, macOS 13 or later, Claude Code signed in; no Accessibility permission for the shortcut |
