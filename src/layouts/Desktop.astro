@@ -32,7 +32,7 @@ const current = { home: "Home", install: "Install", faq: "FAQ", usecases: "Use c
 
     {headline ? (
       <main class="page">
-        <div class="disp" role="presentation"><em>{current}</em><h1>{headline}</h1></div>
+        <div class="disp" role="presentation"><em aria-hidden="true">{current}</em><h1>{headline}</h1></div>
         <slot />
       </main>
     ) : (
