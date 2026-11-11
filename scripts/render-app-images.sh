@@ -14,6 +14,7 @@
 #   qc-ended        state ended-idle   the line under a chat that ended after 15 minutes idle
 #   qc-dictating    state dictating    the mic button on
 #   settings-accounts  settings page accounts-two   the Accounts card of a profile (cropped)
+#   settings-shortcut  settings page general-taken     the Shortcut row with ⌥Space picked (cropped: the warning under it, a sample state, is left out)
 #   settings-general   settings page general        Model, Thinking, Open at login (cropped; the Shortcut row's sample pick is left out)
 # The renderer draws the card on a plain grey with a 30 pt margin: the chat pictures are cropped to the card and
 # given its rounded corners as transparency, so they sit on the site's desktop.
@@ -39,6 +40,7 @@ chat qc-ended ended-idle 440
 chat qc-dictating dictating
 settings settings-accounts accounts-two
 settings settings-general general
+settings settings-shortcut general-taken
 
 python3 "$here/prepare-images.py" "$tmp" "$tmp/out"
 for f in "$tmp"/out/*.png; do

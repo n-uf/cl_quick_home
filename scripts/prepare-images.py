@@ -28,7 +28,8 @@ for name in ["qc-bar", "qc-typing", "qc-answer", "qc-full", "qc-ended", "qc-dict
     save(card, name)
 
 # settings crops: (left, top, right, bottom) in px of the 2x render
-BOX = {"settings-accounts": (35, 305, 1245, 992), "settings-general": (35, 368, 1245, 650)}
+BOX = {"settings-accounts": (35, 305, 1245, 992), "settings-general": (35, 368, 1245, 650),
+       "settings-shortcut": (35, 250, 1245, 358)}
 for name, box in BOX.items():
     im = Image.open(os.path.join(src, name + ".png")).convert("RGBA").crop(box)
     im.putalpha(rounded_mask(im.width, im.height, 20))
