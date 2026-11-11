@@ -193,7 +193,20 @@
 
 /* ── The big keys at the story's end: the step keys' tray and keycaps, about 1.6 times as large ────── */
 .gethost { display: grid; grid-template-columns: minmax(340px, 450px) minmax(0, 1fr); column-gap: 56px; margin-top: 28px; }   /* the home grid's columns, so the keys sit under the stage */
-.getrow { grid-column: 2; padding: 14px; gap: 14px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.getslot { grid-column: 2; position: relative; }
+.get-sentinel { position: absolute; left: 0; top: 0; width: 1px; height: 1px; pointer-events: none; }
+.getrow { padding: 14px; gap: 14px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* stuck (script on, set by the script): the row leaves the flow but the slot keeps its height, so nothing shifts */
+@keyframes get-in { from { opacity: 0; transform: translateY(-6px); } }
+.getslot.stuck .getrow {
+  position: fixed; z-index: 15; top: 36px; left: calc(var(--get-left) + (var(--get-w) - min(var(--get-w), 470px)) / 2); width: min(var(--get-w), 470px); max-width: none;
+  padding: 6px; gap: 8px; border-radius: 8px; background: rgba(48, 48, 52, .9); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+  grid-template-columns: 1.7fr 1fr 1fr; animation: get-in .2s ease;
+}
+.getslot.stuck .bkey .bk-l { white-space: nowrap; }
+.getslot.stuck .bkey { min-height: 32px; padding: 6px 8px; gap: 0; }
+.getslot.stuck .bkey .bk-l { font-size: 11px; letter-spacing: .08em; white-space: normal; text-align: center; line-height: 1.15; }
+.getslot.stuck .bkey .bk-s { display: none; }
 .bkey {
   height: auto; min-height: 64px; padding: 10px 10px; flex-direction: column; gap: 6px; min-width: 0; text-align: center;
   /* a little darker than the step keys' face, so the white legend and the sublabel keep 4.5:1 or more */
@@ -216,7 +229,8 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
 .sheet-head { display: grid; gap: 6px; margin-bottom: 10px; }
 .sheet-head h2 { font-size: 26px; letter-spacing: -.02em; line-height: 1.2; }
 .row { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 12px 56px; padding: 30px 0; border-top: 1px solid rgba(0,0,0,.55); box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
-.row, .beat { scroll-margin-top: 44px; }
+.beat { scroll-margin-top: 44px; }
+.row { scroll-margin-top: 100px; }   /* below the menu bar and the stuck row of keys */
 .row .lbl { display: block; margin-bottom: 8px; }
 .row h3 { font-size: 19px; line-height: 1.3; font-weight: 650; letter-spacing: -.012em; }
 .row .body { display: grid; gap: 14px; min-width: 0; align-content: start; }
@@ -241,6 +255,16 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
   .show { display: block; }
   .gethost { display: block; margin-top: 20px; }
   .getrow { grid-template-columns: minmax(0, 1fr); }
+  /* a phone: once past the story, a compact bar along the bottom of the screen, clear of the home indicator */
+  @keyframes get-up { from { opacity: 0; transform: translateY(8px); } }
+  .getslot.stuck .getrow {
+    top: auto; bottom: 0; left: 0; width: 100%; padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); gap: 8px; border-radius: 12px 12px 0 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); background: rgba(40, 40, 44, .95); animation: get-up .2s ease;
+  }
+  .getslot.stuck .bkey { min-height: 40px; padding: 6px 4px; }
+  .getslot.stuck .bkey .bk-l { font-size: 10px; letter-spacing: .05em; white-space: normal; }
+  .desk[data-page="home"] .colophon { padding-bottom: calc(26px + 76px + env(safe-area-inset-bottom)); }   /* the bar never hides the footer */
+  .row { scroll-margin-top: 44px; }
   .intro { padding-bottom: 18px; }
   .rig { position: sticky; top: 28px; z-index: 6; margin: 0 -16px; padding: 8px 16px 24px;
     background: linear-gradient(180deg, var(--bg) calc(100% - 22px), rgba(16,16,18,0)); }
@@ -276,4 +300,5 @@ a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .layer, .caps, .keybtn .kcap, .live-send, .home[data-js] .beat { transition: none; }
+  .getslot.stuck .getrow { animation: none; }
 }
