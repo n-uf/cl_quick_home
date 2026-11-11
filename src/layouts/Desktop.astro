@@ -4,6 +4,7 @@
 // page brings its own h1 and the stage (src/pages/index.astro).
 import Base from "./Base.astro";
 import { hasBlog, hasUseCases } from "../data/content";
+import ExtLink from "../components/ExtLink.astro";
 
 export type Page = "home" | "install" | "faq" | "usecases" | "blog" | "none";
 // headline: the page's h1, shown lit in the display window at the top (omit it on the home page, which has its own)
@@ -39,9 +40,9 @@ const current = { home: "Home", install: "Install", faq: "FAQ", usecases: "Use c
     )}
 
     <footer class="colophon">
-      <span>cl_quick is made by <a href="https://n-uf.com">n-uf</a></span>
+      <span>cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink></span>
       <span>PolyForm Perimeter 1.0.1</span>
-      <span>The quick chat of <a href="https://cl-audit.n-uf.com">cl_audit</a>, as an app of its own</span>
+      <span>The quick chat of <ExtLink href="https://cl-audit.n-uf.com">cl_audit</ExtLink>, as an app of its own</span>
     </footer>
   </div>
 </Base>

@@ -1,5 +1,6 @@
 ---
 import Desktop from "../layouts/Desktop.astro";
+import ExtLink from "../components/ExtLink.astro";
 import "../styles/home.css";
 import { pageOf } from "../data/pages";
 import { site } from "../data/site";
@@ -66,7 +67,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
       <p class="lbl">Menu bar app for Mac</p>
       <h1>A Claude quick chat for your Mac, on <span class="nb">⌥Space</span></h1>
       <p class="lede">cl_quick is a Claude quick chat that lives in the Mac's menu bar. Press <span class="kbd">⌥Space</span> over any app and a floating bar opens; your first message turns it into a small chat window that stays on every Space until you press Esc. Your own Claude Code sign-in answers, so it counts against your plan's limits.</p>
-      <p class="lede">cl_quick is made by <a href="https://n-uf.com">n-uf</a> and is not affiliated with Anthropic.</p>
+      <p class="lede">cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
       <p class="readout"><span class="led lit" aria-hidden="true"></span><b>The first release isn't out yet.</b> There is nothing to download so far. <a href="/install/">What it needs</a></p>
     </section>
 
@@ -194,7 +195,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     <div class="row" id="cl-audit">
       <div><span class="lbl">With cl_audit</span><h3>The quick chat of cl_audit, as an app of its own</h3></div>
       <div class="body">
-        <p>cl_quick is the successor of <a href="https://cl-audit.n-uf.com">cl_audit</a>'s quick chat, in cl_audit's look: the settings window wears it, while the chat itself uses Claude's colours. It runs with or without cl_audit and shares nothing with it while running. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any.</p>
+        <p>cl_quick is the successor of <ExtLink href="https://cl-audit.n-uf.com">cl_audit</ExtLink>'s quick chat, in cl_audit's look: the settings window wears it, while the chat itself uses Claude's colours. It runs with or without cl_audit and shares nothing with it while running. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any.</p>
       </div>
     </div>
 

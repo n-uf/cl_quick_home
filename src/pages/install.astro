@@ -1,5 +1,6 @@
 ---
 import Desktop from "../layouts/Desktop.astro";
+import ExtLink from "../components/ExtLink.astro";
 import { pageOf } from "../data/pages";
 import { orgNode, webPage, breadcrumbs } from "../data/schema";
 
@@ -20,7 +21,7 @@ const jsonLd = [
         <ul class="list">
           <li><b>An Apple silicon Mac.</b></li>
           <li><b>macOS 13 or later.</b></li>
-          <li><b>Claude Code, signed in.</b> cl_quick answers with your own Claude Code sign-in, so a profile needs a Claude Code folder that is signed in. <a href="https://code.claude.com/docs/en/setup">Claude Code's setup guide</a> covers installing and signing in.</li>
+          <li><b>Claude Code, signed in.</b> cl_quick answers with your own Claude Code sign-in, so a profile needs a Claude Code folder that is signed in. <ExtLink href="https://code.claude.com/docs/en/setup">Claude Code's setup guide</ExtLink></li>
         </ul>
       </div>
 
@@ -44,7 +45,7 @@ const jsonLd = [
 
       <div class="card">
         <h4>Already use cl_audit?</h4>
-        <p class="t">cl_quick is the successor of <a href="https://cl-audit.n-uf.com">cl_audit</a>'s quick chat. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any, and it shares nothing with cl_audit while running.</p>
+        <p class="t">cl_quick is the successor of <ExtLink href="https://cl-audit.n-uf.com">cl_audit</ExtLink>'s quick chat. On its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any, and it shares nothing with cl_audit while running.</p>
       </div>
 
       <div class="card">
@@ -55,7 +56,7 @@ const jsonLd = [
       <div class="card">
         <h4>Questions</h4>
         <p class="t">What cl_quick keeps and sends, what incognito means and how accounts switch are in the <a href="/faq/">FAQ</a>. The <a href="/">home page</a> shows it working, step by step.</p>
-        <p class="t">cl_quick is made by <a href="https://n-uf.com">n-uf</a> and is not affiliated with Anthropic.</p>
+        <p class="t">cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
       </div>
     </div>
   </div>
