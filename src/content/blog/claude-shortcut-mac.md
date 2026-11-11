@@ -12,7 +12,7 @@ takeaways:
   - "The Claude desktop shortcut that opens Claude from any app on a Mac is a double-tap of the Option key, set in Settings > Desktop app. Option + Space or a custom shortcut also works."
   - "A separate voice shortcut, Caps Lock by default, is off until you turn it on. Cmd+/ in the Code tab lists that tab's shortcuts."
   - "Anthropic's pages document the quick entry shortcuts, the Code tab's keys and /voice in Claude Code's terminal."
-  - "cl_quick, an independent Mac app, opens a floating Claude Code chat on ⌥Space by default, warns only about real clashes with macOS's shortcuts or another app's key, and needs no Accessibility permission for it."
+  - "cl_quick, an independent Mac app, opens a floating Claude Code chat on ⌥Space by default, warns only about real clashes with macOS's shortcuts or another app's key, and needs no Accessibility permission for it. Its Services entry, Ask cl_quick, opens the same chat with the text you selected."
   - "Claude's Option + Space choice and cl_quick's default are the same key. cl_quick can't see other apps' shortcuts, so if you run both, give them different keys."
 faq:
   - q: "What is the keyboard shortcut to open Claude Desktop on a Mac?"
@@ -66,6 +66,10 @@ sources:
     checked: 2026-11-11
     supports: "Settings ▸ General ▸ Shortcut (⌥Space by default, four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, or Off; warns only about real clashes: a macOS shortcut that uses the key, as this Mac has them set, or a key another app holds when macOS refuses to register it ('taken by another app'), with a button that picks a preset none of macOS's own shortcuts uses; other apps' shortcuts can't be read and macOS lets two apps register the same key, so nothing else is guessed at; registered the way macOS's own app shortcuts are, no Accessibility permission to give); Intro (the bar, the chat window floating on every Space until Esc, never brings another app forward); Install (Apple silicon, macOS 13 or later, Claude Code signed in); The chat (Return, Shift-Return, Esc or ⌘W, ⌘N)."
     quote: "if the key also opens something else, pick another"
+  - title: "cl_quick CHANGELOG"
+    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
+    checked: 2026-11-11
+    supports: "The 'Ask about the selected text in the app you're in' entry: right-click ▸ Services ▸ Ask cl_quick (also the app menu ▸ Services); a keyboard shortcut can be set in System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Services; the bar opens with the selection quoted in the field, ready to edit and not sent; no Accessibility permission, macOS hands the selection over; nothing about it is kept."
 related:
   - /use-cases/claude-code-floating-window/
   - /blog/claude-incognito-chats/
@@ -140,6 +144,8 @@ In Settings ▸ General, **Shortcut** is ⌥Space by default. There are four oth
 
 The shortcut is registered the way macOS's own app shortcuts are, so there's no Accessibility permission to give. Once the chat is open, Return sends, Shift-Return adds a line, Esc or ⌘W hides it and ⌘N starts a new chat.
 
+There's a way in that needs no key at all: the macOS Services menu. Select text in any app, then right-click ▸ Services ▸ **Ask cl_quick**. The bar opens with the selection quoted in the field, ready to edit and not sent, and your question goes under it. macOS hands the selection over, so this needs no Accessibility permission either. If you want a key for it, System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Services is where one can be set.
+
 | | Claude's quick access shortcut | cl_quick's Shortcut |
 |---|---|---|
 | Default | Double-tap Option | ⌥Space |
@@ -154,7 +160,7 @@ The right Claude desktop shortcut on a Mac depends on what you ask and where.
 
 - To show Claude a screenshot or a window, or to dictate with Caps Lock, use quick entry and its double-tap of Option.
 - In the Code tab of Claude Desktop, Cmd+/ and the table above speed up session handling.
-- For a Claude Code question over whatever app you're in, with nothing saved on the Mac, there's cl_quick on ⌥Space.
+- For a Claude Code question over whatever app you're in, with nothing saved on the Mac, there's cl_quick on ⌥Space, or **Ask cl_quick** in the Services menu for text you've selected.
 - To open a new chat from a script or another tool, use the `claude://claude.ai/new` link.
 
 Quick entry and cl_quick can run side by side. They're separate apps with separate shortcuts, so the one rule is to give them different keys. Each app's Settings shows its own.
