@@ -44,6 +44,7 @@ const jsonLd = [orgNode, {
   alternateName,
   description: "cl_quick is a Claude quick chat for the Mac: a menu bar app with no Dock icon. Press ⌥Space over any app and a chat bar opens; the first message turns it into a chat window that floats on every Space and never brings another app forward. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.",
   applicationCategory: "UtilitiesApplication",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },   // the app costs nothing; no downloadUrl and no version until the release
   operatingSystem: "macOS 13 or later",
   url: `${site}/`,
   image: `${site}/icon-192.png`,
@@ -71,7 +72,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     <section class="intro">
       <p class="lbl">Menu bar app for Mac</p>
       <h1>A Claude quick chat for your Mac, on <span class="nb">⌥Space</span></h1>
-      <p class="lede">cl_quick is a Claude quick chat that lives in the Mac's menu bar. Press <span class="kbd">⌥Space</span> over any app and a floating bar opens; your first message turns it into a chat window that stays on every Space until you press Esc. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.</p>
+      <p class="lede">cl_quick is a free menu bar app for Mac, a Claude quick chat. Press <span class="kbd">⌥Space</span> over any app and a floating bar opens; your first message turns it into a chat window that stays on every Space until you press Esc. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.</p>
       <p class="lede">cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
       <p class="readout"><span class="led lit" aria-hidden="true"></span><b>The first release isn't out yet.</b> There is nothing to download so far. <a href="/install/">What it needs</a></p>
     </section>
@@ -178,7 +179,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Limits", "Gone"];
     <div class="row" id="claude-code">
       <div><span class="lbl">Answers</span><h3>Your own Claude Code answers</h3></div>
       <div class="body">
-        <p>cl_quick uses your own Claude Code sign-in: your Claude Code answers, on the profile's account in use, and every chat counts against that account's limits. It keeps one <code>claude</code> running while a chat is open and ends it after 15 minutes idle.</p>
+        <p>cl_quick uses your own Claude Code sign-in: your Claude Code answers, on the profile's account in use, and every chat counts against that account's limits. It keeps one <code>claude</code> running while a chat is open and ends it after 15 minutes idle. The app is light, too: it has no Dock icon and is under 5 MB.</p>
         <p>It needs an Apple silicon Mac, macOS 13 or later and Claude Code, signed in. <a href="/install/">Install: what it needs</a></p>
       </div>
     </div>
