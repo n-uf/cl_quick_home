@@ -5,11 +5,12 @@ import "../styles/home.css";
 import { pageOf } from "../data/pages";
 import BigKey from "../components/BigKey.astro";
 import { site, release } from "../data/site";
-import { hasBlog } from "../data/content";
+import { hasLiveBlog } from "../data/content";
 import { orgNode, orgRef, appRef } from "../data/schema";
 
-// the three big keys: release-tied, so they stay as links to /install/ or as disabled keys until site.ts has the targets
-const blogLive = await hasBlog();
+// the big keys: Download links /install/ until site.ts has a download; Blog appears only once an article is live (a draft,
+// even in a preview build, doesn't count)
+const blogLive = await hasLiveBlog();
 
 // Main search: "claude quick chat". The title, description, h1 and first paragraph all lead with it.
 const page = pageOf("/");
@@ -159,18 +160,19 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
     </div>
   </div>
 
-  <!-- the story's end: three big keys, in the stage's column. Download goes to /install/ until there is a release; GitHub
-       and Blog are disabled keys until site.ts has the repository and there is a live article. (Outside .home, so the
-       pinned stage ends with the story and never slides over them.) -->
+  <!-- the story's end: the big keys, in the stage's column. Download goes to /install/ until there is a release; GitHub
+       is a disabled key until site.ts has the repository; Blog appears only once there is a live article (operator,
+       2026-11-11: no Blog key while there are no articles). (Outside .home, so the pinned stage ends with the story and
+       never slides over them.) -->
   <div class="gethost">
     <!-- with the script on, the row sticks once the reader is past it: under the menu bar on a computer, as a bar along
          the bottom on a phone (see the script). The slot keeps the row's place, so nothing moves when it sticks. -->
     <div class="getslot">
       <span class="get-sentinel" aria-hidden="true"></span>
-      <nav class="getrow plate" aria-label="Download, GitHub and blog">
+      <nav class="getrow plate" data-keys={blogLive ? 3 : 2} aria-label={blogLive ? "Download, GitHub and blog" : "Download and GitHub"}>
         <BigKey primary label="Download" more=" for Mac" href={release.downloadUrl ?? "/install/"} sub={release.downloadUrl ? "Apple silicon · macOS 13+" : "Not released yet"} />
         <BigKey label="GitHub" href={release.repoUrl} arrow sub={release.repoUrl ? "n-uf/cl_quick" : "With the first release"} />
-        <BigKey label="Blog" href={blogLive ? "/blog/" : null} sub={blogLive ? "Guides and how-tos" : "First posts with the release"} />
+        {blogLive && <BigKey label="Blog" href="/blog/" sub="Guides and how-tos" />}
       </nav>
     </div>
   </div>

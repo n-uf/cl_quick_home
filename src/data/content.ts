@@ -50,6 +50,11 @@ export async function hasUseCases() {
 export async function hasBlog() {
   return (await getPosts()).length > 0;
 }
+/** Is a blog article live (published), in any build? The home page's Blog key follows this, not the preview's drafts
+ *  (operator, 2026-11-11: no Blog key while there are no articles). */
+export async function hasLiveBlog() {
+  return blogFiles.length > 0 && (await getCollection("blog")).some(isLive);
+}
 
 export const pathOf = (section: Section, id: string) => `${sections[section].path}${id}/`;
 /** "2026-11-02" date -> "2 Nov 2026" */
