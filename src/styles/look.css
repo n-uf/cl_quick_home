@@ -193,7 +193,7 @@ figure.shot figcaption { margin-top: 9px; color: var(--muted); font-size: 12.5px
 
 @media (max-width: 600px) {
   body { font-size: 15px; }
-  .menubar { gap: 14px; padding: 0 12px; }
+  .menubar { gap: 14px; padding: 0 12px; background: rgba(24,24,26,.97); }   /* nearly solid on a phone: page text scrolling under it must not show through the menu items */
   .mb-links { gap: 14px; }
   .mb-clock, .mb-icon { display: none; }
   .page { padding: 16px 16px 32px; }
