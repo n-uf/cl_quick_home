@@ -344,6 +344,18 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
 @media (max-width: 520px) {
   .getrow, .getrow[data-keys="2"] { grid-template-columns: minmax(0, 1fr); }
 }
+/* a phone: the pinned demo is compact so it no longer hides the text it sits over. The stage (about 55 % of the width) and the
+   step keys (two columns of 44 px keys) stand side by side, about 25 % of the screen high, under the 44 px menu bar. */
+@media (max-width: 600px) {
+  .rig { top: 44px; display: flex; align-items: center; gap: 10px; padding: 6px 16px 12px;
+    background: linear-gradient(180deg, var(--bg) calc(100% - 12px), rgba(16,16,18,0)); }
+  .rig .stage { flex: 1 1 0; min-width: 0; width: auto; }
+  .rig .keys { flex: none; width: 136px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 7px; }
+  .rig .keys .key { height: 44px; padding: 0; }   /* 44 px step keys */
+  .rig .keybtn { padding: 5cqw; margin: -5cqw; border-radius: 5cqw; }   /* the small stage's key press keeps a 44 px hit area */
+  .beat { scroll-margin-top: calc(var(--rig-h, 210px) + 52px); }   /* clears the pinned demo and the 44 px menu bar */
+  .home-faq .more a, .row figure.shot + p a { display: inline-block; padding: 13px 0; margin: -13px 0; }   /* a 44 px tap target, the line takes the same room */
+}
 @media (prefers-reduced-motion: reduce) {
   .layer, .caps, .keybtn .kcap, .live-send, .home[data-js] .beat { transition: none; }
   .getslot.stuck .getrow { animation: none !important; }
