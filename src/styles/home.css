@@ -296,10 +296,10 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   @keyframes get-up { from { opacity: 0; transform: translateY(8px); } }
   .getslot.stuck .getrow {
     top: auto; bottom: 0; left: 0; width: 100%; padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); gap: 8px; border-radius: 12px 12px 0 0;
-    grid-template-columns: repeat(3, minmax(0, 1fr)); background: rgba(40, 40, 44, .95); animation: get-up .2s ease;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); background: rgba(40, 40, 44, .98); animation: get-up .2s ease;
   }
   .getslot.stuck .getrow[data-keys="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; left: 0; }
-  .getslot.stuck .bkey { min-height: 40px; padding: 6px 4px; }
+  .getslot.stuck .bkey, .getslot.stuck .bkey.primary { min-height: 44px; padding: 6px 4px; }   /* 44 px tap targets */
   .getslot.stuck .bkey .bk-l { font-size: 10px; letter-spacing: .05em; white-space: normal; }
   /* the compact bar says DOWNLOAD only; " for Mac" stays for screen readers */
   .getslot.stuck .bk-more { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -338,6 +338,11 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   .sheet { margin-top: 36px; }
   .home-faq { margin-top: 36px; padding-top: 24px; }
   .row { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 24px 0; }
+}
+/* a small phone: the in-flow keys stand one above the other. "Download for Mac" (nowrap) is about 190 px wide and does not
+   fit in half of a 375 px screen; .getrow[data-keys="2"] (two across) would otherwise beat the plain .getrow rule above. */
+@media (max-width: 520px) {
+  .getrow, .getrow[data-keys="2"] { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .layer, .caps, .keybtn .kcap, .live-send, .home[data-js] .beat { transition: none; }
