@@ -6,7 +6,9 @@ import { pageOf } from "../data/pages";
 import BigKey from "../components/BigKey.astro";
 import { site, release } from "../data/site";
 import { hasLiveBlog } from "../data/content";
-import { orgNode, orgRef, appRef } from "../data/schema";
+import { orgNode, orgRef, appRef, faqPage } from "../data/schema";
+import { homeFaq } from "../data/home-faq";
+import { plain } from "../data/faq";
 
 // the big keys: Download links /install/ until site.ts has a download; Blog appears only once an article is live (a draft,
 // even in a preview build, doesn't count)
@@ -61,7 +63,9 @@ const jsonLd = [orgNode, {
   ],
   author: orgRef,
   publisher: orgRef,
-}];
+},
+// the visible FAQ below, word for word (the answers have no markup but <code>, which plain() drops)
+faqPage(homeFaq.map((x) => ({ q: x.q, a: x.a.map(plain).join(" ") })))];
 
 // the steps: each has the stage picture it shows (see home.css: data-beat on .home)
 const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
@@ -258,6 +262,19 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- the FAQ for search: an h2, then each question an h3 with its answer as the one paragraph straight under it, all in
+       the server HTML (no script, no accordion). Its FAQPage data is in jsonLd above. -->
+  <section class="home-faq" aria-labelledby="home-faq-h">
+    <h2 id="home-faq-h">Questions</h2>
+    {homeFaq.map((x) => (
+      <div class="qa">
+        <h3>{x.q}</h3>
+        <p set:html={x.a[0]} />
+      </div>
+    ))}
+    <p class="more"><a href="/faq/">More questions</a></p>
   </section>
 </Desktop>
 
