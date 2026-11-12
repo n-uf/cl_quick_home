@@ -272,6 +272,14 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
 .row .exact { padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,.26); box-shadow: var(--well); max-width: 66ch; }
 .row .exact p { color: var(--soft); max-width: none; }
 .row .exact p + p { margin-top: 8px; }
+.home-faq { margin: 54px 0 0; padding-top: 30px; border-top: 1px solid rgba(0,0,0,.55); box-shadow: inset 0 1px 0 rgba(255,255,255,.04); display: grid; gap: 22px; max-width: 760px; }
+.home-faq h2 { font-size: 26px; letter-spacing: -.02em; line-height: 1.2; }
+.home-faq .qa { display: grid; gap: 6px; }
+.home-faq h3 { font-size: 17px; line-height: 1.35; font-weight: 650; letter-spacing: -.01em; }
+.home-faq .qa p { color: var(--prose); font-size: 15.5px; line-height: 1.7; max-width: 66ch; }
+.home-faq a { color: var(--link); text-underline-offset: 2px; }
+.home-faq code { padding: 1px 5px; border-radius: 4px; background: var(--chip); font-size: .88em; overflow-wrap: anywhere; }
+.home-faq .more { font-size: 15.5px; }
 .next { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .next .key { height: 32px; padding: 0 16px; }
 
@@ -328,6 +336,7 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   .beat::before { width: 32px; height: 32px; top: 22px; }
   .beat h2 { font-size: 20px; }
   .sheet { margin-top: 36px; }
+  .home-faq { margin-top: 36px; padding-top: 24px; }
   .row { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 24px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
