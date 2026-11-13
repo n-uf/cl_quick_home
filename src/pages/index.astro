@@ -57,7 +57,8 @@ const jsonLd = [orgNode, {
     "The live 5-hour and weekly limits of the account in use, in the bar, in the chat's header and in the menu bar menu",
     "Profiles with several accounts each, with Switch… through Claude Code's own sign-in",
     "Model and thinking pickers, and a mic button that starts macOS Dictation (⌘D turns it on and off)",
-    "Images pasted or dropped into the chat, scaled down in memory, nothing saved",
+    "Images, PDFs and text files pasted or dropped into the chat, kept in memory, nothing saved",
+    "Links and search through Claude Code's two web tools, on by default and off in Settings",
     "Ask cl_quick in the macOS Services menu, for selected text",
     "Incognito chats: nothing is saved on the Mac",
   ],
@@ -148,7 +149,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
         </li>
         <li class="beat" id="step-3">
           <h2>Type, and press Return</h2>
-          <p>Return sends and Shift-Return adds a line. The mic button, left of Send, starts macOS Dictation into the field, and ⌘D turns it on and off. Paste or drop an image and it shows as a thumbnail over the field. The keys button lists the shortcuts.</p>
+          <p>Return sends and Shift-Return adds a line. The mic button, left of Send, starts macOS Dictation into the field, and ⌘D turns it on and off. Paste or drop an image or a PDF and it shows over the field. The keys button lists the shortcuts.</p>
         </li>
         <li class="beat" id="step-4">
           <h2>The first message makes it a chat window</h2>
@@ -160,7 +161,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
         </li>
         <li class="beat" id="step-6">
           <h2>Your limits stay in view</h2>
-          <p>When the 5-hour limit or the week is full, the chat's notice names the window that is full and when it resets, and offers the profile with the most room (<b>Ask on Work</b>). If the profile has a standby account with room, it also offers to switch to it (<b>Switch to …</b>). The bar has a usage indicator, and in the chat window the header shows only the 5h and wk meters, in green, amber from 50%, red from 80% and crimson from 95%. The menu bar menu has a 5-hour and a Week bar for each profile's account in use.</p>
+          <p>When the 5-hour limit or the week is full, the chat's notice names the window that is full and when it resets, and offers the profile with the most room (<b>Ask on Work</b>). If the profile has a standby account, it also offers the one seen most recently, with no numbers (<b>Switch to …</b>). The bar has a usage indicator, and in the chat window the header shows only the 5h and wk meters, in green, amber from 50%, red from 80% and crimson from 95%. The menu bar menu has a 5-hour and a Week bar for each profile's account in use.</p>
         </li>
       </ol>
     </div>
@@ -202,7 +203,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
       <div class="body">
         <p>A profile is a Claude Code folder cl_quick chats on: <code>~/.claude</code>, a <code>~/.claude-*</code> folder, or any folder set with <code>CLAUDE_CONFIG_DIR</code>. On its first run cl_quick takes every signed-in one it finds, named after the folder.</p>
         <p>A Claude Code folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to its folder: the one signed in now is <b>in use</b>, the others are <b>standby</b>. In the profile's page in Settings each standby account is a row with two buttons, <b>Switch…</b> and <b>Forget…</b>; pressing <b>Switch…</b> asks first, then opens Claude Code's own sign-in in Terminal. cl_quick never sees a password or a token and never touches the Keychain.</p>
-        <p>The menu bar icon's menu has a block for each profile: its name with a dot in the colour of its fuller limit, the account in use with a green lamp (its address blurred until the pointer is on it), the <b>5-hour</b> and <b>Week</b> bars with their share and the time to reset, and how old the numbers are. Only the account in use shows usage, and a profile with no numbers yet says "No usage yet". A profile with standby accounts also has <b>Switch account ›</b>. When the numbers are over 5 minutes old, opening the menu asks Claude Code for them again in the background (<code>get_usage</code> only, no message to a model).</p>
+        <p>The menu bar icon's menu has a block for each profile: its name with a dot in the colour of its fuller limit, the account in use with a green lamp (its address blurred until the pointer is on it), the <b>5-hour</b> and <b>Week</b> bars with their share and the time to reset, and how old the numbers are. Only the account in use shows usage, and a profile with no numbers yet says "No usage yet". A profile with standby accounts also has <b>Switch account ›</b>. When the numbers are over 5 minutes old, opening the menu asks Claude Code for them again in the background (<code>get_usage</code> only, no message to a model). Older numbers turn grey ("Last known 12 min ago"), and ones over an hour old aren't shown ("No recent numbers").</p>
         <figure class="shot">
           <img src="/img/settings-accounts.webp" width="1210" height="687" alt="Settings: an account in use and two on standby" loading="lazy" decoding="async" />
           <figcaption>A profile's page in Settings, with sample accounts: one in use, two on standby.</figcaption>
@@ -231,6 +232,8 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
           <figcaption>Dictation on: the mic button is lit while macOS types into the field.</figcaption>
         </figure>
         <p>Images go in with ⌘V (a screenshot or picture on the clipboard, or image files copied in Finder) or by dropping them on the bar or the chat window. Each shows as a thumbnail over the field with a ✕, up to 5 to a message, and an image alone is a message too. It is scaled down in memory and no file is made for it, so the chat stays incognito.</p>
+        <p>PDFs (up to 15 MB and 100 pages) and text or code files (up to 400 KB, UTF-8) go in the same ways, and show as chips next to the thumbnails. A message takes up to 5 attachments with the pictures. They stay in memory only, and Claude Code still has no file tools, so it sees nothing but what you attached.</p>
+        <p>Links and search is on by default. Paste a link, or ask about something current, and Claude can read the page or search the web. Claude Code gets only its two web tools, WebFetch and WebSearch, and a muted line says what it is doing. Pages count toward your usage. <b>Settings ▸ General ▸ Links and search</b> turns it off.</p>
       </div>
     </div>
 
@@ -241,7 +244,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
           <p><b>Nothing is saved on this Mac.</b> Your messages still go to Anthropic under the profile's account. It is not Anthropic's own incognito mode.</p>
         </div>
         <p>A chat lives only in the running Claude Code, which writes no transcript, so it ends with it: after 15 minutes idle, on New chat (⌘N), on another profile or account, if Claude Code crashes, or when cl_quick quits. The window then says "This chat ended after 15 minutes idle. Nothing was saved." and the next message starts a new chat. <a href="/faq/#keeps">What cl_quick keeps and sends</a></p>
-        <p>Apart from your messages, the one thing cl_quick sends is an update check: about once a day it asks GitHub Releases for its latest release, anonymously, and a newer one shows as "Update available" in the menu bar menu. Nothing is downloaded or installed by the app. <b>Settings ▸ General ▸ Updates</b> turns it off, and then no request is made. <a href="/faq/#sends">What it sends, exactly</a></p>
+        <p>Apart from your messages, the one thing cl_quick sends is an update check: about once a day it asks GitHub Releases for its latest release, anonymously, and a newer one shows as "Update available" in the menu bar menu. Nothing is downloaded or installed by the app. <b>Settings ▸ General ▸ Updates</b> turns it off, and then no request is made. With Links and search on, Claude Code may fetch pages or search the web for an answer, and the pages count toward your usage; cl_quick stores none of the page text. Files you attach are kept in memory only. <a href="/faq/#sends">What it sends, exactly</a></p>
       </div>
     </div>
 
