@@ -20,9 +20,9 @@ faq:
   - q: "Does the floating window take over my current app?"
     a: "No. It never brings another app forward, and it stays floating on every Space until you hide it with Esc, ⌘W or ✕. The panel takes the keyboard when it opens, so you can type into it straight away. cl_quick is a menu bar app with no Dock icon."
   - q: "Can the chat open my files or run commands?"
-    a: "No. It can't open your files or folders or run commands. With Links and search on, which is the default, Claude Code has its two web tools and nothing else: no Bash, no files, no MCP. It reads only what you attach, such as images, PDFs and text files, or text you bring in with Ask cl_quick."
-  - q: "How do I choose which profile answers in the floating window?"
-    a: "Use the profile key in the row under the field. It shows the profile's name and a dot in the colour of its fuller limit, and its menu lists each profile with its week, so you can see which one will answer before you send. The + tile along the top of Settings adds another profile."
+    a: "No. It can't open your files or folders or run commands. With Links and search on (the default), Claude Code has its two web tools and nothing else: no Bash, no files, no MCP. Of your files, it reads only what you attach, such as images, PDFs and text files, or text you bring in with Ask cl_quick."
+  - q: "Can I pick which Claude Code account answers in the floating window?"
+    a: "Yes, by profile. Each profile is a Claude Code folder with its own account in use, and the profile key under the field picks which one answers. Its menu lists each profile with its week and the address of its account in use, so you can check before you send. The + tile in Settings adds a profile."
   - q: "Is the floating chat saved?"
     a: "Not on your Mac. cl_quick's quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account. A chat ends after 15 minutes idle, on New chat, on another profile or account, or when cl_quick quits."
 sources:
@@ -132,7 +132,7 @@ When a profile's 5-hour limit or week is full, the chat's notice names the windo
 
 ## What a Claude Code floating window can't do
 
-With Links and search on, which is the default, cl_quick runs Claude Code with its two web tools, WebFetch and WebSearch, and nothing else: no Bash, no files, no MCP servers. Turned off, it has no tools at all. Either way it can't open your files or folders, run a command or look at your screen by itself; it reads only what you attach to a message. It's a chat, not an agent. When a question needs Claude to see your project, use Claude Code in a terminal.
+With Links and search on, which is the default, cl_quick runs Claude Code with its two web tools, WebFetch and WebSearch, and nothing else: no Bash, no files, no MCP servers. Turned off, it has no tools at all. Either way it can't open your files or folders, run a command or look at your screen by itself; of your own files, it sees only what you attach to a message. It's a chat, not an agent. When a question needs Claude to see your project, use Claude Code in a terminal.
 
 cl_quick's quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account. A chat ends after 15 minutes idle, on New chat, on another profile or account, or when cl_quick quits, and it's never resumed. cl_quick stores none of the page text Claude reads, and attached files stay in memory. The [Claude Code in incognito](/use-cases/claude-code-incognito/) page explains exactly what that covers and how to check it.
 
