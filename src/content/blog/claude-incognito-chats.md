@@ -63,7 +63,7 @@ sources:
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
     checked: 2026-11-11
-    supports: "Intro (quick chats are incognito, the exact sentence, how a chat ends, the floating chat on a shortcut answered by your own Claude Code); What it keeps, and what it sends (--no-session-persistence, no transcript, your messages through Claude Code, and the one other thing it sends: an anonymous update check against GitHub Releases about once a day, which Settings ▸ General ▸ Updates turns off); Links and search (on by default; Claude Code fetches the pages for that answer only and cl_quick stores none of the text); attached files kept in memory only."
+    supports: "Intro (quick chats are incognito, the exact sentence, how a chat ends, the floating chat on a shortcut answered by your own Claude Code); What it keeps, and what it sends (--no-session-persistence, no transcript, your messages through Claude Code, and the one other thing it sends: an anonymous update check against GitHub Releases about once a day, which Settings ▸ General ▸ Updates turns off); Links and search (on by default; Claude Code fetches the pages for that answer only, the text goes to the model as part of the chat, under your account, and cl_quick stores none of it); attached files go to Claude Code inside the message, stay in the chat's conversation under the same account, and are kept in memory only."
 related:
   - /use-cases/claude-code-incognito/
   - /use-cases/claude-code-floating-window/

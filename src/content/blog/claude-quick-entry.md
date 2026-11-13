@@ -52,7 +52,7 @@ sources:
   - title: "cl_quick CHANGELOG"
     url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
     checked: 2026-11-11
-    supports: "The 'Ask about the selected text in the app you're in' entry (right-click ▸ Services ▸ Ask cl_quick: the selection quoted in the field, ready to edit and not sent, no Accessibility permission) the 'Images in the chat' entry (⌘V or dropping image files, up to 5, scaled down in memory, nothing saved), the 'Files in the chat' entry (PDFs and text files, 5 attachments a message with the pictures, kept in memory) and the 'Links and search' entry (Claude Code's two web tools, on by default)."
+    supports: "The 'Ask about the selected text in the app you're in' entry (right-click ▸ Services ▸ Ask cl_quick: the selection quoted in the field, ready to edit and not sent, no Accessibility permission), the 'Images in the chat' entry (⌘V or dropping image files, up to 5, scaled down in memory, nothing saved), the 'Files in the chat' entry (PDFs and text files, 5 attachments a message with the pictures, kept in memory) and the 'Links and search' entry (Claude Code's two web tools, on by default)."
 related:
   - /blog/claude-shortcut-mac/
   - /use-cases/claude-code-floating-window/
