@@ -19,8 +19,8 @@ faq:
     a: "Double-tap the Option key from any app. It opens quick entry, a text box where you type a message and start a new chat. Claude Desktop has to be running, and the shortcut has to be on in Settings > Desktop app."
   - q: "How do I change the Claude desktop shortcut on Mac?"
     a: "Open Claude Desktop, go to Settings > Desktop app (or Settings > System, under This computer, in the older layout), and next to Quick access shortcut pick Double-tap Option, Option + Space or a custom keyboard shortcut. The Voice shortcut menu offers Caps Lock, a custom shortcut, or disabling it entirely."
-  - q: "Can I open cl_quick without a keyboard shortcut?"
-    a: "Yes. Set Shortcut to Off in Settings ▸ General and open the chat from Quick chat in the menu bar icon's menu, or select text and use right-click ▸ Services ▸ Ask cl_quick. Open at login keeps cl_quick in the menu bar, ready. It is a menu bar app with no Dock icon."
+  - q: "What keyboard shortcuts does Claude Desktop have on a Mac?"
+    a: "Press Cmd+/ in the Code tab to see them all, Anthropic's docs say. Among them, Cmd+N starts a new session, Cmd+W closes it, Ctrl+Tab switches between sessions, Esc stops Claude's response and Cmd+; opens a side chat. These keys apply to the Code tab; on Windows and Linux, Cmd becomes Ctrl."
   - q: "Does the Claude shortcut clash with Spotlight?"
     a: "Not by default. Apple's page gives Command-Space for Spotlight and Option-Command-Space for a Finder search window. Claude's choices for the quick access shortcut are a double-tap of Option, Option + Space and a custom one, so only a custom choice could land on Apple's keys."
   - q: "Can I open a Claude chat over any app without Claude Desktop?"
@@ -33,7 +33,7 @@ sources:
     quote: "Double-tap the Option key to open Claude from any app."
   - title: "Claude Code docs: Use Claude Code Desktop (Keyboard shortcuts)"
     url: "https://code.claude.com/docs/en/desktop"
-    checked: 2026-11-11
+    checked: 2026-11-13
     supports: "Cmd+/ shows all shortcuts in the Code tab; the macOS keys table (Cmd N, Cmd W, Ctrl Tab / Ctrl Shift Tab, Esc, Cmd Shift D, Cmd Shift B, Cmd ;, Cmd Shift M, I and E); the table applies to the Code tab; Shift+Tab doesn't cycle permission modes in Desktop; on Windows and Linux Cmd becomes Ctrl, Cmd+Option becomes Alt, Cmd+Ctrl becomes Ctrl+Alt."
     quote: "Press Cmd+/ on macOS or Ctrl+/ on Windows to see all shortcuts available in the Code tab."
   - title: "Claude Code docs: Voice dictation"
