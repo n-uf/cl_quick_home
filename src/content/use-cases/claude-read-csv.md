@@ -50,6 +50,11 @@ sources:
     checked: 2026-11-13
     supports: "Plain text files such as .csv and .md can be read as text or uploaded with an explicit text/plain content type; to analyze datasets instead of reading them as text, upload them for the code execution tool; .docx and .xlsx aren't supported in document blocks and must be converted to text first."
     quote: "To analyze datasets instead of reading them as text"
+  - title: "Claude Code docs: Tools reference"
+    url: "https://code.claude.com/docs/en/tools-reference"
+    checked: 2026-11-13
+    supports: "Claude Code reads files with its Read tool and runs commands with Bash."
+    quote: "Executes shell commands in your environment."
 related:
   - /
   - /faq/
