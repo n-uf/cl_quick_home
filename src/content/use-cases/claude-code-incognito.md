@@ -22,7 +22,7 @@ faq:
   - q: "Is a cl_quick chat saved anywhere on my Mac?"
     a: "No. A chat lives only in the running claude and ends with it, and Claude Code writes no transcript for it. Images and attached files stay in memory, and a file you drop is read, never copied. Any claude start may still refresh a timestamp in the profile's .claude.json and back that file up. That is Claude Code's housekeeping."
   - q: "Are the pages and files I give cl_quick stored?"
-    a: "Not by cl_quick. Attached PDFs and text files go with the message and stay in memory only. With Links and search on, Claude Code fetches pages for that answer, and cl_quick stores none of the page text. The text still goes to the model as part of the chat, under your account, so it is not hidden from Anthropic."
+    a: "Not by cl_quick. Attached PDFs and text files go to Claude Code inside the message and are kept in memory only, never copied to a file or cache. With Links and search on, Claude Code fetches pages for that answer only. The page text and your files go to the model as part of the chat, under the profile's account."
   - q: "How is this different from Claude's incognito chats?"
     a: "Claude's incognito chats are a Claude app feature, run by Anthropic. Anthropic's page says they aren't saved to chat history or memory, aren't used for training, and are retained 30 days by default. cl_quick's incognito is Claude Code with session saving off, and it only covers what is saved on your Mac."
 sources:
