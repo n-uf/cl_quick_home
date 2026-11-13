@@ -16,13 +16,13 @@ takeaways:
   - "cl_quick is independent and not affiliated with Anthropic. What you dictate becomes a message that still goes to Anthropic under the profile's account."
 faq:
   - q: "How do I use voice input with Claude on a Mac?"
-    a: "In Claude Desktop, turn on the quick entry voice shortcut (Caps Lock, off by default, macOS 14 or later), press the mic in the message box to dictate, or start voice mode from the sound wave symbol in a chat. In any text field, macOS Dictation works too: turn it on in System Settings > Keyboard > Dictation and start it with its shortcut or Edit > Start Dictation."
+    a: "In Claude Desktop, turn on the quick entry voice shortcut (Caps Lock, off by default, macOS 14 or later), press the mic in the message box, or start voice mode from the sound wave symbol. In any text field macOS Dictation works too: turn it on in System Settings > Keyboard > Dictation, then use its shortcut."
   - q: "What is the difference between Claude dictation and voice mode?"
     a: "Dictation turns your speech into text so you can send a written prompt, and Claude replies in text. Voice mode is a spoken conversation where Claude talks back. Anthropic's help page says voice conversations count toward your regular usage limits."
   - q: "Why is Claude dictation not working on my Mac?"
     a: "Start with the causes the sources name. For Quick Entry voice: the voice shortcut is off by default, it needs macOS 14 or later, and it needs the Speech recognition permission in System Settings > Privacy & Security. For macOS Dictation, Apple lists Dictation being off, the wrong language or shortcut, and microphone problems."
-  - q: "Is cl_quick free?"
-    a: "Yes, the app is free. It uses your own Claude Code sign-in, so every chat counts against that account's Claude plan limits."
+  - q: "Can I use the keyboard instead of the mic button in cl_quick?"
+    a: "Yes. ⌘D turns Dictation on and off like a click on the mic button, and it also works on a Dictation that macOS's own shortcut started. Return sends the text, which stops Dictation; ⌘N, Esc and ⌘W stop it too. The keys button under the field lists ⌘D with the other shortcuts."
   - q: "How does the mic button in cl_quick work?"
     a: "It starts macOS Dictation into the chat's field. ⌘D does the same from the keyboard, on and off, also for a Dictation that macOS's own shortcut started. A click again, sending, a new chat or hiding the window stops it. If Dictation is off in macOS, cl_quick says once where to turn it on."
 sources:
