@@ -87,8 +87,6 @@ Paste the link into the bar with your question, for example a URL and "what does
 
 Ask about something current with no link, and Claude can search instead. The line then reads "Searching the web for “…”…", and it goes when the text resumes. The answer is the whole reply, the text before the call and after it, and Copy and ⌘⇧C take all of it.
 
-![cl_quick chat with the line Searching the web for…](/img/qc-searching.webp "cl_quick's chat window, drawn from sample data: the muted line \"Searching the web for “swift concurrency actors”…\" under a question, with the Stop button.")
-
 **Stop** works while a page is being read. It ends the answer where it is, and the chat goes on. The rest of the window, from the shortcut to Esc, is on the [Claude Code floating window](/use-cases/claude-code-floating-window/) page.
 
 ### Prompts that work with a link
