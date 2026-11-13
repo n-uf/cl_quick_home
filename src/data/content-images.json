@@ -1,0 +1,10 @@
+{
+  "qc-answer.webp": { "width": 880, "height": 880 },
+  "qc-dictating.webp": { "width": 880, "height": 154 },
+  "qc-ended.webp": { "width": 880, "height": 880 },
+  "qc-files-bar.webp": { "width": 880, "height": 287 },
+  "qc-files.webp": { "width": 880, "height": 972 },
+  "qc-full.webp": { "width": 880, "height": 384 },
+  "qc-reading.webp": { "width": 880, "height": 972 },
+  "qc-typing.webp": { "width": 880, "height": 154 }
+}
