@@ -11,7 +11,7 @@ export const pages: PageInfo[] = [
   { path: "/install/", updated: updated["/install/"], title: "Install cl_quick: what it needs on a Mac",
     description: "cl_quick's first release isn't out yet. It needs an Apple silicon Mac, macOS 13 or later and a signed-in Claude Code. Here is how it works." },
   { path: "/faq/", updated: updated["/faq/"], title: "cl_quick FAQ: incognito, accounts, what it sends",
-    description: "What cl_quick keeps and sends, what incognito means, how accounts switch, and how the model, thinking, shortcut and voice controls work." },
+    description: "What cl_quick keeps and sends, what incognito means, how accounts switch, and how the model, shortcut, voice, links and files work." },
 ];
 export const pageOf = (path: string): PageInfo => {
   const p = pages.find((x) => x.path === path);

@@ -32,9 +32,17 @@ const jsonLd = [
         <ol class="steps">
           <li><b>A profile is a Claude Code folder.</b><span><code>~/.claude</code>, a <code>~/.claude-*</code> folder, or any folder set with <code>CLAUDE_CONFIG_DIR</code>. On its first run cl_quick takes every signed-in one it finds, named after the folder.</span></li>
           <li><b>The bar opens, and a <code>claude</code> starts.</b><span>One <code>claude</code> at a time, on the profile's account in use. It is kept while a chat is open and ended after 15 minutes idle.</span></li>
-          <li><b>Your Claude Code answers.</b><span>Each chat counts against that account's limits. Claude Code runs with no tools, no MCP servers and no settings files, and with its own non-essential traffic (telemetry, error reports, update checks) off.</span></li>
-          <li><b>The limits come from the same <code>claude</code>.</b><span>It is asked for the account's 5-hour and weekly limits, which sends no message to a model, and the chat shows them in its bar and its header.</span></li>
+          <li><b>Your Claude Code answers.</b><span>Each chat counts against that account's limits. Claude Code runs with no MCP servers and no settings files, and with its own non-essential traffic (telemetry, error reports, update checks) off. It has no tools either, except the two web tools below.</span></li>
+          <li><b>The limits come from the same <code>claude</code>.</b><span>It is asked for the account's 5-hour and weekly limits, which sends no message to a model, and the chat shows them in its bar and its header. Numbers older than 5 minutes show grey, as last known.</span></li>
         </ol>
+      </div>
+
+      <div class="card">
+        <h2 class="cap">Links, search and files</h2>
+        <ul class="list">
+          <li><b>Links and search</b> is on by default: Claude Code gets its two web tools, WebFetch and WebSearch, to read a page you link or search the web. Pages count toward your usage, and Settings ▸ General turns it off.</li>
+          <li><b>Files:</b> drop or paste PDFs (up to 15 MB and 100 pages) and text or code files (up to 400 KB) next to pictures, up to 5 a message. They stay in memory, and Claude Code has no file tools.</li>
+        </ul>
       </div>
     </div>
 
@@ -48,7 +56,7 @@ const jsonLd = [
       <div class="card">
         <h2 class="cap">Updates</h2>
         <p class="t"><b>Updates</b> in Settings ▸ General is on by default. About once a day cl_quick asks GitHub Releases for cl_quick's latest release, anonymously, and when a newer one exists the menu bar menu shows "Update available", which opens the release's page in your browser. The app downloads and installs nothing itself.</p>
-        <p class="t">cl_quick's own update check is the one thing it sends besides your messages. Turn Updates off and no request is made. <a href="/faq/#sends">What it sends, exactly</a></p>
+        <p class="t">cl_quick's own update check is the one thing it sends besides your messages. Turn Updates off and no request is made. With Links and search on, Claude Code may fetch pages or search the web for an answer. <a href="/faq/#sends">What it sends, exactly</a></p>
       </div>
 
       <div class="card">
@@ -62,7 +70,7 @@ const jsonLd = [
       </div>
 
       <div class="card">
-        <h2 class="cap">Questions</h2>
+        <h2 class="cap">More answers</h2>
         <p class="t">What cl_quick keeps and sends, what incognito means and how accounts switch are in the <a href="/faq/">FAQ</a>. The <a href="/">home page</a> shows it working, step by step.</p>
         <p class="t">cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
       </div>
