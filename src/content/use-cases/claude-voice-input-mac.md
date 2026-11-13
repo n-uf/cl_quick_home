@@ -22,7 +22,7 @@ faq:
   - q: "Why is Claude dictation not working on my Mac?"
     a: "Start with the causes the sources name. For Quick Entry voice: the voice shortcut is off by default, it needs macOS 14 or later, and it needs the Speech recognition permission in System Settings > Privacy & Security. For macOS Dictation, Apple lists Dictation being off, the wrong language or shortcut, and microphone problems."
   - q: "Can I use the keyboard instead of the mic button in cl_quick?"
-    a: "Yes. ⌘D turns Dictation on and off like a click on the mic button, and it also works on a Dictation that macOS's own shortcut started. Return sends the text, which stops Dictation; ⌘N, Esc and ⌘W stop it too. The keys button under the field lists ⌘D with the other shortcuts."
+    a: "Yes. ⌘D turns Dictation on and off like a click on the mic button, and it also works on a Dictation that macOS's own shortcut started. Return while dictating stops it and shows the text; Return again sends it. ⌘N, Esc and ⌘W stop it too. The keys button under the field lists ⌘D with the other shortcuts."
   - q: "How does the mic button in cl_quick work?"
     a: "It starts macOS Dictation into the chat's field. ⌘D does the same from the keyboard, on and off, also for a Dictation that macOS's own shortcut started. A click again, sending, a new chat or hiding the window stops it. If Dictation is off in macOS, cl_quick says once where to turn it on."
 sources:
@@ -60,7 +60,7 @@ sources:
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
     checked: 2026-11-11
-    supports: "The chat (the mic button left of Send starts macOS Dictation into the field; cl_quick stays in the background and the panel takes the keyboard as it does for the shortcut, so Dictation types into the field and not the app behind; a click again, sending, a new chat or hiding stops it; with Dictation off in macOS it says once where to turn it on; ⌘D does the same as a click, on and off, also for a Dictation macOS's own shortcut started, and is in the keys button's list); Intro (the floating chat, ⌥Space, your own Claude Code, quick chats are incognito, the exact sentence); Install (Apple silicon, macOS 13 or later, Claude Code signed in)."
+    supports: "The chat (the mic button left of Send starts macOS Dictation into the field; cl_quick stays in the background and the panel takes the keyboard as it does for the shortcut, so Dictation types into the field and not the app behind; a click again, sending, a new chat or hiding stops it; with Dictation off in macOS it says once where to turn it on; ⌘D does the same as a click, on and off, also for a Dictation macOS's own shortcut started, and is in the keys button's list; Return while dictating stops it and shows the text, Return again sends it; the field grows with what you dictate); Settings ▸ General ▸ Dictation (Shows text first by default, or Sends at once); Intro (the floating chat, ⌥Space, your own Claude Code, quick chats are incognito, the exact sentence); Install (Apple silicon, macOS 13 or later, Claude Code signed in)."
     quote: "With Dictation off in macOS it says once where to turn it on."
 related:
   - /use-cases/claude-code-floating-window/
@@ -116,7 +116,7 @@ cl_quick is a macOS menu bar app that opens a floating chat over any app on a sh
 
 The mic button sits at the end of the controls row, left of Send, and starts macOS Dictation into the field. cl_quick stays in the background, and its panel takes the keyboard the way it does for the shortcut. So the words go into the chat's field, not into the app behind. A second click on the mic, sending, a new chat or hiding the window stops it. **⌘D** does what a click does, on and off, from the keyboard, and it works on a Dictation that macOS's own shortcut started, too. If Dictation is off in macOS, cl_quick says once where to turn it on.
 
-What lands in the field is text you can edit before you press Return. That text is then your message to Claude Code. cl_quick's quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account. How Dictation handles the audio is Apple's side, and Keyboard settings say where it's processed.
+What lands in the field is text you can edit before you send it. Return while dictating stops Dictation and shows the text, and Return again sends it. **Settings ▸ General ▸ Dictation** can make the first Return send at once instead: **Shows text first** is the default, **Sends at once** the other choice. The field grows with what you dictate. The text is then your message to Claude Code. cl_quick's quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account. How Dictation handles the audio is Apple's side, and Keyboard settings say where it's processed.
 
 ## Claude dictation not working on Mac: what to check
 
