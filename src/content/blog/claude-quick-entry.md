@@ -47,12 +47,12 @@ sources:
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
     checked: 2026-11-11
-    supports: "Intro (a floating chat on a shortcut: the bar, then the chat window floating on every Space until Esc hides it; never brings another app forward; your own Claude Code on the profile's account in use; counts against that account's limits; quick chats are incognito, the exact sentence); Settings ▸ General (⌥Space by default, four other Space shortcuts, Other…, Off; no Accessibility permission to give; other apps' shortcuts can't be read and macOS lets two apps register the same key); The chat (the mic button starts macOS Dictation into the field, ⌘D turns it on and off; Images: ⌘V or dropping image files on the bar or the chat window, thumbnails over the field, up to 5 to a message, scaled down in memory, no file made; the profile key and its menu with each profile's week); What it keeps, and what it sends (no tools, no MCP servers); Install (Apple silicon, macOS 13 or later, Claude Code signed in)."
+    supports: "Intro (a floating chat on a shortcut: the bar, then the chat window floating on every Space until Esc hides it; never brings another app forward; your own Claude Code on the profile's account in use; counts against that account's limits; quick chats are incognito, the exact sentence); Settings ▸ General (⌥Space by default, four other Space shortcuts, Other…, Off; no Accessibility permission to give; other apps' shortcuts can't be read and macOS lets two apps register the same key); The chat (the mic button starts macOS Dictation into the field, ⌘D turns it on and off; Images: ⌘V or dropping image files on the bar or the chat window, thumbnails over the field, up to 5 to a message, scaled down in memory, no file made; Files: PDFs up to 15 MB and 100 pages and text files up to 400 KB, 5 attachments a message with pictures, kept in memory; Links and search: on by default, Claude Code's two web tools; the profile key and its menu with each profile's week); What it keeps, and what it sends (Claude Code's two web tools when Links and search is on and no tools when it is off, no MCP servers, no file tools); Install (Apple silicon, macOS 13 or later, Claude Code signed in)."
     quote: "It never brings another app forward."
   - title: "cl_quick CHANGELOG"
     url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
     checked: 2026-11-11
-    supports: "The 'Ask about the selected text in the app you're in' entry (right-click ▸ Services ▸ Ask cl_quick: the selection quoted in the field, ready to edit and not sent, no Accessibility permission) and the 'Images in the chat' entry (⌘V or dropping image files, up to 5, scaled down in memory, nothing saved)."
+    supports: "The 'Ask about the selected text in the app you're in' entry (right-click ▸ Services ▸ Ask cl_quick: the selection quoted in the field, ready to edit and not sent, no Accessibility permission) the 'Images in the chat' entry (⌘V or dropping image files, up to 5, scaled down in memory, nothing saved), the 'Files in the chat' entry (PDFs and text files, 5 attachments a message with the pictures, kept in memory) and the 'Links and search' entry (Claude Code's two web tools, on by default)."
 related:
   - /blog/claude-shortcut-mac/
   - /use-cases/claude-code-floating-window/
@@ -155,7 +155,7 @@ Quick Entry is a chat with Claude in Claude Desktop. If most of your questions a
 | | Quick Entry | cl_quick |
 |---|---|---|
 | Opens with | Double-tap Option, Option + Space or a custom shortcut | ⌥Space, four other Space shortcuts, Other… (any key with ⌘, ⌃ or ⌥), or Off |
-| What you can attach | A screenshot you drag, or an application window | Typed text, images you paste or drop (up to 5 to a message), and selected text, quoted into the field with Ask cl_quick from the Services menu |
+| What you can attach | A screenshot you drag, or an application window | Typed text, images, PDFs and text files you paste or drop (up to 5 attachments to a message), links Claude can read, and selected text, quoted into the field with Ask cl_quick from the Services menu |
 | Voice | Caps Lock dictation, off by default, macOS 14 or later | A mic button that starts macOS Dictation into the field; ⌘D turns it on and off |
 | What it starts | A new chat with Claude | A chat window answered by your own Claude Code |
 | Plans | Every Claude plan | Whatever account the profile's Claude Code is signed in to |
@@ -166,6 +166,6 @@ Quick Entry is a chat with Claude in Claude Desktop. If most of your questions a
 
 **A floating Claude Code chat fits better** when the question is a Claude Code one, or when you'd rather not grant the Accessibility permission for a shortcut. If you keep more than one profile, cl_quick's profile menu lists each one with its week and the account in use, so you can see which account will answer before you send. For usage and limits across accounts, n-uf's sibling app [cl_audit](https://cl-audit.n-uf.com) goes further.
 
-cl_quick has no tools, so it can't read your files or run commands. For a question about a project, use Claude Code in a terminal. cl_quick's quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account. The [Claude Code in incognito](/use-cases/claude-code-incognito/) page explains what that covers and how to check it.
+cl_quick can't open your files or folders or run commands. It reads what you attach and, with Links and search on, which is the default, pages it fetches with Claude Code's two web tools. For a question about a project, use Claude Code in a terminal. cl_quick's quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account. The [Claude Code in incognito](/use-cases/claude-code-incognito/) page explains what that covers and how to check it.
 
 You can run both, on different keys. [The install page](/install/) has cl_quick's steps, and the [FAQ](/faq/) has short answers. The home page shows the [Claude quick chat](/) on one screen.
