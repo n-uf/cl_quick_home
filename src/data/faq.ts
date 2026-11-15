@@ -39,7 +39,7 @@ export const groups: Group[] = [
     { q: "Can one profile have more than one account?",
       a: ["Yes. A Claude Code folder holds one signed-in account at a time, so a profile remembers the accounts signed in to its folder: the one signed in now is in use, the others are on standby. cl_quick reads the folder's <code>.claude.json</code> as it is now, so a sign-in made outside cl_quick counts at once."] },
     { id: "switching", q: "How do I switch to another account?",
-      a: ["Open the profile's page in Settings and press <b>Switch…</b> on a standby account. cl_quick asks first, because Claude Code in Terminal and editors on that folder moves to the new account, running sessions included. Then Claude Code's own sign-in opens in Terminal and finishes in your browser; cl_quick watches the folder for up to 10 minutes."] },
+      a: ["Open the profile's page in Settings and press <b>Switch…</b> on a standby account. cl_quick asks first (\"Switch Main to this account?\", the address blurred under it), because Claude Code in Terminal and editors on that folder moves to the new account, running sessions included. Then Claude Code's own sign-in opens in Terminal and finishes in your browser."] },
     { q: "What do Forget…, Sign in again… and Add an account… do?",
       a: ["<b>Forget…</b> asks first, then drops a standby account from the list; nothing is signed out. <b>Sign in again…</b> appears only when the sign-in is broken or the folder has no account. <b>Add an account…</b> takes an address and signs in as it; the account in use then goes to standby. A standby account shows no usage."] },
     { q: "What if the wrong account signs in, or nothing happens?",
