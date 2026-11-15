@@ -10,7 +10,7 @@
 #   qc-bar          state bar          the empty bar, "Ask anything"
 #   qc-typing       state typing       a question typed in the bar
 #   qc-answer       state answer       the chat window with an answer
-#   qc-full         state switch       a full week: Ask on Work, Switch to … (addresses masked)
+#   qc-full         state switch       a full week: Ask on Work, Switch to … (addresses blurred, cl_quick db7aef5 and later)
 #   qc-ended        state ended-idle   the line under a chat that ended after 15 minutes idle
 #   qc-dictating    state dictating    the mic button on
 #   settings-accounts  settings page accounts-two   the Accounts card of a profile (cropped)
