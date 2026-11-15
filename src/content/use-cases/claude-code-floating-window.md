@@ -122,7 +122,7 @@ In Settings, each profile is a tile along the top, with a lamp for its sign-in. 
 
 Settings shows addresses in full. Everywhere else they are blurred until the pointer is on them, and only the words VoiceOver reads keep the masked form (p•••@example.com). **Settings ▸ General ▸ Blur addresses** is on by default; turn it off and addresses show in full, sharp.
 
-A switch is bigger than the quick chat, and cl_quick asks first. The question says that Claude Code in Terminal and editors on that folder moves to the new account, sessions running now included, and that the Claude app keeps its own sign-in. Then Claude Code's own sign-in opens in Terminal and finishes in your browser. cl_quick never sees a password or a token and never touches the Keychain.
+A switch is bigger than the quick chat, and cl_quick asks first: "Switch Main to this account?", with the account's address under it, blurred until the pointer is on it while Blur addresses is on. The question says that Claude Code in Terminal and editors on that folder moves to the new account, sessions running now included, and that the Claude app keeps its own sign-in. Then Claude Code's own sign-in opens in Terminal and finishes in your browser. cl_quick never sees a password or a token and never touches the Keychain.
 
 ## Live limits in the window
 
