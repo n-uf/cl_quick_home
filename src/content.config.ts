@@ -14,7 +14,7 @@ const article = z.object({
   kind: z.enum(["use-case", "how-to", "what-is", "comparison", "best-tools"]),
   published: z.coerce.date(),         // the day the page goes live (UTC); for a draft, the day it is scheduled for
   updated: z.coerce.date(),
-  draft: z.boolean().default(false),  // true: scheduled, not live yet; flipped by hand until a publish workflow is added
+  draft: z.boolean().default(false),  // true: scheduled, not live yet; the daily publish workflow flips it on its `published` day
   author: z.literal("n-uf"),
   takeaways: z.array(z.string().min(20)).min(3).max(5),
   faq: z.array(z.object({ q: z.string().endsWith("?"), a: z.string().min(40) })).min(4).max(5),
@@ -23,7 +23,7 @@ const article = z.object({
   order: z.number().int().optional(),   // optional: where a use case sits in the /use-cases/ list (lowest first); otherwise by title
 }).refine((d) => d.updated >= d.published, { message: "updated is earlier than published", path: ["updated"] })
   // For a draft dated ahead (draft: true, published in the future) set `updated` equal to `published`: this rule needs
-  // updated >= published, and flipping the draft by hand changes only the `draft` line when the day comes.
+  // updated >= published, and the publish workflow's flip changes only the `draft` line when the day comes.
   // a live page can't be dated in the future (UTC days); only a draft may wait for its date
   .refine((d) => d.draft || d.published.toISOString().slice(0, 10) <= new Date().toISOString().slice(0, 10),
     { message: "published is a future date but the page is not a draft: set draft: true (it goes live on that date)", path: ["published"] })
