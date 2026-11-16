@@ -28,34 +28,34 @@ faq:
 sources:
   - title: "Claude Help Center: Use quick entry with Claude Desktop on Mac"
     url: "https://support.claude.com/en/articles/12626668-use-quick-entry-with-claude-desktop-on-mac"
-    checked: 2026-11-11
-    supports: "Voice input as one of three capabilities; Caps Lock to start and stop, real-time transcription, the arrow to send; the voice shortcut off by default because it takes over Caps Lock; the voice dictation prompt (Turn on shortcut, Continue); Settings > Desktop app with Caps Lock, a custom shortcut or disabling it; macOS 14 or later for voice; Speech recognition permission in System Settings > Privacy & Security; Claude Desktop installed and running; transcribed text sent to Claude as part of the message. Marked 'Updated over a week ago'."
+    checked: 2026-11-16
+    supports: "Voice input as one of three capabilities; Caps Lock to start and stop, real-time transcription, the arrow to send; the voice shortcut off by default because it takes over Caps Lock; the voice dictation prompt (Turn on shortcut, Continue); Settings > Desktop app with Caps Lock, a custom shortcut or disabling it; macOS 14 or later for voice; Speech recognition permission in System Settings > Privacy & Security; Claude Desktop installed and running; transcribed text sent to Claude as part of the message. Marked 'Updated over 2 weeks ago' when re-read on 2026-11-16."
     quote: "disabled by default because it takes over your Caps Lock key"
   - title: "Claude Help Center: Use voice mode"
     url: "https://support.claude.com/en/articles/11101966-use-voice-mode"
-    checked: 2026-11-11
-    supports: "Voice mode is a spoken conversation; beta on all plans on Claude Mobile, Claude Desktop and the web, built to work best from your phone; on web and Desktop, the sound wave symbol in the lower right corner of the chat window; hands-free (default) and push-to-talk; voice conversations count toward regular usage limits; in Claude Cowork and Claude Code, dictation is available but voice mode isn't. Marked 'Updated yesterday'."
+    checked: 2026-11-16
+    supports: "Voice mode is a spoken conversation; beta on all plans on Claude Mobile, Claude Desktop and the web, built to work best from your phone; on web and Desktop, the sound wave symbol in the lower right corner of the chat window; hands-free (default) and push-to-talk; voice conversations count toward regular usage limits; in Claude Cowork and Claude Code, dictation is available but voice mode isn't. Marked 'Updated this week' when re-read on 2026-11-16."
     quote: "Voice conversations count toward your regular usage limits"
   - title: "Claude Help Center: Use dictation on Claude Mobile"
     url: "https://support.claude.com/en/articles/10065434-use-dictation-on-claude-mobile"
-    checked: 2026-11-11
-    supports: "Dictation turns speech into text so you can send a written prompt and Claude replies in text; voice mode is a full spoken conversation; describes Claude for iOS and Android. Marked 'Updated yesterday'."
+    checked: 2026-11-16
+    supports: "Dictation turns speech into text so you can send a written prompt and Claude replies in text; voice mode is a full spoken conversation; describes Claude for iOS and Android. Marked 'Updated this week' when re-read on 2026-11-16."
   - title: "Claude Academy: How to choose between Claude's Voice Mode and Dictation"
     url: "https://academy.claude.com/tutorials/how-to-choose-between-voice-mode-and-dictation"
-    checked: 2026-11-11
-    supports: "Dictation is the mic in the message box; in the desktop app you press the mic, speak and send; dictation is available on the web, mobile and the desktop app; voice mode has its own button, separate from the dictation mic."
+    checked: 2026-11-16
+    supports: "Dictation is the mic in the message box; in the desktop app you press the mic, speak and send; dictation is available on the web, mobile and the desktop app. (Its 'At a glance' table loads in the browser only and wasn't read; the claim about a separate voice mode button is dropped from this note, and the article doesn't make it.)"
   - title: "Claude Code docs: Voice dictation"
     url: "https://code.claude.com/docs/en/voice-dictation"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "/voice enables dictation in the Claude Code CLI; hold Space to record, or /voice tap to tap Space to start and send; audio streams to Anthropic's servers for transcription; needs a claude.ai account and a local microphone; transcription doesn't consume Claude messages or tokens and doesn't count toward the limits shown in /usage; troubleshooting: microphone permission for the terminal (System Settings → Privacy & Security → Microphone), /voice unavailable when other credentials or a third-party provider take precedence over a claude.ai sign-in, no audio detected (System Settings → Sound → Input)."
     quote: "Voice dictation streams your recorded audio to Anthropic’s servers for transcription."
   - title: "Apple Support: Dictate messages and documents on Mac"
     url: "https://support.apple.com/guide/mac-help/use-dictation-mh40584/mac"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Dictation enters text anywhere you can type; turn it on in System Settings > Keyboard > Dictation; start with the Microphone key, the Dictation keyboard shortcut or Edit > Start Dictation; stop with Escape, the Microphone key or the shortcut; stops after 30 seconds without speech; spoken punctuation, 'new line' and 'new paragraph'; on Apple silicon you can type while speaking; shortcut, languages and microphone source in Keyboard settings; Keyboard settings say whether general text Dictation is processed on the device; with Voice Control on, standard Dictation isn't available."
   - title: "Apple Support: If Dictation on Mac doesn't work as expected"
     url: "https://support.apple.com/guide/mac-help/if-dictation-on-mac-doesnt-work-as-expected-mchlc480652b/mac"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Dictation on in Keyboard settings; correct language and region; correct shortcut; an external microphone connected and selected, with enough input volume; the microphone not obstructed; speaking at a normal volume; background noise or a headset; an internet connection may be needed, and Keyboard settings say whether one is."
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
@@ -69,7 +69,7 @@ related:
   - /
 ---
 
-Claude voice input on a Mac comes in several kinds, and they aren't the same feature. Claude Desktop has Quick Entry's Caps Lock dictation and a mic in the message box, both of which turn speech into text, plus voice mode, a spoken conversation where Claude talks back. macOS has its own Dictation for any text field. And cl_quick, a free, independent Mac app, has a mic button that uses macOS Dictation. It runs on your own Claude Code sign-in, so its chats count against that account's Claude plan limits. Below is each one, from Anthropic's and Apple's own pages, read on 11 November 2026.
+Claude voice input on a Mac comes in several kinds, and they aren't the same feature. Claude Desktop has Quick Entry's Caps Lock dictation and a mic in the message box, both of which turn speech into text, plus voice mode, a spoken conversation where Claude talks back. macOS has its own Dictation for any text field. And cl_quick, a free, independent Mac app, has a mic button that uses macOS Dictation. It runs on your own Claude Code sign-in, so its chats count against that account's Claude plan limits. Below is each one, from Anthropic's and Apple's own pages, read on 16 November 2026.
 
 ## Claude voice input on a Mac, side by side
 
