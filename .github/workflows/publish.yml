@@ -1,0 +1,341 @@
+# Scheduled publishing: every day at 00:10 UTC, pages merged as `draft: true` whose `published` date has come
+# are flipped to `draft: false` (scripts/publish-due.mjs), built, committed as
+# `publish: <section>/<slug>[, <section>/<slug>]` (e.g. `publish: blog/claude-usage-credits`) and pushed to main.
+# Vercel builds that push through its Git connection like any other. Nothing due: no commit, no deploy.
+#
+# Two jobs, so third-party code never shares a job with the write key:
+#   build  has no environment and no secret (permissions: contents: read, checkout without credentials). It flips the
+#          due drafts, saves the flip as a patch and uploads it with the page list as one artifact (both before any
+#          third-party code runs, so later code can't rewrite them by editing files; a compromised build could still
+#          swap the artifact through the runner's own token, which is why the push job's checks are what make a
+#          changed artifact harmless), then runs `npm ci` and
+#          `npm run build` (no npm cache is used). Only a green build sets `ready`, and the push job starts only when
+#          it is set: a red build pushes nothing. Dependencies' install and build scripts run here, and can reach
+#          nothing but a read-only token.
+#   push   has `environment: publish` and the deploy key, and runs no node, npm, pnpm or npx. It checks out the same
+#          commit as build over SSH (GitHub's ed25519 host key pinned, git hooks switched off, ssh reading no config,
+#          agent, proxy or system known_hosts), downloads the artifact and first runs
+#          scripts/check-publish-patch.py (python3 standard library only, from its own checkout) on it: the patch is
+#          applied only if it is under 64 KB and changes nothing but the front-matter `draft: true` -> `draft: false`
+#          line of existing pages under src/content/blog and src/content/use-cases that are due (`published` on or
+#          before today, UTC), and the page list equals the files in the patch. The commit message is the checker's
+#          one `publish: ...` line. Then it pushes. A rejected push (main moved during the build) runs
+#          `git pull --rebase` (no rebuild) and tries again, 3 pushes at most; a refusal for any other reason, or a
+#          rebase conflict (aborted), fails the run. After each rebase the flip is checked again, by a copy of the
+#          checker saved at github.sha, against the new main (a page whose `published` moved into the future
+#          meanwhile is no longer due): not accepted, nothing is pushed. A cancelled run does not push.
+#   report decides the colour of the run: red when build or push failed, or when build's publish-due exited 3.
+# A manual run with `verify-key` ticked runs only a fourth job, verify-key (environment publish, no node): the key
+# check, the same checkout and hardening as push, and `git ls-remote origin refs/heads/main` over ssh, printing the
+# SHA. It proves the key, the ssh path and the host pin before the first real flip, and pushes nothing. build, push
+# and report are skipped then; `inputs.verify-key` is empty on schedule runs, so those are unaffected.
+# Both jobs check out ${{ github.sha }}, the commit the run started on. Only the page list and the patch cross from
+# build to push: no commit id does, so a compromised build can't make the key push a commit (a fork's head, an orphan)
+# whose checker says yes. The checker runs from push's own checkout.
+# Why: with one job, any dependency's install or build script could read the key from disk or core.sshCommand, or
+# hijack the later push through $GITHUB_ENV (BASH_ENV, LD_PRELOAD), $GITHUB_PATH (a fake ssh) or a planted
+# .git/hooks/pre-push. Now the key exists only in a job that runs nothing from npm, and what the build job hands over
+# is data that is checked before it is applied.
+#
+# A crash of publish-due.mjs (any exit code but 0 and 3), or changed files with no page listed, fail the run
+# (nothing is committed). Exit 3 means some page's front matter can't be read: it is named in the log, the other due
+# pages are still built, published and pushed, and the run then goes red.
+# Undo: revert the publish commit, or set `draft: true` again. No deploy hooks. One secret: PUBLISH_DEPLOY_KEY, the
+# private half of the repo's write deploy key, which may bypass main's ruleset (protected main, required checks).
+# That key can write the whole repo, so it lives only in the `publish` environment, which releases it to runs on
+# main alone: an edited copy of this file dispatched from another branch gets no key (and stops at the first step).
+# GitHub can run a schedule up to about an hour late, and switches schedules off in a repo with no activity for
+# 60 days: re-enable it from the Actions tab if that happens.
+name: publish
+
+on:
+  schedule:
+    - cron: '10 0 * * *'
+  workflow_dispatch:
+    inputs:
+      verify-key:
+        description: "Only check the deploy key: run the verify-key job (key, ssh path and host pin, git ls-remote) and nothing else. Nothing is flipped, built or pushed."
+        type: boolean
+        default: false
+
+permissions:
+  contents: read   # the push goes over SSH with the deploy key, not with the job's token
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+# shell: bash makes GitHub run every script with -eo pipefail, so a failing command fails the step
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    # `inputs.verify-key` is empty on a schedule run, so the schedule is unaffected; true runs only verify-key
+    if: github.repository == 'n-uf/cl_quick_home' && !inputs.verify-key
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    outputs:
+      changed: ${{ steps.flip.outputs.changed }}   # 'true' when something was due, 'false' when nothing was
+      code: ${{ steps.flip.outputs.code }}         # publish-due.mjs's exit code (0, 3 or a crash)
+      ready: ${{ steps.ready.outputs.ready }}      # 'true' only after the upload of the patch and a green build
+    steps:
+      # the commit this run started on (the push job checks out the same one); no key, no token left on disk, so
+      # nothing in this job can push
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+
+      # publish-due.mjs exits 0 (done), 3 (some page's front matter can't be read; the readable due pages were still
+      # flipped) or something else, which is a crash: Node's own 1 when the script fails to load, 2 for a caught error.
+      # The patch and the page list are written here, before npm ci and the build run any third-party code.
+      - name: Flip due drafts
+        id: flip
+        run: |
+          code=0
+          node scripts/publish-due.mjs > "$RUNNER_TEMP/due.txt" || code=$?
+          cat "$RUNNER_TEMP/due.txt"
+          echo "code=${code}" >> "$GITHUB_OUTPUT"
+          if [ "$code" -ne 0 ] && [ "$code" -ne 3 ]; then
+            echo "::error::publish-due.mjs crashed (exit ${code})"
+            exit "$code"
+          fi
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing due."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ ! -s "$RUNNER_TEMP/due.txt" ]; then
+            echo "::error::files changed but publish-due.mjs listed no page; not committing"
+            git status --porcelain
+            exit 1
+          fi
+          mkdir "$RUNNER_TEMP/handoff"
+          git diff --no-color --no-ext-diff --no-renames --src-prefix=a/ --dst-prefix=b/ > "$RUNNER_TEMP/handoff/publish.patch"
+          cp "$RUNNER_TEMP/due.txt" "$RUNNER_TEMP/handoff/pages.txt"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Uploaded right after the flip, before `npm ci`: nothing third-party has run yet, so later code can't change
+      # what the push job receives by editing files. (It could still re-upload the artifact with the runner's token;
+      # the push job's checker, its re-check and the staged-files check are what make that harmless.) The push job
+      # still starts only when `ready` is set below, after a green build.
+      - name: Hand over the flip (patch and page list)
+        if: steps.flip.outputs.changed == 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: publish-flip
+          path: ${{ runner.temp }}/handoff
+          retention-days: 1
+          if-no-files-found: error
+
+      # a red build stops here: `ready` stays unset, so the push job does not start (the artifact is left to expire)
+      - name: Build the site
+        if: steps.flip.outputs.changed == 'true'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Ready to push
+        id: ready
+        if: steps.flip.outputs.changed == 'true'
+        run: echo "ready=true" >> "$GITHUB_OUTPUT"
+
+  push:
+    needs: build
+    # no `always()`: the implicit success() keeps a cancelled run from pushing
+    if: needs.build.outputs.ready == 'true' && !inputs.verify-key
+    # the deploy key is an environment secret; the `publish` environment deploys from main only
+    environment: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      # without the key, checkout would quietly fall back to the token over HTTPS, and a protected main would refuse
+      # the push; say so plainly instead
+      - name: Check the deploy key secret
+        env:
+          KEY: ${{ secrets.PUBLISH_DEPLOY_KEY }}
+        run: '[ -n "$KEY" ] || { echo "::error::secret PUBLISH_DEPLOY_KEY is not set: the job pushes to main with the write deploy key"; exit 1; }'
+
+      # main is protected by a ruleset that deploy keys may bypass: check out with the repo's write deploy key, so
+      # the push (and the rebase retries) go over SSH as "publish-bot (scheduled publishing)". The commit is
+      # github.sha, the one the build job built, never one the build names. Full history for the rebase. The host
+      # key is GitHub's published ed25519 key (https://api.github.com/meta, "ssh_keys";
+      # SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU), and the connection is strict about it.
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          ssh-key: ${{ secrets.PUBLISH_DEPLOY_KEY }}
+          ssh-known-hosts: 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl'
+          ssh-strict: true
+          fetch-depth: 0
+
+      # No git hook of the checkout runs in this job, whatever the working tree holds. Checkout left core.sshCommand
+      # with the key and the known-hosts file it wrote; ssh is now also told to read no config file (-F /dev/null),
+      # no agent, no proxy and no system known_hosts, to use only that key, and to accept only the pinned ed25519 key.
+      # The same script runs in the verify-key job.
+      - name: Switch git hooks off and lock down ssh
+        run: bash scripts/lock-down-git-ssh.sh
+
+      - name: Download the flip
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: publish-flip
+          path: ${{ runner.temp }}/handoff
+
+      # The patch was made in a job that ran third-party code: apply it only if the checker (run from this job's own
+      # checkout) says it is exactly a flip of due pages. The commit message is the checker's one line; git apply's
+      # output goes to stderr and never into the message.
+      - name: Check, apply and commit the patch
+        run: |
+          # a copy of the checker as it is at github.sha: the push step re-checks the flip with it after a rebase,
+          # when the working tree holds a newer main (and so possibly a newer, or edited, checker)
+          cp scripts/check-publish-patch.py "$RUNNER_TEMP/check-publish-patch.py"
+          git switch -q -c publish-flip
+          message=$(python3 -I scripts/check-publish-patch.py --root "$GITHUB_WORKSPACE" "$RUNNER_TEMP/handoff/publish.patch" "$RUNNER_TEMP/handoff/pages.txt")
+          if [[ "$message" != "publish: "* || "$message" == *$'\n'* ]]; then
+            echo "::error::the patch check printed an unexpected commit message"
+            exit 1
+          fi
+          git apply --check "$RUNNER_TEMP/handoff/publish.patch" >&2
+          git apply --index "$RUNNER_TEMP/handoff/publish.patch" >&2
+          # The checker already makes the patch's files equal the page list, but it is not git: check what git
+          # actually staged, so a patch that git reads differently from the checker commits nothing.
+          staged=$(git diff --cached --name-only | LC_ALL=C sort)
+          expected=$(sed -E 's#^([a-z-]+)/(.+)$#src/content/\1/\2.md#' "$RUNNER_TEMP/handoff/pages.txt" | LC_ALL=C sort)
+          if [ -z "$staged" ] || [ "$staged" != "$expected" ]; then
+            echo "::error::the files git staged are not the files of the page list; nothing is committed"
+            echo "staged:" >&2; printf '%s\n' "$staged" >&2
+            echo "page list:" >&2; printf '%s\n' "$expected" >&2
+            exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -c core.hooksPath=/dev/null commit -q -m "$message"
+          git -c core.hooksPath=/dev/null log --stat -1
+
+      # After a rebase the flip sits on a newer main than the one that was checked (a PR may have moved a page's
+      # `published` into the future meanwhile, and the rebase would still be clean). So after every successful rebase
+      # the flip commit is checked again: its diff against its new parent, by the saved copy of the checker, against a
+      # temporary worktree at that parent, with the same page list. Not accepted: nothing is pushed.
+      - name: Push to main
+        run: |
+          recheck() {
+            local wt="$RUNNER_TEMP/recheck-worktree" rc=0
+            # the flip must be exactly one commit on top of the fetched main (a rebase that dropped it, or replayed
+            # more than one commit, is not what was checked)
+            [ "$(git rev-parse HEAD~1)" = "$(git rev-parse FETCH_HEAD)" ] || { echo "::error::after the rebase the flip is not one commit on top of main"; return 1; }
+            git -c core.hooksPath=/dev/null diff --no-color --no-ext-diff --no-renames --src-prefix=a/ --dst-prefix=b/ HEAD~1 HEAD > "$RUNNER_TEMP/recheck.patch" || return 1
+            # no checkout: the checker reads pages through git, so no file (or filter) of the new main is written to disk
+            git -c core.hooksPath=/dev/null worktree add -q --no-checkout --detach "$wt" HEAD~1 || return 1
+            python3 -I "$RUNNER_TEMP/check-publish-patch.py" --root "$wt" "$RUNNER_TEMP/recheck.patch" "$RUNNER_TEMP/handoff/pages.txt" > /dev/null || rc=$?
+            git -c core.hooksPath=/dev/null worktree remove --force "$wt" || true
+            return "$rc"
+          }
+          for attempt in 1 2 3; do
+            if git -c core.hooksPath=/dev/null push origin HEAD:main 2> "$RUNNER_TEMP/push.err"; then cat "$RUNNER_TEMP/push.err"; exit 0; fi
+            cat "$RUNNER_TEMP/push.err" >&2
+            # only "main moved" is worth a rebase and another try; a refusal by the ruleset or a bad key is not
+            if ! grep -q -E 'non-fast-forward|fetch first' "$RUNNER_TEMP/push.err"; then
+              echo "::error::push to main was refused (not because main moved): see the git error above"
+              exit 1
+            fi
+            [ "$attempt" -lt 3 ] || break
+            echo "Push rejected (attempt ${attempt} of 3): main moved. Rebasing and trying again."
+            if ! git -c core.hooksPath=/dev/null pull --rebase origin main; then
+              git -c core.hooksPath=/dev/null rebase --abort || true
+              echo "::error::rebase onto the new main conflicted; nothing was pushed"
+              exit 1
+            fi
+            if ! recheck; then
+              echo "::error::the flip no longer passes the patch check on the new main (see above); nothing was pushed"
+              exit 1
+            fi
+          done
+          echo "::error::push to main was rejected 3 times"
+          exit 1
+
+  # Run by hand (Actions > publish > Run workflow, verify-key ticked) before the first real flip: with nothing due
+  # the push job never runs, so the key, the ssh options and the host pin would otherwise first be used on a real
+  # flip. This job takes the same steps as push up to the hardening (same key check, same checkout settings, same
+  # lock-down script; scripts/publish-workflow.test.mjs fails if they drift apart) and then only lists main's tip
+  # over ssh: nothing is flipped, built, committed or pushed, and build, push and report do not run.
+  verify-key:
+    if: github.repository == 'n-uf/cl_quick_home' && inputs.verify-key
+    environment: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check the deploy key secret
+        env:
+          KEY: ${{ secrets.PUBLISH_DEPLOY_KEY }}
+        run: '[ -n "$KEY" ] || { echo "::error::secret PUBLISH_DEPLOY_KEY is not set: the job pushes to main with the write deploy key"; exit 1; }'
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          ssh-key: ${{ secrets.PUBLISH_DEPLOY_KEY }}
+          ssh-known-hosts: 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl'
+          ssh-strict: true
+          fetch-depth: 0
+
+      - name: Switch git hooks off and lock down ssh
+        run: bash scripts/lock-down-git-ssh.sh
+
+      # origin must be the ssh URL: over https a public repo lists its refs with no key at all, and the run would
+      # prove nothing. ls-remote then goes over the pinned, locked-down ssh with the deploy key.
+      - name: List main over ssh
+        run: |
+          url=$(git remote get-url origin)
+          if [ "$url" != "git@github.com:n-uf/cl_quick_home.git" ]; then
+            echo "::error::origin is ${url}, not the ssh URL: this would not use the deploy key"
+            exit 1
+          fi
+          sha=$(git -c core.hooksPath=/dev/null ls-remote origin refs/heads/main | cut -f1)
+          if [ -z "$sha" ]; then
+            echo "::error::git ls-remote returned no refs/heads/main"
+            exit 1
+          fi
+          echo "::notice::The deploy key reached ${url} over ssh; main is at ${sha} (this run's commit is $(git rev-parse HEAD))."
+
+  # the run is red when build or push failed, and when some page's front matter couldn't be read (exit 3), even
+  # though the readable pages were published; otherwise green
+  report:
+    needs: [build, push]
+    if: ${{ !cancelled() && needs.build.result != 'skipped' && !inputs.verify-key }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Decide the result of the run
+        env:
+          BUILD: ${{ needs.build.result }}
+          PUSH: ${{ needs.push.result }}
+          CHANGED: ${{ needs.build.outputs.changed }}
+          CODE: ${{ needs.build.outputs.code }}
+        run: |
+          fail=0
+          if [ "$BUILD" != "success" ]; then
+            echo "::error::the build job did not succeed (${BUILD}): nothing was pushed; see its log"
+            fail=1
+          elif [ "$CHANGED" = "true" ] && [ "$PUSH" != "success" ]; then
+            echo "::error::the push job did not succeed (${PUSH}): the due pages were not published; see its log"
+            fail=1
+          fi
+          if [ "$CODE" = "3" ]; then
+            echo "::error::some page's front matter can't be read, so it was not published; see the Flip due drafts step of the build job"
+            fail=1
+          fi
+          [ "$fail" -eq 0 ] && echo "Nothing to report: the run is green (build ${BUILD}, push ${PUSH})."
+          exit "$fail"
