@@ -5,8 +5,8 @@ h1: "Can Claude read links? Paste a URL and ask about the page"
 mainKeyword: "can claude read links"
 kind: use-case
 draft: true
-published: 2026-12-29
-updated: 2026-12-29
+published: 2026-12-12
+updated: 2026-12-12
 author: n-uf
 takeaways:
   - "Claude can read a link when its web tools are on. Anthropic's help page calls this web fetch and says it works when web search is switched on in the Claude app."

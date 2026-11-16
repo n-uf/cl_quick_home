@@ -5,8 +5,8 @@ h1: "Claude Quick Entry on Mac: open it, change the shortcut or turn it off"
 mainKeyword: "claude quick entry"
 kind: how-to
 draft: true
-published: 2026-12-15
-updated: 2026-12-15
+published: 2026-12-02
+updated: 2026-12-02
 author: n-uf
 takeaways:
   - "Claude Quick Entry is part of Claude Desktop on Mac. By default a double-tap of Option opens a text box over any app; Option + Space or a custom shortcut works too."

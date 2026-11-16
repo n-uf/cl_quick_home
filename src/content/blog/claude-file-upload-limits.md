@@ -5,8 +5,8 @@ h1: "Claude file upload limits: what Anthropic's pages say today"
 mainKeyword: "claude file upload limit"
 kind: what-is
 draft: true
-published: 2027-01-05
-updated: 2027-01-05
+published: 2026-12-16
+updated: 2026-12-16
 author: n-uf
 takeaways:
   - "Anthropic's help page for the Claude app, dated 23 July 2026, lists chat uploads at 500 MB per file and up to 20 files per chat, with images up to 8000x8000 pixels and PDFs up to 1,000 pages."

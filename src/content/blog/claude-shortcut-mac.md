@@ -5,8 +5,8 @@ h1: "Claude desktop shortcuts on a Mac: open it, chat, dictate, avoid clashes"
 mainKeyword: "claude desktop shortcut mac"
 kind: how-to
 draft: true
-published: 2026-12-11
-updated: 2026-12-11
+published: 2026-11-28
+updated: 2026-11-28
 author: n-uf
 takeaways:
   - "The Claude desktop shortcut that opens Claude from any app on a Mac is a double-tap of the Option key, set in Settings > Desktop app. Option + Space or a custom shortcut also works."
