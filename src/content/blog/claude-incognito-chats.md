@@ -28,37 +28,37 @@ faq:
 sources:
   - title: "Claude Help Center: Use incognito chats"
     url: "https://support.claude.com/en/articles/12260368-use-incognito-chats"
-    checked: 2026-11-11
-    supports: "What incognito chats are; all plans (Free, Pro, Max, Ultra, Team, Enterprise); not saved to chat history or memory; not used for training; retained 30 days by default or longer under an organization's custom retention (Enterprise); Claude won't pull from them when searching previous conversations; existing memory not used; not in the monthly recap; the ghost icon, black border and Incognito chat label; the x to close; not available in projects; can't be converted or reopened; Claude can access profile information; Team and Enterprise: organizational data exports for account Owners, 30 days for safety or longer under the organization's policy, Compliance API (Enterprise); incognito versus memory off; the note about the new Claude experience. Marked 'Updated over a week ago' when read; the whole page was read."
+    checked: 2026-11-16
+    supports: "What incognito chats are; all plans (Free, Pro, Max, Ultra, Team, Enterprise); not saved to chat history or memory; not used for training; retained 30 days by default or longer under an organization's custom retention (Enterprise); Claude won't pull from them when searching previous conversations; existing memory not used; not in the monthly recap; the ghost icon, black border and Incognito chat label; the x to close; not available in projects; can't be converted or reopened; Claude can access profile information; Team and Enterprise: organizational data exports for account Owners, 30 days for safety or longer under the organization's policy, Compliance API (Enterprise); incognito versus memory off; the note about the new Claude experience. Marked 'Updated over 2 weeks ago' when re-read on 2026-11-16 (it gives no exact date); the whole page was read."
     quote: "aren't saved to your chat history or to Claude’s memory"
   - title: "Claude Privacy Center: Is my data used for model training? (consumer products, 16 March 2026)"
     url: "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Incognito chats are not used to improve Claude, even with Model Improvement on; the article lists the cases in which chats and coding sessions are used (the setting allowed, flagged for safety review, an explicit opt-in such as the Trusted Tester Program) and covers consumer products and those accounts' Claude Code use. Whole page read."
     quote: "Your Incognito chats are not used to improve Claude"
   - title: "Claude Privacy Center: Is my data used for model training? (commercial products, 18 August 2026)"
     url: "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "By default Anthropic does not use inputs or outputs from commercial products to train its models, unless the customer reports feedback or bugs or otherwise chooses to allow it. The article doesn't mention incognito chats (whole page read)."
   - title: "Claude Help Center: Use Claude's chat search and memory to build on previous context"
     url: "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
-    checked: 2026-11-11
-    supports: "For Team and Enterprise: incognito chats don't contribute to memory and aren't visible in members' chat histories, but remain available to owners through data export and are subject to the organization's retention policies (retained for at least 30 days for safety purposes); incognito chats are included in organizational data exports. Marked 'Updated today' when read."
+    checked: 2026-11-16
+    supports: "For Team and Enterprise: incognito chats don't contribute to memory and aren't visible in members' chat histories, but remain available to owners through data export and are subject to the organization's retention policies (retained for at least 30 days for safety purposes); incognito chats are included in organizational data exports. Marked 'Updated this week' when re-read on 2026-11-16."
   - title: "Claude Help Center: Access the Compliance API"
     url: "https://support.claude.com/en/articles/13015708-access-the-compliance-api"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "The Compliance API lets an organization programmatically pull activity feed events, chat data and file content; available to Enterprise plan organizations (and Claude Platform customers in Claude chats); for Claude Enterprise, only the Primary Owner can enable it."
   - title: "Claude Code docs: Data usage"
     url: "https://code.claude.com/docs/en/data-usage"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Claude Code clients store session transcripts locally under ~/.claude/projects/ for 30 days by default to enable session resumption; retention by account type; training on Free, Pro, Max and Ultra data when the setting is on, including Claude Code use."
   - title: "Claude Code docs: CLI reference"
     url: "https://code.claude.com/docs/en/cli-reference"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "--no-session-persistence: sessions are not saved to disk and cannot be resumed (print mode only)."
   - title: "Claude Code docs (full text, llms-full.txt)"
     url: "https://code.claude.com/docs/llms-full.txt"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "The English docs don't contain the word 'incognito' (searched the full text)."
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
@@ -70,11 +70,11 @@ related:
   - /
 ---
 
-Are Claude incognito chats private? Partly. Anthropic's help page says an incognito chat isn't saved to your chat history or to Claude's memory, and isn't used for model training. It isn't gone straight away, though. The page says incognito chats are retained for 30 days by default, and on Team and Enterprise plans they're included in organizational data exports that account Owners can get. Everything below comes from Anthropic's own pages, read on 11 November 2026.
+Are Claude incognito chats private? Partly. Anthropic's help page says an incognito chat isn't saved to your chat history or to Claude's memory, and isn't used for model training. It isn't gone straight away, though. The page says incognito chats are retained for 30 days by default, and on Team and Enterprise plans they're included in organizational data exports that account Owners can get. Everything below comes from Anthropic's own pages, read on 16 November 2026.
 
 ## What a Claude incognito chat does
 
-Anthropic describes incognito chats as temporary conversations. Its help page was marked "Updated over a week ago", with no exact date. Here's what it says, point by point.
+Anthropic describes incognito chats as temporary conversations. Its help page gives no exact date, only a line saying when it was last updated. Here's what it says, point by point.
 
 | | What Anthropic's pages say |
 |---|---|
