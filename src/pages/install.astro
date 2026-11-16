@@ -3,6 +3,10 @@ import Desktop from "../layouts/Desktop.astro";
 import ExtLink from "../components/ExtLink.astro";
 import { pageOf } from "../data/pages";
 import { orgNode, webPage, breadcrumbs } from "../data/schema";
+import { release, zipUrl, firstReleaseUrl } from "../data/site";
+
+// The README and CHANGELOG at the first release's tag: the facts on this page are the ones in them.
+const readmeUrl = "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md";
 
 const page = pageOf("/install/");
 const jsonLd = [
@@ -12,11 +16,21 @@ const jsonLd = [
 ];
 ---
 <Desktop title={page.title} description={page.description} page="install" headline="Install cl_quick on a Mac" jsonLd={jsonLd} ogImage="/og/install.png">
-  <p class="readout"><span class="led lit" aria-hidden="true"></span><b>The first release isn't out yet.</b> There is nothing to download so far. Until there is, this page says what the Claude quick chat needs and how it works with Claude Code.</p>
+  <p class="readout"><span class="led lit" aria-hidden="true"></span><b>Download cl_quick for Mac.</b> The first release is <ExtLink href={firstReleaseUrl}>26.11.0</ExtLink>. The app is free, and the steps below take a minute.</p>
 
   <div class="cols">
     <div class="col-stack">
       <div class="card">
+        <h2 class="cap">Download and install</h2>
+        <ol class="steps">
+          <li><b>Download <code>cl_quick.dmg</code>.</b><span><a class="key" href={release.downloadUrl} target="_blank" rel="noopener">Download cl_quick.dmg<span class="sr-only"> (opens in a new tab)</span></a> It is the disk image from the latest GitHub release. You can use <ExtLink href={zipUrl}><code>cl_quick.zip</code></ExtLink> instead: the same app.</span></li>
+          <li><b>Open the disk image and drag cl_quick to Applications.</b><span>cl_quick is a menu bar app with no Dock icon.</span></li>
+          <li><b>The first time, macOS says it can't verify the app.</b><span>cl_quick isn't signed with an Apple Developer ID yet. Open System Settings ▸ Privacy &amp; Security and click <b>Open Anyway</b>, once.</span></li>
+          <li><b>Check the requirements.</b><span>An Apple silicon Mac, macOS 13 or later and Claude Code, signed in. <a href="#requirements">Details below</a>.</span></li>
+        </ol>
+      </div>
+
+      <div class="card" id="requirements">
         <h2 class="cap">Requirements</h2>
         <ul class="list">
           <li><b>An Apple silicon Mac.</b></li>
@@ -48,14 +62,18 @@ const jsonLd = [
 
     <div class="col-stack">
       <div class="card">
-        <h2 class="cap">When the first release is out</h2>
-        <p class="t">cl_quick isn't signed with an Apple Developer ID yet, so the first time it opens, macOS says it can't verify the app. Open System Settings ▸ Privacy &amp; Security and click <b>Open Anyway</b>, once.</p>
+        <h2 class="cap">After you install it</h2>
         <p class="t">The shortcut is <span class="kbd">⌥Space</span> by default, and <b>Open at login</b> in Settings ▸ General keeps cl_quick in the menu bar, ready for it.</p>
       </div>
 
       <div class="card">
+        <h2 class="cap">Build it from source</h2>
+        <p class="t">To build it yourself instead, run <code>./build.sh</code> (it needs Xcode's command-line tools), or <code>./build.sh --no-install</code>. The steps are in the <ExtLink href={readmeUrl}>README</ExtLink>.</p>
+      </div>
+
+      <div class="card">
         <h2 class="cap">Updates</h2>
-        <p class="t"><b>Updates</b> in Settings ▸ General is on by default. About once a day cl_quick asks GitHub Releases for cl_quick's latest release, anonymously, and when a newer one exists the menu bar menu shows "Update available", which opens the release's page in your browser. The app downloads and installs nothing itself.</p>
+        <p class="t"><b>Updates</b> in Settings ▸ General is on by default. About once a day cl_quick asks GitHub Releases for cl_quick's latest release, anonymously, and when a newer one exists the menu bar menu shows "Update available", which opens the release's page in your browser. The app downloads and installs nothing itself, and the download link on this page always points to the newest release.</p>
         <p class="t">cl_quick's own update check is the one thing it sends besides your messages. Turn Updates off and no request is made. With Links and search on, Claude Code may fetch pages or search the web for an answer. <a href="/faq/#sends">What it sends, exactly</a></p>
       </div>
 

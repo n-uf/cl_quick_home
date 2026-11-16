@@ -8,8 +8,8 @@ export interface PageInfo { path: string; title: string; description: string; up
 export const pages: PageInfo[] = [
   { path: "/", updated: updated["/"], title: "Claude quick chat for Mac: cl_quick, a free app",
     description: "A free Mac menu bar app for a Claude quick chat on ⌥Space: your own Claude Code answers, and chats count against your Claude plan's limits." },
-  { path: "/install/", updated: updated["/install/"], title: "Install cl_quick: what it needs on a Mac",
-    description: "cl_quick's first release isn't out yet. It needs an Apple silicon Mac, macOS 13 or later and a signed-in Claude Code. Here is how it works." },
+  { path: "/install/", updated: updated["/install/"], title: "Install cl_quick on a Mac: download and requirements",
+    description: "Download cl_quick.dmg, open it and drag cl_quick to Applications. It needs an Apple silicon Mac, macOS 13 or later and Claude Code, signed in." },
   { path: "/faq/", updated: updated["/faq/"], title: "cl_quick FAQ: incognito, accounts, what it sends",
     description: "What cl_quick keeps and sends, what incognito means, how accounts switch, and how the model, shortcut, voice, links and files work." },
 ];
