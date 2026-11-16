@@ -28,32 +28,32 @@ faq:
 sources:
   - title: "Claude Help Center: Upload files to Claude"
     url: "https://support.claude.com/en/articles/8241126-upload-files-to-claude"
-    checked: 2026-11-13
-    supports: "Dated July 23, 2026 (unchanged on re-read). Document types (PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON, XLSX; XLSX needs code execution and file creation enabled); image types (JPEG, PNG, GIF, WebP); upload from the \"+\" button, drag and drop, or paste images; files go to a chat or to a project's Files section for persistent reference across conversations; chat uploads 500MB per file, up to 20 files per chat, images up to 8000x8000 pixels, PDFs limited to 1000 pages; project files 30MB per file, unlimited number but total content must fit the context window, text extraction only except multimodal PDFs; additional token limits may apply based on the length of extracted content; PDFs of 100 pages or fewer get text and visuals, 101 to 1000 pages text only, over 1000 an \"Uploaded file is too large\" error; tips (use the PDF viewer's page numbers, divide larger files into smaller sections, non-PDF documents give text only and embedded images aren't read). The page gives no limits by plan and no separate image size. Whole page read."
+    checked: 2026-11-16
+    supports: "Dated July 23, 2026 (unchanged when re-read on 2026-11-16). Document types (PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON, XLSX; XLSX needs code execution and file creation enabled); image types (JPEG, PNG, GIF, WebP); upload from the \"+\" button, drag and drop, or paste images; files go to a chat or to a project's Files section for persistent reference across conversations; chat uploads 500MB per file, up to 20 files per chat, images up to 8000x8000 pixels, PDFs limited to 1000 pages; project files 30MB per file, unlimited number but total content must fit the context window, text extraction only except multimodal PDFs; additional token limits may apply based on the length of extracted content; PDFs of 100 pages or fewer get text and visuals, 101 to 1000 pages text only, over 1000 an \"Uploaded file is too large\" error; tips (use the PDF viewer's page numbers, divide larger files into smaller sections, non-PDF documents give text only and embedded images aren't read). The page gives no limits by plan and no separate image size. Whole page read."
     quote: "Number of pages: PDFs are limited to 1000 pages"
   - title: "Claude Help Center: How do usage and length limits work?"
     url: "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "Usage limits (a session limit that resets every five hours, weekly limits) are separate from length limits, which relate to the context window; on paid plans the newest models support up to a 1M-token context window and others 500K or 200K; a portion is reserved for the response; automatic context management with code execution enabled (earlier messages summarized), very large first messages may still hit context limits; projects use retrieval-augmented generation, loading only relevant content, to work with larger amounts of information; when you hit a length limit, start a new conversation or use projects. Marked 'Updated over a week ago' when re-read; whole page read."
     quote: "Length limits relate to Claude's context window"
   - title: "Claude Docs: PDF support"
     url: "https://platform.claude.com/docs/en/build-with-claude/pdf-support"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "API requests: maximum request size 128 MB on the first-party Claude API; maximum 600 pages per request (100 when the request's context window is under 1M tokens); standard PDF, no passwords or encryption; dense PDFs (many small-font pages, complex tables or heavy graphics) can fill the context window before the page limit; splitting into sections and downsampling embedded images can help; plain text files (.txt, .csv, .md) can be used in document blocks; binary formats such as .xlsx or .docx are not supported in document blocks, so convert them to text or PDF first."
     quote: "Maximum pages per request"
   - title: "Claude Docs: Files API"
     url: "https://platform.claude.com/docs/en/build-with-claude/files"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "Maximum file size 500 MB for each file; 1 TB storage limit for each organization."
   - title: "Claude Docs: Vision"
     url: "https://platform.claude.com/docs/en/build-with-claude/vision"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "Request limits: 20 images for each message on claude.ai; 100 per API request for models with a 200k-token context window, 600 for all others; maximum 8000x8000 px per image; maximum size per image 10 MB on claude.ai (10 MB base64-encoded on the Claude API, 5 MB on Amazon Bedrock). The help page gives 500 MB per chat file and no separate image size, so the article states both, each attributed."
     quote: "10 MB on claude.ai"
   - title: "Claude Code docs: Tools reference"
     url: "https://code.claude.com/docs/en/tools-reference"
-    checked: 2026-11-13
-    supports: "Read tool: PNG, JPEG, GIF and WebP images are returned as visual content and large ones are resized and recompressed; an image file over 128 MB is refused; short PDFs are read whole, longer than 10 pages in ranges of up to 20 pages at a time (needs pdftoppm from poppler-utils); one text read returns at most 25,000 tokens by default and refuses a whole file over 256 KB, so Claude reads a larger file in pages with offset and limit; files with a binary extension such as .xlsx, .parquet, .heic or .zip are refused, and the error suggests a skill for that file type if one is available, or else a shell command or script that reads the format. Re-read on 2026-11-13 (the .md copy of the page)."
+    checked: 2026-11-16
+    supports: "Read tool: PNG, JPEG, GIF and WebP images are returned as visual content and large ones are resized and recompressed; an image file over 128 MB is refused; short PDFs are read whole, longer than 10 pages in ranges of up to 20 pages at a time (needs pdftoppm from poppler-utils); one text read returns at most 25,000 tokens by default and refuses a whole file over 256 KB, so Claude reads a larger file in pages with offset and limit; files with a binary extension such as .xlsx, .parquet, .heic or .zip are refused, and the error suggests a skill for that file type if one is available, or else a shell command or script that reads the format. Re-read on 2026-11-16 (the .md copy of the page); it also says that from v2.1.296 Claude can read a whole large file in one call with allow_large, which is why the table says 'by default'."
     quote: "refuses a whole file over 256 KB"
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
@@ -75,7 +75,7 @@ The Claude file upload limit, on Anthropic's help page as it reads in November 2
 
 ## Claude file upload limits at a glance
 
-Every figure in this table comes from the pages listed as sources, read on 13 November 2026. Limits change, so check the page if a number matters. Where a page gives no figure, the cell says "Not stated". The Claude upload file size limit depends on where the file goes, so each place gets a row.
+Every figure in this table comes from the pages listed as sources, read on 16 November 2026. Limits change, so check the page if a number matters. Where a page gives no figure, the cell says "Not stated". The Claude upload file size limit depends on where the file goes, so each place gets a row.
 
 | Where | Size per file | How many | PDF pages |
 | --- | --- | --- | --- |
