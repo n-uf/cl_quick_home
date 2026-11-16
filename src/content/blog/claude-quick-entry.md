@@ -28,12 +28,12 @@ faq:
 sources:
   - title: "Claude Help Center: Use quick entry with Claude Desktop on Mac"
     url: "https://support.claude.com/en/articles/12626668-use-quick-entry-with-claude-desktop-on-mac"
-    checked: 2026-11-11
-    supports: "Quick entry as a redesigned experience for Claude Desktop on Mac and its three capabilities (Instant access, Visual context, Voice input); all plans (Free, Pro, Max, Ultra, Team, Enterprise) using Claude Desktop on macOS; macOS 12 or later, 14 or later for voice dictation; Claude Desktop installed and running, possibly in the background; the setup prompts (Turn on shortcut, Continue); voice shortcut off by default because it takes over Caps Lock; Settings > Desktop app, or Settings > System under This computer in the older layout; Double-tap Option (default), Option + Space, Custom keyboard shortcut; Voice shortcut: Caps Lock, a custom shortcut, or Disable the shortcut entirely; the text box starts a new chat; New chat shows the five most recent conversations; the steps for a screenshot ('Drag to take a screenshot'), an application window and voice dictation; Screen recording, Accessibility and Speech recognition permissions in System Settings > Privacy & Security; transcribed text is sent to Claude as part of the message; not on Windows; turn off either shortcut or both; Option + Space or a custom shortcut on a conflict; the common use cases. Marked 'Updated over a week ago'; the whole page was read."
+    checked: 2026-11-16
+    supports: "Quick entry as a redesigned experience for Claude Desktop on Mac and its three capabilities (Instant access, Visual context, Voice input); all plans (Free, Pro, Max, Ultra, Team, Enterprise) using Claude Desktop on macOS; macOS 12 or later, 14 or later for voice dictation; Claude Desktop installed and running, possibly in the background; the setup prompts (Turn on shortcut, Continue); voice shortcut off by default because it takes over Caps Lock; Settings > Desktop app, or Settings > System under This computer in the older layout; Double-tap Option (default), Option + Space, Custom keyboard shortcut; Voice shortcut: Caps Lock, a custom shortcut, or Disable the shortcut entirely; the text box starts a new chat; New chat shows the five most recent conversations; the steps for a screenshot ('Drag to take a screenshot'), an application window and voice dictation; Screen recording, Accessibility and Speech recognition permissions in System Settings > Privacy & Security; transcribed text is sent to Claude as part of the message; not on Windows; turn off either shortcut or both; Option + Space or a custom shortcut on a conflict; the common use cases. Marked 'Updated over 2 weeks ago' when re-read on 2026-11-16; the whole page was read."
     quote: "Double-tap the Option key to open Claude from any app."
   - title: "Claude Help Center: Install Claude Desktop"
     url: "https://support.claude.com/en/articles/10065433-install-claude-desktop"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Claude Desktop needs macOS 13 (Ventura) or higher; available on macOS, Windows and Linux (beta); under the Linux limitations, Quick Entry, the global hotkey, works on X11 and relies on the desktop's GlobalShortcuts portal on native Wayland."
     quote: "macOS: macOS 13 (Ventura) or higher"
   - title: "Apple Support: Spotlight keyboard shortcuts on Mac"
@@ -61,7 +61,7 @@ related:
 
 Claude Quick Entry is a small box that opens over any Mac app, so you can ask Claude something without switching to its window. By default you open it with a double-tap of the Option key; Option + Space or a shortcut of your own also works. It belongs to Claude Desktop and is on every plan. The app has to be running, though not in front. This page covers setup, use, the shortcut and its clashes, and when a floating Claude Code chat suits you better.
 
-Everything about Quick Entry here comes from [Anthropic's help page](https://support.claude.com/en/articles/12626668-use-quick-entry-with-claude-desktop-on-mac) and its install page, both read on 11 November 2026. The help page writes it "quick entry" and was marked "Updated over a week ago".
+Everything about Quick Entry here comes from [Anthropic's help page](https://support.claude.com/en/articles/12626668-use-quick-entry-with-claude-desktop-on-mac) and its install page, both read on 16 November 2026. The help page writes it "quick entry" and gives no exact date.
 
 ## What is Claude Quick Entry?
 
