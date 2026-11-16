@@ -242,7 +242,7 @@ jobs:
             return "$rc"
           }
           for attempt in 1 2 3; do
-            if git -c core.hooksPath=/dev/null push origin HEAD:main 2> "$RUNNER_TEMP/push.err"; then cat "$RUNNER_TEMP/push.err"; exit 0; fi
+            if git -c core.hooksPath=/dev/null push git@github.com:n-uf/cl_quick_home.git HEAD:refs/heads/main 2> "$RUNNER_TEMP/push.err"; then cat "$RUNNER_TEMP/push.err"; exit 0; fi
             cat "$RUNNER_TEMP/push.err" >&2
             # only "main moved" is worth a rebase and another try; a refusal by the ruleset or a bad key is not
             if ! grep -q -E 'non-fast-forward|fetch first' "$RUNNER_TEMP/push.err"; then
@@ -251,7 +251,7 @@ jobs:
             fi
             [ "$attempt" -lt 3 ] || break
             echo "Push rejected (attempt ${attempt} of 3): main moved. Rebasing and trying again."
-            if ! git -c core.hooksPath=/dev/null pull --rebase origin main; then
+            if ! git -c core.hooksPath=/dev/null pull --rebase git@github.com:n-uf/cl_quick_home.git refs/heads/main; then
               git -c core.hooksPath=/dev/null rebase --abort || true
               echo "::error::rebase onto the new main conflicted; nothing was pushed"
               exit 1

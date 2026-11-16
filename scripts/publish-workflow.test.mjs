@@ -62,6 +62,15 @@ test("push and verify-key take the same key check, checkout settings and lock-do
   assert.ok(stepAt("verify-key", "Switch git hooks off and lock down ssh") < stepAt("verify-key", "List main over ssh"));
 });
 
+test("push and the rebase retry name the ssh URL and an explicit ref, never `origin`, and never --force", () => {
+  const code = jobBlocks.push.replace(/^ *#.*$/gm, "");
+  assert.match(code, /git -c core\.hooksPath=\/dev\/null push git@github\.com:n-uf\/cl_quick_home\.git HEAD:refs\/heads\/main 2>/);
+  assert.match(code, /git -c core\.hooksPath=\/dev\/null pull --rebase git@github\.com:n-uf\/cl_quick_home\.git refs\/heads\/main; then/);
+  assert.equal(code.split(/\bgit (?:-c \S+ )?push\b/).length - 1, 1, "one push command");
+  // (`worktree remove --force` in the re-check is unrelated: it only removes a scratch worktree)
+  assert.doesNotMatch(code, /push origin|pull --rebase origin|push[^\n]*(?:--force|-f\b)|\+HEAD|--force-with-lease/);
+});
+
 test("verify-key only lists main over ssh: it needs the ssh origin, and has no push, apply, commit or download", () => {
   const job = jobBlocks["verify-key"];
   assert.match(job, /environment: publish\n/);
