@@ -12,7 +12,7 @@ export const homeFaq: QA[] = [
   { q: "Are cl_quick chats incognito?",
     a: ["Yes. Quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account. It is cl_quick's own incognito, not Anthropic's: Claude Code runs with <code>--no-session-persistence</code>, so no transcript is written, and a chat ends after 15 minutes idle."] },
   { q: "Does cl_quick work on an Intel Mac?",
-    a: ["No. It needs an Apple silicon Mac, macOS 13 or later and Claude Code, signed in. cl_quick chats through that sign-in, on the profile's account in use. It is a free download from GitHub Releases, and the Install page has the steps."] },
+    a: ["No. cl_quick needs an Apple silicon Mac, so it doesn't run on an Intel Mac. It also needs macOS 13 or later and Claude Code, signed in, because your own Claude Code answers each chat, on the profile's account in use. The app is free, and the Install page has the download."] },
   { q: "How do I open Claude with a keyboard shortcut on Mac?",
     a: ["With cl_quick, press ⌥Space over any app and a chat bar opens, without bringing another app forward. ⌥Space is the default. Settings ▸ General offers four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, or Off. It needs no Accessibility permission."] },
 ];

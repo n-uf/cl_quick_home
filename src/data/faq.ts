@@ -15,7 +15,7 @@ export const groups: Group[] = [
     { q: "Is cl_quick made by Anthropic?",
       a: ["No. cl_quick is an independent tool made by n-uf, and it is not affiliated with Anthropic. Your own Claude Code answers, on the profile's account in use, and your messages go to Anthropic under that account, as any Claude Code use does. Claude is a trademark of Anthropic."] },
     { q: "How do I install cl_quick, and what does it need?",
-      a: ["An Apple silicon Mac, macOS 13 or later and Claude Code, signed in. Download cl_quick.dmg from the latest GitHub release, open the disk image and drag cl_quick to Applications. The first time, macOS says it can't verify the app: click Open Anyway in System Settings ▸ Privacy &amp; Security, once."] },
+      a: ["Download cl_quick.dmg from the latest GitHub release, open the disk image and drag cl_quick to Applications; cl_quick.zip is the same app. It needs an Apple silicon Mac, macOS 13 or later and Claude Code, signed in. The first time, macOS says it can't verify the app: click Open Anyway in System Settings ▸ Privacy &amp; Security, once."] },
     { q: "Does it work with cl_audit?",
       a: ["cl_quick runs with or without cl_audit and shares nothing with it while running. It is the successor of cl_audit's quick chat: on its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any."] },
   ] },
