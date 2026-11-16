@@ -37,22 +37,22 @@ sources:
     supports: "The 'Files in the chat' entry: PDFs and text files (Markdown, CSV, JSON, code and the like) dropped or pasted, chips, sent with the message as documents so Claude reads them, text file up to 400 KB, 5 attachments with pictures, per chat 400 KB of text files, what is refused, kept in memory only and never written anywhere, Claude Code still has no file tools; the 'Ask about the selected text' entry; the 'Incognito chats' entry."
   - title: "Claude Help Center: Upload files to Claude"
     url: "https://support.claude.com/en/articles/8241126-upload-files-to-claude"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "Dated July 23, 2026. CSV is listed among the document types Claude works with (with PDF, DOCX, TXT, HTML, ODT, RTF, EPUB, JSON and XLSX); XLSX needs code execution and file creation enabled in your account; files attach from the + button ▸ Add files or photos, or by drag and drop into the chat window; chat uploads 500MB per file and up to 20 files per chat; for non-PDF documents Claude extracts text only, and embedded images can't be read."
     quote: "Claude extracts text only from these files."
   - title: "Claude Help Center: Create and edit files with Claude"
     url: "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude"
-    checked: 2026-11-13
-    supports: "Code execution and file creation is available to Free, Pro, Max, Ultra, Team and Enterprise, on by default for Free, Pro, Max and Ultra, turned on in Settings ▸ Capabilities (called Create and edit files in the updated Settings layout); Team and Enterprise owners control it; Claude works in an isolated, sandboxed container; Claude can create Python scripts for data analysis; you can upload CSV, TSV and other files for data analysis and visualization."
+    checked: 2026-11-16
+    supports: "Code execution and file creation is available to Free, Pro, Max, Ultra, Team and Enterprise, on by default for Free, Pro, Max and Ultra, turned on in Settings ▸ Capabilities (called Create and edit files in the updated Settings layout); Team and Enterprise owners control it; Claude works in an isolated, sandboxed container; Claude can create Python scripts for data analysis; you can upload CSV, TSV and other files for data analysis and visualization; the maximum file size is 30MB per file for both uploads and downloads. Marked 'Updated over a week ago' when re-read on 2026-11-16."
     quote: "upload CSV, TSV, and other files for data analysis and visualization"
   - title: "Claude API docs: Files API"
     url: "https://platform.claude.com/docs/en/build-with-claude/files"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "Plain text files such as .csv and .md can be read as text or uploaded with an explicit text/plain content type; to analyze datasets instead of reading them as text, upload them for the code execution tool; .docx and .xlsx aren't supported in document blocks and must be converted to text first."
     quote: "To analyze datasets instead of reading them as text"
   - title: "Claude Code docs: Tools reference"
     url: "https://code.claude.com/docs/en/tools-reference"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "Claude Code reads files with its Read tool and runs commands with Bash."
     quote: "Executes shell commands in your environment."
 related:
@@ -68,12 +68,12 @@ One limit shapes how you use it. In cl_quick, Claude reads the file as text and 
 
 ## What Anthropic says about CSV files
 
-Two of Anthropic's Help Center pages matter here, both read on 13 November 2026. They describe two different things Claude can do with the same file.
+Two of Anthropic's Help Center pages matter here, both read on 16 November 2026. They describe two different things Claude can do with the same file.
 
 | In the Claude app | What the page says |
 |---|---|
 | Attach a CSV to a chat | CSV is a supported document type, up to 500 MB per file and 20 files per chat. For documents other than PDFs, Claude extracts text only. |
-| With code execution and file creation on | You can upload CSV, TSV and other files for data analysis and visualization. Claude works in a sandboxed container and can create Python scripts for data analysis. |
+| With code execution and file creation on | You can upload CSV, TSV and other files for data analysis and visualization, up to 30 MB per file. Claude works in a sandboxed container and can create Python scripts for data analysis. |
 
 To upload a CSV file to Claude in the app, use the **+** button ▸ Add files or photos, or drag the file into the chat window. Code execution and file creation is on by default for Free, Pro, Max and Ultra, under Settings ▸ Capabilities, and on Team and Enterprise the organization's owners control it.
 
