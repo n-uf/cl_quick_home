@@ -37,36 +37,36 @@ sources:
     supports: "The 'Incognito chats' entry: no transcript, nothing resumed, the ways a chat ends (15 minutes idle with the window open or hidden, New chat, another profile or account, a crash or a needed sign-in, quit); 'Images in the chat' (nothing is saved); 'Files in the chat' (kept in memory only); 'Links and search' (Claude Code's two web tools, nothing stored); 'Ask about the selected text' (nothing about it is kept); 'An update notice' (about once a day, anonymous, Settings ▸ General ▸ Updates turns it off)."
   - title: "Claude Code docs: CLI reference"
     url: "https://code.claude.com/docs/en/cli-reference"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "--no-session-persistence: sessions are not saved to disk and cannot be resumed; print mode only; CLAUDE_CODE_SKIP_PROMPT_HISTORY does the same in any mode; example claude -p --no-session-persistence \"query\"."
     quote: "sessions are not saved to disk and cannot be resumed"
   - title: "Claude Code docs: Sessions"
     url: "https://code.claude.com/docs/en/sessions"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Sessions are saved continuously to local transcript files so you can return after exiting; claude --continue and claude --resume; transcripts are JSONL at ~/.claude/projects/<project>/<session-id>.jsonl by default."
   - title: "Claude Code docs: Explore the .claude directory"
     url: "https://code.claude.com/docs/en/claude-directory"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Transcripts and history are not encrypted at rest, OS file permissions are the only protection; cleanupPeriodDays defaults to 30 days; with CLAUDE_CONFIG_DIR set, every ~/.claude path and .claude.json live under that folder; ~/.claude.json holds app state and account details; backups/ keeps earlier copies made when Claude Code rewrites it."
   - title: "Claude Code docs: Environment variables"
     url: "https://code.claude.com/docs/en/env-vars"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "CLAUDE_CODE_SKIP_PROMPT_HISTORY=1 skips writing prompt history and session transcripts to disk; such sessions don't appear in --resume, --continue or up-arrow history."
   - title: "Claude Code docs: Data usage"
     url: "https://code.claude.com/docs/en/data-usage"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Retention by account type (Free, Pro, Max and Ultra: 5 years if model improvement is allowed, 30 days if not; Team, Enterprise and API: 30 days standard); training on Free, Pro, Max and Ultra data when the setting is on, including Claude Code use; privacy settings at claude.ai/settings/data-privacy-controls."
   - title: "Claude Code docs (full text, llms-full.txt)"
     url: "https://code.claude.com/docs/llms-full.txt"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "The English docs don't contain the word 'incognito' (searched the full text)."
   - title: "Claude Help Center: Use incognito chats"
     url: "https://support.claude.com/en/articles/12260368-use-incognito-chats"
-    checked: 2026-11-11
-    supports: "Incognito chats in the Claude app aren't saved to chat history or memory, aren't used for training, are retained 30 days by default; the ghost icon. Marked 'Updated over a week ago' when read."
+    checked: 2026-11-16
+    supports: "Incognito chats in the Claude app aren't saved to chat history or memory, aren't used for training, are retained 30 days by default; the ghost icon. Marked 'Updated over 2 weeks ago' when re-read on 2026-11-16."
   - title: "Claude Help Center: Use Claude Code with your Pro, Max, or Ultra plan"
     url: "https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-max-or-ultra-plan"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Limits are shared across Claude and Claude Code, so all activity in both tools counts against the same limits."
 related:
   - /
@@ -125,7 +125,7 @@ cl_quick also turns off two things that would leave a trace. It turns off Claude
 
 ## What still happens
 
-**Anthropic still gets your messages.** A quick chat is Claude Code, so Anthropic's rules for Claude Code apply. Anthropic's data usage page, read on 11 November 2026, says retention depends on your account type. For Free, Pro, Max and Ultra it's 5 years if you allow model improvement and 30 days if you don't. For Team, Enterprise and the API it's 30 days as standard. The page also says Anthropic trains on Free, Pro, Max and Ultra data when that setting is on, including Claude Code use. Session saving isn't part of those rules, so cl_quick's incognito doesn't change them. The setting itself is at claude.ai/settings/data-privacy-controls.
+**Anthropic still gets your messages.** A quick chat is Claude Code, so Anthropic's rules for Claude Code apply. Anthropic's data usage page, read on 16 November 2026, says retention depends on your account type. For Free, Pro, Max and Ultra it's 5 years if you allow model improvement and 30 days if you don't. For Team, Enterprise and the API it's 30 days as standard. The page also says Anthropic trains on Free, Pro, Max and Ultra data when that setting is on, including Claude Code use. Session saving isn't part of those rules, so cl_quick's incognito doesn't change them. The setting itself is at claude.ai/settings/data-privacy-controls.
 
 **The chat counts against the account's limits.** Anthropic's help page says limits are shared across Claude and Claude Code. A quick chat draws on the same limits as everything else on that account. For usage, limits and accounts, see [cl_audit](https://cl-audit.n-uf.com), n-uf's sibling app.
 
