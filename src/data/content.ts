@@ -34,7 +34,7 @@ export const showDrafts = import.meta.env.DEV || process.env.VERCEL_ENV === "pre
 const visible = <T extends Entry>(entries: T[]) => (showDrafts ? entries : entries.filter(isLive));
 
 // Counted with a file glob first: asking Astro for an empty collection logs a warning on every page.
-// Both collections are empty for now (the first ones come with the first release), so neither section exists yet.
+// A collection with no file has no section yet; a section with only drafts is built only in a preview.
 const useCaseFiles = Object.keys(import.meta.glob("/src/content/use-cases/*.md"));
 export async function getUseCases() {
   return useCaseFiles.length === 0 ? [] : visible(await getCollection("useCases")).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99) || a.data.title.localeCompare(b.data.title));
