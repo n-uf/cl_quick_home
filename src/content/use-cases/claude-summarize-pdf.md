@@ -37,12 +37,12 @@ sources:
     supports: "The 'Files in the chat' entry: PDFs and text files dropped or pasted, chips, go with the message as documents so Claude reads them, the limits (PDF 15 MB and 100 pages, text file 400 KB, 5 attachments with pictures, per chat 20 MB, 100 PDF pages, 400 KB of text files), what is refused, kept in memory only and never written anywhere; the 'Ask about the selected text' entry; the 'Incognito chats' entry (a chat ends after 15 minutes idle)."
   - title: "Claude Help Center: Upload files to Claude"
     url: "https://support.claude.com/en/articles/8241126-upload-files-to-claude"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "Dated July 23, 2026. PDF is among the document types Claude works with; files attach from the + button or by drag and drop; chat uploads 500MB per file and up to 20 files per chat; PDFs are limited to 1000 pages; Claude analyzes both text and visual elements (images, charts, graphics) in PDFs of 100 pages or fewer, and text only for 101 to 1000 pages; a PDF over 1000 pages gets an 'Uploaded file is too large' error; project files 30MB per file; tips: use the PDF page numbers shown in your PDF viewer, not the ones printed on the document, and divide larger files into smaller sections."
     quote: "Claude analyzes both text and visual elements (like images, charts, and graphics) in PDFs of 100 pages or fewer."
   - title: "Claude API docs: PDF support"
     url: "https://platform.claude.com/docs/en/build-with-claude/pdf-support"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "You can ask Claude about text, pictures, charts and tables in PDFs; use cases include financial reports and legal documents; the format must be a standard PDF with no passwords or encryption; how it works: each page is converted to an image and the text of each page is extracted and provided alongside it; best practices: use logical page numbers from the PDF viewer in prompts, split large PDFs into chunks when needed."
     quote: "Standard PDF (no passwords/encryption)"
 related:
@@ -58,7 +58,7 @@ It suits the PDF you've just been sent: an invoice to check, a contract to read 
 
 ## What Anthropic's page says about PDFs
 
-Anthropic's Help Center page "Upload files to Claude", read on 13 November 2026, gives these numbers for the Claude app:
+Anthropic's Help Center page "Upload files to Claude", read on 16 November 2026, gives these numbers for the Claude app:
 
 | In the Claude app | What the page says |
 |---|---|
