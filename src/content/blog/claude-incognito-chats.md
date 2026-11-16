@@ -5,8 +5,8 @@ h1: "Are Claude incognito chats private? What they keep and who can see them"
 mainKeyword: "are claude incognito chats private"
 kind: what-is
 draft: true
-published: 2026-12-08
-updated: 2026-12-08
+published: 2026-11-25
+updated: 2026-11-25
 author: n-uf
 takeaways:
   - "Anthropic's help page says incognito chats aren't saved to your chat history or to Claude's memory, and they aren't used for model training."

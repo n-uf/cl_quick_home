@@ -5,8 +5,8 @@ h1: "A Claude Code floating window you open on a key and hide with Esc"
 mainKeyword: "claude code floating window"
 kind: use-case
 draft: true
-published: 2026-12-04
-updated: 2026-12-04
+published: 2026-11-21
+updated: 2026-11-21
 author: n-uf
 takeaways:
   - "cl_quick opens a chat bar on a shortcut (⌥Space by default). The first message turns it into a chat window that floats on every Space until Esc hides it."

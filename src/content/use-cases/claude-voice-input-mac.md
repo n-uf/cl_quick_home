@@ -5,8 +5,8 @@ h1: "Claude voice input on a Mac: what each option does and where it fits"
 mainKeyword: "claude voice input mac"
 kind: use-case
 draft: true
-published: 2026-12-18
-updated: 2026-12-18
+published: 2026-12-05
+updated: 2026-12-05
 author: n-uf
 takeaways:
   - "On a Mac you can talk to Claude through Quick Entry's Caps Lock dictation, the mic in Claude's message box, voice mode, /voice in Claude Code's terminal, or macOS Dictation in any text field."

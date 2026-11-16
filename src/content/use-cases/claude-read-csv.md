@@ -5,8 +5,8 @@ h1: "Can Claude read CSV files? A quick look at a small file, a log or code"
 mainKeyword: "can claude read csv files"
 kind: use-case
 draft: true
-published: 2027-01-12
-updated: 2027-01-12
+published: 2026-12-19
+updated: 2026-12-19
 author: n-uf
 takeaways:
   - "Claude reads CSV files as text. The Claude app takes one as an upload, and cl_quick, a free macOS menu bar app, takes a CSV, log or code file up to 400 KB of UTF-8 text, dropped from Finder or pasted with ⌘V."

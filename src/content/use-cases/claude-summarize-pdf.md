@@ -5,8 +5,8 @@ h1: "Can Claude summarize PDFs? Drop one on a chat bar over any app"
 mainKeyword: "claude summarize pdf"
 kind: use-case
 draft: true
-published: 2026-12-22
-updated: 2026-12-22
+published: 2026-12-09
+updated: 2026-12-09
 author: n-uf
 takeaways:
   - "Claude reads PDFs. In the Claude app you attach one to a chat. In cl_quick, a free macOS menu bar app, you drop it from Finder on the chat bar, or copy it in Finder and press ⌘V."

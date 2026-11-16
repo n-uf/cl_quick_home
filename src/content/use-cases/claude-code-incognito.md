@@ -5,8 +5,8 @@ h1: "Claude Code in incognito: ask a question and leave no transcript"
 mainKeyword: "claude code in incognito"
 kind: use-case
 draft: true
-published: 2026-12-01
-updated: 2026-12-01
+published: 2026-11-18
+updated: 2026-11-18
 author: n-uf
 takeaways:
   - "By default Claude Code saves each session as a transcript on your Mac, in the profile's projects/ folder, and keeps it 30 days."
