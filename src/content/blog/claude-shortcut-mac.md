@@ -28,25 +28,25 @@ faq:
 sources:
   - title: "Claude Help Center: Use quick entry with Claude Desktop on Mac"
     url: "https://support.claude.com/en/articles/12626668-use-quick-entry-with-claude-desktop-on-mac"
-    checked: 2026-11-11
-    supports: "Double-tap Option opens Claude from any app; the quick access shortcut choices (Double-tap Option as the default, Option + Space, Custom keyboard shortcut); the voice shortcut (Caps Lock, a custom shortcut, or disabled; off by default because it takes over Caps Lock); the setup prompts (Turn on shortcut, Continue); Settings > Desktop app, or Settings > System under This computer in the older layout; Claude Desktop installed and running, possibly in the background; macOS 12 or later (14 for voice); Accessibility, Screen recording and Speech recognition permissions; turn off either shortcut or both; Option + Space or a custom shortcut on a conflict; macOS only, not Windows. Marked 'Updated over a week ago'; the whole page was read and has no troubleshooting section."
+    checked: 2026-11-16
+    supports: "Double-tap Option opens Claude from any app; the quick access shortcut choices (Double-tap Option as the default, Option + Space, Custom keyboard shortcut); the voice shortcut (Caps Lock, a custom shortcut, or disabled; off by default because it takes over Caps Lock); the setup prompts (Turn on shortcut, Continue); Settings > Desktop app, or Settings > System under This computer in the older layout; Claude Desktop installed and running, possibly in the background; macOS 12 or later (14 for voice); Accessibility, Screen recording and Speech recognition permissions; turn off either shortcut or both; Option + Space or a custom shortcut on a conflict; macOS only, not Windows. Marked 'Updated over 2 weeks ago' when re-read on 2026-11-16; the whole page was read and has no troubleshooting section."
     quote: "Double-tap the Option key to open Claude from any app."
   - title: "Claude Code docs: Use Claude Code Desktop (Keyboard shortcuts)"
     url: "https://code.claude.com/docs/en/desktop"
-    checked: 2026-11-13
+    checked: 2026-11-16
     supports: "Cmd+/ shows all shortcuts in the Code tab; the macOS keys table (Cmd N, Cmd W, Ctrl Tab / Ctrl Shift Tab, Esc, Cmd Shift D, Cmd Shift B, Cmd ;, Cmd Shift M, I and E); the table applies to the Code tab; Shift+Tab doesn't cycle permission modes in Desktop; on Windows and Linux Cmd becomes Ctrl, Cmd+Option becomes Alt, Cmd+Ctrl becomes Ctrl+Alt."
     quote: "Press Cmd+/ on macOS or Ctrl+/ on Windows to see all shortcuts available in the Code tab."
   - title: "Claude Code docs: Voice dictation"
     url: "https://code.claude.com/docs/en/voice-dictation"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "In the Claude Code CLI, /voice turns dictation on; hold Space to record, or /voice tap and tap Space to start and again to send; the key is the voice:pushToTalk action, rebindable in ~/.claude/keybindings.json; needs a claude.ai account and a local microphone; on macOS, the terminal gets the microphone permission prompt; some keys aren't delivered to terminal apps and Caps Lock shows an error if bound; in hold mode use Space or a modifier combination like meta+k, which starts recording on the first keypress."
   - title: "Claude Help Center: Open Claude Desktop with a link"
     url: "https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Claude Desktop responds to the claude:// URL scheme; claude://claude.ai/new opens a new chat, with q to prefill the prompt; links can be used from a website, a script or another app. Dated June 30, 2026."
   - title: "Claude Help Center: Install Claude Desktop"
     url: "https://support.claude.com/en/articles/10065433-install-claude-desktop"
-    checked: 2026-11-11
+    checked: 2026-11-16
     supports: "Claude Desktop needs macOS 13 (Ventura) or higher; available on macOS, Windows and Linux (beta); on Linux, Quick Entry, the global hotkey, works on X11 and relies on the desktop's GlobalShortcuts portal on native Wayland."
     quote: "macOS: macOS 13 (Ventura) or higher"
   - title: "Apple Support: Spotlight keyboard shortcuts on Mac"
@@ -80,7 +80,7 @@ The Claude desktop shortcut on a Mac is a double-tap of the Option key. From any
 
 ## Claude desktop shortcut Mac keys, from Anthropic's pages
 
-All of these come from Anthropic's own pages, read on 11 November 2026.
+All of these come from Anthropic's own pages, read on 16 November 2026.
 
 | Keys | What they do | Source |
 |---|---|---|
