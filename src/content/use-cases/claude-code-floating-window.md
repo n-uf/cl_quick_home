@@ -37,8 +37,8 @@ sources:
     supports: "Digit keys in the chat (⌘1 to ⌘5 size the panel, ⌃1 to ⌃6 place it, any layout, macOS can take ⌃1 to ⌃6); standby accounts as rows of their profile in the menu bar menu; addresses blurring instead of being masked, with Settings ▸ General ▸ Blur addresses; ⌘ arrow keys stepping Model and Thinking. Also: The floating chat on a shortcut; Settings with a tile per profile; profiles with several accounts; the profile picker; the quiet chat header; model and thinking as bar controls (Haiku and thinking off by default, every answer says which model gave it); live usage in the bar; the incognito chats entry; the rich menu bar menu; Ask about the selected text in the app you're in (right-click ▸ Services ▸ Ask cl_quick: the selection quoted in the field, not sent, no Accessibility permission, nothing kept); images in the chat; files in the chat (PDFs and text files, kept in memory); Links and search (Claude Code's two web tools, on by default); the account in use read as it is now, and numbers that go grey when old."
   - title: "Claude Help Center: Use Claude Code with your Pro, Max, or Ultra plan"
     url: "https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-max-or-ultra-plan"
-    checked: 2026-11-11
-    supports: "Pro and Max have a five-hour session limit and a weekly limit; limits are shared across Claude and Claude Code, so all activity in both tools counts against the same limits."
+    checked: 2026-11-16
+    supports: "Pro and Max have a five-hour session limit and a weekly limit; limits are shared across Claude and Claude Code, so all activity in both tools counts against the same limits. Re-read on 2026-11-16: it also says Ultra plans have a weekly limit and verified Ultra accounts no five-hour limit, which the page doesn't contradict (it names no plan)."
     quote: "all activity in both tools counts against the same limits"
 related:
   - /
