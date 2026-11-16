@@ -208,8 +208,8 @@
 .getslot.stuck .bkey .bk-l { white-space: nowrap; }
 .getslot.stuck .bkey { min-height: 32px; padding: 6px 8px; gap: 0; }
 .getslot.stuck .bkey .bk-l { font-size: 11px; letter-spacing: .08em; white-space: normal; text-align: center; line-height: 1.15; }
-/* compact keys hide the sublabel only visually: a screen reader still hears "Not released yet" (and, on the wide rail
-   below, the Download key shows it too, so the most prominent key never reads as a download that isn't there) */
+/* compact keys hide the sublabel only visually: a screen reader still hears it (and, on the wide rail below, the
+   Download key shows it too, so the most prominent key says what it needs) */
 .getslot.stuck .bkey .bk-s { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .getslot.stuck .bkey.primary { min-height: 40px; }   /* a touch taller than GitHub and Blog (about 1.25 times) */
 .getslot.stuck .bkey.primary .bk-l { letter-spacing: .06em; gap: 6px; }
@@ -233,7 +233,7 @@
 a.bkey:hover, .bkey:not(.off):hover { transform: translateY(-2px); filter: brightness(1.08); }
 a.bkey:active, .bkey:not(.off):active { transform: translateY(1px); }
 /* the primary key (Download for Mac): the site's warm orange keycap, with the ridges and the bevel, and dark text. The orange
-   says "this is the action", not "it is available now": before the release the sublabel still says so. */
+   says "this is the action"; its sublabel says what the app needs. */
 .bkey.primary {
   background: repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, rgba(0,0,0,.05) 1px 2px), linear-gradient(180deg, #f4a075, #e47b4c);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(110,40,10,.35), 0 0 0 1px #5e240d, 0 2px 0 #3d1707, 0 3px 7px rgba(0,0,0,.45);
