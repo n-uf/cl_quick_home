@@ -16,17 +16,17 @@ const jsonLd = [
 ];
 ---
 <Desktop title={page.title} description={page.description} page="install" headline="Install cl_quick on a Mac" jsonLd={jsonLd} ogImage="/og/install.png">
-  <p class="readout"><span class="led lit" aria-hidden="true"></span><b>Download cl_quick for Mac.</b> The first release is <ExtLink href={firstReleaseUrl}>26.11.0</ExtLink>. The app is free, and the steps below take a minute.</p>
+  <p class="readout"><span class="led lit" aria-hidden="true"></span><b>Download cl_quick for Mac.</b> The app is free, and the first release is <ExtLink href={firstReleaseUrl}>26.11.0</ExtLink>.</p>
 
   <div class="cols">
     <div class="col-stack">
       <div class="card">
         <h2 class="cap">Download and install</h2>
         <ol class="steps">
+          <li><b>Check what it needs.</b><span>An Apple silicon Mac, macOS 13 or later and Claude Code, signed in. <a href="#requirements">Details below</a>.</span></li>
           <li><b>Download <code>cl_quick.dmg</code>.</b><span><a class="key" href={release.downloadUrl} target="_blank" rel="noopener">Download cl_quick.dmg<span class="sr-only"> (opens in a new tab)</span></a> It is the disk image from the latest GitHub release. You can use <ExtLink href={zipUrl}><code>cl_quick.zip</code></ExtLink> instead: the same app.</span></li>
           <li><b>Open the disk image and drag cl_quick to Applications.</b><span>cl_quick is a menu bar app with no Dock icon.</span></li>
           <li><b>The first time, macOS says it can't verify the app.</b><span>cl_quick isn't signed with an Apple Developer ID yet. Open System Settings ▸ Privacy &amp; Security and click <b>Open Anyway</b>, once.</span></li>
-          <li><b>Check the requirements.</b><span>An Apple silicon Mac, macOS 13 or later and Claude Code, signed in. <a href="#requirements">Details below</a>.</span></li>
         </ol>
       </div>
 
@@ -73,7 +73,7 @@ const jsonLd = [
 
       <div class="card">
         <h2 class="cap">Updates</h2>
-        <p class="t"><b>Updates</b> in Settings ▸ General is on by default. About once a day cl_quick asks GitHub Releases for cl_quick's latest release, anonymously, and when a newer one exists the menu bar menu shows "Update available", which opens the release's page in your browser. The app downloads and installs nothing itself, and the download link on this page always points to the newest release.</p>
+        <p class="t"><b>Updates</b> in Settings ▸ General is on by default. About once a day cl_quick asks GitHub Releases for cl_quick's latest release, anonymously, and when a newer one exists the menu bar menu shows "Update available", which opens the release's page in your browser. The app downloads and installs nothing itself. The download link on this page always gets the newest release's disk image.</p>
         <p class="t">cl_quick's own update check is the one thing it sends besides your messages. Turn Updates off and no request is made. With Links and search on, Claude Code may fetch pages or search the web for an answer. <a href="/faq/#sends">What it sends, exactly</a></p>
       </div>
 
