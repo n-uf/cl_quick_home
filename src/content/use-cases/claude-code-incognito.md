@@ -27,13 +27,13 @@ faq:
     a: "Claude's incognito chats are a Claude app feature, run by Anthropic. Anthropic's page says they aren't saved to chat history or memory, aren't used for training, and are retained 30 days by default. cl_quick's incognito is Claude Code with session saving off, and it only covers what is saved on your Mac."
 sources:
   - title: "cl_quick README"
-    url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
-    checked: 2026-11-11
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
+    checked: 2026-11-16
     supports: "Intro (quick chats are incognito, the exact sentence, how a chat ends, the idle message); Profiles (a profile is a Claude Code folder, Work is ~/.claude-work); The chat (Copy, Stop, Retry, the pickers change the running claude; Images: scaled down in memory, no file is made, a dropped file is read and never copied, a thumbnail until the chat ends; Files: PDFs and text files, kept in memory only, never written to a temporary file, cache or the app's folder; Links and search: on by default, Claude Code's two web tools); Settings ▸ General (Updates: about once a day, GitHub Releases, anonymous, off means no request; Links and search); What it keeps, and what it sends (--no-session-persistence, the update check: api.github.com, User-Agent cl_quick, updates.json, the check on a signed-in folder with Claude Code 2.1.318, AGENTS.md plugin and auto memory turned off, the .claude.json timestamp and backup, Links and search: the pages are fetched by Claude Code for that answer only, the text goes to the model as part of the chat, under your account, and cl_quick stores none of it, attached files go inside the message, stay in the chat's conversation under the same account and are kept in memory only (nothing copied to a temporary file, a cache or the app's folder), Claude Code has no file tools, no tools but the two web tools when Links and search is on, no MCP servers, no settings files, Remove… in Settings ▸ General)."
     quote: "nothing is saved on this Mac"
   - title: "cl_quick CHANGELOG"
-    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
-    checked: 2026-11-11
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/CHANGELOG.md"
+    checked: 2026-11-16
     supports: "The 'Incognito chats' entry: no transcript, nothing resumed, the ways a chat ends (15 minutes idle with the window open or hidden, New chat, another profile or account, a crash or a needed sign-in, quit); 'Images in the chat' (nothing is saved); 'Files in the chat' (kept in memory only); 'Links and search' (Claude Code's two web tools, nothing stored); 'Ask about the selected text' (nothing about it is kept); 'An update notice' (about once a day, anonymous, Settings ▸ General ▸ Updates turns it off)."
   - title: "Claude Code docs: CLI reference"
     url: "https://code.claude.com/docs/en/cli-reference"

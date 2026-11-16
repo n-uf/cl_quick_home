@@ -27,13 +27,13 @@ faq:
     a: "Not in cl_quick, which refuses a password-protected PDF with a muted line over the field. Anthropic's PDF docs set the same rule for the API: a standard PDF, with no passwords or encryption. If you're allowed to, save an unprotected copy first and drop that one instead."
 sources:
   - title: "cl_quick README"
-    url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
-    checked: 2026-11-13
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
+    checked: 2026-11-16
     supports: "Intro (your own Claude Code on the profile's account in use, counts against its limits, quick chats are incognito, the exact sentence); The chat (Files: PDFs up to 15 MB and 100 pages, text and code files up to 400 KB, dropped from Finder on the bar or the chat window or copied in Finder and pasted with ⌘V, chips next to the thumbnails with a symbol, the name and the page count, a ✕ on each, 5 attachments a message with the pictures, per chat about 20 MB, 100 PDF pages and 400 KB of text files counting what was sent earlier and what waits, ✕ gives the room back, a new chat starts from nothing, a muted line past the limit, Claude gets no access to your files or folders, Word, Excel, zip, binaries, text that isn't UTF-8 and a password-protected PDF refused, 'cl_quick can't read .docx files yet.', 'too long: 140 pages, up to 100', a file alone is a message, the chat shows chips and never the content, 'Prompt is too long' ends the chat and Retry asks again in a new one; Images: thumbnails over the field, an image counts as an attachment; Copy under each answer; ⌘⇧C copies the latest complete answer; the mic button and ⌘D start Dictation; Ask about the selected text: right-click ▸ Services ▸ Ask cl_quick, the selection quoted in the field and not sent, no Accessibility permission, a selection over 20,000 characters is cut); What it keeps, and what it sends (attached files go to Claude Code inside the message as document blocks in the same connection as the text, kept in memory only, nothing copied to a temporary file, a cache or the app's folder, a dropped file is only read, Claude Code has no file tools and sees nothing but what you attached, files stay in the running chat's conversation until it ends, under the same account); Install (Apple silicon, macOS 13 or later, Claude Code signed in); the closing line (independent, not affiliated with, endorsed by or sponsored by Anthropic)."
     quote: "kept in memory only"
   - title: "cl_quick CHANGELOG"
-    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
-    checked: 2026-11-13
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/CHANGELOG.md"
+    checked: 2026-11-16
     supports: "The 'Files in the chat' entry: PDFs and text files dropped or pasted, chips, go with the message as documents so Claude reads them, the limits (PDF 15 MB and 100 pages, text file 400 KB, 5 attachments with pictures, per chat 20 MB, 100 PDF pages, 400 KB of text files), what is refused, kept in memory only and never written anywhere; the 'Ask about the selected text' entry; the 'Incognito chats' entry (a chat ends after 15 minutes idle)."
   - title: "Claude Help Center: Upload files to Claude"
     url: "https://support.claude.com/en/articles/8241126-upload-files-to-claude"

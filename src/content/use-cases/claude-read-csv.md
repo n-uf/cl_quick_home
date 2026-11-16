@@ -27,13 +27,13 @@ faq:
     a: "Yes, as text. Logs are among the text files cl_quick takes, and a stack trace pasted into the field is just text. Ask for the first error and its likely cause. Claude sees only what you gave it, so a trace without the code around it gets an answer with gaps."
 sources:
   - title: "cl_quick README"
-    url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
-    checked: 2026-11-13
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
+    checked: 2026-11-16
     supports: "Intro (your own Claude Code on the profile's account in use, counts against its limits, quick chats are incognito, the exact sentence); The chat (Files: any text or code file (txt, Markdown, CSV, JSON, YAML, XML, HTML, logs, Swift, Python, JavaScript/TypeScript, Go, Rust, Java, C, Ruby, shell, SQL, TOML, CSS and the like) up to 400 KB, UTF-8, dropped from Finder on the bar or the chat window or copied in Finder and pasted with ⌘V, chips with a symbol, the name and the size, a ✕ on each, 5 attachments a message with the pictures, per chat about 20 MB, 100 PDF pages and 400 KB of text files counting what was sent earlier, ✕ gives the room back, a new chat starts from nothing, Claude gets no access to your files or folders, Word, Excel, zip, binaries, text that isn't UTF-8 and password-protected PDFs refused with a muted line over the field, one over a limit says by how much, a file alone is a message, the chat shows chips and never the content; Images: text on the clipboard always pastes as text; Ask about the selected text: right-click ▸ Services ▸ Ask cl_quick, the selection quoted in the field and not sent, a selection over 20,000 characters cut); What it keeps, and what it sends (attached files go to Claude Code inside the message as document blocks, kept in memory only, nothing copied to a temporary file, a cache or the app's folder, Claude Code has no file tools and sees nothing but what you attached, runs with no tools except the two web tools when Links and search is on, files stay in the running chat's conversation until it ends, under the same account); Install (Apple silicon, macOS 13 or later, Claude Code signed in); the closing line (independent, not affiliated with, endorsed by or sponsored by Anthropic)."
     quote: "kept in memory only"
   - title: "cl_quick CHANGELOG"
-    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
-    checked: 2026-11-13
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/CHANGELOG.md"
+    checked: 2026-11-16
     supports: "The 'Files in the chat' entry: PDFs and text files (Markdown, CSV, JSON, code and the like) dropped or pasted, chips, sent with the message as documents so Claude reads them, text file up to 400 KB, 5 attachments with pictures, per chat 400 KB of text files, what is refused, kept in memory only and never written anywhere, Claude Code still has no file tools; the 'Ask about the selected text' entry; the 'Incognito chats' entry."
   - title: "Claude Help Center: Upload files to Claude"
     url: "https://support.claude.com/en/articles/8241126-upload-files-to-claude"

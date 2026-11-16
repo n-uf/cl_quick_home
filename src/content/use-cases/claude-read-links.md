@@ -42,13 +42,13 @@ sources:
     supports: "The API's web fetch tool retrieves full content from webpages and PDFs and currently does not support websites dynamically rendered with JavaScript. This is the tool developers add to their own API requests, not Claude Code's WebFetch. Re-read on 2026-11-13; no page read says how a page behind a login or a paywall is handled."
     quote: "The web fetch tool currently does not support websites dynamically rendered with JavaScript."
   - title: "cl_quick README"
-    url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
-    checked: 2026-11-13
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
+    checked: 2026-11-16
     supports: "The chat ▸ Links and search (paste a link or ask about something current; the muted lines \"Reading example.com…\" and \"Searching the web for “…”…\" beside the dot, gone when the text resumes; the answer is the whole reply and Copy and ⌘⇧C take all of it; Stop works while a page is read; pages count toward the account's usage; the setting turns it off; a change applies from the next message and starts a new chat with \"New chat; nothing from the last one was carried over.\"); The chat (the 5h and wk meters in the header; Stop ends the answer and the chat goes on); The chat ▸ Ask about the selected text in any app (Services ▸ Ask cl_quick, an unsent quote, 20,000 characters cut, nothing kept); Settings ▸ General ▸ Links and search (on by default; the setting's own sentence; off means Claude runs with no tools and a link is only text); What it keeps, and what it sends (Claude Code gets WebFetch and WebSearch and nothing else, with --allowedTools for both; the pages are fetched for that answer only; the text goes to the model as part of the chat under the account; cl_quick stores none of it; the page text is never shown raw and is told to be data, never instructions; no MCP servers, no settings files). Source copy: sources/README-unreleased-2026-11-13b.md, identical to main on 2026-11-13."
     quote: "Pages count toward the account's usage, like any answer."
   - title: "cl_quick CHANGELOG"
-    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
-    checked: 2026-11-13
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/CHANGELOG.md"
+    checked: 2026-11-16
     supports: "'Links and search': the two web tools, allowed up front \"so print mode never has to ask\", and nothing else (no Bash, no files, no MCP); the muted lines; the answer is the whole reply; what a page says is data for the answer, never instructions; read for that answer only and nothing stored; on by default; off means no tools at all; a change starts a new chat; pages count toward the account's usage. Source copy: sources/CHANGELOG-unreleased-2026-11-13.md, same entries as main on 2026-11-13."
 related:
   - /

@@ -62,13 +62,13 @@ sources:
     checked: 2026-11-11
     supports: "macOS keeps keyboard shortcuts in System Settings > Keyboard > Keyboard Shortcuts."
   - title: "cl_quick README"
-    url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
-    checked: 2026-11-11
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
+    checked: 2026-11-16
     supports: "Settings ▸ General ▸ Shortcut (⌥Space by default, four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, or Off; warns only about real clashes: a macOS shortcut that uses the key, as this Mac has them set, or a key another app holds when macOS refuses to register it ('taken by another app'), with a button that picks a preset none of macOS's own shortcuts uses; other apps' shortcuts can't be read and macOS lets two apps register the same key, so nothing else is guessed at; registered the way macOS's own app shortcuts are, no Accessibility permission to give); Intro (the bar, the chat window floating on every Space until Esc, never brings another app forward); Install (Apple silicon, macOS 13 or later, Claude Code signed in); The chat (Return, Shift-Return, Esc or ⌘W, ⌘N, ⌘⇧C copies the latest complete answer); Keyboard layouts (the chat's shortcuts and paste work on Cyrillic layouts such as Russian and Ukrainian too: on a layout whose letters aren't Latin they follow the key's place)."
     quote: "if the key also opens something else, pick another"
   - title: "cl_quick CHANGELOG"
-    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
-    checked: 2026-11-11
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/CHANGELOG.md"
+    checked: 2026-11-16
     supports: "The 'Ask about the selected text in the app you're in' entry: right-click ▸ Services ▸ Ask cl_quick (also the app menu ▸ Services); a keyboard shortcut can be set in System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Services; the bar opens with the selection quoted in the field, ready to edit and not sent; no Accessibility permission, macOS hands the selection over; nothing about it is kept."
 related:
   - /use-cases/claude-code-floating-window/
