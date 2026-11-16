@@ -1,15 +1,21 @@
-// Shared site constants. cl_quick has no release yet: nothing here names a version, a download or a release address.
-// When the first release is out, the hub adds them here (and the Install page reads them).
+// Shared site constants. cl_quick's first release is out (26.11.0, on GitHub Releases). The download address always
+// points at the newest release, so no version is named here; the Install page names the first one once.
 export const site = "https://cl-quick.n-uf.com";
 export const name = "cl_quick";
 
-/** The targets of the three big keys on the home page. The repository is public (2026-11-11), so its key is a link.
- *  The download stays null until the first release is out and the hub says so: then set it (e.g. the GitHub release
- *  file) and the key links there. The Blog key follows the content layer: it links /blog/ once there is a live article. */
+/** The targets of the big keys on the home page. The repository is public (2026-11-11), so its key is a link. The
+ *  download is the disk image of the latest GitHub release (cl_quick.dmg), so it follows each new release without an
+ *  edit here. The Blog key follows the content layer: it links /blog/ once there is a live article. */
 export const release: { downloadUrl: string | null; repoUrl: string | null } = {
-  downloadUrl: null,
+  downloadUrl: "https://github.com/n-uf/cl_quick/releases/latest/download/cl_quick.dmg",
   repoUrl: "https://github.com/n-uf/cl_quick",
 };
+
+/** The same app as a zip, from the latest release (README ▸ Install: "or use cl_quick.zip, the same app"). */
+export const zipUrl = "https://github.com/n-uf/cl_quick/releases/latest/download/cl_quick.zip";
+
+/** The first release's page, named once on the Install page. */
+export const firstReleaseUrl = "https://github.com/n-uf/cl_quick/releases/tag/v26.11.0";
 
 /** What cl_quick needs (README ▸ Install). */
 export const requires = "Apple silicon · macOS 13 or later · Claude Code signed in";
