@@ -58,8 +58,8 @@ sources:
     checked: 2026-11-11
     supports: "Dictation on in Keyboard settings; correct language and region; correct shortcut; an external microphone connected and selected, with enough input volume; the microphone not obstructed; speaking at a normal volume; background noise or a headset; an internet connection may be needed, and Keyboard settings say whether one is."
   - title: "cl_quick README"
-    url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
-    checked: 2026-11-11
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
+    checked: 2026-11-16
     supports: "The chat (the mic button left of Send starts macOS Dictation into the field; cl_quick stays in the background and the panel takes the keyboard as it does for the shortcut, so Dictation types into the field and not the app behind; a click again, sending, a new chat or hiding stops it; with Dictation off in macOS it says once where to turn it on; ⌘D does the same as a click, on and off, also for a Dictation macOS's own shortcut started, and is in the keys button's list; Return while dictating stops it and shows the text, Return again sends it; the field grows with what you dictate); Settings ▸ General ▸ Dictation (Shows text first by default, or Sends at once); Intro (the floating chat, ⌥Space, your own Claude Code, quick chats are incognito, the exact sentence); Install (Apple silicon, macOS 13 or later, Claude Code signed in)."
     quote: "With Dictation off in macOS it says once where to turn it on."
 related:

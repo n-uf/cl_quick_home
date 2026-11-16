@@ -56,13 +56,13 @@ sources:
     supports: "Read tool: PNG, JPEG, GIF and WebP images are returned as visual content and large ones are resized and recompressed; an image file over 128 MB is refused; short PDFs are read whole, longer than 10 pages in ranges of up to 20 pages at a time (needs pdftoppm from poppler-utils); one text read returns at most 25,000 tokens by default and refuses a whole file over 256 KB, so Claude reads a larger file in pages with offset and limit; files with a binary extension such as .xlsx, .parquet, .heic or .zip are refused, and the error suggests a skill for that file type if one is available, or else a shell command or script that reads the format. Re-read on 2026-11-13 (the .md copy of the page)."
     quote: "refuses a whole file over 256 KB"
   - title: "cl_quick README"
-    url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
-    checked: 2026-11-13
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
+    checked: 2026-11-16
     supports: "The chat ▸ Files (drop from Finder or copy and ⌘V; a PDF up to 15 MB and 100 pages, text and code files up to 400 KB in UTF-8, the list of text types; chips with a symbol, name and page count or size, each with a ✕; 5 attachments a message with the pictures; the whole conversation goes to the model with every message, so a chat holds at most about 20 MB, 100 PDF pages and 400 KB of text files in all, counting what was sent earlier and what waits, ✕ gives the room back, a new chat starts from nothing; past that a muted line says so; Claude gets no access to files or folders; refusals: Word, Excel, zip, binaries, non-UTF-8 text and password-protected PDFs, with \"cl_quick can't read .docx files yet.\" and \"too long: 140 pages, up to 100\"; a long chat that outgrows the model (\"Prompt is too long\") ends with a line saying so, and Retry asks again in a new one); The chat ▸ Images (up to 5 a message, scaled in memory to 1568 px on the long side, a picture file over 256 MB refused unread); The chat ▸ Ask about the selected text (20,000 characters); What it keeps, and what it sends (attached files go inside the message as document blocks, kept in memory only, nothing copied to a temporary file, a cache or the app's folder; they stay under the same account; Claude Code has no file tools). Source copy: sources/README-unreleased-2026-11-13b.md, identical to main on 2026-11-13."
     quote: "a chat also holds at most about 20 MB of attachments, 100 PDF pages and 400 KB of text files in all"
   - title: "cl_quick CHANGELOG"
-    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
-    checked: 2026-11-13
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/CHANGELOG.md"
+    checked: 2026-11-16
     supports: "'Files in the chat': PDFs and text files, a PDF up to 15 MB and 100 pages, a text file up to 400 KB, 5 attachments a message with the pictures, per chat 20 MB for everything attached, 100 PDF pages and 400 KB of text files; the refusals; kept in memory only; a chat that outgrows the model ends with a line saying so. Source copy: sources/CHANGELOG-unreleased-2026-11-13.md, same entries as main on 2026-11-13."
 related:
   - /

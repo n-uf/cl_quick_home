@@ -45,13 +45,13 @@ sources:
     checked: 2026-11-11
     supports: "macOS keeps keyboard shortcuts in System Settings > Keyboard > Keyboard Shortcuts."
   - title: "cl_quick README"
-    url: "https://github.com/n-uf/cl_quick/blob/main/README.md"
-    checked: 2026-11-11
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
+    checked: 2026-11-16
     supports: "Intro (a floating chat on a shortcut: the bar, then the chat window floating on every Space until Esc hides it; never brings another app forward; your own Claude Code on the profile's account in use; counts against that account's limits; quick chats are incognito, the exact sentence); Settings ▸ General (⌥Space by default, four other Space shortcuts, Other…, Off; no Accessibility permission to give; other apps' shortcuts can't be read and macOS lets two apps register the same key); The chat (the mic button starts macOS Dictation into the field, ⌘D turns it on and off; Images: ⌘V or dropping image files on the bar or the chat window, thumbnails over the field, up to 5 to a message, scaled down in memory, no file made; Files: PDFs up to 15 MB and 100 pages and text files up to 400 KB, 5 attachments a message with pictures, kept in memory; Links and search: on by default, Claude Code's two web tools; the profile key and its menu with each profile's week); What it keeps, and what it sends (Claude Code's two web tools when Links and search is on and no tools when it is off, no MCP servers, no file tools); Install (Apple silicon, macOS 13 or later, Claude Code signed in)."
     quote: "It never brings another app forward."
   - title: "cl_quick CHANGELOG"
-    url: "https://github.com/n-uf/cl_quick/blob/main/CHANGELOG.md"
-    checked: 2026-11-11
+    url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/CHANGELOG.md"
+    checked: 2026-11-16
     supports: "The 'Ask about the selected text in the app you're in' entry (right-click ▸ Services ▸ Ask cl_quick: the selection quoted in the field, ready to edit and not sent, no Accessibility permission), the 'Images in the chat' entry (⌘V or dropping image files, up to 5, scaled down in memory, nothing saved), the 'Files in the chat' entry (PDFs and text files, 5 attachments a message with the pictures, kept in memory) and the 'Links and search' entry (Claude Code's two web tools, on by default)."
 related:
   - /blog/claude-shortcut-mac/
