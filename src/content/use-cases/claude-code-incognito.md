@@ -4,7 +4,7 @@ description: "Claude Code in incognito: cl_quick runs each quick chat with sessi
 h1: "Claude Code in incognito: ask a question and leave no transcript"
 mainKeyword: "claude code in incognito"
 kind: use-case
-draft: true
+draft: false
 published: 2026-11-18
 updated: 2026-11-18
 author: n-uf
