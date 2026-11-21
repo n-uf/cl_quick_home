@@ -3,6 +3,7 @@ title: "Claude voice input Mac: Quick Entry, voice mode, Dictation"
 description: "Claude voice input Mac options from Anthropic and Apple: Quick Entry dictation, voice mode, macOS Dictation, cl_quick's mic button, and what to check."
 h1: "Claude voice input on a Mac: what each option does and where it fits"
 mainKeyword: "claude voice input mac"
+key: "Voice input on Mac"
 kind: use-case
 draft: true
 published: 2026-12-05

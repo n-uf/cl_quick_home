@@ -3,6 +3,7 @@ title: "Claude Code floating window: a chat over any Mac app"
 description: "A Claude Code floating window for Mac: press ⌥Space over any app, ask, and your own Claude Code answers in a chat that floats until Esc hides it."
 h1: "A Claude Code floating window you open on a key and hide with Esc"
 mainKeyword: "claude code floating window"
+key: "Claude Code floating window"
 kind: use-case
 draft: false
 published: 2026-11-21

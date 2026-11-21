@@ -3,6 +3,7 @@ title: "Claude Code in incognito: a chat that saves nothing"
 description: "Claude Code in incognito: cl_quick runs each quick chat with session saving off, so nothing is saved on your Mac. Anthropic still gets the messages."
 h1: "Claude Code in incognito: ask a question and leave no transcript"
 mainKeyword: "claude code in incognito"
+key: "Claude Code in incognito"
 kind: use-case
 draft: false
 published: 2026-11-18
