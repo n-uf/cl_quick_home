@@ -306,8 +306,9 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   .desk[data-page="home"] .colophon { padding-bottom: calc(26px + 76px + env(safe-area-inset-bottom)); }   /* the bar never hides the footer */
   .row { scroll-margin-top: 44px; }
   .intro { padding-bottom: 18px; }
-  .rig { position: sticky; top: 28px; z-index: 6; margin: 0 -16px; padding: 8px 16px 24px;
-    background: linear-gradient(180deg, var(--bg) calc(100% - 22px), rgba(16,16,18,0)); }
+  /* the stage takes the full width and the labelled step keys stand in a tray below it. It is not pinned: pinned it covered
+     most of the screen (a full-width stage is 0.94 times as tall as it is wide), and it scrolled the text away under it */
+  .rig { position: static; margin: 0 0 8px; padding: 0; gap: 12px; }
   .stage { aspect-ratio: 1 / 0.94; border-radius: 12px; }
   .mini-menu { height: 8.6cqw; font-size: 3cqw; gap: 3cqw; padding: 1.2cqw 3.4cqw 0; }
   .mini-menu svg { width: 4cqw; height: 4cqw; }
@@ -329,10 +330,9 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   .kcap { height: 14cqw; min-width: 14cqw; border-radius: 2cqw; font-size: 6cqw; padding: 0 4cqw; }
   .kcap.space { min-width: 40cqw; font-size: 4.4cqw; }
   .caps .say { font-size: 2.6cqw; padding: 1.6cqw 3cqw; border-radius: 1.2cqw; }
-  .keys { gap: 5px; }
-  .keys .key { padding: 0 9px; }
-  .keys .key .w { display: none; }
-  .beat { min-height: 44vh; align-content: start; padding: 22px 0 22px 48px; scroll-margin-top: calc(var(--rig-h, 430px) + 36px); }   /* clears the pinned stage and the menu bar */
+  .keys { gap: 8px; padding: 10px; }
+  .keys .key { height: 44px; padding: 0 12px; white-space: nowrap; }   /* 44 px step keys, labelled (number and word) */
+  .beat { min-height: 44vh; align-content: start; padding: 22px 0 22px 48px; scroll-margin-top: 56px; }   /* clears the 44 px menu bar (the stage is not pinned) */
   .beat::before { width: 32px; height: 32px; top: 22px; }
   .beat h2 { font-size: 20px; }
   .sheet { margin-top: 36px; }
@@ -344,17 +344,12 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
 @media (max-width: 520px) {
   .getrow, .getrow[data-keys="2"] { grid-template-columns: minmax(0, 1fr); }
 }
-/* a phone: the pinned demo is compact so it no longer hides the text it sits over. The stage (about 55 % of the width) and the
-   step keys (two columns of 44 px keys) stand side by side, about 25 % of the screen high, under the 44 px menu bar. */
+/* a phone: six labelled keys do not fit one row, so the tray is two rows of three (the full-width stage above it, as at first) */
 @media (max-width: 600px) {
-  .rig { top: 44px; display: flex; align-items: center; gap: 10px; padding: 6px 16px 12px;
-    background: linear-gradient(180deg, var(--bg) calc(100% - 12px), rgba(16,16,18,0)); }
-  .rig .stage { flex: 1 1 0; min-width: 0; width: auto; }
-  .rig .keys { flex: none; width: 136px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 7px; }
-  .rig .keys .key { height: 44px; padding: 0; }   /* 44 px step keys */
+  .rig { justify-items: stretch; }
+  .rig .keys { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .rig .keys .key { padding: 0 6px; gap: 6px; justify-content: center; }
   .next .key { height: 44px; }
-  .rig .keybtn { padding: 5cqw; margin: -5cqw; border-radius: 5cqw; }   /* the small stage's key press keeps a 44 px hit area */
-  .beat { scroll-margin-top: calc(var(--rig-h, 210px) + 52px); }   /* clears the pinned demo and the 44 px menu bar */
   .home-faq .more a, .row figure.shot + p a { display: inline-block; padding: 13px 0; margin: -13px 0; }   /* a 44 px tap target, the line takes the same room */
 }
 @media (prefers-reduced-motion: reduce) {
