@@ -4,7 +4,7 @@ description: "A Claude Code floating window for Mac: press ⌥Space over any app
 h1: "A Claude Code floating window you open on a key and hide with Esc"
 mainKeyword: "claude code floating window"
 kind: use-case
-draft: true
+draft: false
 published: 2026-11-21
 updated: 2026-11-21
 author: n-uf
