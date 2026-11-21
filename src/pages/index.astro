@@ -293,17 +293,17 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
 </Desktop>
 
 <script>
-  // Which step is lit: the last step whose top has passed a line (halfway down the screen; on a phone, just under the
-  // pinned stage). The stage and the step keys follow data-beat on .home.
+  // Which step is lit: the last step whose top has passed a line (a little below halfway down the screen). The stage and
+  // the step keys follow data-beat on .home.
   const home = document.querySelector<HTMLElement>(".home");
   if (home) {
     const beats = [...home.querySelectorAll<HTMLElement>(".beat")];
     const rig = home.querySelector<HTMLElement>(".rig")!;
-    const phone = matchMedia("(max-width: 860px)");
+    const phone = matchMedia("(max-width: 860px)");   // the stage is not pinned here (home.css): it scrolls with the page
     let cur = -1, queued = false;
     const update = () => {
       queued = false;
-      const line = phone.matches ? rig.getBoundingClientRect().bottom + 60 : window.innerHeight * 0.55;
+      const line = window.innerHeight * 0.55;
       let n = 0;
       beats.forEach((b, i) => { if (b.getBoundingClientRect().top <= line) n = i; });
       if (n !== cur) { cur = n; home.dataset.beat = String(n); if (n < 3) home.classList.remove("sent"); }   // back at steps 1 to 3: the pictures reset, the typed text stays
@@ -311,11 +311,9 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
     const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
     addEventListener("scroll", queue, { passive: true });
     addEventListener("resize", queue);
-    // the pinned stage's height, for the steps' scroll margin on a phone (home.css)
-    const measure = () => home.style.setProperty("--rig-h", `${rig.offsetHeight}px`);
-    if ("ResizeObserver" in window) new ResizeObserver(measure).observe(rig); else measure();
-    // a step key lights its step at once, without waiting for the scroll to arrive
-    home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", () => { cur = i; home.dataset.beat = String(i); if (i < 3) home.classList.remove("sent"); }));
+    // a step key lights its step at once, without waiting for the scroll to arrive. On a phone the stage is not pinned, so the
+    // key switches the demo where it stands (no jump to the text, which would scroll the stage away); the link still works without a script
+    home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", (e) => { if (phone.matches) e.preventDefault(); cur = i; home.dataset.beat = String(i); if (i < 3) home.classList.remove("sent"); }));
     // The bar's field (steps 2 and 3). What the visitor types goes nowhere: no request, no storage, no analytics. It is
     // only put on the page (as text, never as HTML, at most 200 characters) in the window's bubble when they send it, and it
     // is gone when the page is closed. A picture of cl_quick says so in the place of an answer.
@@ -372,13 +370,6 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
       if (box.bottom <= 0 || box.top >= innerHeight) return;
       e.preventDefault();
       press();
-    });
-    // a link reached with the keyboard in a step must not hide under the pinned stage
-    home.addEventListener("focusin", (e) => {
-      const t = e.target as HTMLElement;
-      if (!phone.matches || !t.closest(".beats")) return;
-      const room = rig.getBoundingClientRect().bottom + 12 - t.getBoundingClientRect().top;
-      if (room > 0) scrollBy(0, -room);
     });
     update();
   }
