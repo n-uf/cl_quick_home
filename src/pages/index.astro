@@ -5,7 +5,7 @@ import "../styles/home.css";
 import { pageOf } from "../data/pages";
 import BigKey from "../components/BigKey.astro";
 import { site, release } from "../data/site";
-import { hasLiveBlog } from "../data/content";
+import { hasLiveBlog, getUseCases, isLive, pathOf } from "../data/content";
 import { orgNode, orgRef, appRef, faqPage } from "../data/schema";
 import { homeFaq } from "../data/home-faq";
 import { plain } from "../data/faq";
@@ -13,6 +13,10 @@ import { plain } from "../data/faq";
 // the big keys: Download links the latest release's disk image (site.ts); Blog appears only once an article is live (a
 // draft, even in a preview build, doesn't count)
 const blogLive = await hasLiveBlog();
+
+// Links to the live use-case pages, in the server HTML, so the home reaches every page of the sitemap (sitelinks). The
+// anchor is the page's title up to its colon; a scheduled draft (even in a preview build) gets no link until it is live.
+const useCaseLinks = (await getUseCases()).filter(isLive).map((e) => ({ href: pathOf("usecases", e.id), label: e.data.title.split(":")[0] }));
 
 // Main search: "claude quick chat". The title, description, h1 and first paragraph all lead with it.
 const page = pageOf("/");
@@ -267,6 +271,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
         <div class="next">
           <a class="key" href="/install/">Install</a>
           <a class="key" href="/faq/">FAQ</a>
+          {useCaseLinks.map((u) => <a class="key" href={u.href}>{u.label}</a>)}
         </div>
       </div>
     </div>
