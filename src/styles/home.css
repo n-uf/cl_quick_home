@@ -1,5 +1,6 @@
 /* The home page: one keystroke's journey on a Mac desktop. The stage (a bare Mac desktop) stays in
-   view while the steps scroll past; which picture of cl_quick shows is set by data-beat on .home (src/pages/index.astro
+   view while the steps scroll past (above 860px; below that it sits above the story and scrolls with the page, and its step
+   keys switch it); which picture of cl_quick shows is set by data-beat on .home (src/pages/index.astro
    sets it from the scroll position). With no script the stage shows the chat window and every step reads as plain text. */
 .home-main { width: 100%; max-width: 1240px; margin: 0 auto; padding: 30px 24px 10px; flex: 1; }
 
