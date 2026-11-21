@@ -3,6 +3,7 @@ title: "Can Claude read links? Yes, with its web tools on"
 description: "Can Claude read links? Yes, when web search or fetch is on. How the Claude app and Claude Code read a page, and how cl_quick does it from a chat bar."
 h1: "Can Claude read links? Paste a URL and ask about the page"
 mainKeyword: "can claude read links"
+key: "Read links"
 kind: use-case
 draft: true
 published: 2026-12-12

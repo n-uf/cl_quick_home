@@ -15,8 +15,9 @@ import { plain } from "../data/faq";
 const blogLive = await hasLiveBlog();
 
 // Links to the live use-case pages, in the server HTML, so the home reaches every page of the sitemap (sitelinks). The
-// anchor is the page's title up to its colon; a scheduled draft (even in a preview build) gets no link until it is live.
-const useCaseLinks = (await getUseCases()).filter(isLive).map((e) => ({ href: pathOf("usecases", e.id), label: e.data.title.split(":")[0] }));
+// anchor is the page's `key` (front matter, 28 characters at most), else its title up to the first ":" or "?"; a scheduled
+// draft (even in a preview build) gets no link until it is live.
+const useCaseLinks = (await getUseCases()).filter(isLive).map((e) => ({ href: pathOf("usecases", e.id), label: e.data.key ?? e.data.title.split(/[:?]/)[0] }));
 
 // Main search: "claude quick chat". The title, description, h1 and first paragraph all lead with it.
 const page = pageOf("/");

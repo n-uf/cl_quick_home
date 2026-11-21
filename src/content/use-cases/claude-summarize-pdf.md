@@ -3,6 +3,7 @@ title: "Claude summarize PDF: ask about a file from any Mac app"
 description: "Can Claude summarize PDF files? Yes. On a Mac, drop one on cl_quick's chat bar over any app and ask: up to 15 MB and 100 pages, kept in memory."
 h1: "Can Claude summarize PDFs? Drop one on a chat bar over any app"
 mainKeyword: "claude summarize pdf"
+key: "Summarize a PDF"
 kind: use-case
 draft: true
 published: 2026-12-09

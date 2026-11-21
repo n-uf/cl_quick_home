@@ -11,6 +11,7 @@ const article = z.object({
   description: z.string().min(120).max(155),
   h1: z.string().min(10).max(90),
   mainKeyword: z.string().min(3),
+  key: z.string().max(28).optional(),   // the short label of the home page's link to this page (a use case); otherwise the title up to its first ":" or "?"
   kind: z.enum(["use-case", "how-to", "what-is", "comparison", "best-tools"]),
   published: z.coerce.date(),         // the day the page goes live (UTC); for a draft, the day it is scheduled for
   updated: z.coerce.date(),

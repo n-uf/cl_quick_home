@@ -3,6 +3,7 @@ title: "Can Claude read CSV files? Yes, as text, in a quick chat"
 description: "Can Claude read CSV files? Yes, as text. On a Mac, drop a CSV, log or code file up to 400 KB on cl_quick's chat bar and ask. No code runs on it."
 h1: "Can Claude read CSV files? A quick look at a small file, a log or code"
 mainKeyword: "can claude read csv files"
+key: "Read CSV files"
 kind: use-case
 draft: true
 published: 2026-12-19
