@@ -300,12 +300,17 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
     const beats = [...home.querySelectorAll<HTMLElement>(".beat")];
     const rig = home.querySelector<HTMLElement>(".rig")!;
     const phone = matchMedia("(max-width: 860px)");   // the stage is not pinned here (home.css): it scrolls with the page
-    let cur = -1, queued = false;
+    // cur: the step shown (a key or the field may set it); seen: the step the scroll position last pointed at. The scroll
+    // moves the stage only when it points at a different step, so a chosen step stays through a resize or a small scroll
+    // (the keyboard opening on a phone scrolls the field into view and resizes the page).
+    let cur = -1, seen = -1, queued = false;
     const update = () => {
       queued = false;
       const line = window.innerHeight * 0.55;
       let n = 0;
       beats.forEach((b, i) => { if (b.getBoundingClientRect().top <= line) n = i; });
+      if (n === seen) return;
+      seen = n;
       if (n !== cur) { cur = n; home.dataset.beat = String(n); if (n < 3) home.classList.remove("sent"); }   // back at steps 1 to 3: the pictures reset, the typed text stays
     };
     const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
@@ -375,8 +380,8 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
   }
 
   // The row of big keys sticks once the reader is past it (script on only). Desktop: under the menu bar, compact, to the end
-  // of the page. Phone: a compact bar along the bottom, shown only once past the story (so never while the pinned stage is
-  // on screen). A sentinel at the row's top and an IntersectionObserver decide; the slot keeps the row's height, so the page
+  // of the page. Phone: a compact bar along the bottom, shown only once past the story (the stage is not pinned there, so the
+  // bar never sits over it). A sentinel at the row's top and an IntersectionObserver decide; the slot keeps the row's height, so the page
   // doesn't shift. While stuck, scroll padding keeps anchors and keyboard focus clear of the row.
   const slot = document.querySelector<HTMLElement>(".getslot");
   const sentinel = slot?.querySelector<HTMLElement>(".get-sentinel");
