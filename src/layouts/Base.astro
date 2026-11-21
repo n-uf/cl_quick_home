@@ -1,5 +1,6 @@
 ---
 import "../styles/look.css";
+import Analytics from "@vercel/analytics/astro";
 import { site, name } from "../data/site";
 
 interface Props {
@@ -48,6 +49,17 @@ const ogImage = new URL(ogPath, Astro.site);
     <meta name="twitter:image" content={ogImage} />
 
     {jsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
+
+    <!-- Vercel Web Analytics (cookieless). The Astro component takes no beforeSend prop, it reads window.webAnalyticsBeforeSend,
+         set here before the component's module script runs, so no event carries a query string. It skips development mode itself. -->
+    <script is:inline>
+      window.webAnalyticsBeforeSend = function (e) {
+        var u = new URL(e.url);
+        u.search = "";
+        return Object.assign({}, e, { url: u.toString() });
+      };
+    </script>
+    <Analytics />
   </head>
   <body>
     <slot />
