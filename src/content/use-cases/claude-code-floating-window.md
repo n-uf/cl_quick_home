@@ -62,7 +62,7 @@ Other apps' shortcuts can't be read, and macOS lets two apps register the same k
 
 The shortcut isn't the only way in. Select text in any app, then right-click ▸ Services ▸ **Ask cl_quick**. The bar opens with the selection quoted in the field, ready to edit and not sent, and your question goes under it. macOS hands the selection over, so this needs no Accessibility permission either, and nothing about it is kept.
 
-cl_quick has no Dock icon. Turn on **Open at login** in Settings and it waits in the menu bar, ready for the shortcut.
+cl_quick has no Dock icon. Turn on **Open at login** in Settings ▸ General ▸ App and it waits in the menu bar, ready for the shortcut.
 
 ## A window that floats over your work
 
@@ -104,7 +104,7 @@ Follow-ups go to the same running Claude Code, so it remembers the earlier turns
 
 To ask about a screenshot, paste it with ⌘V, or drop image files on the bar or the chat window. Each shows as a thumbnail over the field, up to 5 to a message. It's scaled down in memory and no file is made, so the chat stays incognito. PDFs (up to 15 MB and 100 pages) and text files (up to 400 KB) go in the same way and show as chips, up to 5 attachments to a message with the pictures. They stay in memory too.
 
-Paste a link, or ask about something current, and Claude can read the page or search the web. Links and search is on by default, and Claude Code gets only its two web tools for it. A muted line says what it's doing, and pages count toward your usage. Settings ▸ General ▸ Links and search turns it off.
+Paste a link, or ask about something current, and Claude can read the page or search the web. Links and search is on by default, and Claude Code gets only its two web tools for it. A muted line says what it's doing, and pages count toward your usage. Settings ▸ General ▸ Chat ▸ Links and search turns it off.
 
 There's a mic button left of Send for dictating a question, and ⌘D turns it on and off. {{live:/use-cases/claude-voice-input-mac/}}The page on [Claude voice input on a Mac](/use-cases/claude-voice-input-mac/) covers it.{{/live}}
 
