@@ -309,20 +309,23 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
     // cur: the step shown (a key or the field may set it); seen: the step the scroll position last pointed at. The scroll
     // moves the stage only when it points at a different step, so a chosen step stays through a resize or a small scroll
     // (the keyboard opening on a phone scrolls the field into view and resizes the page).
-    let cur = -1, seen = -1, queued = false;
+    let cur = -1, seen = -1, queued = false, resized = false, resizedAt = -1e9;
     const update = () => {
       queued = false;
       // desktop: a little below halfway down. Stacked phone: just below the pinned rig, where a step key's anchor puts the text (so the scroll never flips a tapped step)
       const line = phone.matches ? parseFloat(getComputedStyle(beats[0]).scrollMarginTop) + 24 : window.innerHeight * 0.55;
       let n = 0;
       beats.forEach((b, i) => { if (b.getBoundingClientRect().top <= line) n = i; });
+      // a viewport resize (the keyboard in a web view, a rotation) never moves the stage: it only re-records where the scroll
+      // points; the scroll the keyboard then causes, while the demo's field has focus, is ignored for a moment too
+      if (resized || (performance.now() - resizedAt < 1500 && document.activeElement?.classList.contains("live-field"))) { resized = false; seen = n; return; }
       if (n === seen) return;
       seen = n;
       if (n !== cur) { cur = n; home.dataset.beat = String(n); if (n < 3) home.classList.remove("sent"); }   // back at steps 1 to 3: the pictures reset, the typed text stays
     };
     const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
     addEventListener("scroll", queue, { passive: true });
-    addEventListener("resize", queue);
+    addEventListener("resize", () => { resized = true; resizedAt = performance.now(); queue(); });
     // a step key lights its step at once, without waiting for the scroll to arrive; the link's own jump to #step-N does the scrolling
     home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", () => { cur = i; home.dataset.beat = String(i); if (i < 3) home.classList.remove("sent"); }));
     // The bar's field (steps 2 and 3). What the visitor types goes nowhere: no request, no storage, no analytics. It is
@@ -386,7 +389,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
   }
 
   // The row of big keys sticks once the reader is past it (script on only). Desktop: under the menu bar, compact, to the end
-  // of the page. Phone: a compact bar along the bottom, shown only once past the story (the stage is not pinned there, so the
+  // of the page. Phone: a compact bar along the bottom, shown only once past the story (the pinned stage ends with the story, so the
   // bar never sits over it). A sentinel at the row's top and an IntersectionObserver decide; the slot keeps the row's height, so the page
   // doesn't shift. While stuck, scroll padding keeps anchors and keyboard focus clear of the row.
   const slot = document.querySelector<HTMLElement>(".getslot");

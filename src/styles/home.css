@@ -1,6 +1,6 @@
 /* The home page: one keystroke's journey on a Mac desktop. The stage (a bare Mac desktop) stays in
-   view while the steps scroll past (above 860px; below that it sits above the story and scrolls with the page, and its step
-   keys switch it); which picture of cl_quick shows is set by data-beat on .home (src/pages/index.astro
+   view while the steps scroll past: pinned under the menu bar at 860px and below too (with the script on; without it the
+   stage sits above the story and scrolls with the page); which picture of cl_quick shows is set by data-beat on .home (src/pages/index.astro
    sets it from the scroll position). With no script the stage shows the chat window and every step reads as plain text. */
 .home-main { width: 100%; max-width: 1240px; margin: 0 auto; padding: 30px 24px 10px; flex: 1; }
 
@@ -310,10 +310,13 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   /* the stage takes the full width and the numbered step keys stand in a tray below it. As on the desktop, the rig is pinned
      under the menu bar (script on: it sets --head-h and --rig-h) and the steps scroll beneath it; its shadow paints the page
      colour over the 16 px gutters and the gap, so no text shows beside or between. The anchor lands step N's text right under the keys */
-  .rig { margin: 0 0 8px; padding: 0; gap: 12px; }
-  .home[data-js] .rig { position: sticky; top: var(--head-h, 44px); z-index: 10; box-shadow: 0 0 0 16px var(--bg); }
+  .rig { position: static; margin: 0 0 8px; padding: 0; gap: 12px; }
+  .home[data-js] .rig { position: sticky; top: var(--head-h, 44px); z-index: 10; background: var(--bg); box-shadow: 0 0 0 16px var(--bg); }
   .home[data-js] .beat { scroll-margin-top: calc(var(--head-h, 44px) + var(--rig-h, 0px) + 8px); }
   .stage { aspect-ratio: 1 / 0.94; border-radius: 12px; }
+  /* landscape and short windows: the pinned rig (stage, gap and keys, about 84 px) takes at most 65% of the screen height, so the
+     stage narrows (centred) until it fits; where it fits already, it keeps the full width */
+  .home[data-js] .stage { width: min(100%, calc((65svh - var(--head-h, 44px) - 84px) / .94)); justify-self: center; }
   .mini-menu { height: 8.6cqw; font-size: 3cqw; gap: 3cqw; padding: 1.2cqw 3.4cqw 0; }
   .mini-menu svg { width: 4cqw; height: 4cqw; }
   .mini-menu .mm-wifi { display: none; }   /* the items stay clear of the notch */
@@ -337,7 +340,7 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   .keys { gap: 8px; padding: 10px; }
   .keys .key { height: 44px; min-width: 44px; padding: 0 12px; white-space: nowrap; }   /* 44 px step keys: the number only */
   .keys .key .n { font-size: 15px; opacity: 1; }
-  /* the word is hidden only visually: the key's aria-label ("Step 4: chat") still names it */
+  /* the word is hidden only visually: the key's aria-label ("Step 4: Chat") still names it */
   .keys .key .w { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .beat { min-height: 58vh; align-content: start; padding: 22px 0 22px 48px; scroll-margin-top: 56px; }   /* as on the desktop; with the script on, the margin above clears the menu bar and the pinned rig */
   .beat::before { width: 32px; height: 32px; top: 22px; }
@@ -355,7 +358,8 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
 @media (max-width: 600px) {
   .rig { justify-items: stretch; }
   .rig .keys { display: grid; grid-template-columns: repeat(6, minmax(44px, 1fr)); gap: 2px; padding: 8px 4px; }
-  .rig .keys .key { padding: 0; justify-content: center; }  .next .key { height: 44px; }
+  .rig .keys .key { padding: 0; justify-content: center; }
+  .next .key { height: 44px; }
   .home-faq .more a, .row figure.shot + p a { display: inline-block; padding: 13px 0; margin: -13px 0; }   /* a 44 px tap target, the line takes the same room */
 }
 @media (prefers-reduced-motion: reduce) {
