@@ -79,7 +79,7 @@ It never brings another app forward. The app you were in stays where it was, beh
 | Esc or ⌘W | Hides the window |
 | ⌘N | Starts a new chat |
 | ⌘D | Turns Dictation on and off |
-| ⇧⌘C | Copies the answer in view once you've scrolled up, otherwise the last answer, like its Copy button |
+| ⇧⌘C | Copies the answer in view once you've scrolled up, otherwise the latest complete answer, like its Copy button |
 | ⌥⌘↑ and ⌥⌘↓ | Step Thinking |
 | ⌥⌘→ and ⌥⌘← | Step Model |
 | ⌘J | Jumps to the latest answer |
