@@ -76,7 +76,7 @@ cl_quick's limits are lower, and they come further down. {{live:/blog/claude-fil
 
 ## Ask about a PDF from any app
 
-1. Press the shortcut, ⌥Space by default. The chat bar opens over the app you're in, and no other app comes forward.
+1. Press the shortcut, ⌃⇧Space on a new install. The chat bar opens over the app you're in, and no other app comes forward.
 2. Drop the PDF on the bar from Finder. Or copy it in Finder and press ⌘V in the field.
 3. A chip shows over the field with a document symbol, the file's name and its page count. Its **✕** takes it off again.
 4. Type the question and press Return. The bar becomes the chat window, and the answer streams in.

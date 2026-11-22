@@ -59,7 +59,7 @@ const jsonLd = [orgNode, {
   url: `${site}/`,
   image: `${site}/icon-192.png`,
   featureList: [
-    "A floating Claude chat on a shortcut (⌥Space by default) that never brings another app forward",
+    "A floating Claude chat on a shortcut (⌃⇧Space on a new install) that never brings another app forward",
     "Answered by your own Claude Code sign-in, on the profile's account in use",
     "The live 5-hour and weekly limits of the account in use, in the bar, in the chat's header and in the menu bar menu",
     "Profiles with several accounts each, with Switch… through Claude Code's own sign-in",
@@ -150,7 +150,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
       <ol class="beats">
         <li class="beat" id="step-1">
           <h2>Press ⌥Space over any app</h2>
-          <p>A chat bar opens over whatever you're doing. cl_quick is a menu bar app with no Dock icon, and it never brings another app forward: whatever you're working in stays in front. ⌥Space is the default; Settings offers four other Space shortcuts, any key with ⌘, ⌃ or ⌥, or none.</p>
+          <p>A chat bar opens over whatever you're doing. cl_quick is a menu bar app with no Dock icon, and it never brings another app forward: whatever you're working in stays in front. A new install opens with ⌃⇧Space; Settings offers ⇧⌘Space and ⌥Space too, any key with ⌘, ⌃ or ⌥, or none.</p>
         </li>
         <li class="beat" id="step-2">
           <h2>A bar opens, ready to type</h2>
@@ -225,10 +225,10 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
     <div class="row" id="controls">
       <div><span class="lbl">Controls</span><h3>Model, thinking, voice and shortcut</h3></div>
       <div class="body">
-        <p>The shortcut is ⌥Space by default. Settings ▸ General offers four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, or Off. It warns only about real clashes: a macOS shortcut that uses the key, or a key another app holds when macOS refuses to register it. It needs no Accessibility permission.</p>
+        <p>A new install opens with ⌃⇧Space. Settings ▸ General ▸ App offers ⇧⌘Space and ⌥Space too, Other… for any key with ⌘, ⌃ or ⌥, or Off. ⌥Space stays for those used to it; it normally types a non-breaking space, and Settings says so while it is picked. A shortcut saved by an earlier version is kept as it is. It warns only about real clashes: a macOS shortcut that uses the key, or a key another app holds when macOS refuses to register it. It needs no Accessibility permission.</p>
         <figure class="shot">
-          <img src="/img/settings-shortcut.webp" width="1210" height="108" alt="Settings, General: the Shortcut row" loading="lazy" decoding="async" />
-          <figcaption>Settings ▸ General ▸ Shortcut, with ⌥Space picked.</figcaption>
+          <img src="/img/settings-shortcut.webp" width="1210" height="112" alt="Settings, General, App: the Shortcut row" loading="lazy" decoding="async" />
+          <figcaption>Settings ▸ General ▸ App ▸ Shortcut, with ⌃⇧Space picked.</figcaption>
         </figure>
         <p>There is a second way in. Select text in any app, then right-click ▸ Services ▸ <b>Ask cl_quick</b>. The bar opens with the selection in the field as a quote, ready to edit and not sent, and your question goes under it. macOS hands the selection over, so it needs no Accessibility permission either, and nothing about it is kept. A keyboard shortcut for it can be set in System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Services.</p>
         <p>The model is one of four families, Haiku, Sonnet, Opus and Fable, each the newest the account has; a family the account lacks isn't offered. Thinking is off or one of the efforts the chosen model takes (Low, Medium, High, Extra, Max). The pickers change the running <code>claude</code>, so a chat keeps its conversation.</p>

@@ -7,7 +7,7 @@ export interface Group { title: string; items: QA[] }
 export const groups: Group[] = [
   { title: "The basics", items: [
     { q: "What is cl_quick?",
-      a: ["A floating Claude chat for the Mac, on a shortcut. It is a menu bar app with no Dock icon. Press ⌥Space over any app and a chat bar opens; the first message turns it into a chat window that stays floating on every Space until Esc hides it. It never brings another app forward."] },
+      a: ["A floating Claude chat for the Mac, on a shortcut. It is a menu bar app with no Dock icon. Press ⌃⇧Space (on a new install) over any app and a chat bar opens; the first message turns it into a chat window that stays floating on every Space until Esc hides it. It never brings another app forward."] },
     { q: "Does cl_quick use my own Claude Code sign-in?",
       a: ["Yes. Your own Claude Code answers, on the profile's account in use, and the chat counts against that account's limits. cl_quick runs one <code>claude</code> at a time: it is kept while a chat is open and ended after 15 minutes idle."] },
     { q: "Is cl_quick free?",
@@ -65,7 +65,7 @@ export const groups: Group[] = [
     { q: "How do I pick the model and thinking?",
       a: ["Under the field, the model (Haiku by default) and thinking (off by default) sit in one group. The model is one of four families, Haiku, Sonnet, Opus and Fable. Thinking is Off or the efforts that model takes. Click a bar or use ⌥⌘ arrows; a pick holds for that chat. Settings ▸ General ▸ Chat sets the defaults."] },
     { q: "How do I change the shortcut?",
-      a: ["Settings ▸ General ▸ Shortcut: ⌥Space by default, four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, or Off. It warns only about real clashes, a macOS shortcut that uses the key or a key another app holds, with a button that picks a preset none of macOS's own shortcuts uses. It needs no Accessibility permission."] },
+      a: ["Settings ▸ General ▸ App ▸ Shortcut: ⌃⇧Space on a new install, with ⇧⌘Space and ⌥Space, Other… for any key with ⌘, ⌃ or ⌥, or Off. A shortcut you saved before is kept. It warns only about real clashes, a macOS shortcut that uses the key or a key another app holds, and needs no Accessibility permission."] },
     { q: "Can I use my voice?",
       a: ["Yes. The mic button left of Send starts macOS Dictation into the field, and <b>⌘D</b> turns it on and off. Return while dictating stops it and shows the text; Return again sends it. Settings ▸ General ▸ Dictation can make the first Return send at once. The field grows with what you dictate."] },
     { id: "images", q: "Can I paste or drop an image into the chat?",
