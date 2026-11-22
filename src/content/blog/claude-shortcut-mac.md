@@ -12,8 +12,8 @@ takeaways:
   - "The Claude desktop shortcut that opens Claude from any app on a Mac is a double-tap of the Option key, set in Settings > Desktop app. Option + Space or a custom shortcut also works."
   - "A separate voice shortcut, Caps Lock by default, is off until you turn it on. Cmd+/ in the Code tab lists that tab's shortcuts."
   - "Anthropic's pages document the quick entry shortcuts, the Code tab's keys and /voice in Claude Code's terminal."
-  - "cl_quick, an independent Mac app, opens a floating Claude Code chat on ⌥Space by default, warns only about real clashes with macOS's shortcuts or another app's key, and needs no Accessibility permission for it. Its Services entry, Ask cl_quick, opens the same chat with the text you selected."
-  - "Claude's Option + Space choice and cl_quick's default are the same key. cl_quick can't see other apps' shortcuts, so if you run both, give them different keys."
+  - "cl_quick, an independent Mac app, opens a floating Claude Code chat on ⌃⇧Space on a new install, warns only about real clashes with macOS's shortcuts or another app's key, and needs no Accessibility permission for it. Its Services entry, Ask cl_quick, opens the same chat with the text you selected."
+  - "Claude's Option + Space choice is also one of cl_quick's presets (⌥Space), though a new install opens with ⌃⇧Space. cl_quick can't see other apps' shortcuts, so if you run both on one key, give them different keys."
 faq:
   - q: "What is the keyboard shortcut to open Claude Desktop on a Mac?"
     a: "Double-tap the Option key from any app. It opens quick entry, a text box where you type a message and start a new chat. Claude Desktop has to be running, and the shortcut has to be on in Settings > Desktop app."
@@ -24,7 +24,7 @@ faq:
   - q: "Does the Claude shortcut clash with Spotlight?"
     a: "Not by default. Apple's page gives Command-Space for Spotlight and Option-Command-Space for a Finder search window. Claude's choices for the quick access shortcut are a double-tap of Option, Option + Space and a custom one, so only a custom choice could land on Apple's keys."
   - q: "Can I open a Claude chat over any app without Claude Desktop?"
-    a: "Yes, with cl_quick, if you use Claude Code. Press ⌥Space (the default Shortcut) and a chat bar opens over the app you're in, answered by your own Claude Code on the profile's account in use. cl_quick is independent of Anthropic and isn't Claude's quick entry. It needs an Apple silicon Mac and macOS 13 or later."
+    a: "Yes, with cl_quick, if you use Claude Code. Press ⌃⇧Space (the Shortcut of a new install) and a chat bar opens over the app you're in, answered by your own Claude Code on the profile's account in use. cl_quick is independent of Anthropic and isn't Claude's quick entry. It needs an Apple silicon Mac and macOS 13 or later."
 sources:
   - title: "Claude Help Center: Use quick entry with Claude Desktop on Mac"
     url: "https://support.claude.com/en/articles/12626668-use-quick-entry-with-claude-desktop-on-mac"
@@ -136,11 +136,11 @@ One difference from quick entry: Caps Lock won't work here. Anthropic's docs say
 
 ## A shortcut for a chat over any app: cl_quick's ⌥Space
 
-Quick entry starts a new chat with Claude. If your questions are for Claude Code, there's another shortcut. cl_quick is a free macOS menu bar app that opens a chat bar over whatever you're in, on ⌥Space by default. Your own Claude Code answers, so the chats count against that account's Claude plan limits. The first message turns the bar into a chat window that floats on every Space until Esc hides it, and it never brings another app forward. The [Claude Code floating window](/use-cases/claude-code-floating-window/) page covers the chat itself.
+Quick entry starts a new chat with Claude. If your questions are for Claude Code, there's another shortcut. cl_quick is a free macOS menu bar app that opens a chat bar over whatever you're in, on ⌃⇧Space on a new install. Your own Claude Code answers, so the chats count against that account's Claude plan limits. The first message turns the bar into a chat window that floats on every Space until Esc hides it, and it never brings another app forward. The [Claude Code floating window](/use-cases/claude-code-floating-window/) page covers the chat itself.
 
-In Settings ▸ General, **Shortcut** is ⌥Space by default. There are four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, and Off.
+In Settings ▸ General ▸ App, **Shortcut** is ⌃⇧Space on a new install. The other presets are ⇧⌘Space and ⌥Space, and there are Other… for any key with ⌘, ⌃ or ⌥, and Off. A shortcut saved by an earlier version is kept as it is.
 
-![cl_quick Shortcut setting with ⌥Space picked](/img/settings-shortcut.webp "The Shortcut row in cl_quick's Settings ▸ General, with ⌥Space picked.")
+![cl_quick Shortcut setting with ⌃⇧Space picked](/img/settings-shortcut.webp "The Shortcut row in cl_quick's Settings ▸ General ▸ App, with ⌃⇧Space picked.")
 
 The shortcut is registered the way macOS's own app shortcuts are, so there's no Accessibility permission to give. Once the chat is open, Return sends, Shift-Return adds a line, Esc or ⌘W hides it, ⌘N starts a new chat and ⇧⌘C copies the answer in view. The chat's shortcuts work on Cyrillic layouts such as Russian and Ukrainian too.
 
@@ -148,8 +148,8 @@ There's a way in that needs no key at all: the macOS Services menu. Select text 
 
 | | Claude's quick access shortcut | cl_quick's Shortcut |
 |---|---|---|
-| Default | Double-tap Option | ⌥Space |
-| Other choices | Option + Space, or a custom shortcut | Four other Space shortcuts, Other… (any key with ⌘, ⌃ or ⌥), or Off |
+| Default | Double-tap Option | ⌃⇧Space on a new install |
+| Other choices | Option + Space, or a custom shortcut | ⇧⌘Space, ⌥Space, Other… (any key with ⌘, ⌃ or ⌥), or Off |
 | What it opens | A text box that starts a new chat with Claude | A chat bar, then a floating chat window answered by your own Claude Code |
 | Permissions | Accessibility, plus Screen recording and Speech recognition for screenshots and voice | No Accessibility permission for the shortcut |
 | Needs | Claude Desktop running; macOS 12 or later for quick entry | Apple silicon, macOS 13 or later, Claude Code signed in |
@@ -160,7 +160,7 @@ The right Claude desktop shortcut on a Mac depends on what you ask and where.
 
 - To capture a screenshot or a window on the spot, or to dictate with Caps Lock, use quick entry and its double-tap of Option.
 - In the Code tab of Claude Desktop, Cmd+/ and the table above speed up session handling.
-- For a Claude Code question over whatever app you're in, with nothing saved on the Mac, there's cl_quick on ⌥Space, or **Ask cl_quick** in the Services menu for text you've selected.
+- For a Claude Code question over whatever app you're in, with nothing saved on the Mac, there's cl_quick on ⌃⇧Space, or **Ask cl_quick** in the Services menu for text you've selected.
 - To open a new chat from a script or another tool, use the `claude://claude.ai/new` link.
 
 Quick entry and cl_quick can run side by side. They're separate apps with separate shortcuts, so the one rule is to give them different keys. Each app's Settings shows its own.
@@ -175,7 +175,7 @@ macOS already uses some keys with Space. Apple's pages list these:
 
 cl_quick's Shortcut warns only about real clashes. One is a macOS shortcut that uses the key, as your Mac has them set. The other is a key another app holds, when macOS refuses to register it ("taken by another app"). Either way, a button picks a preset none of macOS's own shortcuts uses. Of Claude's three choices, only a custom one could land on an Apple key.
 
-Between apps it's less tidy. Other apps' shortcuts can't be read, and macOS lets two apps register the same key, so cl_quick guesses at nothing else. If the key also opens something else, pick another. That includes Claude's own: Option + Space is one of quick entry's choices, and it's also cl_quick's default. If you run both, change one.
+Between apps it's less tidy. Other apps' shortcuts can't be read, and macOS lets two apps register the same key, so cl_quick guesses at nothing else. If the key also opens something else, pick another. That includes Claude's own: Option + Space is one of quick entry's choices, and it's also one of cl_quick's presets (⌥Space), though a new install opens with ⌃⇧Space. If you run both on that key, change one.
 
 Two apps can sit on one key without either warning you, so that check is yours. Apple's page on app shortcuts puts the ones macOS knows about in System Settings > Keyboard > Keyboard Shortcuts.
 

@@ -10,14 +10,14 @@ published: 2026-11-21
 updated: 2026-11-21
 author: n-uf
 takeaways:
-  - "cl_quick opens a chat bar on a shortcut (⌥Space by default). The first message turns it into a chat window that floats on every Space until Esc hides it."
+  - "cl_quick opens a chat bar on a shortcut (⌃⇧Space on a new install). The first message turns it into a chat window that floats on every Space until Esc hides it."
   - "It never brings another app forward. Your own Claude Code answers, on the profile's account in use, and the chat counts against that account's limits."
   - "Under the field you pick the profile, the Model (Haiku by default) and Thinking (off by default). The 5-hour limit and the week show live."
   - "Claude Code gets only its two web tools, and only while Links and search is on. It can't open your files or run commands, so it's a chat, not an agent."
   - "cl_quick's quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account."
 faq:
   - q: "How do I open a Claude Code floating window over another app?"
-    a: "Press the shortcut, ⌥Space by default. A chat bar opens over the app you're in. Type, press Return, and the bar becomes a chat window. You can change the key in Settings ▸ General ▸ Shortcut: four other Space shortcuts, Other… for any key with ⌘, ⌃ or ⌥, or Off."
+    a: "Press the shortcut, ⌃⇧Space on a new install. A chat bar opens over the app you're in. Type, press Return, and the bar becomes a chat window. You can change the key in Settings ▸ General ▸ App ▸ Shortcut: ⇧⌘Space, ⌥Space, Other… for any key with ⌘, ⌃ or ⌥, or Off."
   - q: "Does the floating window take over my current app?"
     a: "No. It never brings another app forward, and it stays floating on every Space until you hide it with Esc, ⌘W or ✕. The panel takes the keyboard when it opens, so you can type into it straight away. cl_quick is a menu bar app with no Dock icon."
   - q: "Can the chat open my files or run commands?"
@@ -48,13 +48,13 @@ related:
   - /install/
 ---
 
-A Claude Code floating window is a chat that sits over whatever app you're in and answers with your own Claude Code. cl_quick, a free macOS menu bar app, gives you one. It runs on your own Claude Code sign-in, so each chat counts against that account's Claude plan limits. Press a shortcut (⌥Space by default) and a chat bar opens. The first message turns it into a chat window that stays floating on every Space until Esc hides it, and it never brings another app forward. cl_quick is independent and not affiliated with Anthropic.
+A Claude Code floating window is a chat that sits over whatever app you're in and answers with your own Claude Code. cl_quick, a free macOS menu bar app, gives you one. It runs on your own Claude Code sign-in, so each chat counts against that account's Claude plan limits. Press a shortcut (⌃⇧Space on a new install) and a chat bar opens. The first message turns it into a chat window that stays floating on every Space until Esc hides it, and it never brings another app forward. cl_quick is independent and not affiliated with Anthropic.
 
 It's built for the question you'd otherwise open a new terminal tab for. One key, one question, an answer, and the window goes away again. That's the [Claude quick chat](/) idea.
 
 ## Open it from any app
 
-The default Shortcut is ⌥Space. In Settings ▸ General you can pick one of four other Space shortcuts, choose Other… for any key with ⌘, ⌃ or ⌥, or turn it off. Settings is in the menu bar icon's menu.
+A new install opens with ⌃⇧Space. In Settings ▸ General ▸ App you can pick ⇧⌘Space or ⌥Space instead, choose Other… for any key with ⌘, ⌃ or ⌥, or turn it off. ⌥Space stays for those used to it: it normally types a non-breaking space, and Settings says so while it's picked. A shortcut saved by an earlier version is kept as it is. Settings is in the menu bar icon's menu.
 
 The Shortcut warns only about real clashes. One is a macOS shortcut that uses the key, such as Spotlight, Finder's search or the input sources, as your Mac has them set. The other is a key another app holds, when macOS refuses to register it. Either way, a button picks a preset none of macOS's own shortcuts uses.
 

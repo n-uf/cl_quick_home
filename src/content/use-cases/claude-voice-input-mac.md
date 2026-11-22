@@ -111,7 +111,7 @@ None of this is specific to Claude. Dictation works anywhere you can type, so an
 
 ## The mic button in cl_quick's chat
 
-cl_quick is a macOS menu bar app that opens a floating chat over any app on a shortcut (⌥Space by default), answered by your own Claude Code. It's independent and not affiliated with Anthropic. The [Claude Code floating window](/use-cases/claude-code-floating-window/) page shows the chat.
+cl_quick is a macOS menu bar app that opens a floating chat over any app on a shortcut (⌃⇧Space on a new install), answered by your own Claude Code. It's independent and not affiliated with Anthropic. The [Claude Code floating window](/use-cases/claude-code-floating-window/) page shows the chat.
 
 ![cl_quick bar while the mic button is dictating](/img/qc-dictating.webp "cl_quick's chat bar, drawn from sample data, with the mic button left of Send lit while Dictation runs.")
 

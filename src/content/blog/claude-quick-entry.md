@@ -24,7 +24,7 @@ faq:
   - q: "How do I turn off the Claude Quick Entry shortcut?"
     a: "Open Claude Desktop and go to Settings > Desktop app (Settings > System, under This computer, in the older layout). Anthropic's page says you can turn off the quick access shortcut, the voice shortcut or both there. It names an off choice only for the voice shortcut, so look for the quick access one on the same settings page."
   - q: "Is cl_quick the same as Claude Quick Entry?"
-    a: "No. Quick Entry belongs to Claude Desktop and starts a chat with Claude. cl_quick is an independent Mac app that opens a floating chat answered by your own Claude Code, on ⌥Space by default. The app is free; every chat counts against that account's Claude plan limits. It isn't Anthropic's product and isn't affiliated with Anthropic."
+    a: "No. Quick Entry belongs to Claude Desktop and starts a chat with Claude. cl_quick is an independent Mac app that opens a floating chat answered by your own Claude Code, on ⌃⇧Space on a new install. The app is free; every chat counts against that account's Claude plan limits. It isn't Anthropic's product and isn't affiliated with Anthropic."
 sources:
   - title: "Claude Help Center: Use quick entry with Claude Desktop on Mac"
     url: "https://support.claude.com/en/articles/12626668-use-quick-entry-with-claude-desktop-on-mac"
@@ -134,7 +134,7 @@ Anthropic's advice for a clash is short: use Option + Space or a custom shortcut
 - **Spotlight.** Apple's list gives Command-Space to open or close Spotlight, and Option-Command-Space to open a Finder window with the search field selected. None of Claude's three quick access choices is one of those, though a custom shortcut could be.
 - **Caps Lock.** The voice shortcut takes over Caps Lock. If you use Caps Lock when typing, leave voice off, which is the default, or give it a custom shortcut.
 - **Other apps.** cl_quick's README notes that macOS lets two apps register the same key, so give each app its own. Apple's page on app shortcuts puts the ones macOS knows about in System Settings > Keyboard > Keyboard Shortcuts.
-- **cl_quick.** Its default, ⌥Space, is the same key as Quick Entry's Option + Space choice. If you run both, change one.
+- **cl_quick.** A new install opens with ⌃⇧Space. One of its presets, ⌥Space, is the same key as Quick Entry's Option + Space choice, so if you pick it and run both, change one.
 
 For a longer list of keys, including the Code tab's, see the [Claude desktop shortcut on Mac](/blog/claude-shortcut-mac/) page.
 
@@ -150,11 +150,11 @@ Anthropic's Quick Entry page, as of November 2026, has no troubleshooting sectio
 
 ## When a floating Claude Code chat fits better
 
-Quick Entry is a chat with Claude in Claude Desktop. If most of your questions are for Claude Code, there's another tool. cl_quick is a free macOS menu bar app by n-uf. It runs on your own Claude Code sign-in, so every chat counts against that account's Claude plan limits. It opens a chat bar over any app on a shortcut, ⌥Space by default. The first message turns the bar into a chat window that stays floating on every Space until Esc hides it, and it never brings another app forward. Your own Claude Code answers on the profile's account in use. cl_quick isn't Anthropic's product and isn't Claude's Quick Entry; it's independent and not affiliated with Anthropic. The [Claude Code floating window](/use-cases/claude-code-floating-window/) page covers it in full.
+Quick Entry is a chat with Claude in Claude Desktop. If most of your questions are for Claude Code, there's another tool. cl_quick is a free macOS menu bar app by n-uf. It runs on your own Claude Code sign-in, so every chat counts against that account's Claude plan limits. It opens a chat bar over any app on a shortcut, ⌃⇧Space on a new install. The first message turns the bar into a chat window that stays floating on every Space until Esc hides it, and it never brings another app forward. Your own Claude Code answers on the profile's account in use. cl_quick isn't Anthropic's product and isn't Claude's Quick Entry; it's independent and not affiliated with Anthropic. The [Claude Code floating window](/use-cases/claude-code-floating-window/) page covers it in full.
 
 | | Quick Entry | cl_quick |
 |---|---|---|
-| Opens with | Double-tap Option, Option + Space or a custom shortcut | ⌥Space, four other Space shortcuts, Other… (any key with ⌘, ⌃ or ⌥), or Off |
+| Opens with | Double-tap Option, Option + Space or a custom shortcut | ⌃⇧Space on a new install, ⇧⌘Space, ⌥Space, Other… (any key with ⌘, ⌃ or ⌥), or Off |
 | What you can attach | A screenshot you drag, or an application window | Typed text, images, PDFs and text files you paste or drop (up to 5 attachments to a message), links Claude can read, and selected text, quoted into the field with Ask cl_quick from the Services menu |
 | Voice | Caps Lock dictation, off by default, macOS 14 or later | A mic button that starts macOS Dictation into the field; ⌘D turns it on and off |
 | What it starts | A new chat with Claude | A chat window answered by your own Claude Code |

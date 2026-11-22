@@ -86,7 +86,7 @@ So for Claude CSV analysis, the answer depends on where you ask. With code execu
 
 Yes, up to 400 KB of UTF-8 text.
 
-1. Press the shortcut, ⌥Space by default. The chat bar opens over the app you're in.
+1. Press the shortcut, ⌃⇧Space on a new install. The chat bar opens over the app you're in.
 2. Drop the file on the bar from Finder, or copy it in Finder and press ⌘V.
 3. A chip shows over the field with a symbol, the file's name and its size. Its **✕** takes it off.
 4. Ask your question and press Return.
