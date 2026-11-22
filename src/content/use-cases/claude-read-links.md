@@ -86,7 +86,7 @@ Paste the link into the bar with your question, for example a URL and "what does
 
 ![cl_quick chat with the line Reading example.com…](/img/qc-reading.webp "cl_quick's chat window, drawn from sample data: a question about port 3000 on macOS, the reply \"I'll open the page.\", the muted line \"Reading example.com…\" and the Stop button.")
 
-Ask about something current with no link, and Claude can search instead. The line then reads "Searching the web for “…”…", and it goes when the text resumes. The answer is the whole reply, the text before the call and after it, and Copy and ⌘⇧C take all of it.
+Ask about something current with no link, and Claude can search instead. The line then reads "Searching the web for “…”…", and it goes when the text resumes. The answer is the whole reply, the text before the call and after it, and Copy and ⇧⌘C take all of it.
 
 **Stop** works while a page is being read. It ends the answer where it is, and the chat goes on. The rest of the window, from the shortcut to Esc, is on the [Claude Code floating window](/use-cases/claude-code-floating-window/) page.
 
