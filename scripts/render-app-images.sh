@@ -15,7 +15,7 @@
 #   qc-dictating    state dictating    the mic button on
 #   settings-accounts  settings page accounts-two   the Accounts card of a profile (cropped)
 #   settings-shortcut  settings page general           General ▸ APP: the Shortcut row with its three presets, ⌃⇧Space picked (cropped)
-#   settings-general   settings page chat-custom       General ▸ CHAT: Model, Thinking, Links and search, Instructions with the sample text (cropped)
+#   settings-general   settings page chat-builtin      General ▸ CHAT: Model, Thinking, Links and search, Instructions scrolled to the start of the built-in text (cropped; chat-custom shows the box scrolled to a cut built-in sentence above the user's text)
 # The renderer draws the card on a plain grey with a 30 pt margin: the chat pictures are cropped to the card and
 # given its rounded corners as transparency, so they sit on the site's desktop.
 set -euo pipefail
@@ -39,7 +39,7 @@ chat qc-full switch
 chat qc-ended ended-idle 440
 chat qc-dictating dictating
 settings settings-accounts accounts-two
-settings settings-general chat-custom
+settings settings-general chat-builtin
 settings settings-shortcut general
 
 python3 "$here/prepare-images.py" "$tmp" "$tmp/out"
