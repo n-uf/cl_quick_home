@@ -164,7 +164,7 @@ Quick Entry is a chat with Claude in Claude Desktop. If most of your questions a
 
 **Quick Entry fits better** when you want to show Claude something on screen, dictate with Caps Lock, or keep the chat in Claude Desktop, or when you don't use Claude Code at all. If you already run Claude Desktop, it needs no extra app.
 
-**A floating Claude Code chat fits better** when the question is a Claude Code one, or when you'd rather not grant the Accessibility permission for a shortcut. If you keep more than one profile, cl_quick's profile menu lists each one with its week and the account in use, so you can see which account will answer before you send. For usage and limits across accounts, n-uf's sibling app [cl_audit](https://cl-audit.n-uf.com) goes further.
+**A floating Claude Code chat fits better** when the question is a Claude Code one, or when you'd rather not grant the Accessibility permission for a shortcut. If you keep more than one profile, cl_quick's profile menu lists each one with its week, the account in use and its standby accounts, so you can see which account will answer before you send. For usage and limits across accounts, n-uf's sibling app [cl_audit](https://cl-audit.n-uf.com) goes further.
 
 cl_quick can't open your files or folders or run commands. It reads what you attach and, with Links and search on, which is the default, pages it fetches with Claude Code's two web tools. For a question about a project, use Claude Code in a terminal. cl_quick's quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account. The [Claude Code in incognito](/use-cases/claude-code-incognito/) page explains what that covers and how to check it.
 
