@@ -73,7 +73,7 @@ export const groups: Group[] = [
     { id: "files", q: "Can I attach a PDF or a text file to the chat?",
       a: ["Yes. Drop PDFs (up to 15 MB, 100 pages) or text and code files (up to 400 KB, UTF-8) from Finder on the bar or chat window, or copy them and press ⌘V. A message takes up to 5 attachments with pictures. They stay in memory only, and Claude Code has no file tools: it sees only what you attached."] },
     { id: "links", q: "Can cl_quick read a link or search the web?",
-      a: ["Yes. Links and search is on by default: Claude Code gets its two web tools, WebFetch and WebSearch, and nothing else, to read a page you link or search the web. Page text goes to the model with the chat and counts toward your usage. When it's off (Settings ▸ General ▸ Links and search), Claude Code has no tools."] },
+      a: ["Yes. Links and search is on by default: Claude Code gets its two web tools, WebFetch and WebSearch, and nothing else, to read a page you link or search the web. Page text goes to the model with the chat and counts toward your usage. When it's off (Settings ▸ General ▸ Chat ▸ Links and search), Claude Code has no tools."] },
     { id: "instructions", q: "Can I give cl_quick instructions of my own?",
       a: ["Yes. Settings ▸ General ▸ Chat has an Instructions box for a few lines of your own, up to 1,000 characters, such as \"Answer in Ukrainian unless I write in another language.\" They are added after cl_quick's built-in instructions, never replacing them, and apply to new chats only. They are stored like the other settings; chats are never stored."] },
     { id: "services", q: "Can I ask about text I selected in another app?",
