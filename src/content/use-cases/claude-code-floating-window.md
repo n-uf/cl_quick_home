@@ -111,7 +111,9 @@ Under the field, one row holds the controls.
 - **Model.** Haiku by default. The bars are the newest Haiku, Sonnet, Opus and Fable the account has, as Claude Code itself lists them. A family the account lacks isn't offered.
 - **Thinking.** Off by default, or one of the efforts the chosen model takes: Low, Medium, High, Extra, Max.
 
-Model and Thinking sit together in one outlined group, always visible. A warm tint marks the costly steps: Fable, and Thinking at Extra or Max. A pick holds for that chat, and a new chat goes back to the defaults you set in Settings ▸ General. Click a bar to pick it, or click the right half of a control's label for the next value and the left half for the one before. The scroll wheel and the ⌘ arrow keys step too. Every answer says which model gave it.
+Model and Thinking sit together in one outlined group, always visible. A warm tint marks the costly steps: Fable, and Thinking at Extra or Max. A pick holds for that chat, and a new chat goes back to the defaults you set in Settings ▸ General ▸ Chat. Click a bar to pick it, or click the right half of a control's label for the next value and the left half for the one before. The scroll wheel and the ⌥⌘ arrow keys step too. Every answer says which model gave it.
+
+Settings ▸ General ▸ Chat also has **Instructions**: a few lines of your own, up to 1,000 characters, such as "Answer in Ukrainian unless I write in another language." They are added after cl_quick's built-in instructions and never replace them, and they apply to new chats only. They're stored like the other settings, and chats are never stored.
 
 ## Profiles and accounts
 

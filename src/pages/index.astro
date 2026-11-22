@@ -66,6 +66,8 @@ const jsonLd = [orgNode, {
     "Model and thinking pickers, and a mic button that starts macOS Dictation (⌘D turns it on and off)",
     "Images, PDFs and text files pasted or dropped into the chat, kept in memory, nothing saved",
     "Links and search through Claude Code's two web tools, on by default; Settings ▸ General ▸ Links and search turns it off",
+    "Your own instructions, up to 1,000 characters, added after the built-in ones for new chats",
+    "A Preview button on an html block in an answer, in an isolated page that loads nothing from outside",
     "Ask cl_quick in the macOS Services menu, for selected text",
     "Incognito chats: nothing is saved on the Mac",
   ],
@@ -231,10 +233,11 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
         <p>There is a second way in. Select text in any app, then right-click ▸ Services ▸ <b>Ask cl_quick</b>. The bar opens with the selection in the field as a quote, ready to edit and not sent, and your question goes under it. macOS hands the selection over, so it needs no Accessibility permission either, and nothing about it is kept. A keyboard shortcut for it can be set in System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Services.</p>
         <p>The model is one of four families, Haiku, Sonnet, Opus and Fable, each the newest the account has; a family the account lacks isn't offered. Thinking is off or one of the efforts the chosen model takes (Low, Medium, High, Extra, Max). The pickers change the running <code>claude</code>, so a chat keeps its conversation.</p>
         <figure class="shot">
-          <img src="/img/settings-general.webp" width="1210" height="282" alt="Settings, General: Model, Thinking, Open at login" loading="lazy" decoding="async" />
-          <figcaption>Settings ▸ General: the model and thinking a new chat starts with, and Open at login.</figcaption>
+          <img src="/img/settings-general.webp" width="1210" height="790" alt="Settings, General, Chat: Model, Thinking, Links and search, Instructions" loading="lazy" decoding="async" />
+          <figcaption>Settings ▸ General ▸ Chat: what a new chat starts with, with a sample of your own instructions.</figcaption>
         </figure>
-        <p>The mic button starts macOS Dictation into the field; cl_quick stays in the background, so Dictation types into the field and not into the app behind it. <b>⌘D</b> turns Dictation on and off from the keyboard. Return while dictating stops it and shows the text, and Return again sends it; <b>Settings ▸ General ▸ Dictation</b> can make the first Return send at once.</p>
+        <p>Settings ▸ General ▸ Chat also has <b>Instructions</b>: a few lines of your own, up to 1,000 characters. They are added after cl_quick's built-in instructions, which the box shows first, dimmed and read-only, and never replace them. They apply to new chats: an open chat keeps the text it started with. They are stored with the other settings, and chats are never stored.</p>
+        <p>The mic button starts macOS Dictation into the field; cl_quick stays in the background, so Dictation types into the field and not into the app behind it. <b>⌘D</b> turns Dictation on and off from the keyboard. Return while dictating stops it and shows the text, and Return again sends it; <b>Settings ▸ General ▸ App ▸ Dictation</b> can make the first Return send at once.</p>
         <figure class="shot narrow">
           <img src="/img/qc-dictating.webp" width="880" height="154" alt="The bar with the mic button on" loading="lazy" decoding="async" />
           <figcaption>Dictation on: the mic button is lit while macOS types into the field.</figcaption>
