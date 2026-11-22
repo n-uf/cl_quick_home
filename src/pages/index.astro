@@ -299,14 +299,21 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
   if (home) {
     const beats = [...home.querySelectorAll<HTMLElement>(".beat")];
     const rig = home.querySelector<HTMLElement>(".rig")!;
-    const phone = matchMedia("(max-width: 860px)");   // the stage is not pinned here (home.css): it scrolls with the page
+    const phone = matchMedia("(max-width: 860px)");   // the stacked layout: the rig is pinned under the menu bar here too (home.css)
+    // the menu bar's and the rig's heights, for the phone's rig top and its steps' scroll-margin-top (the stage's height follows the width)
+    const head = document.querySelector<HTMLElement>(".menubar");
+    new ResizeObserver(() => {
+      home.style.setProperty("--head-h", `${head ? head.offsetHeight : 0}px`);
+      home.style.setProperty("--rig-h", `${rig.offsetHeight}px`);
+    }).observe(rig);
     // cur: the step shown (a key or the field may set it); seen: the step the scroll position last pointed at. The scroll
     // moves the stage only when it points at a different step, so a chosen step stays through a resize or a small scroll
     // (the keyboard opening on a phone scrolls the field into view and resizes the page).
     let cur = -1, seen = -1, queued = false;
     const update = () => {
       queued = false;
-      const line = window.innerHeight * 0.55;
+      // desktop: a little below halfway down. Stacked phone: just below the pinned rig, where a step key's anchor puts the text (so the scroll never flips a tapped step)
+      const line = phone.matches ? parseFloat(getComputedStyle(beats[0]).scrollMarginTop) + 24 : window.innerHeight * 0.55;
       let n = 0;
       beats.forEach((b, i) => { if (b.getBoundingClientRect().top <= line) n = i; });
       if (n === seen) return;
@@ -316,9 +323,8 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
     const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
     addEventListener("scroll", queue, { passive: true });
     addEventListener("resize", queue);
-    // a step key lights its step at once, without waiting for the scroll to arrive. On a phone the stage is not pinned, so the
-    // key switches the demo where it stands (no jump to the text, which would scroll the stage away); the link still works without a script
-    home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", (e) => { if (phone.matches) e.preventDefault(); cur = i; home.dataset.beat = String(i); if (i < 3) home.classList.remove("sent"); }));
+    // a step key lights its step at once, without waiting for the scroll to arrive; the link's own jump to #step-N does the scrolling
+    home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", () => { cur = i; home.dataset.beat = String(i); if (i < 3) home.classList.remove("sent"); }));
     // The bar's field (steps 2 and 3). What the visitor types goes nowhere: no request, no storage, no analytics. It is
     // only put on the page (as text, never as HTML, at most 200 characters) in the window's bubble when they send it, and it
     // is gone when the page is closed. A picture of cl_quick says so in the place of an answer.
