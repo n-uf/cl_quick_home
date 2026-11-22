@@ -86,6 +86,10 @@ It never brings another app forward. The app you were in stays where it was, beh
 | ⇧⌘J | Jumps to the start of the answer in view |
 | ⌘[ and ⌘] | Jump to your previous and next message |
 | ⇧fn↑ and ⇧fn↓ | Scroll the answers a page |
+| ⌘F | Finds text in the chat |
+| ⌘G and ⇧⌘G | Go to the next and previous match |
+| ↑ in an empty field | Recalls your earlier messages; ↑ again goes further back, ↓ forward |
+| ⌥⇧⌘C | Copies the whole chat as Markdown |
 | ⌘1 to ⌘5 | Size the window: Small, Standard, Large, Tall, Wide |
 | ⌃1 to ⌃6 | Place the window on its screen: ⌃1 to ⌃3 bottom left, centre and right; ⌃4 to ⌃6 top left, centre and right |
 
@@ -98,6 +102,8 @@ The digit keys work while the panel has the keyboard, in the bar and in the chat
 Answers stream in as Markdown, and code blocks have Copy. A fenced `html` block shows its page in place once the block is complete (while it streams it is code). Its top row has **Code | Page** to switch sides, **⤢** to open the page in its own window, and Copy, which copies the code whichever side shows; a block fenced as `html code` opens on the code. The page is isolated, in the chat and in the window: no scripts run, nothing is fetched from the network, links, forms and downloads do nothing, and nothing about it is stored on the Mac. Under each answer there's Copy and a line like "answered by Haiku 5.5 · 2.4 s". The last answer also has Ask again.
 
 While an answer streams, the chat follows the new text only while you're at the bottom. Scroll up to read and new text never moves the view; ⌘J or the ↓ button takes you back, and sending a message makes it follow again. Two thin handles stand at the answers' edges, and resting the pointer on one opens its buttons: ▲ ▼ (your previous and next message) and ↓ (jump to latest) on the right, ⤒ (the start of the answer) and copy on the left.
+
+To find something in a long chat, press **⌘F**. A find bar opens under the header and searches every message and answer as you type, with "n of m" and ▲ ▼ to move; Return or ⌘G is the next match, ⇧Return or ⇧⌘G the previous, and Esc closes the bar. Select text in an answer and a small bar appears above it: **Explain** and **Shorter** send a follow-up at once with your selection quoted, and **Ask about this** puts the quote in the field for you to finish. The same three are in the right-click menu, with **Copy chat as Markdown** (⌥⇧⌘C), which copies every message under **You:** and **Claude:**. At the end of a finished answer's footer, a speaker button reads it aloud in the Mac's own voice, on the device, and ↑ in an empty field brings back your last message.
 
 Follow-ups go to the same running Claude Code, so it remembers the earlier turns. New chat (⌘N, or **+** in the header) starts over. **Stop** ends an answer where it is, and the chat goes on. If Claude Code stops mid-answer, the window keeps what arrived and says the chat ended. **Retry** then asks the last question in a new chat.
 
