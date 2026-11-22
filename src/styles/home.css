@@ -314,9 +314,9 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   .home[data-js] .rig { position: sticky; top: var(--head-h, 44px); z-index: 10; background: var(--bg); box-shadow: 0 0 0 16px var(--bg); }
   .home[data-js] .beat { scroll-margin-top: calc(var(--head-h, 44px) + var(--rig-h, 0px) + 8px); }
   .stage { aspect-ratio: 1 / 0.94; border-radius: 12px; }
-  /* landscape and short windows: the pinned rig (stage, gap and keys, about 84 px) takes at most 65% of the screen height, so the
+  /* landscape and short windows: the pinned rig (stage, gap and keys, about 64 px: 12 + a 40 px tray) takes at most 65% of the screen height, so the
      stage narrows (centred) until it fits; where it fits already, it keeps the full width */
-  .home[data-js] .stage { width: min(100%, calc((var(--cap-h, 100svh) * .65 - var(--head-h, 44px) - 84px) / .94)); justify-self: center; }
+  .home[data-js] .stage { width: min(100%, calc((var(--cap-h, 100svh) * .65 - var(--head-h, 44px) - 64px) / .94)); justify-self: center; }
   .mini-menu { height: 8.6cqw; font-size: 3cqw; gap: 3cqw; padding: 1.2cqw 3.4cqw 0; }
   .mini-menu svg { width: 4cqw; height: 4cqw; }
   .mini-menu .mm-wifi { display: none; }   /* the items stay clear of the notch */
@@ -337,9 +337,11 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   .kcap { height: 14cqw; min-width: 14cqw; border-radius: 2cqw; font-size: 6cqw; padding: 0 4cqw; }
   .kcap.space { min-width: 40cqw; font-size: 4.4cqw; }
   .caps .say { font-size: 2.6cqw; padding: 1.6cqw 3cqw; border-radius: 1.2cqw; }
-  .keys { gap: 8px; padding: 10px; }
-  .keys .key { height: 44px; min-width: 44px; padding: 0 12px; white-space: nowrap; }   /* 44 px step keys: the number only */
-  .keys .key .n { font-size: 15px; opacity: 1; }
+  .keys { gap: 6px; padding: 6px; }
+  .keys .key { height: 28px; min-width: 36px; padding: 0 12px; white-space: nowrap; }   /* compact step keys (the desktop's size): the number only */
+  .keys .key .n { font-size: 13px; opacity: 1; }
+  /* the tap area is still 44 px high: an invisible strip above and below the key, so the keys look small and the layout stays short */
+  .rig .keys .key::after { content: ""; position: absolute; left: 0; right: 0; top: -8px; bottom: -8px; }
   /* the word is hidden only visually: the key's aria-label ("Step 4: Chat") still names it */
   .keys .key .w { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .beat { min-height: 58vh; align-content: start; padding: 22px 0 22px 48px; scroll-margin-top: 56px; }   /* as on the desktop; with the script on, the margin above clears the menu bar and the pinned rig */
@@ -354,10 +356,10 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
 @media (max-width: 520px) {
   .getrow, .getrow[data-keys="2"] { grid-template-columns: minmax(0, 1fr); }
 }
-/* a phone: the six numbered keys stand in one row of equal keys, each at least 44 px wide (45 px at 320: the tray's padding and gaps are slim) */
+/* a phone: the six numbered keys stand in one row of equal keys (about 42 px wide at 320, 52 at 375), compact like the desktop's */
 @media (max-width: 600px) {
   .rig { justify-items: stretch; }
-  .rig .keys { display: grid; grid-template-columns: repeat(6, minmax(44px, 1fr)); gap: 2px; padding: 8px 4px; }
+  .rig .keys { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px; padding: 6px 4px; }
   .rig .keys .key { padding: 0; justify-content: center; }
   .next .key { height: 44px; }
   .home-faq .more a, .row figure.shot + p a { display: inline-block; padding: 13px 0; margin: -13px 0; }   /* a 44 px tap target, the line takes the same room */
