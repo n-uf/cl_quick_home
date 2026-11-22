@@ -309,7 +309,8 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
     // the screen height the stage's cap in home.css is taken from, re-measured only when the width changes: a keyboard
     // that shrinks the page (Android web views) must not shrink the stage
     let capW = 0;
-    const cap = () => { if (innerWidth !== capW) { capW = innerWidth; home.style.setProperty("--cap-h", `${innerHeight}px`); } };
+    const fine = matchMedia("(hover: hover) and (pointer: fine)");   // a mouse: a height-only resize is the window, not a keyboard
+    const cap = () => { if (innerWidth !== capW || fine.matches) { capW = innerWidth; home.style.setProperty("--cap-h", `${innerHeight}px`); } };
     cap(); addEventListener("resize", cap);
     // cur: the step shown (a key or the field may set it); seen: the step the scroll position last pointed at. The scroll
     // moves the stage only when it points at a different step, so a chosen step stays through a resize or a small scroll
