@@ -127,7 +127,7 @@ In Settings, each profile is a tile along the top, with a lamp for its sign-in. 
 
 Settings' account rows show addresses in full. Everywhere else an address is hidden under a blur until the pointer is on it. What is blurred is not the address but one fixed stand-in, the same for every address, so a screenshot of the blur gives nothing back. VoiceOver reads "hidden address". **Settings ▸ General ▸ App ▸ Blur addresses** is on by default; turn it off and addresses show in full, sharp.
 
-A switch is bigger than the quick chat, and cl_quick asks first: "Switch Main to this account?", with the account's address under it, blurred until the pointer is on it while Blur addresses is on. The question says that Claude Code in Terminal and editors on that folder moves to the new account, sessions running now included, and that the Claude app keeps its own sign-in. Then Claude Code's own sign-in opens in Terminal and finishes in your browser. cl_quick never sees a password or a token and never touches the Keychain.
+A switch is bigger than the quick chat, and cl_quick asks first: "Switch Main to this account?", with the account's address under it, blurred until the pointer is on it while Blur addresses is on. The question says that Claude Code in Terminal and editors on that folder moves to the new account, sessions running now included, and that the Claude app keeps its own sign-in. Then Claude Code's own sign-in opens in Terminal and finishes in your browser. While it waits, a note in the chat says what to check there; its **×** only hides the note, and the sign-in keeps waiting. cl_quick never sees a password or a token and never touches the Keychain.
 
 ## Live limits in the window
 
