@@ -25,7 +25,7 @@ faq:
   - q: "Can I paste CSV data into Claude instead of attaching the file?"
     a: "Yes. In cl_quick, text on the clipboard always pastes as text, so rows copied from a spreadsheet land in the field as part of your message. Copying the file itself in Finder and pressing ⌘V attaches it as a chip instead, up to 400 KB of UTF-8 text. Either way, Claude reads it as text."
   - q: "Can Claude read a log file or a stack trace?"
-    a: "Yes, as text. Logs are among the text files cl_quick takes, and a stack trace pasted into the field is just text. Ask for the first error and its likely cause. Claude sees only what you gave it, so a trace without the code around it gets an answer with gaps."
+    a: "Yes, as text. Logs are among the text files cl_quick takes, and a stack trace pasted into the field is just text. Ask for the first error and its likely cause. Of your code, Claude sees only what you gave it, so a trace without the code around it gets an answer with gaps."
 sources:
   - title: "cl_quick README"
     url: "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md"
@@ -122,7 +122,7 @@ A log is text, and cl_quick lists logs among the files it takes. Drop a `.log` f
 - "When do the errors start?"
 - "Explain this stack trace in two sentences."
 
-Claude sees only what you gave it. A stack trace without the code around it gets an answer with gaps, and Claude can't open the project to look.
+Of your code, Claude sees only what you gave it. A stack trace without the code around it gets an answer with gaps, and Claude can't open the project to look.
 
 If the trace is on screen in a terminal or another app, you may not need to copy it. When that app offers its selected text to the Services menu, select the trace and choose right-click ▸ Services ▸ **Ask cl_quick**. The bar opens with the selection quoted in the field, not yet sent, and a selection over 20,000 characters is cut with a line saying so. If Ask cl_quick isn't listed there, copy the trace and paste it.
 
