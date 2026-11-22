@@ -63,7 +63,7 @@ export const groups: Group[] = [
   ] },
   { title: "The chat: model, shortcut, voice, files and links", items: [
     { q: "How do I pick the model and thinking?",
-      a: ["Under the field, the model (Haiku by default) and thinking (off by default) sit in one group. The model is one of four families, Haiku, Sonnet, Opus and Fable. Thinking is Off or the efforts that model takes. Click a bar or use ⌥⌘ arrows; a pick holds for that chat. Settings ▸ General ▸ Chat sets the defaults."] },
+      a: ["Under the field, the model (Haiku by default) and thinking (off by default) sit in one group. The model is one of four families, Haiku, Sonnet, Opus and Fable. Thinking is Off or the efforts that model takes. Click a bar or use the fn arrows; a pick holds for that chat. Settings ▸ General ▸ Chat sets the defaults."] },
     { q: "How do I change the shortcut?",
       a: ["Settings ▸ General ▸ App ▸ Shortcut: ⌃⇧Space on a new install, with ⇧⌘Space and ⌥Space, Other… for any key with ⌘, ⌃ or ⌥, or Off. A shortcut you saved before is kept. It warns only about real clashes, a macOS shortcut that uses the key or a key another app holds, and needs no Accessibility permission."] },
     { q: "Can I use my voice?",
@@ -79,7 +79,7 @@ export const groups: Group[] = [
     { id: "services", q: "Can I ask about text I selected in another app?",
       a: ["Yes. Select text in any app, then right-click ▸ Services ▸ <b>Ask cl_quick</b>. The bar opens with the selection in the field as a quote, ready to edit and not sent; one over 20,000 characters is cut, with a line saying so. It needs no Accessibility permission, because macOS hands the selection over, and nothing about it is kept."] },
     { q: "Which keys work in the chat?",
-      a: ["Return sends, Shift-Return adds a line, Esc or ⌘W hides the chat, ⌘N starts a new chat, ⌘D turns Dictation on and off and ⇧⌘C copies the answer in view. ⌥⌘↑ and ⌥⌘↓ step Thinking, ⌥⌘→ and ⌥⌘← the Model. ⌘J jumps to the latest answer, ⌘[ and ⌘] to your previous and next message. The keys button lists all."] },    { q: "Where do I drag the chat window to move or resize it?",
+      a: ["Return sends, Shift-Return adds a line, Esc or ⌘W hides the chat, ⌘N starts a new chat, ⌘D turns Dictation on and off and ⇧⌘C copies the answer in view. fn↑ and fn↓ step Thinking, fn→ and fn← the Model. ⌘J jumps to the latest answer, ⌘[ and ⌘] to your previous and next message. The keys button lists all."] },    { q: "Where do I drag the chat window to move or resize it?",
       a: ["Drag its edges and corners to resize the window, and any empty area of it to move the window: the header, and the gaps around and between answers. The field, the buttons and the controls never move it. It floats on every Space until Esc hides it."] },
     { id: "keyboard-size", q: "Can I resize or move the chat window with the keyboard?",
       a: ["Yes. ⌘1 to ⌘5 size it (Small, Standard, Large, Tall, Wide), and ⌃1 to ⌃6 place it on its screen: ⌃1 to ⌃3 bottom left, centre and right, ⌃4 to ⌃6 top left, centre and right. If \"Switch to Desktop N\" is on in macOS's Mission Control shortcuts, macOS takes ⌃1 to ⌃6 and cl_quick never sees them."] },

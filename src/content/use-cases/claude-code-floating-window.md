@@ -80,15 +80,16 @@ It never brings another app forward. The app you were in stays where it was, beh
 | ⌘N | Starts a new chat |
 | ⌘D | Turns Dictation on and off |
 | ⇧⌘C | Copies the answer in view once you've scrolled up, otherwise the latest complete answer, like its Copy button |
-| ⌥⌘↑ and ⌥⌘↓ | Step Thinking |
-| ⌥⌘→ and ⌥⌘← | Step Model |
-| ⌘J | Jumps to the latest answer |
+| fn↑ and fn↓ | Step Thinking |
+| fn→ and fn← | Step Model |
+| ⌘J | Jumps to the latest answer and follows it |
 | ⇧⌘J | Jumps to the start of the answer in view |
 | ⌘[ and ⌘] | Jump to your previous and next message |
+| ⇧fn↑ and ⇧fn↓ | Scroll the answers a page |
 | ⌘1 to ⌘5 | Size the window: Small, Standard, Large, Tall, Wide |
 | ⌃1 to ⌃6 | Place the window on its screen: ⌃1 to ⌃3 bottom left, centre and right; ⌃4 to ⌃6 top left, centre and right |
 
-The keys button in the controls row lists them on three pages (Model & window, Move and Write), along with the shortcut that opens cl_quick. Plain ⌘ arrows are macOS's own and reach the field, where they jump the caret to the start or end of a line or the text; ⇧⌘ arrows still select, and ⌃⌘ arrows aren't cl_quick's.
+The keys button in the controls row lists them on three pages (Model & window, Move and Write), along with the shortcut that opens cl_quick. The fn arrows are the Page Up, Page Down, End and Home keys on a Mac keyboard, and they work wherever the keyboard is in the panel. Plain ⌘ and ⌥⌘ arrows are macOS's own and reach the field, where they jump the caret to the start or end of a line or the text; ⇧⌘ arrows still select, and ⌃⌘ arrows aren't cl_quick's.
 
 The digit keys work while the panel has the keyboard, in the bar and in the chat window, on the number row and the keypad, on any keyboard layout. ⌘1 to ⌘5 size it as if you had sized it by hand: Small is 420 × 440, Standard 520 × 580 (the first size), Large 720 × 760, Tall keeps the width it has and takes the screen's full visible height, and Wide is 960 wide and 70% of the screen's height. In the bar only the width changes, because its height follows its content. The window stays where it is: the corner or edge centre of its nearest place holds still. ⌃1 to ⌃6 then move it to one of those six places on its screen, at the size it has, clear of the menu bar and the Dock. macOS can take ⌃1 to ⌃6 for itself: if "Switch to Desktop N" is on in System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Mission Control, cl_quick never sees those keys.
 
@@ -116,7 +117,7 @@ Under the field, one row holds the controls.
 - **Model.** Haiku by default. The bars are the newest Haiku, Sonnet, Opus and Fable the account has, as Claude Code itself lists them. A family the account lacks isn't offered.
 - **Thinking.** Off by default, or one of the efforts the chosen model takes: Low, Medium, High, Extra, Max.
 
-Model and Thinking sit together in one outlined group, always visible. A warm tint marks the costly steps: Fable, and Thinking at Extra or Max. A pick holds for that chat, and a new chat goes back to the defaults you set in Settings ▸ General ▸ Chat. Click a bar to pick it, or click the right half of a control's label for the next value and the left half for the one before. The scroll wheel and the ⌥⌘ arrow keys step too. Every answer says which model gave it.
+Model and Thinking sit together in one outlined group, always visible. A warm tint marks the costly steps: Fable, and Thinking at Extra or Max. A pick holds for that chat, and a new chat goes back to the defaults you set in Settings ▸ General ▸ Chat. Click a bar to pick it, or click the right half of a control's label for the next value and the left half for the one before. The scroll wheel and the fn arrow keys step too. Every answer says which model gave it.
 
 Settings ▸ General ▸ Chat also has **Instructions**: a few lines of your own, up to 1,000 characters, such as "Answer in Ukrainian unless I write in another language." They are added after cl_quick's built-in instructions and never replace them, and they apply to new chats only. They're stored like the other settings, and chats are never stored.
 
