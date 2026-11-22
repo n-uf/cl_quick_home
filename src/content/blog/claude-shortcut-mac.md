@@ -134,7 +134,7 @@ The terminal version of Claude Code has its own dictation key. Anthropic's docs 
 
 One difference from quick entry: Caps Lock won't work here. Anthropic's docs say some keys are never delivered to terminal apps, and Caps Lock shows an error if you try to bind it. In hold mode they suggest Space or a modifier combination such as `meta+k`, which starts recording on the first keypress. {{live:/use-cases/claude-voice-input-mac/}}The page on [Claude voice input on a Mac](/use-cases/claude-voice-input-mac/) compares it with quick entry's Caps Lock and macOS Dictation.{{/live}}
 
-<h2 id="a-shortcut-for-a-chat-over-any-app-cl_quicks-space">A shortcut for a chat over any app: cl_quick's ⌃⇧Space</h2>
+## A shortcut for a chat over any app: cl_quick's ⌃⇧Space
 
 Quick entry starts a new chat with Claude. If your questions are for Claude Code, there's another shortcut. cl_quick is a free macOS menu bar app that opens a chat bar over whatever you're in, on ⌃⇧Space on a new install. Your own Claude Code answers, so the chats count against that account's Claude plan limits. The first message turns the bar into a chat window that floats on every Space until Esc hides it, and it never brings another app forward. The [Claude Code floating window](/use-cases/claude-code-floating-window/) page covers the chat itself.
 
