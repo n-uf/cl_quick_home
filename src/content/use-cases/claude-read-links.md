@@ -12,7 +12,7 @@ author: n-uf
 takeaways:
   - "Claude can read a link when its web tools are on. Anthropic's help page calls this web fetch and says it works when web search is switched on in the Claude app."
   - "Claude Code reads links with its WebFetch tool and searches with WebSearch. For most fetches, WebFetch runs an extraction prompt against the page and hands Claude the result, not the raw page."
-  - "cl_quick has Links and search on by default: paste a link, and a muted line says \"Reading example.com…\" while Claude Code fetches it. Settings ▸ General ▸ Links and search turns it off."
+  - "cl_quick has Links and search on by default: paste a link, and a muted line says \"Reading example.com…\" while Claude Code fetches it. Settings ▸ General ▸ Chat ▸ Links and search turns it off."
   - "A page counts toward the account's usage like any answer, and its text goes to the model under the profile's account. cl_quick stores none of it."
   - "cl_quick is a free app, independent of Anthropic. It uses your own Claude Code sign-in."
 faq:
@@ -130,7 +130,7 @@ Pages behind a login or a paywall: Anthropic's pages above don't say how they're
 
 ## Turning Links and search off
 
-**Settings ▸ General ▸ Links and search** is on by default. Its own line reads "Claude can open links and search the web. Pages count toward your usage." Switch it off and Claude runs with no tools, as before, and a link in a message is only text.
+**Settings ▸ General ▸ Chat ▸ Links and search** is on by default. Its own line reads "Claude can open links and search the web. Pages count toward your usage." Switch it off and Claude runs with no tools, as before, and a link in a message is only text.
 
 A change applies from the next message, after the answer under way if one is running. The tools are fixed when `claude` starts, so that message begins a new chat, and the window says "New chat; nothing from the last one was carried over." Turn it off when you want nothing fetched, or when a limit is close and a page isn't worth it.
 
