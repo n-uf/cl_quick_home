@@ -142,7 +142,7 @@ In Settings ▸ General, **Shortcut** is ⌥Space by default. There are four oth
 
 ![cl_quick Shortcut setting with ⌥Space picked](/img/settings-shortcut.webp "The Shortcut row in cl_quick's Settings ▸ General, with ⌥Space picked.")
 
-The shortcut is registered the way macOS's own app shortcuts are, so there's no Accessibility permission to give. Once the chat is open, Return sends, Shift-Return adds a line, Esc or ⌘W hides it, ⌘N starts a new chat and ⌘⇧C copies the latest complete answer. The chat's shortcuts work on Cyrillic layouts such as Russian and Ukrainian too.
+The shortcut is registered the way macOS's own app shortcuts are, so there's no Accessibility permission to give. Once the chat is open, Return sends, Shift-Return adds a line, Esc or ⌘W hides it, ⌘N starts a new chat and ⇧⌘C copies the answer in view. The chat's shortcuts work on Cyrillic layouts such as Russian and Ukrainian too.
 
 There's a way in that needs no key at all: the macOS Services menu. Select text in any app, then right-click ▸ Services ▸ **Ask cl_quick**. The bar opens with the selection quoted in the field, ready to edit and not sent, and your question goes under it. macOS hands the selection over, so this needs no Accessibility permission either. If you want a key for it, System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Services is where one can be set.
 

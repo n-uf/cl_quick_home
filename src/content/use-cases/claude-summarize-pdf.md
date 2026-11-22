@@ -85,7 +85,7 @@ cl_quick's limits are lower, and they come further down. {{live:/blog/claude-fil
 
 A PDF alone is a message too, so you can drop it, press Return and ask in the next message. Follow-ups go to the same running Claude Code, and the PDF stays in the chat's conversation until the chat ends. You don't drop it again for a second question. {{live:/use-cases/claude-read-csv/}}The CSV file in the picture has a page of its own, on whether [Claude can read CSV files](/use-cases/claude-read-csv/) and what to ask of one.{{/live}}
 
-The chat shows the chips, never the file's content. Each answer has Copy under it, and ⌘⇧C copies the latest complete answer. If you'd rather speak the question, the mic button and ⌘D start macOS Dictation in the field, and the page on [voice input on a Mac](/use-cases/claude-voice-input-mac/) has the details.
+The chat shows the chips, never the file's content. Each answer has Copy under it, and ⇧⌘C copies the answer in view. If you'd rather speak the question, the mic button and ⌘D start macOS Dictation in the field, and the page on [voice input on a Mac](/use-cases/claude-voice-input-mac/) has the details.
 
 ## Prompts that help Claude summarize PDF files
 
