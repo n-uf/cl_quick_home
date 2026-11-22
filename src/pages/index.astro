@@ -306,6 +306,11 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
       home.style.setProperty("--head-h", `${head ? head.offsetHeight : 0}px`);
       home.style.setProperty("--rig-h", `${rig.offsetHeight}px`);
     }).observe(rig);
+    // the screen height the stage's cap in home.css is taken from, re-measured only when the width changes: a keyboard
+    // that shrinks the page (Android web views) must not shrink the stage
+    let capW = 0;
+    const cap = () => { if (innerWidth !== capW) { capW = innerWidth; home.style.setProperty("--cap-h", `${innerHeight}px`); } };
+    cap(); addEventListener("resize", cap);
     // cur: the step shown (a key or the field may set it); seen: the step the scroll position last pointed at. The scroll
     // moves the stage only when it points at a different step, so a chosen step stays through a resize or a small scroll
     // (the keyboard opening on a phone scrolls the field into view and resizes the page).
@@ -325,7 +330,14 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
     };
     const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
     addEventListener("scroll", queue, { passive: true });
-    addEventListener("resize", () => { resized = true; resizedAt = performance.now(); queue(); });
+    // a resize that changes the width (rotation), or comes while the demo's field is in use or just after (the keyboard in a web view),
+    // never moves the stage; a height-only change with no field in use (the address bar) still lets the scroll choose the step
+    const fieldEl = home.querySelector<HTMLTextAreaElement>(".live-field");
+    let lastW = innerWidth, fieldAt = -1e9;   // fieldAt: when the field last lost focus
+    addEventListener("resize", () => {
+      if (innerWidth !== lastW || document.activeElement === fieldEl || performance.now() - fieldAt < 1500) { resized = true; resizedAt = performance.now(); }
+      lastW = innerWidth; queue();
+    });
     // a step key lights its step at once, without waiting for the scroll to arrive; the link's own jump to #step-N does the scrolling
     home.querySelectorAll<HTMLAnchorElement>(".keys a").forEach((a, i) => a.addEventListener("click", () => { cur = i; home.dataset.beat = String(i); if (i < 3) home.classList.remove("sent"); }));
     // The bar's field (steps 2 and 3). What the visitor types goes nowhere: no request, no storage, no analytics. It is
@@ -354,8 +366,14 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
       });
       sendBtn.addEventListener("click", submit);
       // a click on the bar (outside the field) focuses it; on step 3's typed picture it brings the live bar in first
-      home.querySelector(".l-bar")?.addEventListener("pointerdown", (e) => { if (e.target !== field && e.target !== sendBtn && !sendBtn.contains(e.target as Node)) { e.preventDefault(); field.focus(); } });
-      home.querySelector(".l-typing")?.addEventListener("pointerdown", (e) => { e.preventDefault(); touch(); field.focus(); });
+      // the mouse focuses on pointerdown; a touch only on the tap (click), so a pan that starts on the pinned stage never raises the keyboard
+      const bar = home.querySelector(".l-bar"), typing = home.querySelector(".l-typing");
+      const onBar = (e: Event) => e.target !== field && e.target !== sendBtn && !sendBtn.contains(e.target as Node);
+      bar?.addEventListener("pointerdown", (e) => { if ((e as PointerEvent).pointerType === "mouse" && onBar(e)) { e.preventDefault(); field.focus(); } });
+      bar?.addEventListener("click", (e) => { if (onBar(e)) field.focus(); });
+      typing?.addEventListener("pointerdown", (e) => { if ((e as PointerEvent).pointerType === "mouse") { e.preventDefault(); touch(); field.focus(); } });
+      typing?.addEventListener("click", () => { touch(); field.focus(); });
+      field.addEventListener("blur", () => { fieldAt = performance.now(); });
       sync();
     }
     // step 1's keys: a click (or Enter or Space on the button), or a real ⌥Space on the page, plays a key press of about

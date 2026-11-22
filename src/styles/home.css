@@ -316,7 +316,7 @@ a.bkey.primary:active { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 0 0 1p
   .stage { aspect-ratio: 1 / 0.94; border-radius: 12px; }
   /* landscape and short windows: the pinned rig (stage, gap and keys, about 84 px) takes at most 65% of the screen height, so the
      stage narrows (centred) until it fits; where it fits already, it keeps the full width */
-  .home[data-js] .stage { width: min(100%, calc((65svh - var(--head-h, 44px) - 84px) / .94)); justify-self: center; }
+  .home[data-js] .stage { width: min(100%, calc((var(--cap-h, 100svh) * .65 - var(--head-h, 44px) - 84px) / .94)); justify-self: center; }
   .mini-menu { height: 8.6cqw; font-size: 3cqw; gap: 3cqw; padding: 1.2cqw 3.4cqw 0; }
   .mini-menu svg { width: 4cqw; height: 4cqw; }
   .mini-menu .mm-wifi { display: none; }   /* the items stay clear of the notch */
