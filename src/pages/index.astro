@@ -50,7 +50,7 @@ const jsonLd = [orgNode, {
   "@id": `${site}/#app`,
   name: "cl_quick",
   alternateName,
-  description: "cl_quick is a Claude quick chat for the Mac: a menu bar app with no Dock icon. Press ⌥Space over any app and a chat bar opens; the first message turns it into a chat window that floats on every Space and never brings another app forward. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.",
+  description: "cl_quick is a Claude quick chat for the Mac: a menu bar app with no Dock icon. Press ⌃⇧Space over any app and a chat bar opens; the first message turns it into a chat window that floats on every Space and never brings another app forward. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.",
   applicationCategory: "UtilitiesApplication",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },   // the app costs nothing
   operatingSystem: "macOS 13 or later",
@@ -88,8 +88,8 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
 
     <section class="intro">
       <p class="lbl">Menu bar app for Mac</p>
-      <h1>A Claude quick chat for your Mac, on <span class="nb">⌥Space</span></h1>
-      <p class="lede">cl_quick is a free menu bar app for Mac, a Claude quick chat. Press <span class="kbd">⌥Space</span> over any app and a floating bar opens; your first message turns it into a chat window that stays on every Space until you press Esc. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.</p>
+      <h1>A Claude quick chat for your Mac, on <span class="nb">⌃⇧Space</span></h1>
+      <p class="lede">cl_quick is a free menu bar app for Mac, a Claude quick chat. Press <span class="kbd">⌃⇧Space</span> over any app and a floating bar opens; your first message turns it into a chat window that stays on every Space until you press Esc. Your own Claude Code sign-in answers, on the profile's account in use, and it counts against that account's limits.</p>
       <p class="lede">cl_quick is made by <ExtLink href="https://n-uf.com">n-uf</ExtLink> and is not affiliated with Anthropic.</p>
       <p class="readout"><span class="led lit" aria-hidden="true"></span><b>Download cl_quick for Mac.</b> The app is free; it comes as a disk image from GitHub Releases. <a href="/install/">How to install it</a></p>
     </section>
@@ -114,9 +114,9 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
           <!-- step 1: the keys. With the script on they are one button that plays the key press and goes to step 2;
                without it they stay a picture (home.css shows one or the other) -->
           <div class="caps">
-            <div class="keyrow still" aria-hidden="true"><span class="kcap">⌥</span><span class="kcap space">Space</span></div>
-            <button type="button" class="keybtn" aria-label="Press ⌥Space to open the chat bar"><span class="keyrow"><span class="kcap">⌥</span><span class="kcap space">Space</span></span></button>
-            <span class="say" aria-hidden="true"><span class="say-still">Option + Space</span><span class="say-js">Click or press ⌥Space</span></span>
+            <div class="keyrow still" aria-hidden="true"><span class="kcap">⌃</span><span class="kcap">⇧</span><span class="kcap space">Space</span></div>
+            <button type="button" class="keybtn" aria-label="Press ⌃⇧Space to open the chat bar"><span class="keyrow"><span class="kcap">⌃</span><span class="kcap">⇧</span><span class="kcap space">Space</span></span></button>
+            <span class="say" aria-hidden="true"><span class="say-still">Control + Shift + Space</span><span class="say-js">Click or press ⌃⇧Space</span></span>
           </div>
 
           <figure class="layer l-bar"><img src="/img/qc-bar.webp" width="880" height="154" alt="cl_quick's chat bar on the desktop" loading="eager" decoding="async" />
@@ -149,7 +149,7 @@ const keys = ["Press", "Bar", "Type", "Chat", "Incognito", "Limits"];
 
       <ol class="beats">
         <li class="beat" id="step-1">
-          <h2>Press ⌥Space over any app</h2>
+          <h2>Press ⌃⇧Space over any app</h2>
           <p>A chat bar opens over whatever you're doing. cl_quick is a menu bar app with no Dock icon, and it never brings another app forward: whatever you're working in stays in front. A new install opens with ⌃⇧Space; Settings offers ⇧⌘Space and ⌥Space too, any key with ⌘, ⌃ or ⌥, or none.</p>
         </li>
         <li class="beat" id="step-2">
