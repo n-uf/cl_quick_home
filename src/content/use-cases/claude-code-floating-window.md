@@ -96,7 +96,7 @@ The digit keys work while the panel has the keyboard, in the bar and in the chat
 
 Answers stream in as Markdown, and code blocks have Copy. A fenced `html` block also has a **Preview** button, which opens the page in its own window beside the chat. The page is isolated: no scripts run, nothing loads from outside, and links and downloads do nothing. Under each answer there's Copy and a line like "answered by Haiku 5.5 · 2.4 s". The last answer also has Ask again.
 
-While an answer streams, the chat follows the new text only while you're at the bottom. Scroll up to read and new text never moves the view; ⌘J, End or the ↓ handle takes you back, and sending a message follows again. Thin handles stand at the answers' edges, shown when the pointer rests on them: ▲ ▼ (your previous and next message) and ↓ (jump to latest) on the right, ⤒ (the start of the answer) and copy on the left.
+While an answer streams, the chat follows the new text only while you're at the bottom. Scroll up to read and new text never moves the view; ⌘J, End or the ↓ button takes you back, and sending a message makes it follow again. Two thin handles stand at the answers' edges, and resting the pointer on one opens its buttons: ▲ ▼ (your previous and next message) and ↓ (jump to latest) on the right, ⤒ (the start of the answer) and copy on the left.
 
 Follow-ups go to the same running Claude Code, so it remembers the earlier turns. New chat (⌘N, or **+** in the header) starts over. **Stop** ends an answer where it is, and the chat goes on. If Claude Code stops mid-answer, the window keeps what arrived and says the chat ended. **Retry** then asks the last question in a new chat.
 

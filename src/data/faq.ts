@@ -45,7 +45,7 @@ export const groups: Group[] = [
     { q: "What if the wrong account signs in, or nothing happens?",
       a: ["If another account signed in, the chat says which one and offers <b>Try again as</b> the account you wanted or <b>Keep</b> the one it is on. While the sign-in waits, a note says what to check in the browser; its <b>×</b> only hides it, and the sign-in keeps waiting. After 10 minutes cl_quick says \"No sign-in in 10 minutes.\""] },
     { q: "Does cl_quick see my password or token? Where are addresses shown?",
-      a: ["No. cl_quick never sees a password or a token and never touches the Keychain; it reads only the addresses and ids in each folder's <code>.claude.json</code>. Settings' account rows show addresses in full. Elsewhere a blurred address is a fixed stand-in, never the real text, until the pointer is on it; <b>Blur addresses</b> turns the blur off."] },
+      a: ["No. cl_quick never sees a password or a token and never touches the Keychain; it reads only the addresses and ids in each folder's <code>.claude.json</code>. Settings' account rows show addresses in full. Elsewhere they are blurred until the pointer is on them, and the blur hides a fixed stand-in, never the real text; <b>Blur addresses</b> turns it off."] },
     { q: "How do I add a profile?",
       a: ["The <b>+</b> tile along the top of Settings adds a profile: a folder found on this Mac, Choose a folder… (a signed-in Claude Code folder), or \"A new account, in a new folder\", which takes a name, makes <code>~/.claude-</code> plus that name and opens Claude Code's own sign-in for it in Terminal."] },
   ] },
