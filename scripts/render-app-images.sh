@@ -10,12 +10,12 @@
 #   qc-bar          state bar          the empty bar, "Ask anything"
 #   qc-typing       state typing       a question typed in the bar
 #   qc-answer       state answer       the chat window with an answer
-#   qc-full         state switch       a full week: Ask on Work, Switch to … (addresses blurred, cl_quick db7aef5 and later)
+#   qc-full         state switch       a full week: Ask on Work, Switch to … (the address is a fixed stand-in under the blur, cl_quick 7ad5746 and later)
 #   qc-ended        state ended-idle   the line under a chat that ended after 15 minutes idle
 #   qc-dictating    state dictating    the mic button on
 #   settings-accounts  settings page accounts-two   the Accounts card of a profile (cropped)
-#   settings-shortcut  settings page general-taken     the Shortcut row with ⌥Space picked (cropped: the warning under it, a sample state, is left out)
-#   settings-general   settings page general        Model, Thinking, Open at login (cropped; the Shortcut row's sample pick is left out)
+#   settings-shortcut  settings page general           General ▸ APP: the Shortcut row with its three presets, ⌃⇧Space picked (cropped)
+#   settings-general   settings page chat-custom       General ▸ CHAT: Model, Thinking, Links and search, Instructions with the sample text (cropped)
 # The renderer draws the card on a plain grey with a 30 pt margin: the chat pictures are cropped to the card and
 # given its rounded corners as transparency, so they sit on the site's desktop.
 set -euo pipefail
@@ -39,8 +39,8 @@ chat qc-full switch
 chat qc-ended ended-idle 440
 chat qc-dictating dictating
 settings settings-accounts accounts-two
-settings settings-general general
-settings settings-shortcut general-taken
+settings settings-general chat-custom
+settings settings-shortcut general
 
 python3 "$here/prepare-images.py" "$tmp" "$tmp/out"
 for f in "$tmp"/out/*.png; do
