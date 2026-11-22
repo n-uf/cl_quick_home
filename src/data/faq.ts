@@ -73,7 +73,7 @@ export const groups: Group[] = [
     { id: "files", q: "Can I attach a PDF or a text file to the chat?",
       a: ["Yes. Drop PDFs (up to 15 MB, 100 pages) or text and code files (up to 400 KB, UTF-8) from Finder on the bar or chat window, or copy them and press ⌘V. A message takes up to 5 attachments with pictures. They stay in memory only, and Claude Code has no file tools: it sees only what you attached."] },
     { id: "links", q: "Can cl_quick read a link or search the web?",
-      a: ["Yes. Links and search is on by default: Claude Code gets its two web tools, WebFetch and WebSearch, and nothing else, to read a page you link or search the web. Page text goes to the model as part of the chat and counts toward your usage. Off in Settings ▸ General ▸ Links and search, it has no tools."] },
+      a: ["Yes. Links and search is on by default: Claude Code gets its two web tools, WebFetch and WebSearch, and nothing else, to read a page you link or search the web. Page text goes to the model with the chat and counts toward your usage. When it's off (Settings ▸ General ▸ Links and search), Claude Code has no tools."] },
     { id: "services", q: "Can I ask about text I selected in another app?",
       a: ["Yes. Select text in any app, then right-click ▸ Services ▸ <b>Ask cl_quick</b>. The bar opens with the selection in the field as a quote, ready to edit and not sent; one over 20,000 characters is cut, with a line saying so. It needs no Accessibility permission, because macOS hands the selection over, and nothing about it is kept."] },
     { q: "Which keys work in the chat?",
