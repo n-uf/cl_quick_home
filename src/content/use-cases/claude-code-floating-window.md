@@ -111,7 +111,7 @@ A finished answer's footer ends with a speaker button that reads the answer alou
 
 Follow-ups go to the same running Claude Code, so it remembers the earlier turns. New chat (⌘N, or **+** in the header) starts over. **Stop** ends an answer where it is, and the chat goes on. If Claude Code stops mid-answer, the window keeps what arrived and says the chat ended. **Retry** then asks the last question in a new chat.
 
-![cl_quick answer with Copy and answered-by line](/img/qc-answer.webp "cl_quick's chat window, drawn from sample data: a streamed answer with a code block, Copy, Ask again and the answered-by line.")
+![cl_quick answer with Copy and answered-by line](/img/qc-answer.webp "cl_quick's chat window, drawn from sample data: a streamed answer with a code block, and under it Copy, Ask again, the Read aloud speaker and the answered-by line.")
 
 To ask about a screenshot, paste it with ⌘V, or drop image files on the bar or the chat window. Each shows as a thumbnail over the field, up to 5 to a message. It's scaled down in memory and no file is made, so the chat stays incognito. PDFs (up to 15 MB and 100 pages) and text files (up to 400 KB) go in the same way and show as chips, up to 5 attachments to a message with the pictures. They stay in memory too.
 
