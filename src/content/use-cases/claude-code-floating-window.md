@@ -133,7 +133,7 @@ Settings ▸ General ▸ Chat also has **Instructions**: a few lines of your own
 
 ## Profiles and accounts
 
-A profile is a Claude Code folder: `~/.claude`, a `~/.claude-*` folder, or any folder set with `CLAUDE_CONFIG_DIR`. On its first run cl_quick takes every signed-in one it finds and names it after the folder. A folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to it. The one signed in now is **in use**. The others are **standby**.
+A profile is a Claude Code folder: `~/.claude`, a `~/.claude-*` folder, or any folder set with `CLAUDE_CONFIG_DIR`. On its first run cl_quick takes every signed-in one it finds and names it after the folder. A folder holds one signed-in account at a time, so a profile remembers the accounts that have been signed in to it. The one signed in now is **in use**. The others are **standby**. A Team seat and a personal plan on one address show as two rows.
 
 In Settings, each profile is a tile along the top, with a lamp for its sign-in. A profile's page shows the account in use in its own box, with its address, its plan and two bars, the 5-hour limit and the week. Each standby account is a row with **Switch…** and **Forget…**. Standby accounts show no usage, since one folder holds one sign-in.
 
