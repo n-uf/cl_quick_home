@@ -17,7 +17,7 @@ export const groups: Group[] = [
     { q: "How do I install cl_quick, and what does it need?",
       a: ["Download cl_quick.dmg from the latest GitHub release, open the disk image and drag cl_quick to Applications; cl_quick.zip is the same app. It needs an Apple silicon Mac, macOS 13 or later and Claude Code, signed in. The first time, macOS says it can't verify the app: click Open Anyway in System Settings ▸ Privacy &amp; Security, once."] },
     { q: "Does it work with cl_audit?",
-      a: ["cl_quick runs with or without cl_audit and shares nothing with it while running. It is the successor of cl_audit's quick chat: on its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any."] },
+      a: ["Yes, and it runs without it too. While running, the two share only a folder's sign-in lock, so they never sign one folder in at once. cl_quick is the successor of cl_audit's quick chat: on its first run it copies cl_audit's old quick chat settings (the shortcut, model and thinking), if there are any."] },
   ] },
   { title: "Incognito, and what it keeps and sends", items: [
     { id: "incognito", q: "What does incognito mean in cl_quick?",
