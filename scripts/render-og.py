@@ -17,7 +17,7 @@ ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
 W, H = 1200, 630
 # out file, small label, headline, sub line, picture (a file in public/img), picture box (width, height)
 CARDS = [
-    ("public/og.png", "cl_quick", "A Claude quick chat for your Mac", "Press Option + Space over any app", "qc-answer.webp", (500, 500)),
+    ("public/og.png", "cl_quick", "A Claude quick chat for your Mac", "Press Control + Shift + Space over any app", "qc-answer.webp", (500, 500)),
     ("public/og/install.png", "cl_quick · Install", "Install cl_quick", "Apple silicon · macOS 13 or later · Claude Code, signed in", "qc-bar.webp", (520, 120)),
     ("public/og/faq.png", "cl_quick · FAQ", "Questions about cl_quick", "Incognito, accounts, limits, model and thinking", "qc-full.webp", (520, 228)),
 ]
