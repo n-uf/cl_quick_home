@@ -129,7 +129,7 @@ Under the field, one row holds the controls.
 
 Model and Thinking sit together in one outlined group, always visible. A warm tint marks the costly steps: Fable, and Thinking at Extra or Max. A pick holds for that chat, and a new chat goes back to the defaults you set in Settings ▸ General ▸ Chat. Click a bar to pick it, or click the right half of a control's label for the next value and the left half for the one before. The scroll wheel and the fn arrow keys step too. Every answer says which model gave it.
 
-Settings ▸ General ▸ Chat also has **Instructions**: a few lines of your own, up to 1,000 characters, such as "Answer in Ukrainian unless I write in another language." They are added after cl_quick's built-in instructions and never replace them, and they apply to new chats only. They're stored like the other settings, and chats are never stored.
+Settings ▸ General ▸ Chat also has **Instructions**: a few lines of your own, up to 1,000 characters, such as "Answer in Ukrainian unless I write in another language." They go after cl_quick's built-in instructions and never replace them, and they apply to new chats only. cl_quick keeps your text with its settings and sends it to the model with each new chat.
 
 ## Profiles and accounts
 
