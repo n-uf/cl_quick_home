@@ -19,7 +19,7 @@ faq:
   - q: "Is there an incognito mode in Claude Code?"
     a: "Not by that name. Claude Code's docs, as of November 2026, don't use the word incognito. They describe two ways to turn session saving off: the --no-session-persistence flag and the CLAUDE_CODE_SKIP_PROMPT_HISTORY environment variable. cl_quick runs every quick chat with --no-session-persistence and calls those chats incognito."
   - q: "Does a cl_quick incognito chat still go to Anthropic?"
-    a: "Yes. Quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account, as any Claude Code use does, and Anthropic's retention and training rules for that account apply. cl_quick's own update check goes to GitHub, not Anthropic: once a day, anonymous; Settings ▸ General ▸ App ▸ Updates turns it off."
+    a: "Yes. Quick chats are incognito: nothing is saved on this Mac. Your messages still go to Anthropic under the profile's account, as any Claude Code use does, and Anthropic's retention and training rules for that account apply. cl_quick's own update check goes to GitHub, not Anthropic: about once a day, anonymous, and Settings ▸ General ▸ App ▸ Updates turns it off."
   - q: "Is a cl_quick chat saved anywhere on my Mac?"
     a: "No. A chat lives only in the running claude and ends with it, and Claude Code writes no transcript for it. Images and attached files stay in memory, and a file you drop is read, never copied. Any claude start may still refresh a timestamp in the profile's .claude.json and back that file up. That is Claude Code's housekeeping."
   - q: "Are the pages and files I give cl_quick stored?"
