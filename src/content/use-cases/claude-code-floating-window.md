@@ -99,7 +99,9 @@ The digit keys work while the panel has the keyboard, in the bar and in the chat
 
 ## Asking and following up
 
-Answers stream in as Markdown, and code blocks have Copy. A fenced `html` block shows its page in place once the block is complete (while it streams it is code). Its top row has **Code | Page** to switch sides, **⤢** to open the page in its own window, and Copy, which copies the code whichever side shows; a block fenced as `html code` opens on the code. The page is isolated, in the chat and in the window: no scripts run, nothing is fetched from the network, links, forms and downloads do nothing, and nothing about it is stored on the Mac. Under each answer there's Copy and a line like "answered by Haiku 5.5 · 2.4 s". The last answer also has Ask again.
+Answers stream in as Markdown, and code blocks have Copy. Under each answer there's Copy and a line like "answered by Haiku 5.5 · 2.4 s". The last answer also has Ask again.
+
+An `html` block shows its page in place once it's complete; while it streams, it's code. Its top row has **Code | Page**, **⤢** to open the page in its own window, and Copy, which always copies the code. A block fenced as `html code` opens on the code. The page is isolated, in the chat and in the window: no scripts run, nothing is fetched from the network, links, forms and downloads do nothing, and nothing about it is stored on the Mac.
 
 While an answer streams, the chat follows the new text only while you're at the bottom. Scroll up to read and new text never moves the view; ⌘J or the ↓ button takes you back, and sending a message makes it follow again. Two thin handles stand at the answers' edges, and resting the pointer on one opens its buttons: ▲ ▼ (your previous and next message) and ↓ (jump to latest) on the right, ⤒ (the start of the answer) and copy on the left.
 
@@ -107,7 +109,7 @@ To find something in a long chat, press **⌘F**. A find bar opens under the hea
 
 Select text in an answer and a small bar appears above it. **Explain** and **Shorter** send a follow-up at once, with your selection quoted; **Ask about this** puts the quote in the field for you to finish. The right-click menu has the same three, and **Copy chat as Markdown** (⌥⇧⌘C), which copies the whole chat with your messages under **You:** and the answers under **Claude:**.
 
-A finished answer's footer ends with a speaker button that reads the answer aloud in the Mac's own voice, on the device. And ↑ in an empty field brings back your last message, to edit and send again.
+A finished answer's footer ends with a speaker button that reads the answer aloud in the Mac's own voice, on the device. In an empty field, ↑ brings back your last message to edit and send again.
 
 Follow-ups go to the same running Claude Code, so it remembers the earlier turns. New chat (⌘N, or **+** in the header) starts over. **Stop** ends an answer where it is, and the chat goes on. If Claude Code stops mid-answer, the window keeps what arrived and says the chat ended. **Retry** then asks the last question in a new chat.
 
@@ -145,9 +147,11 @@ A switch is bigger than the quick chat, and cl_quick asks first: "Switch Main to
 
 ## Live limits in the window
 
-Before the first message, the bar shows a usage indicator: a label, "5h" or "wk", whichever is fuller, two thin stacked bars and the fuller window's share. Once the bar becomes a chat window, its header shows only the "5h" and "wk" meters, plus **+** for a new chat and **✕** to hide. There's no profile name and no address in the header. An account that has a week and has never had a 5-hour number, such as a plan without the 5-hour window, shows the week alone, in the indicator, the header, the menu and Settings. An account with a 5-hour window keeps its row, even while that window is idle.
+Before the first message, the bar shows a usage indicator: a label, "5h" or "wk", whichever is fuller, two thin stacked bars and the fuller window's share. Once the bar becomes a chat window, its header shows only the "5h" and "wk" meters, plus **+** for a new chat and **✕** to hide. There's no profile name and no address in the header.
 
-The colours are cl_audit's: green, amber from 50%, red from 80% and crimson from 95%. The numbers come from the chat's own Claude Code, through `get_usage`, which sends no message to a model and reads nothing from the Keychain. cl_quick asks as the bar opens, after each answer, and when the bar opens again, at most once a minute. The menu bar menu has a 5-hour and a Week bar for each profile's account in use, and a profile's standby accounts are dimmed rows under them, with a hollow lamp, a blurred address, "· standby" and no usage, followed by **Add an account…**. Point at one and a quiet **Switch…** shows; a click on the row asks the switch question. Numbers older than 5 minutes turn grey there ("Last known 12 min ago"), and none over an hour old are shown.
+On a plan without the 5-hour window, where the account has a week but has never had a 5-hour number, only the week shows: in the indicator, the header, the menu and Settings. An account with a 5-hour window keeps its row, even while that window is idle.
+
+The colours are cl_audit's: green, amber from 50%, red from 80% and crimson from 95%. The numbers come from the chat's own Claude Code, through `get_usage`, which sends no message to a model and reads nothing from the Keychain. cl_quick asks as the bar opens, after each answer, and when the bar opens again, at most once a minute. The menu bar menu has a 5-hour and a Week bar for each profile's account in use, and a profile's standby accounts are dimmed rows under them, with a hollow lamp, a blurred address, "· standby" and no usage. Point at one and a quiet **Switch…** shows; a click on the row asks the switch question. **Add an account…** comes after them. Numbers older than 5 minutes turn grey there ("Last known 12 min ago"), and none over an hour old are shown.
 
 The chat is your own Claude Code, on the profile's account in use, so each question counts against that account's limits. Anthropic's help page says limits are shared across Claude and Claude Code: all activity in both counts against the same limits.
 
