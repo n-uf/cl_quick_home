@@ -1,5 +1,5 @@
-// Shared site constants. cl_quick's first release is out (26.11.0, on GitHub Releases). The download address always
-// points at the newest release, so no version is named here; the Install page names the first one once.
+// Shared site constants. cl_quick's current release is 26.11.1 (on GitHub Releases). The download address always
+// points at the newest release, so no version is named here; the Install page names the current one once.
 export const site = "https://cl-quick.n-uf.com";
 export const name = "cl_quick";
 
@@ -14,8 +14,8 @@ export const release: { downloadUrl: string | null; repoUrl: string | null } = {
 /** The same app as a zip, from the latest release (README ▸ Install: "or use cl_quick.zip, the same app"). */
 export const zipUrl = "https://github.com/n-uf/cl_quick/releases/latest/download/cl_quick.zip";
 
-/** The first release's page, named once on the Install page. */
-export const firstReleaseUrl = "https://github.com/n-uf/cl_quick/releases/tag/v26.11.0";
+/** The current release's page (26.11.1), named once on the Install page. */
+export const currentReleaseUrl = "https://github.com/n-uf/cl_quick/releases/tag/v26.11.1";
 
 /** What cl_quick needs (README ▸ Install). */
 export const requires = "Apple silicon · macOS 13 or later · Claude Code signed in";
