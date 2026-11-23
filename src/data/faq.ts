@@ -43,7 +43,7 @@ export const groups: Group[] = [
     { q: "What do Forget…, Sign in again… and Add an account… do?",
       a: ["<b>Forget…</b> asks first, then drops a standby account from the list; nothing is signed out. <b>Sign in again…</b> appears only when the sign-in is broken or the folder has no account. <b>Add an account…</b> takes an address and signs in as it; the account in use then goes to standby. In the menus it opens Settings on that form."] },
     { q: "What if the wrong account signs in, or nothing happens?",
-      a: ["If another account signed in, the chat says which one and offers <b>Try again as</b> the account you wanted or <b>Keep</b> the one it is on. While the sign-in waits, a note says what to check in the browser; its <b>×</b> only hides it, and the sign-in keeps waiting. After 10 minutes cl_quick says \"No sign-in in 10 minutes.\""] },
+      a: ["If another account signed in, the chat says which one and offers <b>Try again as</b> the account you wanted. <b>Keep</b> stays on the one that signed in, except when that account is also in use on another profile. After 10 minutes with no change, cl_quick stops looking and says \"No sign-in in 10 minutes.\""] },
     { q: "Does cl_quick see my password or token? Where are addresses shown?",
       a: ["No. cl_quick never sees a password or a token and never touches the Keychain; it reads only the addresses and ids in each folder's <code>.claude.json</code>. Settings' account rows show addresses in full. Elsewhere they are blurred until the pointer is on them, and the blur hides a fixed stand-in, never the real text; <b>Blur addresses</b> turns it off."] },
     { q: "How do I add a profile?",
