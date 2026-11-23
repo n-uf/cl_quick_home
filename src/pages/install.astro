@@ -3,10 +3,10 @@ import Desktop from "../layouts/Desktop.astro";
 import ExtLink from "../components/ExtLink.astro";
 import { pageOf } from "../data/pages";
 import { orgNode, webPage, breadcrumbs } from "../data/schema";
-import { release, zipUrl, firstReleaseUrl } from "../data/site";
+import { release, zipUrl, currentReleaseUrl } from "../data/site";
 
-// The README and CHANGELOG at the first release's tag: the facts on this page are the ones in them.
-const readmeUrl = "https://github.com/n-uf/cl_quick/blob/v26.11.0/README.md";
+// The README and CHANGELOG at the current release's tag (26.11.1): the facts on this page are the ones in them.
+const readmeUrl = "https://github.com/n-uf/cl_quick/blob/v26.11.1/README.md";
 
 const page = pageOf("/install/");
 const jsonLd = [
@@ -16,7 +16,7 @@ const jsonLd = [
 ];
 ---
 <Desktop title={page.title} description={page.description} page="install" headline="Install cl_quick on a Mac" jsonLd={jsonLd} ogImage="/og/install.png">
-  <p class="readout"><span class="led lit" aria-hidden="true"></span><b>Download cl_quick for Mac.</b> The app is free, and the first release is <ExtLink href={firstReleaseUrl}>26.11.0</ExtLink>.</p>
+  <p class="readout"><span class="led lit" aria-hidden="true"></span><b>Download cl_quick for Mac.</b> The app is free, and the current release is <ExtLink href={currentReleaseUrl}>26.11.1</ExtLink>.</p>
 
   <div class="cols">
     <div class="col-stack">
