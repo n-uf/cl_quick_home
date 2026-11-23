@@ -75,7 +75,7 @@ export const groups: Group[] = [
     { id: "links", q: "Can cl_quick read a link or search the web?",
       a: ["Yes. Links and search is on by default: Claude Code gets its two web tools, WebFetch and WebSearch, and nothing else, to read a page you link or search the web. Page text goes to the model and counts toward your usage. When it's off (Settings ▸ General ▸ Chat ▸ Links and search), Claude Code has no tools."] },
     { id: "instructions", q: "Can I give cl_quick instructions of my own?",
-      a: ["Yes. Settings ▸ General ▸ Chat has an Instructions box for a few lines of your own, up to 1,000 characters, such as \"Answer in Ukrainian unless I write in another language.\" They are added after cl_quick's built-in instructions, never replacing them, and apply to new chats only. They are stored like the other settings; chats are never stored."] },
+      a: ["Yes. Settings ▸ General ▸ Chat has an Instructions box: up to 1,000 characters of your own, such as \"Answer in Ukrainian unless I write in another language.\" They go after cl_quick's built-in instructions and never replace them. They apply to new chats only; cl_quick keeps them with its settings and sends them to the model with each new chat."] },
     { id: "services", q: "Can I ask about text I selected in another app?",
       a: ["Yes. Select text in any app, then right-click ▸ Services ▸ <b>Ask cl_quick</b>. The bar opens with the selection in the field as a quote, ready to edit and not sent; one over 20,000 characters is cut, with a line saying so. It needs no Accessibility permission, because macOS hands the selection over, and nothing about it is kept."] },
     { q: "Which keys work in the chat?",
