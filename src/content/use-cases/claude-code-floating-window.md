@@ -123,7 +123,7 @@ There's a mic button left of Send for dictating a question, and ⌘D turns it on
 
 Under the field, one row holds the controls.
 
-- **Profile.** A profile is a Claude Code folder cl_quick chats on, such as Main for `~/.claude` or Work for `~/.claude-work`. In the row it's a key with the profile's name and a dot in the colour of its fuller limit. Its menu lists each profile with its week and the address of its account in use, blurred until the pointer is on it, with a copy button beside it. Under each profile come its standby accounts, each with **Switch…** at the right, and **Add an account…**. The menu also has **Settings for <profile>…** and **Add a profile…**. The chat's header has no address; the chat's notes about an account change show it blurred too.
+- **Profile.** A profile is a Claude Code folder cl_quick chats on, such as Main for `~/.claude` or Work for `~/.claude-work`. In the row it's a key with the profile's name and a dot in the colour of its fuller limit. Its menu lists each profile with its week and the address of its account in use, blurred until the pointer is on it, with a copy button beside it. Under each profile come its standby accounts and **Add an account…**. A highlighted standby account shows **Switch…** at the right, and choosing it asks the switch question. The menu also has **Settings for <profile>…** and **Add a profile…**. The chat's header has no address; the chat's notes about an account change show it blurred too.
 - **Model.** Haiku by default. The bars are the newest Haiku, Sonnet, Opus and Fable the account has, as Claude Code itself lists them. A family the account lacks isn't offered.
 - **Thinking.** Off by default, or one of the efforts the chosen model takes: Low, Medium, High, Extra, Max.
 
