@@ -79,7 +79,7 @@ export const groups: Group[] = [
     { id: "services", q: "Can I ask about text I selected in another app?",
       a: ["Yes. Select text in any app, then right-click ▸ Services ▸ <b>Ask cl_quick</b>. The bar opens with the selection in the field as a quote, ready to edit and not sent; one over 20,000 characters is cut, with a line saying so. It needs no Accessibility permission, because macOS hands the selection over, and nothing about it is kept."] },
     { q: "Which keys work in the chat?",
-      a: ["Return sends, Shift-Return adds a line, Esc or ⌘W hides the chat, ⌘N starts a new chat and ⌘D turns Dictation on and off. ⇧⌘C copies the latest answer, or the one in view once you've scrolled up. fn↑ and fn↓ step Thinking, fn→ and fn← the Model, and ⌘F finds text in the chat. The keys button lists the rest."] },
+      a: ["Return sends, Shift-Return adds a line, Esc or ⌘W hides the chat, ⌘N starts a new chat and ⌘D turns Dictation on and off. ⇧⌘C copies the latest answer, or the one in view once you've scrolled up. fn↑ and fn↓ step Thinking, fn→ and fn← the Model, and ⌘F finds text. The keys button lists the rest."] },
     { id: "read-aloud", q: "Can cl_quick read an answer aloud?",
       a: ["Yes. The speaker button at the end of a finished answer's footer reads it with the Mac's own voice, on the device: the text never leaves the Mac and nothing is kept. Press it again to stop. Markdown marks are left out, and a code block is read as \"code block\". Claude's own voice isn't available to cl_quick."] },
     { q: "Where do I drag the chat window to move or resize it?",
