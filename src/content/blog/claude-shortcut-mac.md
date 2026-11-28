@@ -4,7 +4,7 @@ description: "Claude desktop shortcut Mac keys from Anthropic's pages: double-ta
 h1: "Claude desktop shortcuts on a Mac: open it, chat, dictate, avoid clashes"
 mainKeyword: "claude desktop shortcut mac"
 kind: how-to
-draft: true
+draft: false
 published: 2026-11-28
 updated: 2026-11-28
 author: n-uf
